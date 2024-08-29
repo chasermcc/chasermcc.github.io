@@ -105,11 +105,11 @@
 
         .floating-images {
             position: absolute;
-            top: 55%; /* Moved slightly down */
-            right: 8%; /* Moved slightly to the right */
+            top: 50%;
+            right: 5%; /* Move slightly to the right */
             transform: translateY(-50%);
-            width: 900px; /* Further increased size for more spread */
-            height: 900px;
+            width: 850px; /* Further increased size for more spread */
+            height: 850px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -122,7 +122,7 @@
             position: absolute;
             object-fit: cover;
             border-radius: 10px;
-            animation: float 10s linear infinite; /* Increased movement speed */
+            animation: float 15s linear infinite;
             transition: opacity 1s ease-in-out; /* Adjusted transition speed */
             opacity: 0;
         }
@@ -131,7 +131,7 @@
             width: 200px;
             height: 260px;
             top: 10%;
-            left: 15%; /* Moved slightly right */
+            left: 10%;
             z-index: 3;
         }
 
@@ -139,7 +139,7 @@
             width: 180px;
             height: 240px;
             top: 30%;
-            left: 25%; /* Moved slightly right */
+            left: 20%;
             z-index: 2;
         }
 
@@ -147,7 +147,7 @@
             width: 190px;
             height: 220px;
             top: 50%;
-            left: 10%;
+            left: 5%;
             z-index: 1;
         }
 
@@ -155,7 +155,7 @@
             width: 210px;
             height: 280px;
             top: 20%;
-            left: 45%; /* Moved slightly right */
+            left: 40%;
             z-index: 4; /* Largest image in front */
         }
 
@@ -163,7 +163,7 @@
             width: 170px;
             height: 210px;
             top: 60%;
-            left: 35%; /* Moved slightly right */
+            left: 30%;
             z-index: 2;
         }
 
@@ -171,7 +171,7 @@
             width: 190px;
             height: 220px;
             top: 40%;
-            left: 55%; /* Moved slightly right */
+            left: 50%;
             z-index: 1;
         }
 
@@ -180,7 +180,7 @@
                 transform: translateY(0) translateX(0);
             }
             100% {
-                transform: translateY(-20px) translateX(20px); /* Increased movement */
+                transform: translateY(-15px) translateX(15px); /* Only move in one direction */
             }
         }
 

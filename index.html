@@ -83,7 +83,6 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
-            max-width: 35ch;
             animation: typing 4s steps(35), blink 0.75s step-end infinite;
         }
 
@@ -127,11 +126,11 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 15%;
+            right: 10%;
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 10px;
         }
 
         .floating-images img {
@@ -142,33 +141,39 @@
         }
 
         .floating-images img:nth-child(1) {
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 320px;
+            z-index: 2;
         }
 
         .floating-images img:nth-child(2) {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 300px;
+            z-index: 1;
         }
 
         .floating-images img:nth-child(3) {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 280px;
+            z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
             width: 260px;
-            height: 260px;
+            height: 340px;
+            z-index: 2;
         }
 
         .floating-images img:nth-child(5) {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 240px;
+            z-index: 1;
         }
 
         .floating-images img:nth-child(6) {
             width: 220px;
-            height: 220px;
+            height: 280px;
+            z-index: 1;
         }
 
         @keyframes float {
@@ -197,7 +202,7 @@
             color: black;
             text-decoration: none;
             display: flex;
-            gap: 5px;
+            gap: 15px; /* increased space between links */
         }
 
         .footer .upper-links a {
@@ -242,12 +247,12 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/220" alt="Image 1">
-        <img src="https://via.placeholder.com/180" alt="Image 2">
-        <img src="https://via.placeholder.com/200" alt="Image 3">
-        <img src="https://via.placeholder.com/260" alt="Image 4 (largest)">
-        <img src="https://via.placeholder.com/160" alt="Image 5">
-        <img src="https://via.placeholder.com/220" alt="Image 6">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
     </div>
 
     <div class="footer">
@@ -272,7 +277,6 @@
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const images = document.querySelectorAll('.floating-images img');
-        const background = document.querySelector('.background');
 
         function typeTagline() {
             dynamicTextElement.style.animation = 'none';
@@ -286,15 +290,23 @@
             images.forEach((img, i) => {
                 img.style.opacity = '0';
                 setTimeout(() => {
-                    img.src = `https://via.placeholder.com/${[220, 180, 200, 260, 160, 220][i]}`;
+                    img.src = `https://via.placeholder.com/${[240, 200, 220, 260, 180, 220][i]}x${[320, 300, 280, 340, 240, 280][i]}`;
                     img.style.opacity = '1';
                 }, 2500);
             });
         }
 
+        function slowBackspace() {
+            dynamicTextElement.style.animation = 'none';
+            setTimeout(() => {
+                dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
+            }, 1000);
+        }
+
         setInterval(() => {
             typeTagline();
             fadeImages();
+            slowBackspace();
         }, 12000);
 
         typeTagline();

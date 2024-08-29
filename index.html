@@ -11,8 +11,13 @@
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             overflow: hidden;
-            background-color: #ffffff; /* Start with white background */
             transition: background-color 0.7s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .background {
@@ -26,27 +31,21 @@
         }
 
         @keyframes colorChange {
-            0%, 100% {
-                background-color: #ffffff; /* very light pink */
+            0% {
+                background-color: #fff9f9; /* very light pink */
             }
             25% {
-                background-color: #f0faff; /* very light blue */
+                background-color: #f0fcff; /* very light blue */
             }
             50% {
-                background-color: #f7fff7; /* very light green */
+                background-color: #f9fff9; /* very light green */
             }
             75% {
-                background-color: #fffcf2; /* very light orange */
+                background-color: #fff7f2; /* very light orange */
             }
-        }
-
-        .header-text {
-            position: absolute;
-            top: 20%; /* Adjust as needed */
-            left: 100px;
-            font-size: 1.2em;
-            color: #333;
-            font-family: 'Inter', sans-serif;
+            100% {
+                background-color: #fff9f9; /* very light pink */
+            }
         }
 
         .container {
@@ -58,30 +57,54 @@
             text-align: left;
             padding-left: 100px;
             color: #333;
-            top: -10%; /* Bring header up */
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 400;
             margin: 0;
             color: #222;
         }
 
+        .header-text {
+            position: absolute;
+            top: 18%;
+            left: 100px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95em;
+            color: #000;
+        }
+
         .dynamic-text {
             font-size: 1.5em;
+            margin: 20px 0;
             color: #000;
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
-            padding-right: 10px; /* Ensure space for cursor */
-            animation: blink-caret .75s step-end infinite;
+            animation: typing 4s steps(35), blink 0.75s step-end infinite;
         }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #000080 }
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            50% {
+                width: 35ch;
+            }
+            100% {
+                width: 35ch;
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #000080; /* darker blue */
+            }
         }
 
         button {
@@ -103,42 +126,71 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 5%;
+            right: 10%;
             transform: translateY(-50%);
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            z-index: 1;
         }
 
         .floating-images img {
-            width: 150px;
-            height: 150px; /* Randomize sizes with different heights */
-            background-color: #ccc;
+            object-fit: cover;
             border-radius: 10px;
-            animation: fadeInOut 7s infinite, move 10s infinite;
+            animation: float 15s linear infinite;
+            transition: opacity 2s ease-in-out;
         }
 
-        /* Larger image */
-        .floating-images img.large {
-            width: 200px;
-            height: 300px;
+        .floating-images img:nth-child(1) {
+            width: 240px;
+            height: 320px;
             z-index: 2;
         }
 
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .floating-images img:nth-child(2) {
+            width: 200px;
+            height: 300px;
+            z-index: 1;
         }
 
-        @keyframes move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(var(--movementX), var(--movementY)); }
+        .floating-images img:nth-child(3) {
+            width: 220px;
+            height: 280px;
+            z-index: 1;
+        }
+
+        .floating-images img:nth-child(4) {
+            width: 260px;
+            height: 340px;
+            z-index: 2;
+        }
+
+        .floating-images img:nth-child(5) {
+            width: 180px;
+            height: 240px;
+            z-index: 1;
+        }
+
+        .floating-images img:nth-child(6) {
+            width: 220px;
+            height: 280px;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
         }
 
         .footer {
             position: absolute;
-            bottom: 70px;
+            bottom: 100px;
             left: 100px;
             font-size: 0.9em;
             color: #555;
@@ -146,11 +198,11 @@
 
         .footer .upper-links {
             font-size: 1.1em;
-            font-weight: 400;
+            font-weight: 500;
             color: black;
+            text-decoration: none;
             display: flex;
-            gap: 15px;
-            margin-bottom: 15px; /* Add space below top links */
+            gap: 15px; /* increased space between links */
         }
 
         .footer .upper-links a {
@@ -164,8 +216,9 @@
 
         .footer .lower-links {
             font-size: 0.8em;
+            margin-top: 20px;
             display: flex;
-            gap: 15px; /* Increase space between bottom links */
+            gap: 10px;
         }
 
         .footer .lower-links a {
@@ -188,18 +241,18 @@
     <div class="container">
         <div>
             <h1>Memorably</h1>
-            <div class="dynamic-text">Welcome to Memorably</div>
+            <div class="dynamic-text"></div>
             <button>Join waitlist</button>
         </div>
     </div>
 
     <div class="floating-images">
-        <img alt="Image Placeholder 1" class="large">
-        <img alt="Image Placeholder 2">
-        <img alt="Image Placeholder 3">
-        <img alt="Image Placeholder 4">
-        <img alt="Image Placeholder 5">
-        <img alt="Image Placeholder 6">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
     </div>
 
     <div class="footer">
@@ -215,44 +268,48 @@
 
     <script>
         const taglines = [
-            "The French Laundry\nYountville, CA",
-            "Noma\nCopenhagen, Denmark",
-            "El Celler de Can Roca\nGirona, Spain",
-            "Osteria Francescana\nModena, Italy"
+            "Buy merch from the best hospitality venues.",
+            "Take your memories with you.",
+            "Shop unforgettable experiences.",
+            "Discover the best in hospitality."
         ];
 
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
+        const images = document.querySelectorAll('.floating-images img');
 
-        function updateText() {
+        function typeTagline() {
+            dynamicTextElement.style.animation = 'none';
+            dynamicTextElement.offsetHeight; // trigger reflow to reset animation
+            dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        function cycleContent() {
-            setTimeout(() => {
-                dynamicTextElement.style.borderRight = 'none'; // Stop cursor blink during transition
-                updateText(); // Start new text
-                dynamicTextElement.style.borderRight = '4px solid #000080'; // Resume cursor blink
-            }, 7000); // Delay for text visibility
-        }
-
-        setInterval(cycleContent, 14000); // Match timing to double the visibility delay for cycle
-
-        updateText(); // Initial text update
-
-        const images = document.querySelectorAll('.floating-images img');
-
-        function randomMovement() {
-            images.forEach(img => {
-                const movementX = Math.random() * 20 - 10; // Random movement between -10 and 10
-                const movementY = Math.random() * 20 - 10;
-                img.style.setProperty('--movementX', `${movementX}px`);
-                img.style.setProperty('--movementY', `${movementY}px`);
+        function fadeImages() {
+            images.forEach((img, i) => {
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = `https://via.placeholder.com/${[240, 200, 220, 260, 180, 220][i]}x${[320, 300, 280, 340, 240, 280][i]}`;
+                    img.style.opacity = '1';
+                }, 2500);
             });
         }
 
-        randomMovement(); // Call initially to set movement
+        function slowBackspace() {
+            dynamicTextElement.style.animation = 'none';
+            setTimeout(() => {
+                dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
+            }, 1000);
+        }
+
+        setInterval(() => {
+            typeTagline();
+            fadeImages();
+            slowBackspace();
+        }, 12000);
+
+        typeTagline();
     </script>
 </body>
 </html>

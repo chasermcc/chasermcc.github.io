@@ -106,9 +106,9 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 8%;
+            right: 0%; /* Moved further to the right */
             transform: translateY(-50%);
-            width: 1000px; /* Increased width */
+            width: 1100px; /* Increased width */
             height: 500px; /* Decreased height for a horizontal box */
             display: flex;
             flex-wrap: wrap;
@@ -131,7 +131,7 @@
             width: 220px;
             height: 260px;
             top: 10%;
-            left: 15%;
+            left: 33%; /* Moved to the right to ensure it's within the right 66% of the screen */
             z-index: 3;
         }
 
@@ -139,7 +139,7 @@
             width: 200px;
             height: 240px;
             top: 20%;
-            left: 35%;
+            left: 50%; /* Moved to the right */
             z-index: 2;
         }
 
@@ -147,7 +147,7 @@
             width: 190px;
             height: 220px;
             top: 40%;
-            left: 5%;
+            left: 20%; /* Moved to the right */
             z-index: 1;
         }
 
@@ -155,7 +155,7 @@
             width: 250px;
             height: 300px;
             top: 15%;
-            left: 50%;
+            left: 60%; /* Moved to the right */
             z-index: 4; /* Largest image in front */
         }
 
@@ -163,7 +163,7 @@
             width: 180px;
             height: 210px;
             top: 60%;
-            left: 25%;
+            left: 40%; /* Moved to the right */
             z-index: 2;
         }
 
@@ -171,7 +171,7 @@
             width: 210px;
             height: 250px;
             top: 50%;
-            left: 70%;
+            left: 75%; /* Moved to the right */
             z-index: 1;
         }
 
@@ -342,12 +342,12 @@
 
         function randomizeImagePositions(set) {
             const positions = [
-                { top: '5%', left: '5%' },
-                { top: '20%', left: '10%' },
-                { top: '40%', left: '5%' },
-                { top: '15%', left: '35%' },
-                { top: '55%', left: '25%' },
-                { top: '35%', left: '45%' }
+                { top: '5%', left: '33%' },
+                { top: '20%', left: '45%' },
+                { top: '40%', left: '35%' },
+                { top: '15%', left: '60%' },
+                { top: '55%', left: '50%' },
+                { top: '35%', left: '70%' }
             ];
 
             // Shuffle the positions array for randomness

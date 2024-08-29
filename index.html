@@ -123,7 +123,7 @@
             object-fit: cover;
             border-radius: 10px;
             animation: float 15s linear infinite;
-            transition: opacity 2s ease-in-out; /* Slower transition */
+            transition: opacity 4s ease-in-out;
             opacity: 0.9;
         }
 
@@ -367,37 +367,37 @@
         }
 
         function fadeImages() {
-            imagesSets.forEach((set, index) => {
-                set.style.opacity = '0';
-            });
+            const previousIndex = currentIndex;
+            currentIndex = (currentIndex + 1) % imagesSets.length;
 
-            const nextIndex = (currentIndex + 1) % imagesSets.length;
-            randomizeImagePositions(imagesSets[nextIndex]);
-            imagesSets[nextIndex].style.display = 'flex';
+            const previousSet = imagesSets[previousIndex];
+            const nextSet = imagesSets[currentIndex];
+
+            nextSet.style.display = 'flex';
+            randomizeImagePositions(nextSet);
 
             // Staggered appearance for the next set of images
-            imagesSets[nextIndex].querySelectorAll('img').forEach((img, i) => {
+            nextSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
                     img.style.opacity = '1';
                 }, i * 150); // Delay each image by 150ms
             });
 
             // Slow fade out for the previous set of images
+            previousSet.querySelectorAll('img').forEach((img, i) => {
+                setTimeout(() => {
+                    img.style.opacity = '0';
+                }, i * 150); // Delay each image by 150ms for fade out
+            });
+
+            // Hide previous set after fade-out
             setTimeout(() => {
-                imagesSets.forEach((set, index) => {
-                    if (index !== nextIndex) {
-                        set.querySelectorAll('img').forEach((img, i) => {
-                            setTimeout(() => {
-                                img.style.opacity = '0';
-                            }, i * 150); // Delay each image by 150ms for fade out
-                        });
-                    }
-                });
-            }, 2000);
+                previousSet.style.display = 'none';
+            }, 3000); // Hide after enough time for fade-out
         }
 
         function changeBackgroundColor() {
-            const nextColor = colors[(currentIndex + 1) % colors.length];
+            const nextColor = colors[currentIndex];
             backgroundElement.style.backgroundColor = nextColor;
         }
 
@@ -405,7 +405,6 @@
             typeTagline();
             changeBackgroundColor();
             fadeImages();
-            currentIndex = (currentIndex + 1) % taglines.length;
         }
 
         setInterval(startTransitions, 12000);

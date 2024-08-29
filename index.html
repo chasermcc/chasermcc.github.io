@@ -72,12 +72,11 @@
             margin: 10px 0 30px 0; /* Increased space above and below */
             color: #000;
             overflow: hidden;
-            border-right: 2px solid #000080; /* darker blue, smaller size */
+            border-right: 3px solid #000080; /* Slightly thicker and shorter cursor */
             display: inline-block;
             word-wrap: break-word;
             white-space: normal; /* Allows wrapping to next line */
             line-height: 1.2em;
-            min-height: 1.8em; /* Prevent height change during typing */
             animation: blink-cursor 1s steps(1) infinite;
         }
 
@@ -108,16 +107,16 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 20%; /* Slightly more to the right */
+            right: 15%; /* Move slightly to the right */
             transform: translateY(-50%); /* Center vertically */
-            width: 500px; /* Increased size for more spread */
-            height: 500px;
+            width: 550px; /* Increased size for more spread */
+            height: 550px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: opacity 3s ease-in-out; /* Slower fade out */
+            transition: opacity 4s ease-in-out; /* Slower fade out */
         }
 
         .floating-images img {
@@ -125,7 +124,7 @@
             object-fit: cover;
             border-radius: 10px;
             animation: float 15s linear infinite; /* Move in one direction */
-            transition: opacity 3s ease-in-out; /* Slower fade out */
+            transition: opacity 4s ease-in-out; /* Slower fade out */
             opacity: 0.9;
         }
 
@@ -158,7 +157,7 @@
             height: 230px;
             top: 20%;
             left: 40%;
-            z-index: 4;
+            z-index: 4; /* Largest image in front */
         }
 
         .floating-images img:nth-child(5) {
@@ -332,14 +331,40 @@
         }
 
         function blinkCursor() {
-            dynamicTextElement.style.borderRight = '2px solid #000080';
+            dynamicTextElement.style.borderRight = '3px solid #000080';
             setInterval(() => {
-                if (dynamicTextElement.style.borderRight === '2px solid #000080') {
-                    dynamicTextElement.style.borderRight = '2px solid transparent';
+                if (dynamicTextElement.style.borderRight === '3px solid #000080') {
+                    dynamicTextElement.style.borderRight = '3px solid transparent';
                 } else {
-                    dynamicTextElement.style.borderRight = '2px solid #000080';
+                    dynamicTextElement.style.borderRight = '3px solid #000080';
                 }
             }, 500);
+        }
+
+        function randomizeImagePositions(set) {
+            const positions = [
+                { top: '10%', left: '10%' },
+                { top: '30%', left: '20%' },
+                { top: '50%', left: '5%' },
+                { top: '20%', left: '40%' },
+                { top: '60%', left: '30%' },
+                { top: '40%', left: '50%' }
+            ];
+
+            // Shuffle the positions array for randomness
+            for (let i = positions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [positions[i], positions[j]] = [positions[j], positions[i]];
+            }
+
+            // Apply randomized positions to images
+            set.querySelectorAll('img').forEach((img, index) => {
+                img.style.top = positions[index].top;
+                img.style.left = positions[index].left;
+            });
+
+            // Ensure the largest image is always in front
+            set.querySelector('img:nth-child(4)').style.zIndex = 4;
         }
 
         function fadeImages() {
@@ -349,6 +374,7 @@
             });
 
             const nextIndex = (currentIndex + 1) % imagesSets.length;
+            randomizeImagePositions(imagesSets[nextIndex]);
             imagesSets[nextIndex].style.display = 'flex';
             setTimeout(() => {
                 imagesSets[nextIndex].style.opacity = '1';

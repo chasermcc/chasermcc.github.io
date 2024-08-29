@@ -45,7 +45,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
             font-weight: 400;
-            margin: 0;
+            margin: 0 0 30px 0; /* Increased space below */
             color: #222;
         }
 
@@ -64,24 +64,20 @@
 
         .dynamic-text {
             font-size: 1.5em;
-            margin: 20px 0;
+            margin: 10px 0 30px 0; /* Increased space above and below */
             color: #000;
-            white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
             display: inline-block;
             word-wrap: break-word;
             white-space: normal; /* Allows wrapping to next line */
             line-height: 1.2em;
+            animation: blink-cursor 1s steps(1) infinite;
         }
 
-        @keyframes blink {
-            from, to {
-                border-color: transparent;
-            }
-            50% {
-                border-color: #000080; /* darker blue */
-            }
+        @keyframes blink-cursor {
+            from, to { border-color: transparent; }
+            50% { border-color: #000080; } /* darker blue */
         }
 
         button {
@@ -108,8 +104,8 @@
             top: 50%;
             right: 10%;
             transform: translate(50%, -50%); /* Center right of the screen */
-            width: 350px;
-            height: 350px;
+            width: 400px;
+            height: 400px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -128,48 +124,48 @@
         }
 
         .floating-images img:nth-child(1) {
-            width: 130px;
-            height: 170px;
+            width: 150px;
+            height: 200px;
             top: 10%;
             left: 10%;
             z-index: 3;
         }
 
         .floating-images img:nth-child(2) {
-            width: 110px;
-            height: 160px;
+            width: 130px;
+            height: 180px;
             top: 30%;
             left: 20%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(3) {
-            width: 120px;
-            height: 150px;
+            width: 140px;
+            height: 170px;
             top: 50%;
             left: 5%;
             z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
-            width: 140px;
-            height: 190px;
+            width: 160px;
+            height: 220px;
             top: 20%;
             left: 40%;
             z-index: 4;
         }
 
         .floating-images img:nth-child(5) {
-            width: 100px;
-            height: 140px;
+            width: 120px;
+            height: 160px;
             top: 60%;
             left: 30%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(6) {
-            width: 120px;
-            height: 150px;
+            width: 140px;
+            height: 170px;
             top: 40%;
             left: 50%;
             z-index: 1;
@@ -263,6 +259,24 @@
         <img src="https://via.placeholder.com/220x280" alt="Image 12">
     </div>
 
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
+
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
+    </div>
+
     <div class="footer">
         <div class="upper-links">
             <a href="#">Partner with us</a> |
@@ -282,17 +296,27 @@
             "Discover the best in hospitality."
         ];
 
-        let taglineIndex = 0;
+        const colors = [
+            "#ffebe6", /* darker pink */
+            "#e6f7ff", /* darker blue */
+            "#e6ffe6", /* darker green */
+            "#ffeadf"  /* darker orange */
+        ];
+
+        const imagesSets = [
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
+        ];
+
+        let currentIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
-        const images1 = document.getElementById('images1');
-        const images2 = document.getElementById('images2');
-
-        const colors = ["#fff9f9", "#f0fcff", "#f9fff9", "#fff7f2"];
 
         function typeTagline() {
             dynamicTextElement.textContent = "";
-            const tagline = taglines[taglineIndex];
+            const tagline = taglines[currentIndex];
             let i = 0;
             const typingInterval = setInterval(() => {
                 if (i < tagline.length) {
@@ -301,9 +325,7 @@
                 } else {
                     clearInterval(typingInterval);
                 }
-            }, 100); // Adjust typing speed here
-
-            taglineIndex = (taglineIndex + 1) % taglines.length;
+            }, 100);
         }
 
         function blinkCursor() {
@@ -318,39 +340,34 @@
         }
 
         function fadeImages() {
-            if (images1.style.display !== "none") {
-                images1.style.opacity = '0';
-                setTimeout(() => {
-                    images1.style.display = 'none';
-                    images2.style.display = 'flex';
-                    images2.style.opacity = '1';
-                }, 1000);
-            } else {
-                images2.style.opacity = '0';
-                setTimeout(() => {
-                    images2.style.display = 'none';
-                    images1.style.display = 'flex';
-                    images1.style.opacity = '1';
-                }, 1000);
-            }
+            imagesSets.forEach((set, index) => {
+                set.style.display = 'none';
+                set.style.opacity = '0';
+            });
+
+            const nextIndex = (currentIndex + 1) % imagesSets.length;
+            imagesSets[nextIndex].style.display = 'flex';
+            setTimeout(() => {
+                imagesSets[nextIndex].style.opacity = '1';
+            }, 100);
         }
 
         function changeBackgroundColor() {
-            const color = colors[taglineIndex];
-            backgroundElement.style.backgroundColor = color;
+            const nextColor = colors[(currentIndex + 1) % colors.length];
+            backgroundElement.style.backgroundColor = nextColor;
         }
 
         function startTransitions() {
             typeTagline();
-            fadeImages();
             changeBackgroundColor();
+            fadeImages();
+            currentIndex = (currentIndex + 1) % taglines.length;
         }
 
         setInterval(startTransitions, 12000);
 
-        typeTagline();
-        blinkCursor();
         startTransitions();
+        blinkCursor();
     </script>
 </body>
 </html>

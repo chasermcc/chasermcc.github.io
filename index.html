@@ -124,7 +124,7 @@
             border-radius: 10px;
             animation: float 15s linear infinite;
             transition: opacity 1s ease-in-out; /* Adjusted transition speed */
-            opacity: 0.9;
+            opacity: 0;
         }
 
         .floating-images img:nth-child(1) {
@@ -390,7 +390,7 @@
                 nextSet.querySelectorAll('img').forEach((img, i) => {
                     setTimeout(() => {
                         img.style.opacity = '1';
-                    }, i * 100); // Speed up fade in
+                    }, i * 100); // Staggered fade-in with delay
                 });
             }, 1200); // Slight delay to prevent overlap
         }

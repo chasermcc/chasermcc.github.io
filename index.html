@@ -14,6 +14,34 @@
             transition: background-color 1s ease-in-out;
         }
 
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            animation: colorChange 28s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                background-color: #faf3f3; /* light pink */
+            }
+            25% {
+                background-color: #ffffff; /* white */
+            }
+            50% {
+                background-color: #d7e3fc; /* light blue */
+            }
+            75% {
+                background-color: #e0f7fa; /* very light cyan */
+            }
+            100% {
+                background-color: #faf3f3; /* light pink */
+            }
+        }
+
         .container {
             position: relative;
             height: 100vh;
@@ -27,14 +55,23 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4em;
+            font-size: 3em;
             font-weight: 400;
             margin: 0;
             color: #222;
         }
 
+        .header-text {
+            position: absolute;
+            top: 20px;
+            left: 100px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1em;
+            color: #555;
+        }
+
         .dynamic-text {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin: 20px 0;
             color: #555;
             white-space: nowrap;
@@ -45,11 +82,14 @@
         }
 
         @keyframes typing {
-            0%, 100% {
+            0% {
                 width: 0;
             }
             50% {
                 width: 20ch;
+            }
+            100% {
+                width: 0;
             }
         }
 
@@ -96,54 +136,36 @@
             position: absolute;
         }
 
-        .floating-images img:nth-child(2n-1) {
-            animation-delay: 7s;
-        }
-
         @keyframes fadeInOut {
-            0% {
+            0%, 100% {
                 opacity: 0;
             }
             10%, 90% {
                 opacity: 1;
             }
-            100% {
-                opacity: 0;
-            }
         }
 
-        .background {
+        .footer {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fad0c4);
-            animation: colorChange 28s infinite;
+            bottom: 20px;
+            left: 100px;
+            font-size: 0.9em;
+            color: #555;
         }
 
-        @keyframes colorChange {
-            0% {
-                background: #ff9a9e;
-            }
-            25% {
-                background: #fad0c4;
-            }
-            50% {
-                background: #fbc2eb;
-            }
-            75% {
-                background: #a18cd1;
-            }
-            100% {
-                background: #ff9a9e;
-            }
+        .footer a {
+            color: #555;
+            text-decoration: none;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
     <div class="background"></div>
+
+    <div class="header-text">
+        Shop unforgettable restaurants, hotels, and experiences
+    </div>
 
     <div class="container">
         <div>
@@ -162,24 +184,31 @@
         <img src="https://via.placeholder.com/150" alt="Image 6">
     </div>
 
+    <div class="footer">
+        <a href="#">Partner with us</a> | <a href="#">Careers</a> | <a href="#">Terms of service</a> | <a href="#">Privacy policy</a>
+    </div>
+
     <script>
         const taglines = [
-            "Discover the best in hospitality, wherever your journey takes you.",
-            "Uncover exclusive experiences tailored for you.",
-            "Find luxury and comfort, no matter where you go.",
-            "Experience hospitality that stays with you."
+            "Buy merch from the best hospitality venues.",
+            "Take your memories with you.",
+            "Shop unforgettable experiences.",
+            "Discover the best in hospitality."
         ];
 
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
 
-        function changeTagline() {
+        function typeTagline() {
+            dynamicTextElement.style.animation = 'none';
+            dynamicTextElement.offsetHeight; // trigger reflow to reset animation
+            dynamicTextElement.style.animation = 'typing 6s steps(20), blink 0.75s step-end infinite';
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        setInterval(changeTagline, 7000);
-        changeTagline();
+        setInterval(typeTagline, 7000);
+        typeTagline();
     </script>
 </body>
 </html>

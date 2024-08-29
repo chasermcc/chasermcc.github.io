@@ -5,57 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorably - Coming Soon</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+
         body {
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
             overflow: hidden;
+            transition: background-color 1s ease-in-out;
         }
 
         .container {
             position: relative;
-            width: 100%;
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background-color: #fff;
+            text-align: left;
+            padding-left: 100px;
+            color: #333;
         }
 
         h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 4em;
-            font-weight: 700;
+            font-weight: 400;
             margin: 0;
             color: #222;
         }
 
-        p {
+        .dynamic-text {
             font-size: 1.5em;
             margin: 20px 0;
             color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #000;
+            width: 20ch;
+            animation: typing 4s steps(20) infinite, blink 0.75s step-end infinite;
         }
 
-        input[type="email"] {
-            padding: 15px;
-            font-size: 1.2em;
-            width: 80%;
-            max-width: 400px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            text-align: center;
-            outline: none;
+        @keyframes typing {
+            0%, 100% {
+                width: 0;
+            }
+            50% {
+                width: 20ch;
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #0000ff;
+            }
         }
 
         button {
+            margin-top: 20px;
             padding: 15px 30px;
             font-size: 1.2em;
             color: white;
-            background-color: #000;
+            background-color: #00008B;
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -66,57 +78,108 @@
             background-color: #333;
         }
 
-        .floating-images img {
+        .floating-images {
             position: absolute;
-            width: 100px;
-            animation: float 6s ease-in-out infinite;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            display: grid;
+            grid-template-columns: repeat(2, 150px);
+            gap: 20px;
         }
 
-        .floating-images img:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .floating-images img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            animation: fadeInOut 7s infinite;
+            position: absolute;
         }
 
-        .floating-images img:nth-child(2) {
-            top: 40%;
-            right: 15%;
-            animation-delay: 2s;
+        .floating-images img:nth-child(2n-1) {
+            animation-delay: 7s;
         }
 
-        .floating-images img:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
+        @keyframes fadeInOut {
             0% {
-                transform: translateY(0);
+                opacity: 0;
             }
-            50% {
-                transform: translateY(-20px);
+            10%, 90% {
+                opacity: 1;
             }
             100% {
-                transform: translateY(0);
+                opacity: 0;
+            }
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fad0c4);
+            animation: colorChange 28s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                background: #ff9a9e;
+            }
+            25% {
+                background: #fad0c4;
+            }
+            50% {
+                background: #fbc2eb;
+            }
+            75% {
+                background: #a18cd1;
+            }
+            100% {
+                background: #ff9a9e;
             }
         }
     </style>
 </head>
 <body>
+    <div class="background"></div>
+
     <div class="container">
-        <h1>Memorably</h1>
-        <p>Something exciting is coming soon. Stay in the loop!</p>
-        <form action="https://example.com/signup" method="POST">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Notify Me</button>
-        </form>
+        <div>
+            <h1>Memorably</h1>
+            <div class="dynamic-text"></div>
+            <button>Join Waitlist</button>
+        </div>
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/100" alt="Floating Image 1">
-        <img src="https://via.placeholder.com/100" alt="Floating Image 2">
-        <img src="https://via.placeholder.com/100" alt="Floating Image 3">
+        <img src="https://via.placeholder.com/150" alt="Image 1">
+        <img src="https://via.placeholder.com/150" alt="Image 2">
+        <img src="https://via.placeholder.com/150" alt="Image 3">
+        <img src="https://via.placeholder.com/150" alt="Image 4">
+        <img src="https://via.placeholder.com/150" alt="Image 5">
+        <img src="https://via.placeholder.com/150" alt="Image 6">
     </div>
+
+    <script>
+        const taglines = [
+            "Discover the best in hospitality, wherever your journey takes you.",
+            "Uncover exclusive experiences tailored for you.",
+            "Find luxury and comfort, no matter where you go.",
+            "Experience hospitality that stays with you."
+        ];
+
+        let taglineIndex = 0;
+        const dynamicTextElement = document.querySelector('.dynamic-text');
+
+        function changeTagline() {
+            dynamicTextElement.textContent = taglines[taglineIndex];
+            taglineIndex = (taglineIndex + 1) % taglines.length;
+        }
+
+        setInterval(changeTagline, 7000);
+        changeTagline();
+    </script>
 </body>
 </html>

@@ -12,6 +12,12 @@
             font-family: 'Helvetica Neue', Arial, sans-serif;
             overflow: hidden;
             transition: background-color 0.7s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .background {
@@ -26,19 +32,19 @@
 
         @keyframes colorChange {
             0% {
-                background-color: #ffe6e6; /* light pink */
+                background-color: #fff9f9; /* very light pink */
             }
             25% {
-                background-color: #e6f7ff; /* light blue */
+                background-color: #f0fcff; /* very light blue */
             }
             50% {
-                background-color: #e6ffe6; /* light green */
+                background-color: #f9fff9; /* very light green */
             }
             75% {
-                background-color: #fff0e6; /* light orange */
+                background-color: #fff7f2; /* very light orange */
             }
             100% {
-                background-color: #ffe6e6; /* light pink */
+                background-color: #fff9f9; /* very light pink */
             }
         }
 
@@ -55,7 +61,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 400;
             margin: 0;
             color: #222;
@@ -66,19 +72,19 @@
             top: 18%;
             left: 100px;
             font-family: 'Inter', sans-serif;
-            font-size: 1em;
+            font-size: 0.95em;
             color: #000;
         }
 
         .dynamic-text {
-            font-size: 1.1em;
+            font-size: 1.3em;
             margin: 20px 0;
             color: #000;
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000;
-            width: 20ch;
-            animation: typing 3s steps(20), blink 0.75s step-end infinite;
+            max-width: 25ch;
+            animation: typing 3s steps(25), blink 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -86,10 +92,10 @@
                 width: 0;
             }
             50% {
-                width: 20ch;
+                width: 25ch;
             }
             100% {
-                width: 20ch;
+                width: 25ch;
             }
         }
 
@@ -107,9 +113,9 @@
             padding: 10px 20px;
             font-size: 0.9em;
             color: white;
-            background-color: #00008B;
+            background-color: #000080; /* darker blue */
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -121,7 +127,7 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 20%;
+            right: 25%;
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -136,33 +142,33 @@
         }
 
         .floating-images img:nth-child(1) {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
         }
 
         .floating-images img:nth-child(2) {
-            width: 100px;
-            height: 100px;
-        }
-
-        .floating-images img:nth-child(3) {
-            width: 150px;
-            height: 150px;
-        }
-
-        .floating-images img:nth-child(4) {
-            width: 250px;
-            height: 250px;
-        }
-
-        .floating-images img:nth-child(5) {
             width: 120px;
             height: 120px;
         }
 
+        .floating-images img:nth-child(3) {
+            width: 140px;
+            height: 140px;
+        }
+
+        .floating-images img:nth-child(4) {
+            width: 200px;
+            height: 200px;
+        }
+
+        .floating-images img:nth-child(5) {
+            width: 100px;
+            height: 100px;
+        }
+
         .floating-images img:nth-child(6) {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
         }
 
         @keyframes float {
@@ -170,7 +176,7 @@
                 transform: translate(0, 0);
             }
             50% {
-                transform: translate(10px, 10px);
+                transform: translate(20px, 20px);
             }
             100% {
                 transform: translate(0, 0);
@@ -179,25 +185,24 @@
 
         .footer {
             position: absolute;
-            bottom: 50px;
+            bottom: 70px;
             left: 100px;
             font-size: 0.9em;
             color: #555;
         }
 
         .footer .upper-links {
-            font-size: 1em;
+            font-size: 1.05em;
+            font-weight: 500;
             color: black;
-            font-weight: bold;
             text-decoration: none;
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .footer .upper-links a {
             color: black;
             text-decoration: none;
-            margin-right: 15px;
         }
 
         .footer .upper-links a:hover {
@@ -206,7 +211,7 @@
 
         .footer .lower-links {
             font-size: 0.8em;
-            margin-top: 15px;
+            margin-top: 20px;
             display: flex;
             gap: 10px;
         }
@@ -237,17 +242,17 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/200" alt="Image 1">
-        <img src="https://via.placeholder.com/100" alt="Image 2">
-        <img src="https://via.placeholder.com/150" alt="Image 3">
-        <img src="https://via.placeholder.com/250" alt="Image 4 (restaurant)">
-        <img src="https://via.placeholder.com/120" alt="Image 5">
-        <img src="https://via.placeholder.com/180" alt="Image 6">
+        <img src="https://via.placeholder.com/180" alt="Image 1">
+        <img src="https://via.placeholder.com/120" alt="Image 2">
+        <img src="https://via.placeholder.com/140" alt="Image 3">
+        <img src="https://via.placeholder.com/200" alt="Image 4 (restaurant)">
+        <img src="https://via.placeholder.com/100" alt="Image 5">
+        <img src="https://via.placeholder.com/160" alt="Image 6">
     </div>
 
     <div class="footer">
         <div class="upper-links">
-            <a href="#">Partner with us</a> |
+            <a href="#">Partner with us</a> | 
             <a href="#">Careers</a>
         </div>
         <div class="lower-links">
@@ -266,16 +271,32 @@
 
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
+        const images = document.querySelectorAll('.floating-images img');
+        const background = document.querySelector('.background');
 
         function typeTagline() {
             dynamicTextElement.style.animation = 'none';
             dynamicTextElement.offsetHeight; // trigger reflow to reset animation
-            dynamicTextElement.style.animation = 'typing 3s steps(20), blink 0.75s step-end infinite';
+            dynamicTextElement.style.animation = 'typing 3s steps(25), blink 0.75s step-end infinite';
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        setInterval(typeTagline, 8000);
+        function fadeImages() {
+            images.forEach((img, i) => {
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = `https://via.placeholder.com/${[180, 120, 140, 200, 100, 160][i]}`;
+                    img.style.opacity = '1';
+                }, 1000);
+            });
+        }
+
+        setInterval(() => {
+            typeTagline();
+            fadeImages();
+        }, 8000);
+
         typeTagline();
     </script>
 </body>

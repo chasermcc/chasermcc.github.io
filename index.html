@@ -35,9 +35,9 @@
             position: relative;
             height: 100vh;
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: left;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
             padding-left: 100px;
             color: #333;
         }
@@ -46,26 +46,13 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
             font-weight: 400;
-            margin: 0 0 30px 0;
+            margin: 0 0 20px 0;
             color: #222;
-            position: absolute; /* Fixed position */
-            z-index: 10;
-        }
-
-        .header-text {
-            position: absolute;
-            top: 18%;
-            left: 100px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95em;
-            color: #000;
         }
 
         .dynamic-text-container {
-            max-width: 45%;
-            position: absolute; /* Fixed position */
-            top: 60px; /* Adjust based on header positioning */
-            left: 100px;
+            max-width: 45%; /* Slightly shorter than halfway across */
+            position: relative;
             z-index: 10;
         }
 
@@ -97,10 +84,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            position: absolute; /* Fixed position */
-            z-index: 10;
-            top: 120px; /* Adjust based on text positioning */
-            left: 100px;
             display: block;
         }
 
@@ -235,13 +218,9 @@
 <body>
     <div class="background" id="background"></div>
 
-    <div class="header-text">
-        Shop unforgettable restaurants, hotels, and experiences
-    </div>
-
     <div class="container">
+        <h1>Memorably</h1>
         <div class="dynamic-text-container">
-            <h1>Memorably</h1>
             <div class="dynamic-text"></div>
             <button>Join waitlist</button>
         </div>

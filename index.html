@@ -46,10 +46,10 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
             font-weight: 400;
-            margin: 0 0 30px 0; /* Increased space below */
+            margin: 0 0 30px 0;
             color: #222;
-            position: relative;
-            z-index: 10; /* Keep static */
+            position: absolute; /* Fixed position */
+            z-index: 10;
         }
 
         .header-text {
@@ -62,20 +62,22 @@
         }
 
         .dynamic-text-container {
-            max-width: 45%; /* Slightly shorter than halfway across */
-            position: relative;
-            z-index: 10; /* Keep static */
+            max-width: 45%;
+            position: absolute; /* Fixed position */
+            top: 60px; /* Adjust based on header positioning */
+            left: 100px;
+            z-index: 10;
         }
 
         .dynamic-text {
             font-size: 1.5em;
-            margin: 10px 0 30px 0; /* Increased space above and below */
+            margin: 10px 0 30px 0;
             color: #000;
             overflow: hidden;
             border-right: 3px solid #000080; /* Slightly thicker and shorter cursor */
             display: inline-block;
             word-wrap: break-word;
-            white-space: normal; /* Allows wrapping to next line */
+            white-space: normal;
             line-height: 1.2em;
             animation: blink-cursor 1s steps(1) infinite;
         }
@@ -95,8 +97,10 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            position: relative;
+            position: absolute; /* Fixed position */
             z-index: 10;
+            top: 120px; /* Adjust based on text positioning */
+            left: 100px;
             display: block;
         }
 
@@ -107,70 +111,70 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 15%; /* Move slightly to the right */
-            transform: translateY(-50%); /* Center vertically */
-            width: 550px; /* Increased size for more spread */
-            height: 550px;
+            right: 10%; /* Move slightly to the right */
+            transform: translateY(-50%);
+            width: 600px; /* Increased size for more spread */
+            height: 600px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: opacity 4s ease-in-out; /* Slower fade out */
+            transition: opacity 4s ease-in-out;
         }
 
         .floating-images img {
             position: absolute;
             object-fit: cover;
             border-radius: 10px;
-            animation: float 15s linear infinite; /* Move in one direction */
-            transition: opacity 4s ease-in-out; /* Slower fade out */
+            animation: float 15s linear infinite;
+            transition: opacity 4s ease-in-out;
             opacity: 0.9;
         }
 
         .floating-images img:nth-child(1) {
-            width: 160px;
-            height: 210px;
+            width: 180px;
+            height: 230px;
             top: 10%;
             left: 10%;
             z-index: 3;
         }
 
         .floating-images img:nth-child(2) {
-            width: 140px;
-            height: 190px;
+            width: 160px;
+            height: 210px;
             top: 30%;
             left: 20%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(3) {
-            width: 150px;
-            height: 180px;
+            width: 170px;
+            height: 200px;
             top: 50%;
             left: 5%;
             z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
-            width: 170px;
-            height: 230px;
+            width: 190px;
+            height: 250px;
             top: 20%;
             left: 40%;
             z-index: 4; /* Largest image in front */
         }
 
         .floating-images img:nth-child(5) {
-            width: 130px;
-            height: 170px;
+            width: 150px;
+            height: 190px;
             top: 60%;
             left: 30%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(6) {
-            width: 150px;
-            height: 180px;
+            width: 170px;
+            height: 200px;
             top: 40%;
             left: 50%;
             z-index: 1;

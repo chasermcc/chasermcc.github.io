@@ -123,7 +123,7 @@
             object-fit: cover;
             border-radius: 10px;
             animation: float 15s linear infinite;
-            transition: opacity 4s ease-in-out;
+            transition: opacity 2s ease-in-out; /* Slower transition */
             opacity: 0.9;
         }
 
@@ -376,13 +376,11 @@
             imagesSets[nextIndex].style.display = 'flex';
 
             // Staggered appearance for the next set of images
-            setTimeout(() => {
-                imagesSets[nextIndex].querySelectorAll('img').forEach((img, i) => {
-                    setTimeout(() => {
-                        img.style.opacity = '1';
-                    }, i * 150); // Delay each image by 150ms
-                });
-            }, 1000);
+            imagesSets[nextIndex].querySelectorAll('img').forEach((img, i) => {
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, i * 150); // Delay each image by 150ms
+            });
 
             // Slow fade out for the previous set of images
             setTimeout(() => {

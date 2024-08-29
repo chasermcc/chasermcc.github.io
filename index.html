@@ -61,7 +61,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em; /* increased size */
+            font-size: 2.5em;
             font-weight: 400;
             margin: 0;
             color: #222;
@@ -83,29 +83,12 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
-            animation: typing 4s steps(35), fade 0.75s step-end infinite;
+            animation: typing 4s steps(35) infinite;
         }
 
         @keyframes typing {
-            0% {
-                width: 0;
-            }
-            50% {
-                width: 35ch;
-            }
-            100% {
-                width: 35ch;
-            }
-        }
-
-        @keyframes fade {
-            from, to {
-                border-color: transparent;
-            }
-            50% {
-                border-color: #000080; /* darker blue */
-                opacity: 0.7;
-            }
+            from { width: 0; }
+            to { width: 100%; }
         }
 
         button {
@@ -127,72 +110,22 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 5%;
+            right: 10%;
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px; /* closer together */
-            z-index: 1;
+            gap: 5px;
         }
 
         .floating-images img {
             object-fit: cover;
-            border-radius: 10px; /* slightly rounded edges */
-            animation: float 15s linear infinite;
+            border-radius: 10px;
             transition: opacity 2s ease-in-out;
-        }
-
-        .floating-images img:nth-child(1) {
-            width: 220px;
-            height: 300px;
-            z-index: 2;
-        }
-
-        .floating-images img:nth-child(2) {
-            width: 200px;
-            height: 280px;
-            z-index: 1;
-        }
-
-        .floating-images img:nth-child(3) {
-            width: 210px;
-            height: 290px;
-            z-index: 1;
-        }
-
-        .floating-images img:nth-child(4) {
-            width: 240px;
-            height: 320px;
-            z-index: 2;
-        }
-
-        .floating-images img:nth-child(5) {
-            width: 190px;
-            height: 260px;
-            z-index: 1;
-        }
-
-        .floating-images img:nth-child(6) {
-            width: 210px;
-            height: 290px;
-            z-index: 1;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(10px, 10px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
         }
 
         .footer {
             position: absolute;
-            bottom: 50px;
+            bottom: 70px;
             left: 100px;
             font-size: 0.9em;
             color: #555;
@@ -200,10 +133,10 @@
 
         .footer .upper-links {
             font-size: 1.1em;
-            font-weight: 400; /* slightly less bold */
+            font-weight: 400;
             color: black;
             display: flex;
-            gap: 10px; /* slightly decreased space between links */
+            gap: 5px;
         }
 
         .footer .upper-links a {
@@ -217,7 +150,7 @@
 
         .footer .lower-links {
             font-size: 0.8em;
-            margin-top: 10px; /* slightly decreased space from top links */
+            margin-top: 20px;
             display: flex;
             gap: 10px;
         }
@@ -248,12 +181,7 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/220x300" alt="Image 1">
-        <img src="https://via.placeholder.com/200x280" alt="Image 2">
-        <img src="https://via.placeholder.com/210x290" alt="Image 3">
-        <img src="https://via.placeholder.com/240x320" alt="Image 4 (largest)">
-        <img src="https://via.placeholder.com/190x260" alt="Image 5">
-        <img src="https://via.placeholder.com/210x290" alt="Image 6">
+        <!-- Specify the images for your design here -->
     </div>
 
     <div class="footer">
@@ -279,38 +207,16 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const images = document.querySelectorAll('.floating-images img');
 
-        function typeTagline() {
-            dynamicTextElement.style.animation = 'none';
-            dynamicTextElement.offsetHeight; // trigger reflow to reset animation
-            dynamicTextElement.style.animation = 'typing 4s steps(35), fade 0.75s step-end infinite';
+        function updateText() {
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        function fadeImages() {
-            images.forEach((img, i) => {
-                img.style.opacity = '0';
-                setTimeout(() => {
-                    img.src = `https://via.placeholder.com/${[220, 200, 210, 240, 190, 210][i]}x${[300, 280, 290, 320, 260, 290][i]}`;
-                    img.style.opacity = '1';
-                }, 2500);
-            });
-        }
-
-        function slowBackspace() {
-            dynamicTextElement.style.animation = 'none';
-            setTimeout(() => {
-                dynamicTextElement.style.animation = 'typing 4s steps(35), fade 0.75s step-end infinite';
-            }, 3000);
-        }
-
         setInterval(() => {
-            typeTagline();
-            fadeImages();
-            slowBackspace();
+            updateText();
         }, 12000);
 
-        typeTagline();
+        updateText();
     </script>
 </body>
 </html>

@@ -27,25 +27,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            animation: colorChange 32s infinite;
-        }
-
-        @keyframes colorChange {
-            0% {
-                background-color: #fff9f9; /* very light pink */
-            }
-            25% {
-                background-color: #f0fcff; /* very light blue */
-            }
-            50% {
-                background-color: #f9fff9; /* very light green */
-            }
-            75% {
-                background-color: #fff7f2; /* very light orange */
-            }
-            100% {
-                background-color: #fff9f9; /* very light pink */
-            }
+            transition: background-color 0.7s ease-in-out;
         }
 
         .container {
@@ -84,7 +66,6 @@
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
             display: inline-block;
-            white-space: nowrap;
         }
 
         @keyframes blink {
@@ -106,6 +87,8 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.1s ease;
+            position: relative;
+            z-index: 10;
         }
 
         button:hover {
@@ -116,14 +99,13 @@
             position: absolute;
             top: 50%;
             right: 10%;
-            transform: translateY(-50%);
-            width: 300px; /* Invisible box width */
-            height: 400px; /* Invisible box height */
+            transform: translate(50%, -50%); /* Center right of the screen */
+            width: 320px;
+            height: 320px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            position: relative;
             opacity: 1;
             transition: opacity 1s ease-in-out;
         }

@@ -11,7 +11,7 @@
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             overflow: hidden;
-            transition: background-color 1s ease-in-out;
+            transition: background-color 0.7s ease-in-out;
         }
 
         .background {
@@ -21,24 +21,24 @@
             top: 0;
             left: 0;
             z-index: -1;
-            animation: colorChange 40s infinite;
+            animation: colorChange 32s infinite;
         }
 
         @keyframes colorChange {
             0% {
-                background-color: #f9f9f9; /* very light grey */
+                background-color: #ffe6e6; /* light pink */
             }
             25% {
-                background-color: #ffffff; /* white */
+                background-color: #e6f7ff; /* light blue */
             }
             50% {
-                background-color: #e6f2ff; /* lighter light blue */
+                background-color: #e6ffe6; /* light green */
             }
             75% {
-                background-color: #edfafa; /* lighter very light cyan */
+                background-color: #fff0e6; /* light orange */
             }
             100% {
-                background-color: #f9f9f9; /* very light grey */
+                background-color: #ffe6e6; /* light pink */
             }
         }
 
@@ -63,7 +63,7 @@
 
         .header-text {
             position: absolute;
-            top: 15%;
+            top: 18%;
             left: 100px;
             font-family: 'Inter', sans-serif;
             font-size: 1em;
@@ -78,7 +78,7 @@
             overflow: hidden;
             border-right: 4px solid #000;
             width: 20ch;
-            animation: typing 6s steps(20), blink 0.75s step-end infinite;
+            animation: typing 3s steps(20), blink 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -89,7 +89,7 @@
                 width: 20ch;
             }
             100% {
-                width: 0;
+                width: 20ch;
             }
         }
 
@@ -104,12 +104,12 @@
 
         button {
             margin-top: 20px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             font-size: 0.9em;
             color: white;
             background-color: #00008B;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -121,22 +121,23 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 15%;
+            right: 20%;
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 10px;
         }
 
         .floating-images img {
             object-fit: cover;
-            animation: float 20s linear infinite;
+            border-radius: 10px;
+            animation: float 10s linear infinite;
             transition: opacity 1s ease-in-out;
         }
 
         .floating-images img:nth-child(1) {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
         }
 
         .floating-images img:nth-child(2) {
@@ -150,8 +151,8 @@
         }
 
         .floating-images img:nth-child(4) {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
         }
 
         .floating-images img:nth-child(5) {
@@ -169,7 +170,7 @@
                 transform: translate(0, 0);
             }
             50% {
-                transform: translate(5px, 5px);
+                transform: translate(10px, 10px);
             }
             100% {
                 transform: translate(0, 0);
@@ -178,7 +179,7 @@
 
         .footer {
             position: absolute;
-            bottom: 20px;
+            bottom: 50px;
             left: 100px;
             font-size: 0.9em;
             color: #555;
@@ -189,12 +190,14 @@
             color: black;
             font-weight: bold;
             text-decoration: none;
+            display: flex;
+            gap: 15px;
         }
 
         .footer .upper-links a {
-            margin: 0 15px 20px 0;
             color: black;
             text-decoration: none;
+            margin-right: 15px;
         }
 
         .footer .upper-links a:hover {
@@ -203,11 +206,12 @@
 
         .footer .lower-links {
             font-size: 0.8em;
-            margin-top: 20px;
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
         }
 
         .footer .lower-links a {
-            margin: 0 10px 0 0;
             color: #555;
             text-decoration: underline;
         }
@@ -233,21 +237,22 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/250" alt="Image 1">
+        <img src="https://via.placeholder.com/200" alt="Image 1">
         <img src="https://via.placeholder.com/100" alt="Image 2">
         <img src="https://via.placeholder.com/150" alt="Image 3">
-        <img src="https://via.placeholder.com/300" alt="Image 4 (restaurant)">
+        <img src="https://via.placeholder.com/250" alt="Image 4 (restaurant)">
         <img src="https://via.placeholder.com/120" alt="Image 5">
         <img src="https://via.placeholder.com/180" alt="Image 6">
     </div>
 
     <div class="footer">
         <div class="upper-links">
-            <a href="#">Partner with us</a>
+            <a href="#">Partner with us</a> |
             <a href="#">Careers</a>
         </div>
         <div class="lower-links">
-            <a href="#">Terms of service</a> | <a href="#">Privacy policy</a>
+            <a href="#">Terms of service</a> |
+            <a href="#">Privacy policy</a>
         </div>
     </div>
 
@@ -265,12 +270,12 @@
         function typeTagline() {
             dynamicTextElement.style.animation = 'none';
             dynamicTextElement.offsetHeight; // trigger reflow to reset animation
-            dynamicTextElement.style.animation = 'typing 6s steps(20), blink 0.75s step-end infinite';
+            dynamicTextElement.style.animation = 'typing 3s steps(20), blink 0.75s step-end infinite';
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        setInterval(typeTagline, 10000);
+        setInterval(typeTagline, 8000);
         typeTagline();
     </script>
 </body>

@@ -82,7 +82,7 @@
             color: #000;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 4px solid #000;
+            border-right: 4px solid #000080; /* darker blue */
             max-width: 35ch;
             animation: typing 4s steps(35), blink 0.75s step-end infinite;
         }
@@ -104,7 +104,7 @@
                 border-color: transparent;
             }
             50% {
-                border-color: #0000ff;
+                border-color: #000080; /* darker blue */
             }
         }
 
@@ -117,21 +117,21 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.05s ease;
+            transition: background-color 0.1s ease;
         }
 
         button:hover {
-            background-color: #4169E1; /* light blue on hover */
+            background-color: #0000ff; /* slightly lighter blue on hover */
         }
 
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 20%;
+            right: 15%;
             transform: translateY(-50%);
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .floating-images img {
@@ -142,33 +142,33 @@
         }
 
         .floating-images img:nth-child(1) {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
         }
 
         .floating-images img:nth-child(2) {
-            width: 160px;
-            height: 160px;
-        }
-
-        .floating-images img:nth-child(3) {
             width: 180px;
             height: 180px;
         }
 
+        .floating-images img:nth-child(3) {
+            width: 200px;
+            height: 200px;
+        }
+
         .floating-images img:nth-child(4) {
-            width: 240px;
-            height: 240px;
+            width: 260px;
+            height: 260px;
         }
 
         .floating-images img:nth-child(5) {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
         }
 
         .floating-images img:nth-child(6) {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
         }
 
         @keyframes float {
@@ -176,7 +176,7 @@
                 transform: translate(0, 0);
             }
             50% {
-                transform: translate(15px, 15px);
+                transform: translate(20px, 20px);
             }
             100% {
                 transform: translate(0, 0);
@@ -242,12 +242,12 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/200" alt="Image 1">
-        <img src="https://via.placeholder.com/160" alt="Image 2">
-        <img src="https://via.placeholder.com/180" alt="Image 3">
-        <img src="https://via.placeholder.com/240" alt="Image 4 (restaurant)">
-        <img src="https://via.placeholder.com/140" alt="Image 5">
-        <img src="https://via.placeholder.com/200" alt="Image 6">
+        <img src="https://via.placeholder.com/220" alt="Image 1">
+        <img src="https://via.placeholder.com/180" alt="Image 2">
+        <img src="https://via.placeholder.com/200" alt="Image 3">
+        <img src="https://via.placeholder.com/260" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/160" alt="Image 5">
+        <img src="https://via.placeholder.com/220" alt="Image 6">
     </div>
 
     <div class="footer">
@@ -286,16 +286,16 @@
             images.forEach((img, i) => {
                 img.style.opacity = '0';
                 setTimeout(() => {
-                    img.src = `https://via.placeholder.com/${[200, 160, 180, 240, 140, 200][i]}`;
+                    img.src = `https://via.placeholder.com/${[220, 180, 200, 260, 160, 220][i]}`;
                     img.style.opacity = '1';
-                }, 2000);
+                }, 2500);
             });
         }
 
         setInterval(() => {
             typeTagline();
             fadeImages();
-        }, 10000);
+        }, 12000);
 
         typeTagline();
     </script>

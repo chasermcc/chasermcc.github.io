@@ -30,14 +30,23 @@
                 background-color: #ffffff; /* very light pink */
             }
             25% {
-                background-color: #f0fcff; /* very light blue */
+                background-color: #f0faff; /* very light blue */
             }
             50% {
-                background-color: #f9fff9; /* very light green */
+                background-color: #f7fff7; /* very light green */
             }
             75% {
-                background-color: #fff7f2; /* very light orange */
+                background-color: #fffcf2; /* very light orange */
             }
+        }
+
+        .header-text {
+            position: absolute;
+            top: 20%; /* Adjust as needed */
+            left: 100px;
+            font-size: 1.2em;
+            color: #333;
+            font-family: 'Inter', sans-serif;
         }
 
         .container {
@@ -49,6 +58,7 @@
             text-align: left;
             padding-left: 100px;
             color: #333;
+            top: -10%; /* Bring header up */
         }
 
         h1 {
@@ -93,25 +103,37 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 10%;
+            right: 5%;
             transform: translateY(-50%);
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
             gap: 10px;
+            z-index: 1;
         }
 
         .floating-images img {
             width: 150px;
-            height: 250px; /* Variable heights */
-            background-color: #ccc; /* Gray placeholders */
+            height: 150px; /* Randomize sizes with different heights */
+            background-color: #ccc;
             border-radius: 10px;
-            animation: fadeInOut 7s infinite;
+            animation: fadeInOut 7s infinite, move 10s infinite;
+        }
+
+        /* Larger image */
+        .floating-images img.large {
+            width: 200px;
+            height: 300px;
+            z-index: 2;
         }
 
         @keyframes fadeInOut {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(var(--movementX), var(--movementY)); }
         }
 
         .footer {
@@ -128,6 +150,7 @@
             color: black;
             display: flex;
             gap: 15px;
+            margin-bottom: 15px; /* Add space below top links */
         }
 
         .footer .upper-links a {
@@ -142,7 +165,7 @@
         .footer .lower-links {
             font-size: 0.8em;
             display: flex;
-            gap: 10px;
+            gap: 15px; /* Increase space between bottom links */
         }
 
         .footer .lower-links a {
@@ -171,7 +194,7 @@
     </div>
 
     <div class="floating-images">
-        <img alt="Image Placeholder 1">
+        <img alt="Image Placeholder 1" class="large">
         <img alt="Image Placeholder 2">
         <img alt="Image Placeholder 3">
         <img alt="Image Placeholder 4">
@@ -200,7 +223,6 @@
 
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
-        const images = document.querySelectorAll('.floating-images img');
 
         function updateText() {
             dynamicTextElement.textContent = taglines[taglineIndex];
@@ -218,6 +240,19 @@
         setInterval(cycleContent, 14000); // Match timing to double the visibility delay for cycle
 
         updateText(); // Initial text update
+
+        const images = document.querySelectorAll('.floating-images img');
+
+        function randomMovement() {
+            images.forEach(img => {
+                const movementX = Math.random() * 20 - 10; // Random movement between -10 and 10
+                const movementY = Math.random() * 20 - 10;
+                img.style.setProperty('--movementX', `${movementX}px`);
+                img.style.setProperty('--movementY', `${movementY}px`);
+            });
+        }
+
+        randomMovement(); // Call initially to set movement
     </script>
 </body>
 </html>

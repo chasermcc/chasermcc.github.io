@@ -62,7 +62,7 @@
         }
 
         .dynamic-text-container {
-            max-width: 45%; /* Slightly shorter than halfway across */
+            max-width: 40%; /* Shortened width */
             position: relative;
             z-index: 10;
         }
@@ -72,12 +72,12 @@
             margin: 10px 0 30px 0;
             color: #000;
             overflow: hidden;
-            border-right: 3px solid #000080; /* Slightly thicker and shorter cursor */
+            border-right: 3px solid #000080;
             display: inline-block;
             word-wrap: break-word;
-            white-space: nowrap; /* Prevent wrapping to keep height consistent */
+            white-space: nowrap; /* Prevent wrapping */
             line-height: 1.2em;
-            min-height: 1.8em; /* Prevent height change during typing */
+            height: 1.2em; /* Match cursor height to text */
             animation: blink-cursor 1s steps(1) infinite;
         }
 
@@ -108,8 +108,8 @@
             top: 50%;
             right: 5%; /* Move slightly to the right */
             transform: translateY(-50%);
-            width: 700px; /* Increased size for more spread */
-            height: 700px;
+            width: 750px; /* Further increased size for more spread */
+            height: 750px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -368,7 +368,6 @@
 
         function fadeImages() {
             imagesSets.forEach((set, index) => {
-                set.style.display = 'none';
                 set.style.opacity = '0';
             });
 
@@ -376,8 +375,14 @@
             randomizeImagePositions(imagesSets[nextIndex]);
             imagesSets[nextIndex].style.display = 'flex';
             setTimeout(() => {
-                imagesSets[nextIndex].style.opacity = '1';
-            }, 100);
+                imagesSets.forEach((set, index) => {
+                    if (index === nextIndex) {
+                        set.style.opacity = '1';
+                    } else {
+                        set.style.display = 'none';
+                    }
+                });
+            }, 1000);
         }
 
         function changeBackgroundColor() {

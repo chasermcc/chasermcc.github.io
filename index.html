@@ -83,19 +83,6 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
-            animation: typing 4s steps(35), blink 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            0% {
-                width: 0;
-            }
-            50% {
-                width: 35ch;
-            }
-            100% {
-                width: 35ch;
-            }
         }
 
         @keyframes blink {
@@ -126,11 +113,11 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 10%;
+            right: 15%; /* Closer to the center-right */
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 5px; /* Reduce gap for closer images */
         }
 
         .floating-images img {
@@ -138,18 +125,21 @@
             border-radius: 10px;
             animation: float 15s linear infinite;
             transition: opacity 2s ease-in-out;
+            position: relative; /* Allow overlapping */
         }
 
         .floating-images img:nth-child(1) {
             width: 240px;
             height: 320px;
-            z-index: 2;
+            z-index: 2; /* Larger image in front */
+            transform: translate(10px, -10px); /* Slight overlap */
         }
 
         .floating-images img:nth-child(2) {
             width: 200px;
             height: 300px;
             z-index: 1;
+            transform: translate(-20px, 20px); /* Slight overlap */
         }
 
         .floating-images img:nth-child(3) {
@@ -161,13 +151,15 @@
         .floating-images img:nth-child(4) {
             width: 260px;
             height: 340px;
-            z-index: 2;
+            z-index: 3; /* Largest image in front */
+            transform: translate(-15px, -15px); /* Overlapping */
         }
 
         .floating-images img:nth-child(5) {
             width: 180px;
             height: 240px;
             z-index: 1;
+            transform: translate(15px, 15px); /* Slight overlap */
         }
 
         .floating-images img:nth-child(6) {
@@ -279,10 +271,12 @@
         const images = document.querySelectorAll('.floating-images img');
 
         function typeTagline() {
+            const tagline = taglines[taglineIndex];
+            dynamicTextElement.textContent = tagline;
+            dynamicTextElement.style.width = `${tagline.length}ch`; // Set width based on text length
             dynamicTextElement.style.animation = 'none';
             dynamicTextElement.offsetHeight; // trigger reflow to reset animation
-            dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
-            dynamicTextElement.textContent = taglines[taglineIndex];
+            dynamicTextElement.style.animation = `typing 4s steps(${tagline.length}), blink 0.75s step-end infinite`;
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
@@ -299,7 +293,7 @@
         function slowBackspace() {
             dynamicTextElement.style.animation = 'none';
             setTimeout(() => {
-                dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
+                dynamicTextElement.style.animation = `typing 4s steps(${dynamicTextElement.textContent.length}), blink 0.75s step-end infinite`;
             }, 1000);
         }
 

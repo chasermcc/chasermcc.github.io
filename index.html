@@ -59,40 +59,19 @@
             color: #222;
         }
 
-        .header-text {
-            position: absolute;
-            top: 18%;
-            left: 100px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95em;
-            color: #000;
-        }
-
         .dynamic-text {
             font-size: 1.5em;
-            margin: 20px 0;
             color: #000;
             white-space: nowrap;
             overflow: hidden;
-            animation: typing 4s steps(35) infinite, fadeText 7s infinite;
+            border-right: 4px solid #000080; /* darker blue */
+            padding-right: 10px; /* Ensure space for cursor */
+            animation: blink-caret .75s step-end infinite;
         }
 
-        @keyframes typing {
-            0%, 100% {
-                width: 100%;
-            }
-            50% {
-                width: 0;
-            }
-        }
-
-        @keyframes fadeText {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #000080 }
         }
 
         button {
@@ -123,19 +102,16 @@
         }
 
         .floating-images img {
-            object-fit: cover;
+            width: 150px;
+            height: 250px; /* Variable heights */
+            background-color: #ccc; /* Gray placeholders */
             border-radius: 10px;
-            transition: opacity 2s ease-in-out;
             animation: fadeInOut 7s infinite;
         }
 
         @keyframes fadeInOut {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .footer {
@@ -144,9 +120,6 @@
             left: 100px;
             font-size: 0.9em;
             color: #555;
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Increased spacing between link groups */
         }
 
         .footer .upper-links {
@@ -154,7 +127,7 @@
             font-weight: 400;
             color: black;
             display: flex;
-            gap: 5px;
+            gap: 15px;
         }
 
         .footer .upper-links a {
@@ -198,7 +171,12 @@
     </div>
 
     <div class="floating-images">
-        <!-- Add images according to the described setup -->
+        <img alt="Image Placeholder 1">
+        <img alt="Image Placeholder 2">
+        <img alt="Image Placeholder 3">
+        <img alt="Image Placeholder 4">
+        <img alt="Image Placeholder 5">
+        <img alt="Image Placeholder 6">
     </div>
 
     <div class="footer">
@@ -229,11 +207,17 @@
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
 
-        setInterval(() => {
-            updateText();
-        }, 12000);
+        function cycleContent() {
+            setTimeout(() => {
+                dynamicTextElement.style.borderRight = 'none'; // Stop cursor blink during transition
+                updateText(); // Start new text
+                dynamicTextElement.style.borderRight = '4px solid #000080'; // Resume cursor blink
+            }, 7000); // Delay for text visibility
+        }
 
-        updateText();
+        setInterval(cycleContent, 14000); // Match timing to double the visibility delay for cycle
+
+        updateText(); // Initial text update
     </script>
 </body>
 </html>

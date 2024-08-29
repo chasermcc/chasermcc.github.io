@@ -58,6 +58,10 @@
             color: #000;
         }
 
+        .dynamic-text-container {
+            max-width: 50%; /* Limit to half the page width */
+        }
+
         .dynamic-text {
             font-size: 1.5em;
             margin: 20px 0;
@@ -66,6 +70,9 @@
             overflow: hidden;
             border-right: 4px solid #000080; /* darker blue */
             display: inline-block;
+            word-wrap: break-word;
+            white-space: normal; /* Allows wrapping to next line */
+            line-height: 1.2em;
         }
 
         @keyframes blink {
@@ -89,6 +96,7 @@
             transition: background-color 0.1s ease;
             position: relative;
             z-index: 10;
+            display: block;
         }
 
         button:hover {
@@ -100,8 +108,8 @@
             top: 50%;
             right: 10%;
             transform: translate(50%, -50%); /* Center right of the screen */
-            width: 320px;
-            height: 320px;
+            width: 350px;
+            height: 350px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -120,48 +128,48 @@
         }
 
         .floating-images img:nth-child(1) {
-            width: 120px;
-            height: 160px;
+            width: 130px;
+            height: 170px;
             top: 10%;
             left: 10%;
             z-index: 3;
         }
 
         .floating-images img:nth-child(2) {
-            width: 100px;
-            height: 150px;
+            width: 110px;
+            height: 160px;
             top: 30%;
             left: 20%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(3) {
-            width: 110px;
-            height: 140px;
+            width: 120px;
+            height: 150px;
             top: 50%;
             left: 5%;
             z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
-            width: 130px;
-            height: 180px;
+            width: 140px;
+            height: 190px;
             top: 20%;
             left: 40%;
             z-index: 4;
         }
 
         .floating-images img:nth-child(5) {
-            width: 90px;
-            height: 120px;
+            width: 100px;
+            height: 140px;
             top: 60%;
             left: 30%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(6) {
-            width: 110px;
-            height: 140px;
+            width: 120px;
+            height: 150px;
             top: 40%;
             left: 50%;
             z-index: 1;
@@ -230,7 +238,7 @@
     </div>
 
     <div class="container">
-        <div>
+        <div class="dynamic-text-container">
             <h1>Memorably</h1>
             <div class="dynamic-text"></div>
             <button>Join waitlist</button>

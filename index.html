@@ -77,14 +77,14 @@
         }
 
         .dynamic-text {
-            font-size: 1.3em;
+            font-size: 1.5em;
             margin: 20px 0;
             color: #000;
             white-space: nowrap;
             overflow: hidden;
             border-right: 4px solid #000;
-            max-width: 25ch;
-            animation: typing 3s steps(25), blink 0.75s step-end infinite;
+            max-width: 35ch;
+            animation: typing 4s steps(35), blink 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -92,10 +92,10 @@
                 width: 0;
             }
             50% {
-                width: 25ch;
+                width: 35ch;
             }
             100% {
-                width: 25ch;
+                width: 35ch;
             }
         }
 
@@ -117,7 +117,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.05s ease;
         }
 
         button:hover {
@@ -127,48 +127,48 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 25%;
+            right: 20%;
             transform: translateY(-50%);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 15px;
         }
 
         .floating-images img {
             object-fit: cover;
             border-radius: 10px;
-            animation: float 10s linear infinite;
-            transition: opacity 1s ease-in-out;
+            animation: float 15s linear infinite;
+            transition: opacity 2s ease-in-out;
         }
 
         .floating-images img:nth-child(1) {
-            width: 180px;
-            height: 180px;
-        }
-
-        .floating-images img:nth-child(2) {
-            width: 120px;
-            height: 120px;
-        }
-
-        .floating-images img:nth-child(3) {
-            width: 140px;
-            height: 140px;
-        }
-
-        .floating-images img:nth-child(4) {
             width: 200px;
             height: 200px;
         }
 
+        .floating-images img:nth-child(2) {
+            width: 160px;
+            height: 160px;
+        }
+
+        .floating-images img:nth-child(3) {
+            width: 180px;
+            height: 180px;
+        }
+
+        .floating-images img:nth-child(4) {
+            width: 240px;
+            height: 240px;
+        }
+
         .floating-images img:nth-child(5) {
-            width: 100px;
-            height: 100px;
+            width: 140px;
+            height: 140px;
         }
 
         .floating-images img:nth-child(6) {
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
         }
 
         @keyframes float {
@@ -176,7 +176,7 @@
                 transform: translate(0, 0);
             }
             50% {
-                transform: translate(20px, 20px);
+                transform: translate(15px, 15px);
             }
             100% {
                 transform: translate(0, 0);
@@ -185,19 +185,19 @@
 
         .footer {
             position: absolute;
-            bottom: 70px;
+            bottom: 100px;
             left: 100px;
             font-size: 0.9em;
             color: #555;
         }
 
         .footer .upper-links {
-            font-size: 1.05em;
+            font-size: 1.1em;
             font-weight: 500;
             color: black;
             text-decoration: none;
             display: flex;
-            gap: 10px;
+            gap: 5px;
         }
 
         .footer .upper-links a {
@@ -242,17 +242,17 @@
     </div>
 
     <div class="floating-images">
-        <img src="https://via.placeholder.com/180" alt="Image 1">
-        <img src="https://via.placeholder.com/120" alt="Image 2">
-        <img src="https://via.placeholder.com/140" alt="Image 3">
-        <img src="https://via.placeholder.com/200" alt="Image 4 (restaurant)">
-        <img src="https://via.placeholder.com/100" alt="Image 5">
-        <img src="https://via.placeholder.com/160" alt="Image 6">
+        <img src="https://via.placeholder.com/200" alt="Image 1">
+        <img src="https://via.placeholder.com/160" alt="Image 2">
+        <img src="https://via.placeholder.com/180" alt="Image 3">
+        <img src="https://via.placeholder.com/240" alt="Image 4 (restaurant)">
+        <img src="https://via.placeholder.com/140" alt="Image 5">
+        <img src="https://via.placeholder.com/200" alt="Image 6">
     </div>
 
     <div class="footer">
         <div class="upper-links">
-            <a href="#">Partner with us</a> | 
+            <a href="#">Partner with us</a> |
             <a href="#">Careers</a>
         </div>
         <div class="lower-links">
@@ -277,7 +277,7 @@
         function typeTagline() {
             dynamicTextElement.style.animation = 'none';
             dynamicTextElement.offsetHeight; // trigger reflow to reset animation
-            dynamicTextElement.style.animation = 'typing 3s steps(25), blink 0.75s step-end infinite';
+            dynamicTextElement.style.animation = 'typing 4s steps(35), blink 0.75s step-end infinite';
             dynamicTextElement.textContent = taglines[taglineIndex];
             taglineIndex = (taglineIndex + 1) % taglines.length;
         }
@@ -286,16 +286,16 @@
             images.forEach((img, i) => {
                 img.style.opacity = '0';
                 setTimeout(() => {
-                    img.src = `https://via.placeholder.com/${[180, 120, 140, 200, 100, 160][i]}`;
+                    img.src = `https://via.placeholder.com/${[200, 160, 180, 240, 140, 200][i]}`;
                     img.style.opacity = '1';
-                }, 1000);
+                }, 2000);
             });
         }
 
         setInterval(() => {
             typeTagline();
             fadeImages();
-        }, 8000);
+        }, 10000);
 
         typeTagline();
     </script>

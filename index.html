@@ -115,7 +115,7 @@
             justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: opacity 4s ease-in-out;
+            transition: opacity 1s ease-in-out; /* Faster transition */
         }
 
         .floating-images img {
@@ -123,7 +123,7 @@
             object-fit: cover;
             border-radius: 10px;
             animation: float 15s linear infinite;
-            transition: opacity 4s ease-in-out;
+            transition: opacity 1s ease-in-out; /* Adjusted transition speed */
             opacity: 0.9;
         }
 
@@ -373,27 +373,26 @@
             const previousSet = imagesSets[previousIndex];
             const nextSet = imagesSets[currentIndex];
 
-            nextSet.style.display = 'flex';
-            randomizeImagePositions(nextSet);
-
-            // Staggered appearance for the next set of images
-            nextSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '1';
-                }, i * 150); // Delay each image by 150ms
-            });
-
-            // Slow fade out for the previous set of images
+            // Start fading out previous set
             previousSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
                     img.style.opacity = '0';
-                }, i * 150); // Delay each image by 150ms for fade out
+                }, i * 100); // Speed up fade out
             });
 
             // Hide previous set after fade-out
             setTimeout(() => {
                 previousSet.style.display = 'none';
-            }, 3000); // Hide after enough time for fade-out
+
+                // Start fading in next set after previous set is hidden
+                nextSet.style.display = 'flex';
+                randomizeImagePositions(nextSet);
+                nextSet.querySelectorAll('img').forEach((img, i) => {
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, i * 100); // Speed up fade in
+                });
+            }, 1200); // Slight delay to prevent overlap
         }
 
         function changeBackgroundColor() {

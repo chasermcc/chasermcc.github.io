@@ -36,7 +36,7 @@
             top: 15%; /* Moved slightly higher */
             left: 100px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.95em;
+            font-size: 1.1em; /* Increased size slightly */
             color: #000;
         }
 
@@ -106,10 +106,10 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 5%; /* Move slightly to the right */
+            right: 8%;
             transform: translateY(-50%);
-            width: 850px; /* Further increased size for more spread */
-            height: 850px;
+            width: 1000px; /* Increased width */
+            height: 500px; /* Decreased height for a horizontal box */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -122,56 +122,56 @@
             position: absolute;
             object-fit: cover;
             border-radius: 10px;
-            animation: float 15s linear infinite;
+            animation: float 10s linear infinite;
             transition: opacity 1s ease-in-out; /* Adjusted transition speed */
             opacity: 0;
         }
 
         .floating-images img:nth-child(1) {
-            width: 200px;
+            width: 220px;
             height: 260px;
             top: 10%;
-            left: 10%;
+            left: 15%;
             z-index: 3;
         }
 
         .floating-images img:nth-child(2) {
-            width: 180px;
+            width: 200px;
             height: 240px;
-            top: 30%;
-            left: 20%;
+            top: 20%;
+            left: 35%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(3) {
             width: 190px;
             height: 220px;
-            top: 50%;
+            top: 40%;
             left: 5%;
             z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
-            width: 210px;
-            height: 280px;
-            top: 20%;
-            left: 40%;
+            width: 250px;
+            height: 300px;
+            top: 15%;
+            left: 50%;
             z-index: 4; /* Largest image in front */
         }
 
         .floating-images img:nth-child(5) {
-            width: 170px;
+            width: 180px;
             height: 210px;
             top: 60%;
-            left: 30%;
+            left: 25%;
             z-index: 2;
         }
 
         .floating-images img:nth-child(6) {
-            width: 190px;
-            height: 220px;
-            top: 40%;
-            left: 50%;
+            width: 210px;
+            height: 250px;
+            top: 50%;
+            left: 70%;
             z-index: 1;
         }
 
@@ -180,7 +180,7 @@
                 transform: translateY(0) translateX(0);
             }
             100% {
-                transform: translateY(-15px) translateX(15px); /* Only move in one direction */
+                transform: translateY(-20px) translateX(20px); /* Increased movement */
             }
         }
 

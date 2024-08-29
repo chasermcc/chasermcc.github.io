@@ -117,69 +117,81 @@
             top: 50%;
             right: 10%;
             transform: translateY(-50%);
+            width: 300px; /* Invisible box width */
+            height: 400px; /* Invisible box height */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: -20px; /* Negative gap to overlap images */
-        }
-
-        .floating-images img {
-            object-fit: cover;
-            border-radius: 10px;
-            animation: float 15s linear infinite;
-            transition: opacity 2s ease-in-out;
+            align-items: center;
             position: relative;
         }
 
+        .floating-images img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 10px;
+            animation: float 10s ease-in-out infinite alternate;
+            transition: opacity 2s ease-in-out;
+            opacity: 0.9;
+        }
+
         .floating-images img:nth-child(1) {
-            width: 240px;
-            height: 320px;
+            width: 120px;
+            height: 160px;
+            top: 10%;
+            left: 10%;
             z-index: 3;
-            transform: translate(10px, -10px); /* Overlapping */
         }
 
         .floating-images img:nth-child(2) {
-            width: 200px;
-            height: 300px;
+            width: 100px;
+            height: 150px;
+            top: 30%;
+            left: 20%;
             z-index: 2;
-            transform: translate(-15px, 15px); /* Overlapping */
         }
 
         .floating-images img:nth-child(3) {
-            width: 220px;
-            height: 280px;
+            width: 110px;
+            height: 140px;
+            top: 50%;
+            left: 5%;
             z-index: 1;
         }
 
         .floating-images img:nth-child(4) {
-            width: 260px;
-            height: 340px;
-            z-index: 4; /* Largest image in front */
-            transform: translate(-20px, -20px); /* Overlapping */
+            width: 130px;
+            height: 180px;
+            top: 20%;
+            left: 40%;
+            z-index: 4;
         }
 
         .floating-images img:nth-child(5) {
-            width: 180px;
-            height: 240px;
+            width: 90px;
+            height: 120px;
+            top: 60%;
+            left: 30%;
             z-index: 2;
-            transform: translate(20px, 20px); /* Overlapping */
         }
 
         .floating-images img:nth-child(6) {
-            width: 220px;
-            height: 280px;
+            width: 110px;
+            height: 140px;
+            top: 40%;
+            left: 50%;
             z-index: 1;
         }
 
         @keyframes float {
             0% {
-                transform: translate(0, 0);
+                transform: translateY(0) translateX(0);
             }
             50% {
-                transform: translate(10px, 10px);
+                transform: translateY(-10px) translateX(10px);
             }
             100% {
-                transform: translate(0, 0);
+                transform: translateY(0) translateX(0);
             }
         }
 

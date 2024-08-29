@@ -124,6 +124,8 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
 
         .floating-images img {
@@ -239,7 +241,7 @@
     </style>
 </head>
 <body>
-    <div class="background"></div>
+    <div class="background" id="background"></div>
 
     <div class="header-text">
         Shop unforgettable restaurants, hotels, and experiences
@@ -253,13 +255,22 @@
         </div>
     </div>
 
-    <div class="floating-images">
+    <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
         <img src="https://via.placeholder.com/200x300" alt="Image 2">
         <img src="https://via.placeholder.com/220x280" alt="Image 3">
         <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
         <img src="https://via.placeholder.com/180x240" alt="Image 5">
         <img src="https://via.placeholder.com/220x280" alt="Image 6">
+    </div>
+
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
     </div>
 
     <div class="footer">
@@ -283,6 +294,11 @@
 
         let taglineIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
+        const backgroundElement = document.getElementById('background');
+        const images1 = document.getElementById('images1');
+        const images2 = document.getElementById('images2');
+
+        const colors = ["#fff9f9", "#f0fcff", "#f9fff9", "#fff7f2"];
 
         function typeTagline() {
             dynamicTextElement.textContent = "";
@@ -311,12 +327,40 @@
             }, 500);
         }
 
-        setInterval(() => {
+        function fadeImages() {
+            if (images1.style.display !== "none") {
+                images1.style.opacity = '0';
+                setTimeout(() => {
+                    images1.style.display = 'none';
+                    images2.style.display = 'flex';
+                    images2.style.opacity = '1';
+                }, 1000);
+            } else {
+                images2.style.opacity = '0';
+                setTimeout(() => {
+                    images2.style.display = 'none';
+                    images1.style.display = 'flex';
+                    images1.style.opacity = '1';
+                }, 1000);
+            }
+        }
+
+        function changeBackgroundColor() {
+            const color = colors[taglineIndex];
+            backgroundElement.style.backgroundColor = color;
+        }
+
+        function startTransitions() {
             typeTagline();
-        }, 12000);
+            fadeImages();
+            changeBackgroundColor();
+        }
+
+        setInterval(startTransitions, 12000);
 
         typeTagline();
         blinkCursor();
+        startTransitions();
     </script>
 </body>
 </html>

@@ -68,7 +68,7 @@
         }
 
         .dynamic-text {
-            font-size: 1.5em;
+            font-size: 1.2em; /* Reduced size */
             margin: 10px 0 30px 0;
             color: #000;
             overflow: hidden;
@@ -125,54 +125,6 @@
             animation: float 15s linear infinite; /* Slowed down movement */
             transition: opacity 1s ease-in-out; /* Adjusted transition speed */
             opacity: 0;
-        }
-
-        .floating-images img:nth-child(1) {
-            width: 220px;
-            height: 260px;
-            top: 10%;
-            left: 33%; /* Moved to the right to ensure it's within the right 66% of the screen */
-            z-index: 3;
-        }
-
-        .floating-images img:nth-child(2) {
-            width: 200px;
-            height: 240px;
-            top: 20%;
-            left: 50%; /* Moved to the right */
-            z-index: 2;
-        }
-
-        .floating-images img:nth-child(3) {
-            width: 190px;
-            height: 220px;
-            top: 40%;
-            left: 20%; /* Moved to the right */
-            z-index: 1;
-        }
-
-        .floating-images img:nth-child(4) {
-            width: 250px;
-            height: 300px;
-            top: 15%;
-            left: 60%; /* Moved to the right */
-            z-index: 4; /* Largest image in front */
-        }
-
-        .floating-images img:nth-child(5) {
-            width: 180px;
-            height: 210px;
-            top: 60%;
-            left: 40%; /* Moved to the right */
-            z-index: 2;
-        }
-
-        .floating-images img:nth-child(6) {
-            width: 210px;
-            height: 250px;
-            top: 50%;
-            left: 75%; /* Moved to the right */
-            z-index: 1;
         }
 
         @keyframes float {
@@ -342,10 +294,10 @@
 
         function randomizeImagePositions(set) {
             const positions = [
-                { top: '5%', left: '33%' },
-                { top: '20%', left: '45%' },
-                { top: '40%', left: '35%' },
-                { top: '15%', left: '60%' },
+                { top: '5%', left: '25%' },
+                { top: '15%', left: '40%' },
+                { top: '35%', left: '30%' },
+                { top: '10%', left: '60%' },
                 { top: '55%', left: '50%' },
                 { top: '35%', left: '70%' }
             ];

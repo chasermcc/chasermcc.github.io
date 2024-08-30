@@ -181,21 +181,25 @@
         /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
             .floating-images {
-                top: 30%; /* Position above the Memorably title */
+                top: 25%; /* Higher on the screen */
                 width: 100%; /* Take up the full width */
                 height: auto; /* Allow height to adjust based on content */
                 right: 0;
                 transform: translateY(0); /* Reset transform */
-                justify-content: flex-start; /* Align to the left */
+                justify-content: center; /* Center align */
             }
 
             .floating-images img {
                 width: 80px; /* Reduce image size */
                 height: 100px; /* Adjust height proportionally */
-                position: static; /* Remove absolute positioning */
-                margin: 0 5px; /* Add some space between images */
+                margin: 0 10px; /* Adjust spacing between images */
                 opacity: 1; /* Ensure images are visible */
                 animation: none; /* Disable floating animation */
+            }
+
+            .floating-images img:nth-child(5),
+            .floating-images img:nth-child(6) {
+                display: none; /* Remove two images */
             }
 
             .container {

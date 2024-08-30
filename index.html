@@ -33,7 +33,7 @@
 
         .header-text {
             position: absolute;
-            top: 8%; /* Raised closer to the top */
+            top: 12%; /* Moved slightly higher */
             left: 80px; /* Restored original alignment for browser view */
             font-family: 'Inter', sans-serif;
             font-size: 1.1em; /* Increased size slightly */
@@ -107,29 +107,35 @@
 
         .floating-images {
             position: absolute;
-            top: 30%; /* Adjusted top position */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%; /* Increased size */
-            height: auto;
-            flex-direction: row; /* Horizontal grid */
-            justify-content: space-between;
+            top: 50%;
+            right: 0; /* Locked to the right side of the screen */
+            transform: translateY(-50%);
+            width: 1200px;
+            height: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            gap: 15px; /* Added gap between images */
-            z-index: 5; /* Positioned behind the text */
+            opacity: 1;
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Added width and height transitions */
         }
 
         .floating-images img {
-            position: static;
-            width: 32%; /* Larger image size */
-            height: auto;
-            opacity: 1;
-            animation: none; /* Remove animation for mobile */
-            transform: none;
+            position: absolute;
+            object-fit: cover;
+            border-radius: 10px;
+            animation: float 15s linear infinite;
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Adjusted transition speed */
+            opacity: 0;
         }
 
-        .floating-images img:nth-child(n+4) {
-            display: none; /* Hide additional images */
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-15px) translateX(15px);
+            }
         }
 
         .footer {
@@ -200,49 +206,44 @@
 
         @media screen and (max-width: 480px) {
             .floating-images {
-                top: 28%; /* Raised closer to the top */
+                position: absolute;
+                top: 30%; /* Moved up slightly */
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 90%; /* Adjusted width */
+                width: 80%;
                 height: auto;
                 flex-direction: row; /* Horizontal grid */
                 justify-content: space-between;
                 align-items: center;
-                gap: 15px; /* Adjusted gap between images */
+                gap: 10px; /* Add gap between images */
                 z-index: 5; /* Positioned behind the text */
             }
-
+            .floating-images img {
+                position: static;
+                width: 28%; /* Small but visible */
+                height: auto;
+                opacity: 1;
+                animation: none; /* Remove animation for mobile */
+                transform: none;
+            }
+            .floating-images img:nth-child(n+4) {
+                display: none; /* Hide additional images */
+            }
             .header-text {
                 left: 20px; /* Aligned further to the left for mobile view */
                 max-width: 100%; /* Ensure wrapping if needed */
             }
-
             .container {
                 padding-left: 20px;
-                max-width: calc(100% - 20px); /* Added right margin */
+                max-width: 100%;
             }
-
             .dynamic-text-container {
                 max-width: 100%;
                 word-wrap: break-word; /* Allow text wrapping */
-                margin-right: 10px; /* Added right margin */
             }
-
-            .dynamic-text {
-                white-space: normal; /* Allow wrapping */
+            h1 {
+                font-size: 1.8em;
             }
-
-            .footer {
-                left: 50%;
-                transform: translateX(-50%);
-                text-align: center; /* Center-align for mobile view */
-            }
-
-            .footer .upper-links,
-            .footer .lower-links {
-                justify-content: center;
-            }
-
             body {
                 padding-bottom: 10px; /* Remove white space below */
             }
@@ -259,7 +260,7 @@
     <div class="container">
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
-            <div class="dynamic-text">Dynamic typing text that wraps on mobile view.</div>
+            <div class="dynamic-text"></div>
             <button>Join waitlist</button>
         </div>
     </div>

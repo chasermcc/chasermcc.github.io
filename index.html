@@ -105,12 +105,30 @@
             background-color: #333399;
         }
 
+        .secondary-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            color: #000080;
+            background-color: transparent;
+            border: 2px solid #000080;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            display: block;
+        }
+
+        .secondary-button:hover {
+            background-color: #000080;
+            color: white;
+        }
+
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 15%;
+            right: 10%; /* Moved slightly to the right */
             transform: translateY(-50%);
-            width: 800px; /* Increased width to allow more spreading */
+            width: 800px;
             height: 600px;
             display: flex;
             flex-wrap: wrap;
@@ -284,6 +302,7 @@
         <div class="dynamic-text-container">
             <div class="dynamic-text">Dynamic typing text that wraps on mobile view.</div>
             <button>Join waitlist</button>
+            <button class="secondary-button">Suggest places</button> <!-- New button added -->
         </div>
     </div>
 

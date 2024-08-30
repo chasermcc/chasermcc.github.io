@@ -211,13 +211,14 @@
                 transform: none;
                 right: 0;
                 bottom: auto;
-                flex-direction: column;
+                flex-direction: row; /* Horizontal grid */
                 justify-content: space-between;
                 align-items: center;
+                gap: 10px; /* Add gap between images */
             }
             .floating-images img {
                 position: static;
-                width: 100px;
+                width: 22%; /* Small but visible */
                 height: auto;
                 opacity: 1;
                 animation: none; /* Remove animation for mobile */

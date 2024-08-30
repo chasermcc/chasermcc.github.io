@@ -11,8 +11,8 @@
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             overflow: hidden;
-            background-color: white; /* Initial background color */
-            transition: background-color 2s ease-in-out; /* Slower transition */
+            background-color: white;
+            transition: background-color 2s ease-in-out;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -28,17 +28,17 @@
             top: 0;
             left: 0;
             z-index: -1;
-            transition: background-color 2s ease-in-out; /* Slower transition */
+            transition: background-color 2s ease-in-out;
         }
 
         .header-text {
             position: absolute;
-            top: 12%; /* Moved slightly higher */
-            left: 80px; /* Restored original alignment for browser view */
+            top: 12%;
+            left: 80px;
             font-family: 'Inter', sans-serif;
-            font-size: 1.1em; /* Increased size slightly */
+            font-size: 1.1em;
             color: #000;
-            max-width: 80%; /* Allow wrapping if needed */
+            max-width: 80%;
         }
 
         .container {
@@ -48,44 +48,44 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 80px; /* Restored original alignment for browser view */
+            padding-left: 80px;
             color: #333;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em; /* Increased size slightly */
+            font-size: 2.5em;
             font-weight: 400;
             margin: 0 0 20px 0;
             color: #222;
             position: relative;
             z-index: 10;
-            max-width: 80%; /* Allow wrapping if needed */
+            max-width: 80%;
         }
 
         .dynamic-text-container {
-            max-width: 40%; /* Restored original width */
+            max-width: 40%;
             position: relative;
             z-index: 10;
         }
 
         .dynamic-text {
-            font-size: 1.1em; /* Further reduced size */
+            font-size: 1.1em;
             margin: 10px 0 30px 0;
             color: #000;
             overflow: hidden;
             border-right: 3px solid #000080;
             display: inline-block;
             word-wrap: break-word;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap;
             line-height: 1.2em;
-            height: 1.2em; /* Match cursor height to text */
+            height: 1.2em;
             animation: blink-cursor 1s steps(1) infinite;
         }
 
         @keyframes blink-cursor {
             from, to { border-color: transparent; }
-            50% { border-color: #000080; } /* darker blue */
+            50% { border-color: #000080; }
         }
 
         button {
@@ -93,7 +93,7 @@
             padding: 10px 20px;
             font-size: 0.9em;
             color: white;
-            background-color: #000080; /* darker blue */
+            background-color: #000080;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -102,22 +102,22 @@
         }
 
         button:hover {
-            background-color: #333399; /* Slightly lighter blue */
+            background-color: #333399;
         }
 
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 0; /* Locked to the right side of the screen */
+            right: 0;
             transform: translateY(-50%);
-            width: 1200px;
-            height: 600px;
+            width: 50%;
+            height: auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Added width and height transitions */
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease;
         }
 
         .floating-images img {
@@ -125,7 +125,7 @@
             object-fit: cover;
             border-radius: 10px;
             animation: float 15s linear infinite;
-            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Adjusted transition speed */
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease;
             opacity: 0;
         }
 
@@ -141,7 +141,7 @@
         .footer {
             position: absolute;
             bottom: 100px;
-            left: 80px; /* Restored original alignment for browser view */
+            left: 80px;
             font-size: 0.9em;
             color: #555;
         }
@@ -152,7 +152,7 @@
             color: black;
             text-decoration: none;
             display: flex;
-            gap: 15px; /* increased space between links */
+            gap: 15px;
         }
 
         .footer .upper-links a {
@@ -183,69 +183,88 @@
         /* Responsive Styles */
         @media screen and (max-width: 1024px) {
             .floating-images {
-                width: 1000px;
-                height: 500px;
+                width: 40%;
+                height: auto;
             }
             .floating-images img {
-                width: 180px;
-                height: 240px;
+                width: 200px;
+                height: 250px;
             }
         }
 
         @media screen and (max-width: 768px) {
             .floating-images {
-                width: 800px;
-                height: 400px;
-                justify-content: space-around;
+                width: 30%;
+                height: auto;
+                top: auto;
+                bottom: 30%;
+                transform: translateX(50%);
             }
             .floating-images img {
                 width: 150px;
                 height: 200px;
+            }
+            .dynamic-text-container {
+                max-width: 80%;
             }
         }
 
         @media screen and (max-width: 480px) {
             .floating-images {
                 position: absolute;
-                top: 30%; /* Moved up slightly */
+                top: 35%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 80%;
                 height: auto;
-                flex-direction: row; /* Horizontal grid */
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                gap: 10px; /* Add gap between images */
-                z-index: 5; /* Positioned behind the text */
+                gap: 10px;
+                z-index: 5;
             }
+
             .floating-images img {
                 position: static;
-                width: 28%; /* Small but visible */
+                width: 28%;
                 height: auto;
                 opacity: 1;
-                animation: none; /* Remove animation for mobile */
+                animation: none;
                 transform: none;
             }
-            .floating-images img:nth-child(n+4) {
-                display: none; /* Hide additional images */
-            }
+
             .header-text {
-                left: 20px; /* Aligned further to the left for mobile view */
-                max-width: 100%; /* Ensure wrapping if needed */
+                left: 20px;
+                max-width: 100%;
             }
+
             .container {
                 padding-left: 20px;
-                max-width: 100%;
+                max-width: calc(100% - 20px);
             }
+
             .dynamic-text-container {
                 max-width: 100%;
-                word-wrap: break-word; /* Allow text wrapping */
+                word-wrap: break-word;
             }
-            h1 {
-                font-size: 1.8em;
+
+            .dynamic-text {
+                white-space: normal;
             }
+
+            .footer {
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+
+            .footer .upper-links,
+            .footer .lower-links {
+                justify-content: center;
+            }
+
             body {
-                padding-bottom: 10px; /* Remove white space below */
+                padding-bottom: 10px;
             }
         }
     </style>
@@ -260,7 +279,7 @@
     <div class="container">
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
-            <div class="dynamic-text"></div>
+            <div class="dynamic-text">Dynamic typing text that wraps on mobile view.</div>
             <button>Join waitlist</button>
         </div>
     </div>
@@ -321,10 +340,10 @@
         ];
 
         const colors = [
-            "#ffebe6", /* darker pink */
-            "#e6f7ff", /* darker blue */
-            "#e6ffe6", /* darker green */
-            "#ffeadf"  /* darker orange */
+            "#ffebe6",
+            "#e6f7ff",
+            "#e6ffe6",
+            "#ffeadf"
         ];
 
         const imagesSets = [
@@ -349,7 +368,7 @@
                 } else {
                     clearInterval(typingInterval);
                 }
-            }, 70); // Faster typing speed
+            }, 70);
         }
 
         function blinkCursor() {
@@ -373,19 +392,16 @@
                 { top: '35%', left: '70%' }
             ];
 
-            // Shuffle the positions array for randomness
             for (let i = positions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [positions[i], positions[j]] = [positions[j], positions[i]];
             }
 
-            // Apply randomized positions to images
             set.querySelectorAll('img').forEach((img, index) => {
                 img.style.top = positions[index].top;
                 img.style.left = positions[index].left;
             });
 
-            // Ensure the largest image is always in front
             set.querySelector('img:nth-child(4)').style.zIndex = 4;
         }
 
@@ -396,26 +412,23 @@
             const previousSet = imagesSets[previousIndex];
             const nextSet = imagesSets[currentIndex];
 
-            // Start fading out previous set
             previousSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
                     img.style.opacity = '0';
-                }, i * 100); // Speed up fade out
+                }, i * 100);
             });
 
-            // Hide previous set after fade-out
             setTimeout(() => {
                 previousSet.style.display = 'none';
 
-                // Start fading in next set after previous set is hidden
                 nextSet.style.display = 'flex';
                 randomizeImagePositions(nextSet);
                 nextSet.querySelectorAll('img').forEach((img, i) => {
                     setTimeout(() => {
                         img.style.opacity = '1';
-                    }, i * 100); // Staggered fade-in with delay
+                    }, i * 100);
                 });
-            }, 1200); // Slight delay to prevent overlap
+            }, 1200);
         }
 
         function changeBackgroundColor() {

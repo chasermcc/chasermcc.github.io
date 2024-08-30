@@ -106,24 +106,24 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 5%; /* Adjusted to be closer to the center */
+            right: 0; /* Locked to the right side of the screen */
             transform: translateY(-50%);
-            width: 1200px; /* Increased width */
-            height: 600px; /* Increased height for a horizontal box */
+            width: 1200px;
+            height: 600px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around; /* Adjusted for better spread */
+            justify-content: center;
             align-items: center;
             opacity: 1;
-            transition: opacity 1s ease-in-out; /* Faster transition */
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Added width and height transitions */
         }
 
         .floating-images img {
             position: absolute;
             object-fit: cover;
             border-radius: 10px;
-            animation: float 15s linear infinite; /* Slowed down movement */
-            transition: opacity 1s ease-in-out; /* Adjusted transition speed */
+            animation: float 15s linear infinite;
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease; /* Adjusted transition speed */
             opacity: 0;
         }
 
@@ -132,7 +132,7 @@
                 transform: translateY(0) translateX(0);
             }
             100% {
-                transform: translateY(-15px) translateX(15px); /* Slower movement */
+                transform: translateY(-15px) translateX(15px);
             }
         }
 
@@ -181,30 +181,43 @@
         /* Responsive Styles */
         @media screen and (max-width: 1024px) {
             .floating-images {
-                width: 800px;
-                height: 400px;
+                width: 1000px;
+                height: 500px;
             }
             .floating-images img {
-                width: 140px;
-                height: 180px;
+                width: 180px;
+                height: 240px;
             }
         }
 
         @media screen and (max-width: 768px) {
             .floating-images {
+                width: 800px;
+                height: 400px;
+                justify-content: space-around;
+            }
+            .floating-images img {
+                width: 150px;
+                height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .floating-images {
+                position: relative;
                 width: 100%;
                 height: auto;
-                flex-direction: row; /* Horizontal alignment */
                 top: auto;
                 transform: none;
                 right: 0;
-                bottom: 50px; /* Move images lower for mobile */
-                justify-content: center;
-                gap: 10px; /* Add gap between images */
+                bottom: auto;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
             }
             .floating-images img {
                 position: static;
-                width: 20%; /* Small but visible */
+                width: 100px;
                 height: auto;
                 opacity: 1;
                 animation: none; /* Remove animation for mobile */
@@ -212,25 +225,6 @@
             }
             .floating-images img:nth-child(n+5) {
                 display: none; /* Hide two images */
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .floating-images {
-                height: auto;
-                top: auto;
-                transform: none;
-                right: 0;
-                bottom: 50px;
-                flex-direction: row; /* Horizontal alignment */
-                justify-content: center;
-                align-items: center;
-                gap: 5px; /* Adjust gap for smaller screens */
-            }
-            .floating-images img {
-                position: static;
-                width: 15%; /* Smaller for mobile */
-                height: auto;
             }
             .header-text, .container {
                 padding-left: 20px;
@@ -361,6 +355,32 @@
             }, 500);
         }
 
+        function randomizeImagePositions(set) {
+            const positions = [
+                { top: '5%', left: '25%' },
+                { top: '15%', left: '40%' },
+                { top: '35%', left: '30%' },
+                { top: '10%', left: '60%' },
+                { top: '55%', left: '50%' },
+                { top: '35%', left: '70%' }
+            ];
+
+            // Shuffle the positions array for randomness
+            for (let i = positions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [positions[i], positions[j]] = [positions[j], positions[i]];
+            }
+
+            // Apply randomized positions to images
+            set.querySelectorAll('img').forEach((img, index) => {
+                img.style.top = positions[index].top;
+                img.style.left = positions[index].left;
+            });
+
+            // Ensure the largest image is always in front
+            set.querySelector('img:nth-child(4)').style.zIndex = 4;
+        }
+
         function fadeImages() {
             const previousIndex = currentIndex;
             currentIndex = (currentIndex + 1) % imagesSets.length;
@@ -381,6 +401,7 @@
 
                 // Start fading in next set after previous set is hidden
                 nextSet.style.display = 'flex';
+                randomizeImagePositions(nextSet);
                 nextSet.querySelectorAll('img').forEach((img, i) => {
                     setTimeout(() => {
                         img.style.opacity = '1';

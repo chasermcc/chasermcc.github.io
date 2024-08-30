@@ -177,44 +177,6 @@
         .footer .lower-links a:hover {
             text-decoration: none;
         }
-
-        /* Media Query for Mobile Devices */
-        @media (max-width: 768px) {
-            .floating-images {
-                top: 25%; /* Higher on the screen */
-                width: 100%; /* Take up the full width */
-                height: auto; /* Allow height to adjust based on content */
-                right: 0;
-                transform: translateY(0); /* Reset transform */
-                justify-content: center; /* Center align */
-            }
-
-            .floating-images img {
-                width: 80px; /* Reduce image size */
-                height: 100px; /* Adjust height proportionally */
-                margin: 0 10px; /* Adjust spacing between images */
-                opacity: 1; /* Ensure images are visible */
-                animation: none; /* Disable floating animation */
-            }
-
-            .floating-images img:nth-child(5),
-            .floating-images img:nth-child(6) {
-                display: none; /* Remove two images */
-            }
-
-            .container {
-                padding-left: 40px; /* Adjust container padding for mobile */
-            }
-
-            .header-text,
-            .footer {
-                left: 40px; /* Adjust text position for mobile */
-            }
-
-            h1 {
-                font-size: 2em; /* Adjust font size for mobile */
-            }
-        }
     </style>
 </head>
 <body>
@@ -225,20 +187,47 @@
     </div>
 
     <div class="container">
-        <div class="floating-images" id="images1">
-            <img src="https://via.placeholder.com/240x320" alt="Image 1">
-            <img src="https://via.placeholder.com/200x300" alt="Image 2">
-            <img src="https://via.placeholder.com/220x280" alt="Image 3">
-            <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
-            <img src="https://via.placeholder.com/180x240" alt="Image 5">
-            <img src="https://via.placeholder.com/220x280" alt="Image 6">
-        </div>
-
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
             <div class="dynamic-text"></div>
             <button>Join waitlist</button>
         </div>
+    </div>
+
+    <div class="floating-images" id="images1">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
+    </div>
+
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
+    </div>
+
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
+
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
     </div>
 
     <div class="footer">
@@ -268,7 +257,10 @@
         ];
 
         const imagesSets = [
-            document.getElementById('images1')
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
         ];
 
         let currentIndex = 0;

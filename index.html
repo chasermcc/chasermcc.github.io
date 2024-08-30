@@ -34,10 +34,11 @@
         .header-text {
             position: absolute;
             top: 12%; /* Moved slightly higher */
-            left: 80px; /* Moved slightly to the left */
+            left: 20px; /* Aligned to the left */
             font-family: 'Inter', sans-serif;
             font-size: 1.1em; /* Increased size slightly */
             color: #000;
+            max-width: 80%; /* Allow wrapping if needed */
         }
 
         .container {
@@ -47,7 +48,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 80px; /* Moved slightly to the left */
+            padding-left: 20px; /* Moved slightly to the left */
             color: #333;
         }
 
@@ -59,10 +60,11 @@
             color: #222;
             position: relative;
             z-index: 10;
+            max-width: 80%; /* Allow wrapping if needed */
         }
 
         .dynamic-text-container {
-            max-width: 40%; /* Shortened width */
+            max-width: 80%; /* Shortened width */
             position: relative;
             z-index: 10;
         }
@@ -139,7 +141,7 @@
         .footer {
             position: absolute;
             bottom: 100px;
-            left: 80px; /* Moved slightly to the left */
+            left: 20px; /* Aligned to the left */
             font-size: 0.9em;
             color: #555;
         }
@@ -204,31 +206,32 @@
 
         @media screen and (max-width: 480px) {
             .floating-images {
-                position: relative;
-                width: 100%;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
                 height: auto;
-                top: auto;
-                transform: none;
-                right: 0;
-                bottom: auto;
                 flex-direction: row; /* Horizontal grid */
                 justify-content: space-between;
                 align-items: center;
                 gap: 10px; /* Add gap between images */
+                z-index: 5; /* Positioned behind the text */
             }
             .floating-images img {
                 position: static;
-                width: 22%; /* Small but visible */
+                width: 28%; /* Small but visible */
                 height: auto;
                 opacity: 1;
                 animation: none; /* Remove animation for mobile */
                 transform: none;
             }
-            .floating-images img:nth-child(n+5) {
-                display: none; /* Hide two images */
+            .floating-images img:nth-child(n+4) {
+                display: none; /* Hide additional images */
             }
             .header-text, .container {
                 padding-left: 20px;
+                max-width: 80%;
             }
             .footer {
                 left: 20px;

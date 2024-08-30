@@ -90,34 +90,38 @@
 
         button {
             margin-top: 20px;
-            padding: 12px 24px; /* Adjusted padding for size consistency */
+            padding: 12px 24px;
             font-size: 0.9em;
             color: white;
-            background-color: #333; /* Very dark gray */
-            border: 2px solid #333; /* Very dark gray */
-            border-radius: 0px; /* Removed rounding */
+            background-color: #333;
+            border: 2px solid #333;
+            border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
-            display: block;
-            width: 100%; /* Ensure same size for both buttons */
+            display: inline-block;
+            width: auto; /* Ensure original button size */
+            position: relative; /* Lock button position */
+            z-index: 15; /* Ensure buttons are above dynamic text */
         }
 
         button:hover {
-            background-color: #555; /* Slightly lighter gray on hover */
+            background-color: #555;
         }
 
         .secondary-button {
             margin-top: 10px;
             padding: 12px 24px;
             font-size: 0.9em;
-            color: #333; /* Very dark gray */
+            color: #333;
             background-color: transparent;
-            border: 2px solid #333; /* Very dark gray */
-            border-radius: 0px; /* Removed rounding */
+            border: 2px solid #333;
+            border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
-            display: block;
-            width: 100%; /* Ensure same size for both buttons */
+            display: inline-block;
+            width: auto; /* Ensure original button size */
+            position: relative; /* Lock button position */
+            z-index: 15; /* Ensure buttons are above dynamic text */
         }
 
         .secondary-button:hover {
@@ -128,7 +132,7 @@
         .floating-images {
             position: absolute;
             top: 50%;
-            right: 10%; /* Moved slightly to the right */
+            right: 10%;
             transform: translateY(-50%);
             width: 800px;
             height: 600px;
@@ -303,9 +307,9 @@
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
             <div class="dynamic-text"></div>
-            <button>Join waitlist</button>
-            <button class="secondary-button">Suggest places</button>
         </div>
+        <button>Join waitlist</button>
+        <button class="secondary-button">Suggest places</button>
     </div>
 
     <div class="floating-images" id="images1">

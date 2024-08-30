@@ -34,7 +34,7 @@
         .header-text {
             position: absolute;
             top: 12%; /* Moved slightly higher */
-            left: 80px; /* Restored original alignment */
+            left: 80px; /* Restored original alignment for browser view */
             font-family: 'Inter', sans-serif;
             font-size: 1.1em; /* Increased size slightly */
             color: #000;
@@ -48,7 +48,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: 80px; /* Restored original alignment */
+            padding-left: 80px; /* Restored original alignment for browser view */
             color: #333;
         }
 
@@ -141,7 +141,7 @@
         .footer {
             position: absolute;
             bottom: 100px;
-            left: 80px; /* Restored original alignment */
+            left: 80px; /* Restored original alignment for browser view */
             font-size: 0.9em;
             color: #555;
         }
@@ -207,7 +207,7 @@
         @media screen and (max-width: 480px) {
             .floating-images {
                 position: absolute;
-                top: 35%; /* Moved up slightly */
+                top: 30%; /* Moved up slightly */
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 80%;
@@ -229,19 +229,23 @@
             .floating-images img:nth-child(n+4) {
                 display: none; /* Hide additional images */
             }
-            .header-text, .container {
-                padding-left: 20px;
-                max-width: 80%;
+            .header-text {
+                left: 20px; /* Aligned further to the left for mobile view */
+                max-width: 100%; /* Ensure wrapping if needed */
             }
-            .footer {
-                left: 20px;
-                bottom: 20px;
+            .container {
+                padding-left: 20px;
+                max-width: 100%;
             }
             .dynamic-text-container {
-                max-width: 80%;
+                max-width: 100%;
+                word-wrap: break-word; /* Allow text wrapping */
             }
             h1 {
                 font-size: 1.8em;
+            }
+            body {
+                padding-bottom: 10px; /* Remove white space below */
             }
         }
     </style>

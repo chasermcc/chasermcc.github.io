@@ -280,12 +280,13 @@
             color: #111111;
             position: relative;
             top: -20px; /* Move title higher */
+            text-align: center; /* Center align the title */
         }
 
         .modal-content p {
             font-family: 'Inter', sans-serif;
-            font-size: 1em; /* Reduced font size */
-            margin-bottom: 20px;
+            font-size: 1em;
+            margin-bottom: 40px; /* Added more space below */
             color: #111111;
         }
 
@@ -295,22 +296,22 @@
             margin-bottom: 10px;
             display: block;
             color: #111111;
-            text-align: left; /* Align label to the left */
-            margin-left: 15%; /* Align left with input form */
+            text-align: left;
+            margin-left: 15%;
         }
 
         .modal-content input[type="email"] {
             padding: 10px;
             font-size: 1em;
             margin-bottom: 20px;
-            width: 70%; /* Shorten the email input */
+            width: 65%; /* Shorten the email input */
             border: 1px solid #ccc;
             border-radius: 4px;
             text-align: left;
         }
 
         .modal-content .checkbox-container {
-            display
+            display:
         .modal-content .checkbox-container {
             display: flex;
             align-items: center;
@@ -324,6 +325,7 @@
         }
 
         .modal-content .checkbox-container label {
+            font-size: 0.9em; /* Smaller font size */
             color: #888888; /* Lighter gray for checkbox text */
         }
 
@@ -346,8 +348,8 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            margin-top: 20px; /* Position the button further below */
-            width: 70%; /* Same length as the input form */
+            margin-top: 20px;
+            width: 65%; /* Match the length with the input form */
         }
 
         .modal-content button[type="submit"]:hover {

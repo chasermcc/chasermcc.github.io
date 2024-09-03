@@ -178,22 +178,15 @@
             margin-top: 20px; /* Space between buttons and footer links */
         }
 
-        .social-button {
-            display: inline-block;
-            border: 1px solid #333;
-            border-radius: 0px;
-            padding: 10px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
         .social-button img {
             width: 24px;
             height: 24px;
+            filter: grayscale(100%); /* Makes the icons gray */
+            transition: filter 0.2s ease, color 0.2s ease;
         }
 
-        .social-button:hover {
-            background-color: black;
-            border-color: black;
+        .social-button img:hover {
+            filter: grayscale(0%); /* Changes the icons to black on hover */
         }
 
         .footer .upper-links {
@@ -378,10 +371,10 @@
     <div class="footer">
         <div class="social-media-links">
             <a href="https://www.instagram.com" target="_blank" class="social-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
             </a>
             <a href="https://www.tiktok.com" target="_blank" class="social-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok">
+                <img src="https://upload.wikimedia.org/wikipedia/en/6/69/TikTok_logo.svg" alt="TikTok">
             </a>
             <a href="https://www.linkedin.com" target="_blank" class="social-button">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">

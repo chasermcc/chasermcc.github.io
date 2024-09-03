@@ -170,6 +170,32 @@
             color: #555;
         }
 
+        .footer .social-media-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px; /* Space between buttons and footer links */
+        }
+
+        .social-button {
+            display: inline-block;
+            border: 1px solid #333;
+            border-radius: 0px;
+            padding: 10px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: black;
+            border-color: black;
+        }
+
         .footer .upper-links {
             font-size: 1.1em;
             font-weight: 500;
@@ -177,7 +203,7 @@
             text-decoration: none;
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 20px; /* Adjusted margin for space between social and footer links */
         }
 
         .footer .upper-links a {
@@ -201,32 +227,7 @@
             text-decoration: underline;
         }
 
-        .footer .lower-links a:hover
-        .social-media-links {
-    display: flex;
-    justify-content: flex-start;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.social-button {
-    display: inline-block;
-    border: 1px solid #333;
-    border-radius: 0px;
-    padding: 10px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.social-button img {
-    width: 24px;
-    height: 24px;
-}
-
-.social-button:hover {
-    background-color: black;
-    border-color: black;
-}
-{
+        .footer .lower-links a:hover {
             text-decoration: none;
         }
 
@@ -375,19 +376,19 @@
     </div>
 
     <div class="footer">
-        <div class="upper-links">
-            <div class="social-media-links">
-    <a href="https://www.linkedin.com" target="_blank" class="social-button">
-        <img src="https://via.placeholder.com/24x24" alt="LinkedIn">
-    </a>
-    <a href="https://www.tiktok.com" target="_blank" class="social-button">
-        <img src="https://via.placeholder.com/24x24" alt="TikTok">
-    </a>
-    <a href="https://www.instagram.com" target="_blank" class="social-button">
-        <img src="https://via.placeholder.com/24x24" alt="Instagram">
-    </a>
-</div>
+        <div class="social-media-links">
+            <a href="https://www.linkedin.com" target="_blank" class="social-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="social-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+        </div>
 
+        <div class="upper-links">
             <a href="#">Partner with us</a> |
             <a href="#">Careers</a>
         </div>

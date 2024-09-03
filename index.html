@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorably - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
 
@@ -178,15 +179,14 @@
             margin-top: 20px; /* Space between buttons and footer links */
         }
 
-        .social-button img {
-            width: 24px;
-            height: 24px;
-            filter: grayscale(100%); /* Makes the icons gray */
-            transition: filter 0.2s ease, color 0.2s ease;
+        .social-button {
+            font-size: 24px;
+            color: #888; /* Gray color for default state */
+            transition: color 0.2s ease;
         }
 
-        .social-button img:hover {
-            filter: grayscale(0%); /* Changes the icons to black on hover */
+        .social-button:hover {
+            color: black; /* Change to black on hover */
         }
 
         .footer .upper-links {
@@ -371,13 +371,13 @@
     <div class="footer">
         <div class="social-media-links">
             <a href="https://www.instagram.com" target="_blank" class="social-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+                <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com" target="_blank" class="social-button">
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/69/TikTok_logo.svg" alt="TikTok">
+                <i class="fab fa-tiktok"></i>
             </a>
             <a href="https://www.linkedin.com" target="_blank" class="social-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
             </a>
         </div>
 

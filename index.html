@@ -164,7 +164,7 @@
 
         .footer {
             position: absolute;
-            bottom: 100px;
+            bottom: 80px;
             left: 80px;
             font-size: 0.9em;
             color: #555;
@@ -177,6 +177,7 @@
             text-decoration: none;
             display: flex;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .footer .upper-links a {
@@ -200,7 +201,32 @@
             text-decoration: underline;
         }
 
-        .footer .lower-links a:hover {
+        .footer .lower-links a:hover
+        .social-media-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-button {
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: 0px;
+    padding: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-button:hover {
+    background-color: black;
+    border-color: black;
+}
+{
             text-decoration: none;
         }
 
@@ -350,6 +376,18 @@
 
     <div class="footer">
         <div class="upper-links">
+            <div class="social-media-links">
+    <a href="https://www.linkedin.com" target="_blank" class="social-button">
+        <img src="https://via.placeholder.com/24x24" alt="LinkedIn">
+    </a>
+    <a href="https://www.tiktok.com" target="_blank" class="social-button">
+        <img src="https://via.placeholder.com/24x24" alt="TikTok">
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="social-button">
+        <img src="https://via.placeholder.com/24x24" alt="Instagram">
+    </a>
+</div>
+
             <a href="#">Partner with us</a> |
             <a href="#">Careers</a>
         </div>

@@ -224,6 +224,95 @@
             text-decoration: none;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            animation: fadeInModal 0.5s ease-in-out; /* Fade in effect */
+        }
+
+        @keyframes fadeInModal {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            text-align: center;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-content label {
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .modal-content input[type="email"] {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .modal-content button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: black;
+        }
+
         /* Responsive Styles */
         @media screen and (max-width: 1024px) {
             .floating-images {
@@ -330,6 +419,19 @@
         </div>
         <button>Join waitlist</button>
         <button class="secondary-button">Suggest places</button>
+    </div>
+
+    <!-- Modal Window -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Join the Waitlist</h2>
+            <form id="waitlistForm">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 
     <div class="floating-images" id="images1">
@@ -506,6 +608,25 @@
 
         startTransitions();
         blinkCursor();
+
+        // Modal functionality
+        const modal = document.getElementById("waitlistModal");
+        const joinWaitlistButton = document.querySelector("button");
+        const closeButton = document.querySelector(".close-button");
+
+        joinWaitlistButton.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>

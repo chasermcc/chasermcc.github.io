@@ -34,7 +34,7 @@
 
         .header-text {
             position: absolute;
-            top: 10%; /* Moved up slightly */
+            top: 12%;
             left: 80px;
             font-family: 'Inter', sans-serif;
             font-size: 1.1em;
@@ -68,7 +68,6 @@
             max-width: 40%;
             position: relative;
             z-index: 10;
-            margin-right: 20px; /* Added margin to the right */
         }
 
         .dynamic-text {
@@ -79,9 +78,9 @@
             border-right: 3px solid #000080;
             display: inline-block;
             word-wrap: break-word;
-            white-space: normal; /* Allow text to wrap */
+            white-space: nowrap;
             line-height: 1.2em;
-            height: auto; /* Adjust to fit wrapped text */
+            height: 1.2em;
             animation: blink-cursor 1s steps(1) infinite;
         }
 
@@ -166,8 +165,8 @@
 
         .footer {
             position: absolute;
-            bottom: 50px; /* Moved down to fit content */
-            left: 20px; /* Align left with buttons */
+            bottom: 60px;
+            left: 80px;
             font-size: 0.9em;
             color: #555;
         }
@@ -176,12 +175,13 @@
             display: flex;
             justify-content: flex-start;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 20px; /* Space between buttons and footer links */
         }
 
         .social-button {
             font-size: 24px;
-            color: #333; /* Same color as the "Join waitlist" button */
+            color: #333; /* Gray color for default state */
             transition: color 0.2s ease;
         }
 
@@ -189,30 +189,39 @@
             color: black; /* Change to black on hover */
         }
 
-        .footer .upper-links,
-        .footer .lower-links {
-            display: flex;
-            flex-direction: column; /* Stack links vertically */
-            align-items: flex-start; /* Align left */
-            gap: 5px;
-        }
-
         .footer .upper-links {
             font-size: 1.1em;
             font-weight: 500;
             color: black;
             text-decoration: none;
+            display: flex;
+            gap: 15px;
+            margin-top: 20px; /* Adjusted margin for space between social and footer links */
         }
 
-        .footer .upper-links a,
-        .footer .lower-links a {
+        .footer .upper-links a {
             color: black;
             text-decoration: none;
         }
 
-        .footer .upper-links a:hover,
-        .footer .lower-links a:hover {
+        .footer .upper-links a:hover {
             color: #777;
+        }
+
+        .footer .lower-links {
+            font-size: 0.8em;
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer .lower-links a {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        .footer .lower-links a:hover {
+            text-decoration: none;
         }
 
         /* Responsive Styles */
@@ -284,23 +293,21 @@
             .dynamic-text-container {
                 max-width: 100%;
                 word-wrap: break-word;
-                margin-right: 20px; /* Added margin to the right */
             }
 
             .dynamic-text {
-                white-space: normal; /* Allow text to wrap */
+                white-space: normal;
             }
 
             .footer {
-                bottom: 30px; /* Move further down to fit content */
-                left: 20px;
-                text-align: left;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
             }
 
             .footer .upper-links,
             .footer .lower-links {
-                justify-content: flex-start;
-                text-align: left;
+                justify-content: center;
             }
 
             body {
@@ -319,17 +326,46 @@
     <div class="container">
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
-            <div class="dynamic-text">Merch from iconic places, designed by creators like you</div>
+            <div class="dynamic-text"></div>
         </div>
         <button>Join waitlist</button>
         <button class="secondary-button">Suggest places</button>
     </div>
 
-    <!-- Only 3 images instead of 6 -->
     <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
         <img src="https://via.placeholder.com/200x300" alt="Image 2">
         <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
+    </div>
+
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
+    </div>
+
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
+
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
     </div>
 
     <div class="footer">
@@ -346,11 +382,11 @@
         </div>
 
         <div class="upper-links">
-            <a href="#">Partner with us</a>
+            <a href="#">Partner with us</a> |
             <a href="#">Careers</a>
         </div>
         <div class="lower-links">
-            <a href="#">Terms of service</a>
+            <a href="#">Terms of service</a> |
             <a href="#">Privacy policy</a>
         </div>
     </div>
@@ -371,7 +407,10 @@
         ];
 
         const imagesSets = [
-            document.getElementById('images1')
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
         ];
 
         let currentIndex = 0;
@@ -407,7 +446,10 @@
             const positions = [
                 { top: '0%', left: '15%' },
                 { top: '10%', left: '45%' },
-                { top: '30%', left: '10%' }
+                { top: '30%', left: '10%' },
+                { top: '0%', left: '65%' },
+                { top: '40%', left: '60%' },
+                { top: '60%', left: '30%' }
             ];
 
             for (let i = positions.length - 1; i > 0; i--) {
@@ -420,7 +462,7 @@
                 img.style.left = positions[index].left;
             });
 
-            set.querySelector('img:nth-child(2)').style.zIndex = 4;
+            set.querySelector('img:nth-child(4)').style.zIndex = 4;
         }
 
         function fadeImages() {

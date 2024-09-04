@@ -281,7 +281,7 @@
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4em; /* Reduced font size */
+            font-size: 2.8em; /* Reduced font size */
             margin-bottom: 20px;
             position: relative;
             top: -40px;
@@ -318,7 +318,9 @@
             padding: 10px;
             font-size: 1em;
             margin-bottom: 20px;
-            width: 55%; /* Shortened input form */
+            width: 60%; /* Shortened input form */
+            border: 1
+            width: 60%; /* Shortened input form */
             border: 1px solid #ccc;
             border-radius: 0px; /* Sharp edges */
             text-align: left;
@@ -342,7 +344,7 @@
         }
 
         .modal-content .checkbox-container label {
-            font-size: 0.85em; /* Reduced font size */
+            font-size: 0.9em; /* Reduced font size */
             color: #888888;
             word-wrap: break-word;
             width: 95%; /* Ensure text wraps within two lines */
@@ -368,7 +370,7 @@
             cursor: pointer;
             transition: background-color 0.2s ease;
             margin-top: 40px; /* Positioned lower */
-            width: 55%; /* Matched to email input form length */
+            width: 60%; /* Matched to email input form length */
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -541,7 +543,6 @@
                 { top: '60%', left: '30%' }
             ];
 
-            for (let i = positions.length -
             for (let i = positions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [positions[i], positions[j]] = [positions[j], positions[i]];
@@ -614,7 +615,13 @@
             modal.classList.remove("show");
         }
 
-        // Remove functionality that hides modal when clicking outside the modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                modal.classList.remove("show");
+            }
+        }
+
         termsCheckbox.onchange = function() {
             submitButton.disabled = !this.checked;
         }

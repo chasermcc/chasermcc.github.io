@@ -286,15 +286,20 @@
             margin-bottom: 20px;
             color: #111111;
             position: relative;
-            top: -20px; /* Move title higher */
-            text-align: center; /* Center align the title */
+            top: -30px; /* Move title higher */
+            text-align: center;
         }
 
         .modal-content p {
             font-family: 'Inter', sans-serif;
-            font-size: 1em;
-            margin-bottom: 40px; /* Added more space below */
+            font-size: 0.9em; /* Smaller font size */
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 65%; /* Same width as the input form */
+            line-height: 1.4em; /* Ensure proper spacing */
             color: #111111;
+            word-wrap: break-word;
         }
 
         .modal-content label {
@@ -304,7 +309,9 @@
             display: block;
             color: #111111;
             text-align: left;
-            margin-left: 15%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 65%; /* Align with the input form */
         }
 
         .modal-content input[type="email"] {
@@ -315,17 +322,23 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
 
         .modal-content .checkbox-container {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            color: #888888; /* Lighter gray for checkbox text */
+            color: #888888;
+            margin-left: auto;
+            margin-right: auto;
+            width: 65%; /* Align with the input form */
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
-            margin-right: 10px;
+            margin-right: 5px;
         }
 
         .modal-content .checkbox-container label {
@@ -354,6 +367,9 @@
             transition: background-color 0.2s ease;
             margin-top: 20px;
             width: 65%; /* Match the length with the input form */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
 
         .modal-content button[type="submit"]:hover {
@@ -533,6 +549,8 @@
     <div class="footer">
         <div class="social-media-links">
             <a href="https://www.instagram.com" target="_blank" class="social-button">
+                <i class="fab fa-instagram"></i>
+            </
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com" target="_blank" class="social-button">

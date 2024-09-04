@@ -64,21 +64,21 @@
             max-width: 50%;
         }
 
-      .dynamic-text-container {
+    .dynamic-text-container {
     max-width: 350px; /* Set a comfortable width */
     position: relative;
     z-index: 10;
     word-wrap: break-word;
     height: 2.4em; /* Fixed height for two lines (line-height * 2) */
     overflow: hidden; /* Prevents overflow beyond two lines */
-    line-height: 1.2em;
+    line-height: 1.2em; /* Set line-height to ensure proper height calculation */
 }
 
 .dynamic-text {
     font-size: 1.2em;
     color: #111;
     display: inline-block;
-    white-space: pre-wrap; /* Allow text to wrap */
+    white-space: normal; /* Allow text to wrap */
     max-width: 100%;
     position: relative;
     line-height: 1.2em; /* Line height of one text line */
@@ -86,17 +86,19 @@
 
 .cursor {
     border-right: 3px solid #000080;
-    position: absolute;
-    height: 1.2em; /* Matches the height of one line */
-    animation: blink-cursor 1s steps(1) infinite;
     display: inline-block;
-    vertical-align: bottom; /* Ensures it's at the bottom of the line */
+    height: 1.2em; /* Set the cursor height equal to one line of text */
+    animation: blink-cursor 1s steps(1) infinite;
+    vertical-align: bottom;
+    position: absolute;
+    left: 0;
 }
 
 @keyframes blink-cursor {
     from, to { border-color: transparent; }
     50% { border-color: #000080; }
 }
+
 
         button {
             margin-top: 0px;
@@ -527,7 +529,7 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
-     function typeTagline() {
+   function typeTagline() {
     dynamicTextElement.innerHTML = "";  // Clear the current text
     const tagline = taglines[currentIndex];  // Get the current tagline
     let i = 0;
@@ -541,19 +543,17 @@
         if (i < tagline.length) {
             dynamicTextElement.textContent += tagline.charAt(i);  // Add the next character
 
-            // Append the cursor again to make sure it stays at the end of the text
-            dynamicTextElement.appendChild(cursor);
+            // Recalculate cursor position based on text wrapping
+            const textBounding = dynamicTextElement.getBoundingClientRect();
+            const cursorBounding = cursor.getBoundingClientRect();
 
-            // Check if text wraps to the second line and update cursor position accordingly
-            const currentHeight = dynamicTextElement.scrollHeight;
-            const lineHeight = parseFloat(window.getComputedStyle(dynamicTextElement).lineHeight);
-
-            // Adjust cursor position if the text wraps to the second line
-            if (currentHeight > lineHeight) {
-                cursor.style.top = lineHeight + 'px';  // Move the cursor to the second line
+            if (cursorBounding.top > textBounding.top) {
+                cursor.style.top = `${dynamicTextElement.scrollHeight - parseFloat(window.getComputedStyle(dynamicTextElement).lineHeight)}px`; // Move cursor down when the line wraps
             } else {
                 cursor.style.top = '0px';  // Keep it on the first line
             }
+
+            dynamicTextElement.appendChild(cursor);  // Ensure cursor stays after text
 
             i++;
         } else {

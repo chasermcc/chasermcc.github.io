@@ -64,49 +64,42 @@
             max-width: 50%;
         }
 
-        .dynamic-text-container {
-            max-width: 50%;
+       .dynamic-text-container {
+            max-width: 40%; /* Set a comfortable width */
             position: relative;
             z-index: 10;
             word-wrap: break-word;
-        }
-
-       .dynamic-text-container {
-    max-width: 50%; /* Set a comfortable width */
-    position: relative;
-    z-index: 10;
-    word-wrap: break-word;
-    height: 2.4em; /* Fixed height for two lines (line-height * 2) */
-    overflow: hidden; /* Prevents overflow beyond two lines */
+            height: 2.4em; /* Fixed height for two lines (line-height * 2) */
+            overflow: hidden; /* Prevents overflow beyond two lines */
 }
 
-.dynamic-text {
-    font-size: 1.2em;
-    color: #111;
-    display: inline-block;
-    line-height: 1.2em;
-    white-space: normal; /* Text can wrap */
-    max-width: 100%;
-    position: relative;
+        .dynamic-text {
+            font-size: 1.2em;
+            color: #111;
+            display: inline-block;
+            line-height: 1.2em;
+            white-space: normal; /* Text can wrap */
+            max-width: 100%;
+            position: relative;
 }
 
-.cursor {
-    border-right: 3px solid #000080;
-    display: inline-block;
-    position: absolute;
-    height: 1.2em; /* Matches the height of one line */
-    animation: blink-cursor 1s steps(1) infinite;
+        .cursor {
+            border-right: 3px solid #000080;
+            display: inline-block;
+            position: absolute;
+            height: 1.2em; /* Matches the height of one line */
+            animation: blink-cursor 1s steps(1) infinite;
 }
-
-@keyframes blink-cursor {
-    from, to { border-color: transparent; }
-    50% { border-color: #000080; }
+        
+        @keyframes blink-cursor {
+            from, to { border-color: transparent; }
+            50% { border-color: #000080; }
 }
 
 
 
         button {
-            margin-top: 20px;
+            margin-top: 30px;
             padding: 12px 24px;
             font-size: 0.9em;
             color: white;
@@ -126,7 +119,7 @@
         }
 
         .secondary-button {
-            margin-top: 10px;
+            margin-top: 20px;
             padding: 12px 24px;
             font-size: 0.9em;
             color: #333;

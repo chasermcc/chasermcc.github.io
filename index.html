@@ -64,40 +64,53 @@
             max-width: 50%;
         }
 
- .dynamic-text-container {
-    max-width: 350px;
-    position: relative;
-    z-index: 10;
-    word-wrap: break-word;
-    height: 2.4em; /* Fixed height for two lines */
-    overflow: hidden;
-    line-height: 1.2em; /* Two lines of text, each 1.2em in height */
-}
+        .dynamic-text-container {
+            max-width: 350px;
+            position: relative;
+            z-index: 10;
+            word-wrap: break-word;
+            height: 2.4em; /* Fixed height for two lines */
+            overflow: hidden;
+            line-height: 1.2em; /* Two lines of text, each 1.2em in height */
+        }
 
-.dynamic-text {
-    font-size: 1.2em;
-    color: #111;
-    display: inline-block;
-    white-space: pre-wrap; /* Allow text to wrap */
-    max-width: 100%;
-    position: relative;
-    line-height: 1.2em; /* Line height of one text line */
-}
+        .dynamic-text {
+            font-size: 1.2em;
+            color: #111;
+            display: inline-block;
+            white-space: pre-wrap; /* Allow text to wrap */
+            max-width: 100%;
+            position: relative;
+            line-height: 1.2em; /* Line height of one text line */
+        }
 
-.cursor {
-    border-right: 3px solid #000080;
-    height: 1.2em; /* Fixed to match the height of one line */
-    display: inline-block;
-    animation: blink-cursor 1s steps(1) infinite;
-    vertical-align: bottom; /* Aligns cursor with the bottom of the text */
-    position: relative; /* Adjusts with the typed text */
-}
+        .cursor {
+            border-right: 3px solid #000080;
+            height: 1.2em; /* Fixed to match the height of one line */
+            display: inline-block;
+            animation: blink-cursor 1s steps(1) infinite;
+            vertical-align: bottom; /* Aligns cursor with the bottom of the text */
+            position: relative; /* Adjusts with the typed text */
+        }
 
-@keyframes blink-cursor {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: #000080; }
-}
-        
+        @keyframes blink-cursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #000080; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden; /* Ensures the text is hidden until typed */
+            border-right: 3px solid #000080;
+            white-space: nowrap;
+            animation: typewriter 4s steps(30, end), blink-cursor 1s step-end infinite;
+        }
+
         button {
             margin-top: 0px;
             padding: 12px 24px;
@@ -266,7 +279,7 @@
             color: #111111;
         }
 
-       .close-button {
+        .close-button {
             background-color: white;
             border: none;
             border-radius: 50%;
@@ -284,15 +297,14 @@
             color: #444;
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1; /* Set line-height to match font size */
-            padding-bottom: 3px; /* Adjust padding to move the "X" up */         
-}
-
+            padding-bottom: 3px; /* Adjust padding to move the "X" up */
+        }
 
         .close-button:hover {
             background-color: transparent;
             color: #111;
         }
-
+        
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.6em;
@@ -527,40 +539,26 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
- function typeTagline() {
-    dynamicTextElement.innerHTML = "";  // Clear the current text
-    const tagline = taglines[currentIndex];  // Get the current tagline
-    let i = 0;
+        function typeTagline() {
+            dynamicTextElement.innerHTML = "";  // Clear the current text
+            const tagline = taglines[currentIndex];  // Get the current tagline
+            let i = 0;
 
-    // Clear any previous cursor and add a new one
-    let cursor = document.createElement("span");
-    cursor.classList.add("cursor");
-    dynamicTextElement.appendChild(cursor);
+            // Clear any previous cursor and add a new one
+            let cursor = document.createElement("span");
+            cursor.classList.add("cursor");
+            dynamicTextElement.appendChild(cursor);
 
-    const typingInterval = setInterval(() => {
-        if (i < tagline.length) {
-            dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
+            const typingInterval = setInterval(() => {
+                if (i < tagline.length) {
+                    dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
 
-            i++;
-        } else {
-            clearInterval(typingInterval);  // Stop when finished
-            dynamicTextElement.removeChild(cursor);  // Remove the cursor
-        }
-    }, 70);  // Adjust speed as needed
-}
-
-
-
-
-        function blinkCursor() {
-            dynamicTextElement.style.borderRight = '3px solid #000080';
-            setInterval(() => {
-                if (dynamicTextElement.style.borderRight === '3px solid #000080') {
-                    dynamicTextElement.style.borderRight = '3px solid transparent';
+                    i++;
                 } else {
-                    dynamicTextElement.style.borderRight = '3px solid #000080';
+                    clearInterval(typingInterval);  // Stop when finished
+                    dynamicTextElement.removeChild(cursor);  // Remove the cursor
                 }
-            }, 500);
+            }, 70);  // Adjust speed as needed
         }
 
         function randomizeImagePositions(set) {
@@ -626,7 +624,6 @@
         setInterval(startTransitions, 12000);
 
         startTransitions();
-        blinkCursor();
 
         // Modal functionality
         const modal = document.getElementById("waitlistModal");

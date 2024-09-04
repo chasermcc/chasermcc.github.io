@@ -64,21 +64,21 @@
             max-width: 50%;
         }
 
-  .dynamic-text-container {
-    max-width: 350px; /* Set a comfortable width */
+ .dynamic-text-container {
+    max-width: 350px;
     position: relative;
     z-index: 10;
     word-wrap: break-word;
-    height: 2.8em;
-    overflow: hidden; /* Prevents overflow beyond two lines */
-    line-height: 1.2em; /* Set line-height to ensure proper height calculation */
+    height: 2.4em; /* Fixed height for two lines */
+    overflow: hidden;
+    line-height: 1.2em; /* Two lines of text, each 1.2em in height */
 }
 
 .dynamic-text {
     font-size: 1.2em;
     color: #111;
     display: inline-block;
-    white-space: normal; /* Allow text to wrap */
+    white-space: pre-wrap; /* Allow text to wrap */
     max-width: 100%;
     position: relative;
     line-height: 1.2em; /* Line height of one text line */
@@ -86,21 +86,18 @@
 
 .cursor {
     border-right: 3px solid #000080;
+    height: 1.2em; /* Fixed to match the height of one line */
     display: inline-block;
-    height: 1.2em; /* Set the cursor height equal to one line of text */
     animation: blink-cursor 1s steps(1) infinite;
-    vertical-align: bottom;
-    position: absolute;
-    left: 0;
+    vertical-align: bottom; /* Aligns cursor with the bottom of the text */
+    position: relative; /* Adjusts with the typed text */
 }
 
 @keyframes blink-cursor {
-    from, to { border-color: transparent; }
+    0%, 100% { border-color: transparent; }
     50% { border-color: #000080; }
 }
-
-
-
+        
         button {
             margin-top: 0px;
             padding: 12px 24px;
@@ -530,38 +527,26 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
-  function typeTagline() {
+ function typeTagline() {
     dynamicTextElement.innerHTML = "";  // Clear the current text
     const tagline = taglines[currentIndex];  // Get the current tagline
     let i = 0;
 
-    // Create a cursor element to append at the end of the dynamic text
-    const cursor = document.createElement("span");
+    // Clear any previous cursor and add a new one
+    let cursor = document.createElement("span");
     cursor.classList.add("cursor");
     dynamicTextElement.appendChild(cursor);
 
     const typingInterval = setInterval(() => {
         if (i < tagline.length) {
-            dynamicTextElement.textContent += tagline.charAt(i);  // Add the next character
-
-            // Recalculate cursor position based on text wrapping
-            const textBounding = dynamicTextElement.getBoundingClientRect();
-            const cursorBounding = cursor.getBoundingClientRect();
-
-            if (cursorBounding.top > textBounding.top) {
-                cursor.style.top = `${dynamicTextElement.scrollHeight - parseFloat(window.getComputedStyle(dynamicTextElement).lineHeight)}px`; // Move cursor down when the line wraps
-            } else {
-                cursor.style.top = '0px';  // Keep it on the first line
-            }
-
-            dynamicTextElement.appendChild(cursor);  // Ensure cursor stays after text
+            dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
 
             i++;
         } else {
-            clearInterval(typingInterval);  // Stop typing when finished
+            clearInterval(typingInterval);  // Stop when finished
             dynamicTextElement.removeChild(cursor);  // Remove the cursor
         }
-    }, 70);  // Adjust typing speed as needed
+    }, 70);  // Adjust speed as needed
 }
 
 

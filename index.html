@@ -68,6 +68,7 @@
             max-width: 30%;
             position: relative;
             z-index: 10;
+            word-wrap: break-word;
         }
 
         .dynamic-text {
@@ -77,10 +78,10 @@
             overflow: hidden;
             border-right: 3px solid #000080;
             display: inline-block;
-            word-wrap: break-word;
-            white-space: nowrap;
+            white-space: normal;
+            max-width: 30%;
             line-height: 1.2em;
-            height: 1.2em;
+            height: auto;
             animation: blink-cursor 1s steps(1) infinite;
         }
 

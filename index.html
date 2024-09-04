@@ -55,7 +55,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.3em; /* Reduced font size */
+            font-size: 2.5em;
             font-weight: 400;
             margin: 0 0 20px 0;
             color: #222;
@@ -281,7 +281,7 @@
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4em; /* Reduced font size */
+            font-size: 2.5em; /* Slightly reduced font size */
             margin-bottom: 20px;
             position: relative;
             top: -40px;
@@ -303,21 +303,22 @@
 
         .modal-content label {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9em; /* Reduced font size */
+            font-size: 0.9em;
             margin-bottom: 10px;
             display: block;
             color: #111111;
             text-align: left;
-            margin-left: 60px; /* Align to the left to match checkbox */
-            width:
-            width: 65%; /* Align with the input form */
+            margin-left: auto;
+            margin-right: auto;
+            width: 55%; /* Same width as input form and button */
         }
 
+        .modal-content
         .modal-content input[type="email"] {
             padding: 10px;
             font-size: 1em;
             margin-bottom: 20px;
-            width: 55%; /* Shortened input form */
+            width: 55%; /* Same width as "Continue" button */
             border: 1px solid #ccc;
             border-radius: 0px; /* Sharp edges */
             text-align: left;
@@ -333,7 +334,7 @@
             color: #888888;
             margin-left: auto;
             margin-right: auto;
-            width: 65%;
+            width: 55%; /* Aligned with input form and button */
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
@@ -367,7 +368,175 @@
             cursor: pointer;
             transition: background-color 0.2s ease;
             margin-top: 40px; /* Positioned lower */
-            width: 55%; /* Matched to email input form length */
+            width: 55%; /* Same length as email input */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        .modal-content button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+
+    <div class="header-text">
+        Shop unforgettable restaurants, hotels, and experiences
+    </div>
+
+    <div class="container">
+        <h1>Memorably</h1>
+        <div class="dynamic-text-container">
+            <div class="dynamic-text"></div>
+        </div>
+        <button id="joinWaitlistButton">Join waitlist</button>
+        <button class="secondary-button">Suggest places</button>
+    </div>
+
+    <!-- Full-Screen Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Memorably</h1>
+            <p>We'll send a code to your email to verify and register your account.</p>
+            <form id="waitlistForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">By continuing, you agree to Memorably's 
+                        <a href="#">Privacy policy</a> and acknowledge you've read our 
+                        <a href="#">Terms of service</a>.
+                    </label>
+                </div>
+                <button type="submit" id="submitButton" disabled>Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="floating-images" id="images1">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
+    </div>
+
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
+    </div>
+
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
+
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
+    </div>
+
+    <div class="footer">
+        <div class="social-media-links">
+            <a href="https://www.instagram.com" target="_blank" class="social-button">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="social-button">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-button">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+
+        <div class="upper-links">
+            <a href="#">Partner with us</a> |
+            <a href="#">Careers</a>
+        </div>
+        <div class="lower-links">
+            <a href="#">Terms of service</a> |
+            <a href="#">Privacy policy</a>
+        </div>
+    </div>
+
+    <script>
+        const taglines = [
+            "Discover the best in hospitality",
+            "Merch from iconic places, designed by creators like you",
+            "Shop local, or wherever your journey takes you",
+            "Savor the moments, one gift at a time"
+        ];
+
+        const colors = [
+            "#ffebe6",
+            "#e6f7ff",
+            "#e6ffe6",
+            "#ffeadf"
+        ];
+
+        const imagesSets = [
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
+        ];
+
+        let currentIndex = 0;
+        const dynamicTextElement = document.querySelector('.dynamic-text');
+        const backgroundElement = document.getElementById('background');
+
+        function typeTagline() {
+            dynamicTextElement.textContent = "";
+            const tagline = taglines[currentIndex];
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < tagline.length) {
+                    dynamicTextElement.textContent += tagline.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, 70);
+        }
+
+        function blinkCursor() {
+            dynamicTextElement.style.borderRight = '3px solid #000080';
+            setInterval(() => {
+                if (dynamicTextElement.style.borderRight === '3px solid #000080') {
+                    dynamicTextElement.style.borderRight = '3px solid transparent';
+                } else {
+                    dynamicTextElement.style.borderRight = '3px solid #000080';
+                }
+            }, 500);
+        }
+
+        function randomizeImagePositions(set) {
+            const positions = [
+                { top: '0%', left: '15%' },
+                { top: '10%', left: '45%' },
+                { top: '30%', left:
+            width: 55%; /* Same length as email input */
             margin-left: auto;
             margin-right: auto;
             display: block;

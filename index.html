@@ -64,7 +64,7 @@
             max-width: 50%;
         }
 
-    .dynamic-text-container {
+  .dynamic-text-container {
     max-width: 350px; /* Set a comfortable width */
     position: relative;
     z-index: 10;
@@ -98,6 +98,7 @@
     from, to { border-color: transparent; }
     50% { border-color: #000080; }
 }
+
 
 
         button {
@@ -529,7 +530,7 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
-   function typeTagline() {
+  function typeTagline() {
     dynamicTextElement.innerHTML = "";  // Clear the current text
     const tagline = taglines[currentIndex];  // Get the current tagline
     let i = 0;
@@ -562,6 +563,7 @@
         }
     }, 70);  // Adjust typing speed as needed
 }
+
 
 
 

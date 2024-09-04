@@ -64,37 +64,40 @@
             max-width: 50%;
         }
 
-       .dynamic-text-container {
-            max-width: 350px; /* Set a comfortable width */
-            position: relative;
-            z-index: 10;
-            word-wrap: break-word;
-            height: 2.4em; /* Fixed height for two lines (line-height * 2) */
-            overflow: hidden; /* Prevents overflow beyond two lines */
+      .dynamic-text-container {
+    max-width: 350px; /* Set a comfortable width */
+    position: relative;
+    z-index: 10;
+    word-wrap: break-word;
+    height: 2.4em; /* Fixed height for two lines (line-height * 2) */
+    overflow: hidden; /* Prevents overflow beyond two lines */
+    line-height: 1.2em;
 }
 
-        .dynamic-text {
-            font-size: 1.2em;
-            color: #111;
-            display: inline-block;
-            line-height: 1.2em;
-            white-space: normal; /* Text can wrap */
-            max-width: 100%;
-            position: relative;
+.dynamic-text {
+    font-size: 1.2em;
+    color: #111;
+    display: inline-block;
+    white-space: pre-wrap; /* Allow text to wrap */
+    max-width: 100%;
+    position: relative;
+    line-height: 1.2em; /* Line height of one text line */
 }
 
-        .cursor {
-            border-right: 3px solid #000080;
-            display: inline-block;
-            position: absolute;
-            height: 1.2em; /* Matches the height of one line */
-            animation: blink-cursor 1s steps(1) infinite;
+.cursor {
+    border-right: 3px solid #000080;
+    position: absolute;
+    height: 1.2em; /* Matches the height of one line */
+    animation: blink-cursor 1s steps(1) infinite;
+    display: inline-block;
+    vertical-align: bottom; /* Ensures it's at the bottom of the line */
 }
-        
-        @keyframes blink-cursor {
-            from, to { border-color: transparent; }
-            50% { border-color: #000080; }
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #000080; }
 }
+
         button {
             margin-top: 0px;
             padding: 12px 24px;
@@ -524,7 +527,7 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
-      function typeTagline() {
+     function typeTagline() {
     dynamicTextElement.innerHTML = "";  // Clear the current text
     const tagline = taglines[currentIndex];  // Get the current tagline
     let i = 0;
@@ -537,11 +540,19 @@
     const typingInterval = setInterval(() => {
         if (i < tagline.length) {
             dynamicTextElement.textContent += tagline.charAt(i);  // Add the next character
-            dynamicTextElement.appendChild(cursor);  // Move cursor to the end of the current text
 
-            // Check if the text has wrapped and the cursor needs to move to the second line
-            if (dynamicTextElement.scrollHeight > parseInt(window.getComputedStyle(dynamicTextElement).lineHeight) * 2) {
-                dynamicTextElement.style.whiteSpace = "nowrap";  // Stop wrapping to prevent third line
+            // Append the cursor again to make sure it stays at the end of the text
+            dynamicTextElement.appendChild(cursor);
+
+            // Check if text wraps to the second line and update cursor position accordingly
+            const currentHeight = dynamicTextElement.scrollHeight;
+            const lineHeight = parseFloat(window.getComputedStyle(dynamicTextElement).lineHeight);
+
+            // Adjust cursor position if the text wraps to the second line
+            if (currentHeight > lineHeight) {
+                cursor.style.top = lineHeight + 'px';  // Move the cursor to the second line
+            } else {
+                cursor.style.top = '0px';  // Keep it on the first line
             }
 
             i++;
@@ -551,6 +562,7 @@
         }
     }, 70);  // Adjust typing speed as needed
 }
+
 
 
         function blinkCursor() {

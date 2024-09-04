@@ -88,27 +88,15 @@
             border-right: 3px solid #000080;
             height: 1.2em; /* Fixed to match the height of one line */
             display: inline-block;
-            animation: blink-cursor 1s steps(1) infinite;
+            animation: blink-cursor 0.7s steps(1) infinite; /* Fast blink for better visibility */
             vertical-align: bottom; /* Aligns cursor with the bottom of the text */
-            position: relative; /* Adjusts with the typed text */
+            margin-left: 2px;
         }
 
         @keyframes blink-cursor {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: #000080; }
-        }
-
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .typewriter-text {
-            display: inline-block;
-            overflow: hidden; /* Ensures the text is hidden until typed */
-            border-right: 3px solid #000080;
-            white-space: nowrap;
-            animation: typewriter 4s steps(30, end), blink-cursor 1s step-end infinite;
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         button {
@@ -154,7 +142,7 @@
             color: white;
         }
 
-        .floating-images {
+.floating-images {
             position: absolute;
             top: 50%;
             right: 10%;
@@ -279,7 +267,7 @@
             color: #111111;
         }
 
-        .close-button {
+       .close-button {
             background-color: white;
             border: none;
             border-radius: 50%;
@@ -297,14 +285,15 @@
             color: #444;
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1; /* Set line-height to match font size */
-            padding-bottom: 3px; /* Adjust padding to move the "X" up */
-        }
+            padding-bottom: 3px; /* Adjust padding to move the "X" up */         
+}
+
 
         .close-button:hover {
             background-color: transparent;
             color: #111;
         }
-        
+
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.6em;
@@ -415,7 +404,8 @@
             background-color: #ccc;
             cursor: default;
         }
-    </style>
+        
+</style>
 </head>
 <body>
     <div class="background" id="background"></div>
@@ -428,12 +418,13 @@
         <h1>Memorably</h1>
         <div class="dynamic-text-container">
             <div class="dynamic-text"></div>
+            <span class="cursor"></span> <!-- Cursor is always present -->
         </div>
         <button id="joinWaitlistButton">Join waitlist</button>
         <button class="secondary-button">Suggest places</button>
     </div>
 
-    <!-- Full-Screen Modal -->
+<!-- Full-Screen Modal -->
     <div id="waitlistModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -521,130 +512,34 @@
             "Savor the moments, one remarkable gift at a time"
         ];
 
-        const colors = [
-            "#F6EAE3",
-            "#ECEDEC",
-            "#F4F5E0",
-            "#FAF8F6"
-        ];
-
-        const imagesSets = [
-            document.getElementById('images1'),
-            document.getElementById('images2'),
-            document.getElementById('images3'),
-            document.getElementById('images4')
-        ];
-
         let currentIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
-        const backgroundElement = document.getElementById('background');
+        const cursorElement = document.querySelector('.cursor');
 
         function typeTagline() {
             dynamicTextElement.innerHTML = "";  // Clear the current text
             const tagline = taglines[currentIndex];  // Get the current tagline
             let i = 0;
 
-            // Clear any previous cursor and add a new one
-            let cursor = document.createElement("span");
-            cursor.classList.add("cursor");
-            dynamicTextElement.appendChild(cursor);
-
             const typingInterval = setInterval(() => {
                 if (i < tagline.length) {
                     dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
-
                     i++;
                 } else {
                     clearInterval(typingInterval);  // Stop when finished
-                    dynamicTextElement.removeChild(cursor);  // Remove the cursor
                 }
             }, 70);  // Adjust speed as needed
         }
 
-        function randomizeImagePositions(set) {
-            const positions = [
-                { top: '0%', left: '15%' },
-                { top: '10%', left: '45%' },
-                { top: '30%', left: '10%' },
-                { top: '0%', left: '65%' },
-                { top: '40%', left: '60%' },
-                { top: '60%', left: '30%' }
-            ];
-
-            for (let i = positions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [positions[i], positions[j]] = [positions[j], positions[i]];
-            }
-
-            set.querySelectorAll('img').forEach((img, index) => {
-                img.style.top = positions[index].top;
-                img.style.left = positions[index].left;
-            });
-
-            set.querySelector('img:nth-child(4)').style.zIndex = 4;
-        }
-
-        function fadeImages() {
-            const previousIndex = currentIndex;
-            currentIndex = (currentIndex + 1) % imagesSets.length;
-
-            const previousSet = imagesSets[previousIndex];
-            const nextSet = imagesSets[currentIndex];
-
-            previousSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '0';
-                }, i * 100);
-            });
-
-            setTimeout(() => {
-                previousSet.style.display = 'none';
-
-                nextSet.style.display = 'flex';
-                randomizeImagePositions(nextSet);
-                nextSet.querySelectorAll('img').forEach((img, i) => {
-                    setTimeout(() => {
-                        img.style.opacity = '1';
-                    }, i * 100);
-                });
-            }, 1200);
-        }
-
-        function changeBackgroundColor() {
-            const nextColor = colors[currentIndex];
-            backgroundElement.style.backgroundColor = nextColor;
-        }
-
-        function startTransitions() {
+        function startTyping() {
             typeTagline();
-            changeBackgroundColor();
-            fadeImages();
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % taglines.length;
+                typeTagline();
+            }, 12000); // Re-type every 12 seconds (matches your overall transition speed)
         }
 
-        setInterval(startTransitions, 12000);
-
-        startTransitions();
-
-        // Modal functionality
-        const modal = document.getElementById("waitlistModal");
-        const joinWaitlistButton = document.getElementById("joinWaitlistButton");
-        const closeButton = document.querySelector(".close-button");
-        const submitButton = document.getElementById("submitButton");
-        const termsCheckbox = document.getElementById("terms");
-
-        joinWaitlistButton.onclick = function() {
-            modal.style.display = "flex";
-            modal.classList.add("show");
-        }
-
-        closeButton.onclick = function() {
-            modal.style.display = "none";
-            modal.classList.remove("show");
-        }
-
-        termsCheckbox.onchange = function() {
-            submitButton.disabled = !this.checked;
-        }
+        startTyping();
     </script>
 </body>
 </html>

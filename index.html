@@ -270,7 +270,7 @@
             position: absolute;
             top: 34px; /* Moved up for better centering */
             right: 32px;
-            color: #666;
+            color: #444;
             transition: background-color 0.1s ease, color 0.1s ease;
         }
 
@@ -281,10 +281,10 @@
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.6em; /* Reduced font size */
-            margin-bottom: 12px;
+            font-size: 2.6em;
+            margin-bottom: 6px;
             position: relative;
-            top: -42px;
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -292,7 +292,7 @@
         .modal-content p {
             font-family: 'Inter', sans-serif;
             font-size: 0.9em;
-            margin-bottom: 50px;
+            margin-bottom: 55px;
             margin-left: auto;
             margin-right: auto;
             width: 62%;
@@ -305,13 +305,13 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.9em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 9px;
             display: block;
             color: #111111;
             text-align: left;
             margin-left: auto;
             margin-right: auto;
-            width: 60%; /* Align with the input form */
+            width: 61%; /* Align with the input form */
         }
 
         .modal-content input[type="email"] {
@@ -338,16 +338,16 @@
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
-            margin-right: 6px;
-            margin-top: 2px; /* Moved checkbox up to align with first line */
+            margin-right: 4px;
+            margin-top: 1px;
             cursor: pointer;
         }
 
         .modal-content .checkbox-container label {
-            font-size: 0.75em;
+            font-size: 0.79em;
             color: #777777;
             word-wrap: break-word;
-            width: calc(100% - 12px); /* Constrained width for text */
+            width: calc(100% - 10px); /* Constrained width for text */
         }
 
         .modal-content .checkbox-container a {
@@ -408,7 +408,7 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h1>Memorably</h1>
-            <p>We'll send a code to your email to verify and register your account.</p>
+            <p>We'll send a code to your email to verify and register your account</p>
             <form id="waitlistForm">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
@@ -416,7 +416,7 @@
                     <input type="checkbox" id="terms" name="terms" required>
                     <label for="terms">By continuing, you agree to Memorably's 
                         <a href="#">Privacy policy</a> and acknowledge you've read our 
-                        <a href="#">Terms of service</a>.
+                        <a href="#">Terms of service</a>
                     </label>
                 </div>
                 <button type="submit" id="submitButton" disabled>Continue</button>

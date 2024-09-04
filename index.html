@@ -259,8 +259,8 @@
             background-color: white;
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -268,23 +268,23 @@
             font-weight: 200; /* Made the 'X' thinner */
             cursor: pointer;
             position: absolute;
-            top: 0px; /* Moved up for better centering */
+            top: 45px; /* Moved up for better centering */
             right: 40px;
-            color: #888;
+            color: #777;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .close-button:hover {
             background-color: transparent;
-            color: #555;
+            color: #444;
         }
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8em; /* Reduced font size */
-            margin-bottom: 20px;
+            font-size: 2.6em; /* Reduced font size */
+            margin-bottom: 15px;
             position: relative;
-            top: -40px;
+            top: -42px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -292,7 +292,7 @@
         .modal-content p {
             font-family: 'Inter', sans-serif;
             font-size: 0.9em;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             margin-left: auto;
             margin-right: auto;
             width: 65%;
@@ -303,12 +303,13 @@
 
         .modal-content label {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9em; /* Reduced font size */
+            font-size: 0.9em;
+            font-weight: bold
             margin-bottom: 10px;
             display: block;
             color: #111111;
             text-align: left;
-            margin-left: auto;
+            margin-left: 10px;
             margin-right: auto;
             width: 65%; /* Align with the input form */
         }
@@ -333,12 +334,12 @@
             color: #444;
             margin-left: auto;
             margin-right: auto;
-            width: 57%; /* Matching width to the email input form */
+            width: 60%; /* Matching width to the email input form */
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
-            margin-right: 10px;
-            margin-top: 5px; /* Moved checkbox up to align with first line */
+            margin-right: 6px;
+            margin-top: 2px; /* Moved checkbox up to align with first line */
         }
 
         .modal-content .checkbox-container label {
@@ -356,6 +357,7 @@
 
         .modal-content .checkbox-container a:hover {
             color: #777777;
+            cursor: pointer;
         }
 
         .modal-content button[type="submit"] {

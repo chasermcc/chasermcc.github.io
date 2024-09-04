@@ -96,7 +96,7 @@
             color: white;
             background-color: #333;
             border: 2px solid #333;
-            border-radius: 0px;
+            border-radius: 0px; /* Sharp edges */
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
             display: inline-block;
@@ -116,11 +116,11 @@
             color: #333;
             background-color: transparent;
             border: 1px solid #333; /* Thinner border */
-            border-radius: 0px;
+            border-radius: 0px; /* Sharp edges */
             cursor: pointer;
             transition: background-color 0.2s ease, color 0.2s ease;
             display: inline-block;
-            width: 220px; /* Set both buttons to the same length */
+            width: 220px;
             position: relative;
             z-index: 15;
         }
@@ -181,12 +181,12 @@
 
         .social-button {
             font-size: 24px;
-            color: #333; /* Gray color for default state */
+            color: #333;
             transition: color 0.2s ease;
         }
 
         .social-button:hover {
-            color: black; /* Change to black on hover */
+            color: black;
         }
 
         .footer .upper-links {
@@ -196,7 +196,7 @@
             text-decoration: none;
             display: flex;
             gap: 15px;
-            margin-top: 20px; /* Adjusted margin for space between social and footer links */
+            margin-top: 20px;
         }
 
         .footer .upper-links a {
@@ -231,80 +231,80 @@
         }
 
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 100; /* Sit on top */
+            display: none;
+            position: fixed;
+            z-index: 100;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: #FAF8F6; /* Set background to #FAF8F6 */
+            background-color: #FAF8F6;
             justify-content: center;
             align-items: center;
         }
 
         .modal.show {
-            animation: fadeInModal 0.3s ease-in-out; /* Adjust the duration as needed */
+            animation: fadeInModal 0.3s ease-in-out;
         }
 
         .modal-content {
-            background-color: transparent; /* Make the background transparent */
+            background-color: transparent;
             width: 100%;
             max-width: 600px;
             text-align: center;
-            color: #111111; /* Ensure text is visible */
+            color: #111111;
         }
 
         .close-button {
-            color: #333;
-            background-color: #FAF8F6;
-            border: 1px solid #333;
+            background-color: white;
+            border: none;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: normal;
             cursor: pointer;
             position: absolute;
             top: 20px;
             right: 40px;
+            color: #888;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .close-button:hover {
-            background-color: black;
-            color: white;
+            background-color: transparent;
+            color: #555;
         }
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3em;
             margin-bottom: 20px;
-            color: #111111;
             position: relative;
-            top: -30px; /* Move title higher */
-            text-align: center;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .modal-content p {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9em; /* Smaller font size */
+            font-size: 0.9em;
             margin-bottom: 40px;
             margin-left: auto;
             margin-right: auto;
-            width: 65%; /* Same width as the input form */
-            line-height: 1.4em; /* Ensure proper spacing */
+            width: 65%;
+            line-height: 1.4em;
+            line-height: 1.4em;
             color: #111111;
             word-wrap: break-word;
         }
 
         .modal-content label {
             font-family: 'Inter', sans-serif;
-            font-size: 1.1em;
+            font-size: 0.9em; /* Reduced font size */
             margin-bottom: 10px;
             display: block;
             color: #111111;
@@ -318,9 +318,9 @@
             padding: 10px;
             font-size: 1em;
             margin-bottom: 20px;
-            width: 65%; /* Shorten the email input */
+            width: 65%;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 0px; /* Sharp edges */
             text-align: left;
             margin-left: auto;
             margin-right: auto;
@@ -334,7 +334,7 @@
             color: #888888;
             margin-left: auto;
             margin-right: auto;
-            width: 65%; /* Align with the input form */
+            width: 65%;
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
@@ -342,8 +342,9 @@
         }
 
         .modal-content .checkbox-container label {
-            font-size: 0.9em; /* Smaller font size */
+            font-size: 0.9em;
             color: #888888;
+            word-wrap: break-word;
         }
 
         .modal-content .checkbox-container a {
@@ -362,11 +363,11 @@
             color: white;
             background-color: #333;
             border: none;
-            border-radius: 4px;
+            border-radius: 0px; /* Sharp edges */
             cursor: pointer;
             transition: background-color 0.2s ease;
-            margin-top: 20px;
-            width: 65%; /* Match the length with the input form */
+            margin-top: 30px; /* Moved further down */
+            width: 65%;
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -377,99 +378,8 @@
         }
 
         .modal-content button[type="submit"]:disabled {
-            background-color: #ccc; /* Gray out the button when disabled */
+            background-color: #ccc;
             cursor: not-allowed;
-        }
-
-        /* Responsive Styles */
-        @media screen and (max-width: 1024px) {
-            .floating-images {
-                width: 700px;
-                height: 500px;
-                right: 10%;
-            }
-            .floating-images img {
-                width: 200px;
-                height: 250px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .floating-images {
-                width: 600px;
-                height: 400px;
-                top: auto;
-                bottom: 30%;
-                right: 10%;
-                transform: translateY(50%);
-            }
-            .floating-images img {
-                width: 150px;
-                height: 200px;
-            }
-            .dynamic-text-container {
-                max-width: 80%;
-                word-wrap: break-word;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .floating-images {
-                position: absolute;
-                top: 35%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 80%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 10px;
-                z-index: 5;
-            }
-
-            .floating-images img {
-                position: static;
-                width: 28%;
-                height: auto;
-                opacity: 1;
-                animation: none;
-                transform: none;
-            }
-
-            .header-text {
-                left: 20px;
-                max-width: 100%;
-            }
-
-            .container {
-                padding-left: 20px;
-                max-width: calc(100% - 20px);
-            }
-
-            .dynamic-text-container {
-                max-width: 100%;
-                word-wrap: break-word;
-            }
-
-            .dynamic-text {
-                white-space: normal;
-            }
-
-            .footer {
-                left: 50%;
-                transform: translateX(-50%);
-                text-align: center;
-            }
-
-            .footer .upper-links,
-            .footer .lower-links {
-                justify-content: center;
-            }
-
-            body {
-                padding-bottom: 10px;
-            }
         }
     </style>
 </head>
@@ -549,8 +459,6 @@
     <div class="footer">
         <div class="social-media-links">
             <a href="https://www.instagram.com" target="_blank" class="social-button">
-                <i class="fab fa-instagram"></i>
-            </
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com" target="_blank" class="social-button">

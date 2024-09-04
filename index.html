@@ -65,30 +65,39 @@
         }
 
         .dynamic-text-container {
-            max-width: 30%;
+            max-width: 40%;
             position: relative;
             z-index: 10;
             word-wrap: break-word;
         }
 
-        .dynamic-text {
+       .dynamic-text {
             font-size: 1.2em;
             margin: 10px 0 30px 0;
             color: #111;
             overflow: hidden;
+            display: inline-block;
+            line-height: 1.2em;
+            max-width: 100%;
+            white-space: normal; /* Allow text to wrap */
+            height: auto;
+            position: relative; /* Required for cursor positioning */
+}
+
+        .cursor {
             border-right: 3px solid #000080;
             display: inline-block;
-            white-space: normal;
-            max-width: 30%;
-            line-height: 1.2em;
-            height: auto;
+            width: 1px;
+            height: 1.2em; /* Match the height of a single line of text */
+            position: absolute;
             animation: blink-cursor 1s steps(1) infinite;
-        }
+}
 
         @keyframes blink-cursor {
             from, to { border-color: transparent; }
             50% { border-color: #000080; }
-        }
+}
+
 
         button {
             margin-top: 20px;
@@ -517,19 +526,27 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const backgroundElement = document.getElementById('background');
 
-        function typeTagline() {
-            dynamicTextElement.textContent = "";
-            const tagline = taglines[currentIndex];
-            let i = 0;
-            const typingInterval = setInterval(() => {
-                if (i < tagline.length) {
-                    dynamicTextElement.textContent += tagline.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typingInterval);
-                }
-            }, 70);
+      function typeTagline() {
+    dynamicTextElement.textContent = "";  // Clear the current text
+    const tagline = taglines[currentIndex];  // Get the current tagline
+    let i = 0;
+
+    // Create a cursor element to append at the end of the dynamic text
+    const cursor = document.createElement("span");
+    cursor.classList.add("cursor");
+    dynamicTextElement.appendChild(cursor);
+
+    const typingInterval = setInterval(() => {
+        if (i < tagline.length) {
+            dynamicTextElement.textContent += tagline.charAt(i);  // Add the next character
+            dynamicTextElement.appendChild(cursor);  // Move cursor to the end of the current text
+            i++;
+        } else {
+            clearInterval(typingInterval);  // Stop typing when finished
+            dynamicTextElement.removeChild(cursor);  // Remove the cursor
         }
+    }, 70);  // Adjust typing speed as needed
+}
 
         function blinkCursor() {
             dynamicTextElement.style.borderRight = '3px solid #000080';

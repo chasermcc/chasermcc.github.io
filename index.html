@@ -256,23 +256,24 @@
         }
 
         .close-button {
-            background-color: white;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px; /* Increased size of the 'X' */
-            font-weight: 200; /* Made the 'X' thinner */
-            cursor: pointer;
-            position: absolute;
-            top: 34px; /* Moved up for better centering */
-            right: 32px;
-            color: #444;
-            transition: background-color 0.1s ease, color 0.1s ease;
-        }
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex; /* Use flexbox to center the content */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    font-size: 26px; /* Size of the "X" */
+    font-weight: 200; /* Thickness of the "X" */
+    cursor: pointer;
+    position: absolute;
+    top: 34px; /* Positioning at the top */
+    right: 32px; /* Positioning on the right */
+    color: #444;
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
 
         .close-button:hover {
             background-color: transparent;

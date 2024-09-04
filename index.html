@@ -268,21 +268,21 @@
             font-weight: 200; /* Made the 'X' thinner */
             cursor: pointer;
             position: absolute;
-            top: 45px; /* Moved up for better centering */
-            right: 40px;
+            top: 38px; /* Moved up for better centering */
+            right: 36px;
             color: #777;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.1s ease, color 0.1s ease;
         }
 
         .close-button:hover {
             background-color: transparent;
-            color: #444;
+            color: #333;
         }
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.6em; /* Reduced font size */
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             position: relative;
             top: -42px;
             left: 50%;
@@ -292,7 +292,7 @@
         .modal-content p {
             font-family: 'Inter', sans-serif;
             font-size: 0.9em;
-            margin-bottom: 45px;
+            margin-bottom: 50px;
             margin-left: auto;
             margin-right: auto;
             width: 65%;
@@ -309,9 +309,9 @@
             display: block;
             color: #111111;
             text-align: left;
-            margin-left: 10px;
+            margin-left: auto;
             margin-right: auto;
-            width: 65%; /* Align with the input form */
+            width: 56%; /* Align with the input form */
         }
 
         .modal-content input[type="email"] {
@@ -334,19 +334,20 @@
             color: #444;
             margin-left: auto;
             margin-right: auto;
-            width: 60%; /* Matching width to the email input form */
+            width: 57%; /* Matching width to the email input form */
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
             margin-right: 6px;
-            margin-top: 2px; /* Moved checkbox up to align with first line */
+            margin-top: 3px; /* Moved checkbox up to align with first line */
+            cursor: pointer;
         }
 
         .modal-content .checkbox-container label {
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: #777777;
             word-wrap: break-word;
-            width: calc(100% - 30px); /* Constrained width for text */
+            width: calc(100% - 20px); /* Constrained width for text */
         }
 
         .modal-content .checkbox-container a {

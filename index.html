@@ -268,7 +268,7 @@
             font-weight: 200; /* Made the 'X' thinner */
             cursor: pointer;
             position: absolute;
-            top: 12px; /* Moved up for better centering */
+            top: 0px; /* Moved up for better centering */
             right: 40px;
             color: #888;
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -328,23 +328,24 @@
 
         .modal-content .checkbox-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 20px;
             color: #444;
             margin-left: auto;
             margin-right: auto;
-            width: 65%;
+            width: 57%; /* Matching width to the email input form */
         }
 
         .modal-content .checkbox-container input[type="checkbox"] {
-            margin-right: 5px;
+            margin-right: 10px;
+            margin-top: 5px; /* Moved checkbox up to align with first line */
         }
 
         .modal-content .checkbox-container label {
             font-size: 0.8em;
             color: #777777;
             word-wrap: break-word;
-            width: 95%; /* Ensure text wraps within two lines */
+            width: calc(100% - 30px); /* Constrained width for text */
         }
 
         .modal-content .checkbox-container a {

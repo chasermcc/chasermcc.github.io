@@ -65,28 +65,34 @@
             transform: translateY(-15px);
         }
 
-       .dynamic-text-container {
-    display: flex; /* Apply Flexbox */
-    align-items: center; /* Vertically align items (text and cursor) */
+     .dynamic-text-container {
+    display: flex;
+    align-items: center;
     height: 2.6em; /* Adjust to hold exactly two lines of text */
     max-width: 330px;
-    overflow: hidden; /* Prevent third line from showing */
+    overflow: hidden; /* Ensure extra text is hidden */
     line-height: 1.3em;
+    position: relative;
+    z-index: 10; /* Ensure the container stays on top of other elements */
 }
 
 .dynamic-text {
     font-size: 1.1em;
     color: #111;
-    white-space: pre-wrap; /* Allow text to wrap */
-    flex-grow: 1; /* Allow the text to take up as much space as needed */
+    white-space: pre-wrap;
+    flex-grow: 1;
+    position: relative;
+    z-index: 20; /* Ensure the text stays visible above the container */
 }
 
 .cursor {
     border-right: 3px solid #333;
     height: 1.3em;
     animation: blink-cursor 0.7s steps(1) infinite;
-    margin-left: 2px; /* Small margin to separate cursor from text */
+    margin-left: 5px;
+    z-index: 20; /* Ensure cursor stays visible above the container */
 }
+
 
 
       @keyframes blink-cursor {

@@ -115,15 +115,16 @@
         button {
             margin-top: 0px;
             padding: 12px 24px;
-            font-size: 0.9em;
+            font-size: 1em;
+            font-weight: 150;
             color: white;
             background-color: #333;
             border: 2px solid #333;
             border-radius: 0px; /* Sharp edges */
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.1s ease, color 0.1s ease;
             display: inline-block;
-            width: 220px; /* Set both buttons to the same length */
+            width: 200px; /* Set both buttons to the same length */
             position: relative;
             z-index: 15;
             transform: translateY(45px);
@@ -136,15 +137,16 @@
         .secondary-button {
             margin-top: 8px;
             padding: 12px 24px;
-            font-size: 0.9em;
+            font-size: 1em;
+            font-weight: 150;
             color: #333;
-            background-color: transparent;
+            background-color: white;
             border: 1px solid #333; /* Thinner border */
             border-radius: 0px; /* Sharp edges */
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.1s ease, color 0.1s ease;
             display: inline-block;
-            width: 220px;
+            width: 200px;
             position: relative;
             z-index: 15;
             transform: translateY(45px);
@@ -496,7 +498,7 @@
             <span class="cursor"></span> <!-- Cursor is always present -->
         </div>
         <button id="joinWaitlistButton">Join waitlist</button>
-        <button class="secondary-button">Suggest places</button>
+        <button class="secondary-button">Places</button>
     </div>
 
     <!-- Full-Screen Modal -->

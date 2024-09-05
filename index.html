@@ -504,32 +504,129 @@
             cursor: default;
         }
 
-        /* Full-Screen Modal Styles for Places */
+      /* Full-Screen Modal Styles for Places */
 .places-modal {
-    background-color: #ECEDEC; /* Example different background */
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FAF8F6; /* Same background color */
+    justify-content: center;
+    align-items: center;
+}
+
+.places-modal.show {
+    animation: fadeInModal 0.2s ease-in-out; /* Same fade-in effect */
 }
 
 .places-modal-content {
-    background-color: #FFF; /* Adjust content area background */
-    max-width: 650px; /* Adjust size if needed */
+    background-color: transparent;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: #111111; /* Same text color */
 }
 
 .places-modal-content h1 {
-    font-size: 2.2em; /* Adjust heading size */
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6em;
+    margin-bottom: 2px;
+    position: relative;
+    top: -34px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .places-modal-content p {
-    font-size: 0.95em; /* Adjust text size */
-    margin-bottom: 60px; /* Add more space */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    margin-bottom: 67px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 59%;
+    line-height: 1.4em;
+    color: #111111;
+    word-wrap: break-word;
+}
+
+.places-modal-content label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 9px;
+    display: block;
+    color: #111111;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 61%; /* Align with the input form */
+}
+
+.places-modal-content input[type="email"] {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 25px;
+    width: 57%;
+    border: 1px solid #444;
+    border-radius: 0px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .places-modal-content button[type="submit"] {
-    background-color: #222; /* Change button color if desired */
-    width: 62%; /* Change button width */
+    padding: 12px 24px;
+    font-size: 1em;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 0px; /* Sharp edges */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 55px;
+    width: 60%; /* Matched to email input form length */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .places-modal-content button[type="submit"]:hover {
-    background-color: #555; /* Hover color */
+    background-color: black;
+}
+
+.places-modal-content button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: default;
+}
+
+.close-button {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 200;
+    cursor: pointer;
+    position: absolute;
+    top: 34px;
+    right: 32px;
+    color: #444;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    line-height: 1; /* Set line-height to match font size */
+    padding-bottom: 3px; /* Adjust padding to move the "X" up */
+}
+
+.close-button:hover {
+    background-color: transparent;
+    color: #111;
 }
 
         

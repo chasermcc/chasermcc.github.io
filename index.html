@@ -1,658 +1,644 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memorably | Shop unforgettable places</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorably | Shop unforgettable places</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
 
-```
-    body {
-        margin: 0;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        overflow: hidden;
-        background-color: white;
-        transition: background-color 2s ease-in-out;
-        animation: fadeIn 1s ease-in-out;
-    }
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+            background-color: white;
+            transition: background-color 2s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    .background {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: background-color 2s ease-in-out;
-    }
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: background-color 2s ease-in-out;
+        }
 
-    .header-text {
-        position: absolute;
-        top: 9%;
-        left: 80px;
-        font-family: 'Inter', sans-serif;
-        font-size: 1em;
-        color: #111;
-        max-width: 50%;
-    }
+        .header-text {
+            position: absolute;
+            top: 9%;
+            left: 80px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            color: #111;
+            max-width: 50%;
+        }
 
-    .container {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding-left: 80px;
-        color: #333;
-    }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 80px;
+            color: #333;
+        }
 
-    h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.5em;
-        font-weight: 375;
-        margin: 0 0 0 0;
-        color: #222;
-        position: relative;
-        z-index: 10;
-        max-width: 50%;
-        transform: translateY(-15px);
-    }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 375;
+            margin: 0 0 0 0;
+            color: #222;
+            position: relative;
+            z-index: 10;
+            max-width: 50%;
+            transform: translateY(-15px);
+        }
 
-```
-
-.dynamic-text-container {
-display: flex;
-align-items: flex-start; /* Align the text to the top */
-height: 2.8em; /* Adjust to hold exactly two lines of text */
-max-width: 330px;
-overflow: hidden; /* Ensure extra text is hidden */
-line-height: 1.3em;
-position: relative;
-z-index: 10;
+   .dynamic-text-container {
+    display: flex;
+    align-items: flex-start; /* Align the text to the top */
+    height: 2.8em; /* Adjust to hold exactly two lines of text */
+    max-width: 330px;
+    overflow: hidden; /* Ensure extra text is hidden */
+    line-height: 1.3em;
+    position: relative;
+    z-index: 10;
 }
 
 .dynamic-text {
-font-size: 1.1em;
-color: #111;
-white-space: pre-wrap; /* Allow text to wrap */
-flex-grow: 1; /* Allow the text to take as much space as needed */
-line-height: 1.3em; /* Ensure proper line height */
-position: relative;
-z-index: 20;
+    font-size: 1.1em;
+    color: #111;
+    white-space: pre-wrap; /* Allow text to wrap */
+    flex-grow: 1; /* Allow the text to take as much space as needed */
+    line-height: 1.3em; /* Ensure proper line height */
+    position: relative;
+    z-index: 20;
 }
 
 .dynamic-text:after {
-content: ''; /* Empty content to act as the cursor */
-border-right: 3px solid #333;
-height: 1.3em;
-display: inline-block;
-animation: blink-cursor 0.7s steps(1) infinite;
-vertical-align: bottom;
-margin-left: 2px; /* Adjust the cursor position */
+    content: ''; /* Empty content to act as the cursor */
+    border-right: 3px solid #333;
+    height: 1.3em;
+    display: inline-block;
+    animation: blink-cursor 0.7s steps(1) infinite;
+    vertical-align: bottom;
+    margin-left: 2px; /* Adjust the cursor position */
 }
 
-```
-  @keyframes blink-cursor {
-0% { opacity: 1;    }
-10% { opacity: .9;  }
-20% { opacity: 0.8; }
-30% { opacity: 0.7; }
-40% { opacity: 0.6; }
-50% { opacity: 0.5; }
-60% { opacity: 0.4; }
-70% { opacity: 0;   }
-100% {opacity: 1;   }
 
-```
 
+      @keyframes blink-cursor {
+    0% { opacity: 1;    } 
+    10% { opacity: .9;  }   
+    20% { opacity: 0.8; }  
+    30% { opacity: 0.7; } 
+    40% { opacity: 0.6; } 
+    50% { opacity: 0.5; }    
+    60% { opacity: 0.4; }  
+    70% { opacity: 0;   }   
+    100% {opacity: 1;   }      
 }
 
-```
-    button {
-        margin-top: 0px;
-        padding: 12px 24px;
-        font-size: 0.9em;
-        color: white;
-        background-color: #333;
-        border: 2px solid #333;
-        border-radius: 0px; /* Sharp edges */
-        cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        display: inline-block;
-        width: 220px; /* Set both buttons to the same length */
-        position: relative;
-        z-index: 15;
-        transform: translateY(45px);
-    }
 
-    button:hover {
-        background-color: black;
-    }
-
-    .secondary-button {
-        margin-top: 8px;
-        padding: 12px 24px;
-        font-size: 0.9em;
-        color: #333;
-        background-color: transparent;
-        border: 1px solid #333; /* Thinner border */
-        border-radius: 0px; /* Sharp edges */
-        cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        display: inline-block;
-        width: 220px;
-        position: relative;
-        z-index: 15;
-        transform: translateY(45px);
-    }
-
-    .secondary-button:hover {
-        background-color: black;
-        color: white;
-    }
-
-    .floating-images {
-        position: absolute;
-        top: 50%;
-        right: 10%;
-        transform: translateY(-50%);
-        width: 800px;
-        height: 600px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        opacity: 1;
-        transition: width 0.5s ease, height 0.5s ease;
-    }
-
-    .floating-images img {
-        position: absolute;
-        object-fit: cover;
-        border-radius: 20px; /* Increased border radius for more rounded edges */
-        animation: float 15s linear infinite;
-        transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease;
-        opacity: 0;
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0) translateX(0);
+        button {
+            margin-top: 0px;
+            padding: 12px 24px;
+            font-size: 0.9em;
+            color: white;
+            background-color: #333;
+            border: 2px solid #333;
+            border-radius: 0px; /* Sharp edges */
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            display: inline-block;
+            width: 220px; /* Set both buttons to the same length */
+            position: relative;
+            z-index: 15;
+            transform: translateY(45px);
         }
-        100% {
-            transform: translateY(-20px) translateX(20px);
+
+        button:hover {
+            background-color: black;
         }
-    }
 
-    .footer {
-        position: absolute;
-        bottom: 60px;
-        left: 80px;
-        font-size: 0.9em;
-        color: #555;
-    }
+        .secondary-button {
+            margin-top: 8px;
+            padding: 12px 24px;
+            font-size: 0.9em;
+            color: #333;
+            background-color: transparent;
+            border: 1px solid #333; /* Thinner border */
+            border-radius: 0px; /* Sharp edges */
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            display: inline-block;
+            width: 220px;
+            position: relative;
+            z-index: 15;
+            transform: translateY(45px);
+        }
 
-    .footer .social-media-links {
-        display: flex;
-        justify-content: flex-start;
-        gap: 15px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
+        .secondary-button:hover {
+            background-color: black;
+            color: white;
+        }
 
-    .social-button {
-        font-size: 24px;
-        color: #333;
-        transition: color 0.2s ease;
-    }
+        .floating-images {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: width 0.5s ease, height 0.5s ease;
+        }
 
-    .social-button:hover {
-        color: #111;
-    }
+        .floating-images img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 20px; /* Increased border radius for more rounded edges */
+            animation: float 15s linear infinite;
+            transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease;
+            opacity: 0;
+        }
 
-    .footer .upper-links {
-        font-size: 1.1em;
-        font-weight: 450;
-        color: #111;
-        text-decoration: none;
-        display: flex;
-        gap: 12px;
-        margin-top: 20px;
-    }
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-20px) translateX(20px);
+            }
+        }
 
-    .footer .upper-links a {
-        color: #111;
-        text-decoration: none;
-    }
+        .footer {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            font-size: 0.9em;
+            color: #555;
+        }
 
-    .footer .upper-links a:hover {
-        color: #777;
-    }
+        .footer .social-media-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
 
-    .footer .lower-links {
-        font-size: 0.8em;
-        margin-top: 20px;
-        display: flex;
-        gap: 10px;
-    }
+        .social-button {
+            font-size: 24px;
+            color: #333;
+            transition: color 0.2s ease;
+        }
 
-    .footer .lower-links a {
-        color: #555;
-        text-decoration: underline;
-    }
+        .social-button:hover {
+            color: #111;
+        }
 
-    .footer .lower-links a:hover {
-        text-decoration: none;
-    }
+        .footer .upper-links {
+            font-size: 1.1em;
+            font-weight: 450;
+            color: #111;
+            text-decoration: none;
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
 
-    /* Full-Screen Modal Styles */
-    @keyframes fadeInModal {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+        .footer .upper-links a {
+            color: #111;
+            text-decoration: none;
+        }
 
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #FAF8F6;
-        justify-content: center;
-        align-items: center;
-    }
+        .footer .upper-links a:hover {
+            color: #777;
+        }
 
-    .modal.show {
-        animation: fadeInModal 0.2s ease-in-out;
-    }
+        .footer .lower-links {
+            font-size: 0.8em;
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
 
-    .modal-content {
-        background-color: transparent;
-        width: 100%;
-        max-width: 600px;
-        text-align: center;
-        color: #111111;
-    }
+        .footer .lower-links a {
+            color: #555;
+            text-decoration: underline;
+        }
 
-    .close-button {
-        background-color: white;
-        border: none;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 26px;
-        font-weight: 200;
-        cursor: pointer;
-        position: absolute;
-        top: 34px;
-        right: 32px;
-        color: #444;
-        transition: background-color 0.1s ease, color 0.1s ease;
-        line-height: 1; /* Set line-height to match font size */
-        padding-bottom: 3px; /* Adjust padding to move the "X" up */
-    }
+        .footer .lower-links a:hover {
+            text-decoration: none;
+        }
 
-    .close-button:hover {
-        background-color: transparent;
-        color: #111;
-    }
+        /* Full-Screen Modal Styles */
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    .modal-content h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.6em;
-        margin-bottom: 2px;
-        position: relative;
-        top: -34px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FAF8F6;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .modal-content p {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.9em;
-        margin-bottom: 67px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 59%;
-        line-height: 1.4em;
-        color: #111111;
-        word-wrap: break-word;
-    }
+        .modal.show {
+            animation: fadeInModal 0.2s ease-in-out;
+        }
 
-    .modal-content label {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.9em;
-        font-weight: bold;
-        margin-bottom: 9px;
-        display: block;
-        color: #111111;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
-        width: 61%; /* Align with the input form */
-    }
+        .modal-content {
+            background-color: transparent;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            color: #111111;
+        }
 
-    .modal-content input[type="email"] {
-        padding: 10px;
-        font-size: 1em;
-        margin-bottom: 25px;
-        width: 57%;
-        border: 1px solid #444;
-        border-radius: 0px;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
+        .close-button {
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            font-weight: 200;
+            cursor: pointer;
+            position: absolute;
+            top: 34px;
+            right: 32px;
+            color: #444;
+            transition: background-color 0.1s ease, color 0.1s ease;
+            line-height: 1; /* Set line-height to match font size */
+            padding-bottom: 3px; /* Adjust padding to move the "X" up */
+        }
 
-    .modal-content .checkbox-container {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 20px;
-        color: #444;
-        margin-left: auto;
-        margin-right: auto;
-        width: 59%; /* Matching width to the email input form */
-    }
+        .close-button:hover {
+            background-color: transparent;
+            color: #111;
+        }
 
-    .modal-content .checkbox-container input[type="checkbox"] {
-        margin-right: 5px;
-        margin-top: 1px;
-        cursor: pointer;
-    }
+        .modal-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6em;
+            margin-bottom: 2px;
+            position: relative;
+            top: -34px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .modal-content .checkbox-container label {
-        font-size: 0.78em;
-        font-weight: 150;
-        line-height: 1.4em;
-        color: #777777;
-        word-wrap: break-word;
-        width: 100%;
-    }
+        .modal-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 67px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 59%;
+            line-height: 1.4em;
+            color: #111111;
+            word-wrap: break-word;
+        }
 
-    .modal-content .checkbox-container a {
-        color: #777777;
-        font-weight: bold;
-        text-decoration: underline;
-        cursor: pointer;
-    }
+        .modal-content label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 9px;
+            display: block;
+            color: #111111;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            width: 61%; /* Align with the input form */
+        }
 
-    .modal-content .checkbox-container a:hover {
-        color: #777777;
-        text-decoration: none;
-    }
+        .modal-content input[type="email"] {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 25px;
+            width: 57%;
+            border: 1px solid #444;
+            border-radius: 0px;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
 
-    .modal-content button[type="submit"] {
-        padding: 12px 24px;
-        font-size: 1em;
-        color: white;
-        background-color: #333;
-        border: none;
-        border-radius: 0px; /* Sharp edges */
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-        margin-top: 55px; /* Positioned lower */
-        width: 60%; /* Matched to email input form length */
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
+        .modal-content .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            color: #444;
+            margin-left: auto;
+            margin-right: auto;
+            width: 59%; /* Matching width to the email input form */
+        }
 
-    .modal-content button[type="submit"]:hover {
-        background-color: black;
-    }
+        .modal-content .checkbox-container input[type="checkbox"] {
+            margin-right: 5px;
+            margin-top: 1px;
+            cursor: pointer;
+        }
 
-    .modal-content button[type="submit"]:disabled {
-        background-color: #ccc;
-        cursor: default;
-    }
-</style>
+        .modal-content .checkbox-container label {
+            font-size: 0.78em;
+            font-weight: 150;
+            line-height: 1.4em;
+            color: #777777;
+            word-wrap: break-word;
+            width: 100%;
+        }
 
-```
+        .modal-content .checkbox-container a {
+            color: #777777;
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
+        .modal-content .checkbox-container a:hover {
+            color: #777777;
+            text-decoration: none;
+        }
+
+        .modal-content button[type="submit"] {
+            padding: 12px 24px;
+            font-size: 1em;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 0px; /* Sharp edges */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 55px; /* Positioned lower */
+            width: 60%; /* Matched to email input form length */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        .modal-content button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+    </style>
 </head>
 <body>
-<div class="background" id="background"></div>
+    <div class="background" id="background"></div>
 
-```
-<div class="header-text">
-    Shop unforgettable restaurants, hotels, and experiences
-</div>
-
-<div class="container">
-    <h1>Memorably</h1>
-    <div class="dynamic-text-container">
-        <div class="dynamic-text"></div>
-        <span class="cursor"></span> <!-- Cursor is always present -->
+    <div class="header-text">
+        Shop unforgettable restaurants, hotels, and experiences
     </div>
-    <button id="joinWaitlistButton">Join waitlist</button>
-    <button class="secondary-button">Suggest places</button>
-</div>
 
-<!-- Full-Screen Modal -->
-<div id="waitlistModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
+    <div class="container">
         <h1>Memorably</h1>
-        <p>We'll send a code to your email to verify and register your account</p>
-        <form id="waitlistForm">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <div class="checkbox-container">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">By continuing, you agree to Memorably's
-                    <b><a href="#">Privacy policy</a></b> and acknowledge you've read our
-                    <b><a href="#">Terms of service</a></b>
-                </label>
-            </div>
-            <button type="submit" id="submitButton" disabled>Continue</button>
-        </form>
-    </div>
-</div>
-
-<div class="floating-images" id="images1">
-    <img src="<https://via.placeholder.com/240x320>" alt="Image 1">
-    <img src="<https://via.placeholder.com/200x300>" alt="Image 2">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 3">
-    <img src="<https://via.placeholder.com/260x340>" alt="Image 4 (largest)">
-    <img src="<https://via.placeholder.com/180x240>" alt="Image 5">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 6">
-</div>
-
-<div class="floating-images" id="images2" style="display: none;">
-    <img src="<https://via.placeholder.com/240x320>" alt="Image 7">
-    <img src="<https://via.placeholder.com/200x300>" alt="Image 8">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 9">
-    <img src="<https://via.placeholder.com/260x340>" alt="Image 10 (largest)">
-    <img src="<https://via.placeholder.com/180x240>" alt="Image 11">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 12">
-</div>
-
-<div class="floating-images" id="images3" style="display: none;">
-    <img src="<https://via.placeholder.com/240x320>" alt="Image 13">
-    <img src="<https://via.placeholder.com/200x300>" alt="Image 14">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 15">
-    <img src="<https://via.placeholder.com/260x340>" alt="Image 16 (largest)">
-    <img src="<https://via.placeholder.com/180x240>" alt="Image 17">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 18">
-</div>
-
-<div class="floating-images" id="images4" style="display: none;">
-    <img src="<https://via.placeholder.com/240x320>" alt="Image 19">
-    <img src="<https://via.placeholder.com/200x300>" alt="Image 20">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 21">
-    <img src="<https://via.placeholder.com/260x340>" alt="Image 22 (largest)">
-    <img src="<https://via.placeholder.com/180x240>" alt="Image 23">
-    <img src="<https://via.placeholder.com/220x280>" alt="Image 24">
-</div>
-
-<div class="footer">
-    <div class="social-media-links">
-        <a href="<https://www.instagram.com/shopmemorably>" target="_blank" class="social-button">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="<https://www.tiktok.com>" target="_blank" class="social-button">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="<https://www.linkedin.com/company/memorablyshop>" target="_blank" class="social-button">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
+        <div class="dynamic-text-container">
+            <div class="dynamic-text"></div>
+            <span class="cursor"></span> <!-- Cursor is always present -->
+        </div>
+        <button id="joinWaitlistButton">Join waitlist</button>
+        <button class="secondary-button">Suggest places</button>
     </div>
 
-    <div class="upper-links">
-        <a href="#">Partner with us</a> |
-        <a href="#">Careers</a>
+    <!-- Full-Screen Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Memorably</h1>
+            <p>We'll send a code to your email to verify and register your account</p>
+            <form id="waitlistForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">By continuing, you agree to Memorably's 
+                        <b><a href="#">Privacy policy</a></b> and acknowledge you've read our 
+                        <b><a href="#">Terms of service</a></b>
+                    </label>
+                </div>
+                <button type="submit" id="submitButton" disabled>Continue</button>
+            </form>
+        </div>
     </div>
-    <div class="lower-links">
-        <a href="#">Terms of service</a> |
-        <a href="#">Privacy policy</a>
+
+    <div class="floating-images" id="images1">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
     </div>
-</div>
 
-<script>
-    const taglines = [
-        "Discover the best in hospitality",
-        "Shop local - or wherever your journey takes you",
-        "Merch from iconic places, designed by creators and guests alike",
-        "Savor the moments, one remarkable gift at a time"
-    ];
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
+    </div>
 
-    const colors = [
-        "#F6EAE3",
-        "#ECEDEC",
-        "#F4F5E0",
-        "#FAF8F6"
-    ];
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
 
-    const imagesSets = [
-        document.getElementById('images1'),
-        document.getElementById('images2'),
-        document.getElementById('images3'),
-        document.getElementById('images4')
-    ];
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
+    </div>
 
-    let currentIndex = 0;
-    const dynamicTextElement = document.querySelector('.dynamic-text');
-    const cursorElement = document.querySelector('.cursor');
+    <div class="footer">
+        <div class="social-media-links">
+            <a href="https://www.instagram.com/shopmemorably" target="_blank" class="social-button">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="social-button">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/memorablyshop" target="_blank" class="social-button">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
 
-function typeTagline() {
-const tagline = taglines[currentIndex];  // Get the current tagline
-let i = 0;
+        <div class="upper-links">
+            <a href="#">Partner with us</a> |
+            <a href="#">Careers</a>
+        </div>
+        <div class="lower-links">
+            <a href="#">Terms of service</a> |
+            <a href="#">Privacy policy</a>
+        </div>
+    </div>
 
-const typingInterval = setInterval(() => {
-    if (i < tagline.length) {
-        dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
-        i++;
-    } else {
-        clearInterval(typingInterval);  // Stop when finished
-    }
-}, 75);  // Adjust speed as needed
-
-```
-
-}
-
-```
-    function randomizeImagePositions(set) {
-        const positions = [
-            { top: '0%', left: '15%' },
-            { top: '10%', left: '45%' },
-            { top: '30%', left: '10%' },
-            { top: '0%', left: '65%' },
-            { top: '40%', left: '60%' },
-            { top: '60%', left: '30%' }
+    <script>
+        const taglines = [
+            "Discover the best in hospitality",
+            "Shop local - or wherever your journey takes you",
+            "Merch from iconic places, designed by creators and guests alike",
+            "Savor the moments, one remarkable gift at a time"
         ];
 
-        for (let i = positions.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [positions[i], positions[j]] = [positions[j], positions[i]];
+        const colors = [
+            "#F6EAE3",
+            "#ECEDEC",
+            "#F4F5E0",
+            "#FAF8F6"
+        ];
+
+        const imagesSets = [
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
+        ];
+
+        let currentIndex = 0;
+        const dynamicTextElement = document.querySelector('.dynamic-text');
+        const cursorElement = document.querySelector('.cursor');
+
+    function typeTagline() {
+    const tagline = taglines[currentIndex];  // Get the current tagline
+    let i = 0;
+    
+    const typingInterval = setInterval(() => {
+        if (i < tagline.length) {
+            dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
+            i++;
+        } else {
+            clearInterval(typingInterval);  // Stop when finished
+        }
+    }, 75);  // Adjust speed as needed
+}
+
+
+
+        function randomizeImagePositions(set) {
+            const positions = [
+                { top: '0%', left: '15%' },
+                { top: '10%', left: '45%' },
+                { top: '30%', left: '10%' },
+                { top: '0%', left: '65%' },
+                { top: '40%', left: '60%' },
+                { top: '60%', left: '30%' }
+            ];
+
+            for (let i = positions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [positions[i], positions[j]] = [positions[j], positions[i]];
+            }
+
+            set.querySelectorAll('img').forEach((img, index) => {
+                img.style.top = positions[index].top;
+                img.style.left = positions[index].left;
+            });
+
+            set.querySelector('img:nth-child(4)').style.zIndex = 4;
         }
 
-        set.querySelectorAll('img').forEach((img, index) => {
-            img.style.top = positions[index].top;
-            img.style.left = positions[index].left;
-        });
+        function fadeImages() {
+            const previousIndex = currentIndex;
+            currentIndex = (currentIndex + 1) % imagesSets.length;
 
-        set.querySelector('img:nth-child(4)').style.zIndex = 4;
-    }
+            const previousSet = imagesSets[previousIndex];
+            const nextSet = imagesSets[currentIndex];
 
-    function fadeImages() {
-        const previousIndex = currentIndex;
-        currentIndex = (currentIndex + 1) % imagesSets.length;
-
-        const previousSet = imagesSets[previousIndex];
-        const nextSet = imagesSets[currentIndex];
-
-        previousSet.querySelectorAll('img').forEach((img, i) => {
-            setTimeout(() => {
-                img.style.opacity = '0';
-            }, i * 100);
-        });
-
-        setTimeout(() => {
-            previousSet.style.display = 'none';
-
-            nextSet.style.display = 'flex';
-            randomizeImagePositions(nextSet);
-            nextSet.querySelectorAll('img').forEach((img, i) => {
+            previousSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
-                    img.style.opacity = '1';
+                    img.style.opacity = '0';
                 }, i * 100);
             });
-        }, 1200);
-    }
 
-    function changeBackgroundColor() {
-        const nextColor = colors[currentIndex];
-        document.getElementById('background').style.backgroundColor = nextColor;
-    }
+            setTimeout(() => {
+                previousSet.style.display = 'none';
 
-    function startTransitions() {
-        typeTagline();
-        changeBackgroundColor();
-        fadeImages();
-    }
+                nextSet.style.display = 'flex';
+                randomizeImagePositions(nextSet);
+                nextSet.querySelectorAll('img').forEach((img, i) => {
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, i * 100);
+                });
+            }, 1200);
+        }
 
-    setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
+        function changeBackgroundColor() {
+            const nextColor = colors[currentIndex];
+            document.getElementById('background').style.backgroundColor = nextColor;
+        }
 
-    startTransitions();  // Start the first transition immediately
+        function startTransitions() {
+            typeTagline();
+            changeBackgroundColor();
+            fadeImages();
+        }
 
-    // Modal functionality
-    const modal = document.getElementById("waitlistModal");
-    const joinWaitlistButton = document.getElementById("joinWaitlistButton");
-    const closeButton = document.querySelector(".close-button");
-    const submitButton = document.getElementById("submitButton");
-    const termsCheckbox = document.getElementById("terms");
+        setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
 
-    joinWaitlistButton.onclick = function() {
-        modal.style.display = "flex";
-        modal.classList.add("show");
-    }
+        startTransitions();  // Start the first transition immediately
 
-    closeButton.onclick = function() {
-        modal.style.display = "none";
-        modal.classList.remove("show");
-    }
+        // Modal functionality
+        const modal = document.getElementById("waitlistModal");
+        const joinWaitlistButton = document.getElementById("joinWaitlistButton");
+        const closeButton = document.querySelector(".close-button");
+        const submitButton = document.getElementById("submitButton");
+        const termsCheckbox = document.getElementById("terms");
 
-    termsCheckbox.onchange = function() {
-        submitButton.disabled = !this.checked;
-    }
-</script>
+        joinWaitlistButton.onclick = function() {
+            modal.style.display = "flex";
+            modal.classList.add("show");
+        }
 
-```
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+            modal.classList.remove("show");
+        }
 
+        termsCheckbox.onchange = function() {
+            submitButton.disabled = !this.checked;
+        }
+    </script>
 </body>
 </html>

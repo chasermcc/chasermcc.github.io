@@ -178,14 +178,66 @@
             opacity: 0;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            100% {
-                transform: translateY(-20px) translateX(20px);
-            }
-        }
+        @keyframes float1 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(40px, -30px); /* Slight movement */
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-30px, 40px); /* Slight movement */
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(25px, 20px); /* Slight movement */
+    }
+}
+
+@keyframes float4 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-20px, -40px); /* Slight movement */
+    }
+}
+
+.floating-images img:nth-child(1) {
+    animation: float1 20s linear infinite;
+}
+
+.floating-images img:nth-child(2) {
+    animation: float2 22s linear infinite;
+}
+
+.floating-images img:nth-child(3) {
+    animation: float3 18s linear infinite;
+}
+
+.floating-images img:nth-child(4) {
+    animation: float4 25s linear infinite;
+}
+
+.floating-images img:nth-child(5) {
+    animation: float1 30s linear infinite;
+}
+
+.floating-images img:nth-child(6) {
+    animation: float3 28s linear infinite;
+}
+
 
         .footer {
             position: absolute;

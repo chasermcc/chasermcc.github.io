@@ -90,14 +90,16 @@
             display: inline-block;
             animation: blink-cursor 0.7s steps(1) infinite;
             vertical-align: bottom;
-            margin-left: 4px;
+            margin-left: 6px;
+            transform: translateY(-2px);
         }
 
       @keyframes blink-cursor {
     0% { opacity: 1;    }   /* Cursor fully visible */
-    40% { opacity: 0.6; }   /* Cursor fades slightly */
+    20% { opacity: 0.9; }   /* Cursor fades slightly */
+    40% { opacity: 0.7; } 
     60% { opacity: 0.3; } 
-    80% { opacity: 0;   } 
+    80% { opacity: 0;   }    
     100% { opacity: 1;  }    
 }
 
@@ -530,22 +532,21 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const cursorElement = document.querySelector('.cursor');
 
-        function typeTagline() {
-            dynamicTextElement.innerHTML = "";  // Clear the current text
-            const tagline = taglines[currentIndex];  // Get the current tagline
-            let i = 0;
+       function typeTagline() {
+    dynamicTextElement.innerHTML = "";  // Clear the current text
+    const tagline = taglines[currentIndex];  // Get the current tagline
+    let i = 0;
 
-            const typingInterval = setInterval(() => {
-                if (i < tagline.length) {
-                    dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
-                    i++;
-                    dynamicTextElement.appendChild(cursorElement); // Move cursor after text
-                } else {
-                    clearInterval(typingInterval);  // Stop
-                    clearInterval(typingInterval);  // Stop when finished
-                }
-            }, 70);  // Adjust speed as needed
+    const typingInterval = setInterval(() => {
+        if (i < tagline.length) {
+            dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
+            i++;
+        } else {
+            clearInterval(typingInterval);  // Stop when finished
         }
+    }, 70);  // Adjust speed as needed
+}
+
 
         function randomizeImagePositions(set) {
             const positions = [

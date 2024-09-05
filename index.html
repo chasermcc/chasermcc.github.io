@@ -85,19 +85,20 @@
         }
 
         .cursor {
-            border-right: 3px solid #333333;
+            border-right: 4px solid #333333;
             height: 1.3em; /* Match height to one line */
             display: inline-block;
-            animation: blink-cursor 0.6s steps(1) infinite;
+            animation: blink-cursor 0.7s steps(1) infinite;
             vertical-align: bottom;
-            margin-left: 3px;
+            margin-left: 4px;
         }
 
       @keyframes blink-cursor {
-    0% { opacity: 1; }      /* Cursor fully visible */
-    40% { opacity: 0.5; }   /* Cursor fades slightly */
-    60% { opacity: 0; }     /* Cursor completely disappears */
-    100% { opacity: 1; }    /* Cursor reappears */
+    0% { opacity: 1;    }   /* Cursor fully visible */
+    40% { opacity: 0.6; }   /* Cursor fades slightly */
+    60% { opacity: 0.3; } 
+    80% { opacity: 0;   } 
+    100% { opacity: 1;  }    
 }
 
 

@@ -56,7 +56,7 @@
     border-radius: 0px;
     line-hegiht: 1.2em;
     transition: background-color 0.1s ease;
-    width: 150px;
+    width: 120px;
 }
 
 .header-button:hover {
@@ -545,6 +545,21 @@
         </div>
     </div>
 
+    <!-- Full-Screen Modal for Places -->
+<div id="placesModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1>Memorably</h1>
+        <p>Enter your details for the best recommendations on places</p>
+        <form id="placesForm">
+            <label for="email">Email</label>
+            <input type="email" id="placesEmail" name="email" required>
+            <button type="submit" id="placesSubmitButton">Continue</button>
+        </form>
+    </div>
+</div>
+
+
     <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
         <img src="https://via.placeholder.com/200x300" alt="Image 2">
@@ -730,6 +745,23 @@
         termsCheckbox.onchange = function() {
             submitButton.disabled = !this.checked;
         }
+
+        // Modal functionality for Places button
+const placesModal = document.getElementById("placesModal");
+const placesButton = document.querySelector(".secondary-button");
+const placesCloseButton = placesModal.querySelector(".close-button");
+
+placesButton.onclick = function() {
+    placesModal.style.display = "flex";
+    placesModal.classList.add("show");
+}
+
+placesCloseButton.onclick = function() {
+    placesModal.style.display = "none";
+    placesModal.classList.remove("show");
+}
+
+        
     </script>
 </body>
 </html>

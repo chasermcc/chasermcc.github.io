@@ -375,7 +375,6 @@
 
         .modal-content .checkbox-container a:hover {
             color: #777777;
-            cursor: pointer;
             text-decoration: none;
         }
 
@@ -510,6 +509,20 @@
             "Savor the moments, one remarkable gift at a time"
         ];
 
+        const colors = [
+            "#F6EAE3",
+            "#ECEDEC",
+            "#F4F5E0",
+            "#FAF8F6"
+        ];
+
+        const imagesSets = [
+            document.getElementById('images1'),
+            document.getElementById('images2'),
+            document.getElementById('images3'),
+            document.getElementById('images4')
+        ];
+
         let currentIndex = 0;
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const cursorElement = document.querySelector('.cursor');
@@ -525,20 +538,75 @@
                     i++;
                     dynamicTextElement.appendChild(cursorElement); // Move cursor after text
                 } else {
+                    clearInterval(typingInterval);  // Stop
                     clearInterval(typingInterval);  // Stop when finished
                 }
             }, 70);  // Adjust speed as needed
         }
 
-        function startTyping() {
-            typeTagline();
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % taglines.length;
-                typeTagline();
-            }, 12000); // Re-type every 12 seconds
+        function randomizeImagePositions(set) {
+            const positions = [
+                { top: '0%', left: '15%' },
+                { top: '10%', left: '45%' },
+                { top: '30%', left: '10%' },
+                { top: '0%', left: '65%' },
+                { top: '40%', left: '60%' },
+                { top: '60%', left: '30%' }
+            ];
+
+            for (let i = positions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [positions[i], positions[j]] = [positions[j], positions[i]];
+            }
+
+            set.querySelectorAll('img').forEach((img, index) => {
+                img.style.top = positions[index].top;
+                img.style.left = positions[index].left;
+            });
+
+            set.querySelector('img:nth-child(4)').style.zIndex = 4;
         }
 
-        startTyping();
+        function fadeImages() {
+            const previousIndex = currentIndex;
+            currentIndex = (currentIndex + 1) % imagesSets.length;
+
+            const previousSet = imagesSets[previousIndex];
+            const nextSet = imagesSets[currentIndex];
+
+            previousSet.querySelectorAll('img').forEach((img, i) => {
+                setTimeout(() => {
+                    img.style.opacity = '0';
+                }, i * 100);
+            });
+
+            setTimeout(() => {
+                previousSet.style.display = 'none';
+
+                nextSet.style.display = 'flex';
+                randomizeImagePositions(nextSet);
+                nextSet.querySelectorAll('img').forEach((img, i) => {
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, i * 100);
+                });
+            }, 1200);
+        }
+
+        function changeBackgroundColor() {
+            const nextColor = colors[currentIndex];
+            document.getElementById('background').style.backgroundColor = nextColor;
+        }
+
+        function startTransitions() {
+            typeTagline();
+            changeBackgroundColor();
+            fadeImages();
+        }
+
+        setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
+
+        startTransitions();  // Start the first transition immediately
 
         // Modal functionality
         const modal = document.getElementById("waitlistModal");

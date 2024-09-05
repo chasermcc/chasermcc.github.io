@@ -71,7 +71,7 @@
             word-wrap: break-word;
             height: 3.2em; /* Fixed height for two lines */
             overflow: hidden;
-            line-height: 1.2em; /* Two lines of text, each 1.2em in height */
+            line-height: 1.3em; 
         }
 
         .dynamic-text {
@@ -90,8 +90,8 @@
             display: inline-block;
             animation: blink-cursor 0.7s steps(1) infinite;
             vertical-align: bottom;
-            margin-left: 1px;
             transform: translateY(-2px);
+            transform: translateX(-2px);
         }
 
       @keyframes blink-cursor {
@@ -103,8 +103,7 @@
     50% { opacity: 0.5; }    
     60% { opacity: 0.4; }  
     70% { opacity: 0.3; } 
-    80% { opacity: 0.2; } 
-    90% { opacity: 0.1; }  
+    80% { opacity: 0.2; }   
     100% {opacity: 1;   }      
 }
 

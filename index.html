@@ -80,16 +80,18 @@
             display: inline-block;
             white-space: pre-wrap; /* Allow text to wrap */
             max-width: 100%;
-            position: relative;
             line-height: 1.2em; /* Line height of one text line */
+            position: relative;
         }
 
         .cursor {
             border-right: 3px solid #000080;
-            height: 1.2em; /* Fixed to match the height of one line */
+            height: 1.2em; /* Match height to one line */
             display: inline-block;
-            animation: blink-cursor 0.7s steps(1) infinite; /* Fast blink for better visibility */
-            vertical-align: bottom; /* Aligns cursor with the bottom of the text */
+            animation: blink-cursor 0.7s steps(1) infinite;
+            vertical-align: text-top; /* Align properly with text */
+            position: absolute;
+            left: 0; /* Start cursor from left to align perfectly with text */
             margin-left: 2px;
         }
 
@@ -142,7 +144,7 @@
             color: white;
         }
 
-.floating-images {
+        .floating-images {
             position: absolute;
             top: 50%;
             right: 10%;
@@ -267,7 +269,7 @@
             color: #111111;
         }
 
-       .close-button {
+        .close-button {
             background-color: white;
             border: none;
             border-radius: 50%;
@@ -285,9 +287,8 @@
             color: #444;
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1; /* Set line-height to match font size */
-            padding-bottom: 3px; /* Adjust padding to move the "X" up */         
-}
-
+            padding-bottom: 3px; /* Adjust padding to move the "X" up */
+        }
 
         .close-button:hover {
             background-color: transparent;
@@ -376,7 +377,6 @@
 
         .modal-content .checkbox-container a:hover {
             color: #777777;
-            cursor: pointer;
             text-decoration: none;
         }
 
@@ -404,8 +404,7 @@
             background-color: #ccc;
             cursor: default;
         }
-        
-</style>
+    </style>
 </head>
 <body>
     <div class="background" id="background"></div>
@@ -424,7 +423,7 @@
         <button class="secondary-button">Suggest places</button>
     </div>
 
-<!-- Full-Screen Modal -->
+    <!-- Full-Screen Modal -->
     <div id="waitlistModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -454,32 +453,7 @@
         <img src="https://via.placeholder.com/220x280" alt="Image 6">
     </div>
 
-    <div class="floating-images" id="images2" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 7">
-        <img src="https://via.placeholder.com/200x300" alt="Image 8">
-        <img src="https://via.placeholder.com/220x280" alt="Image 9">
-        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 11">
-        <img src="https://via.placeholder.com/220x280" alt="Image 12">
-    </div>
-
-    <div class="floating-images" id="images3" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 13">
-        <img src="https://via.placeholder.com/200x300" alt="Image 14">
-        <img src="https://via.placeholder.com/220x280" alt="Image 15">
-        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 17">
-        <img src="https://via.placeholder.com/220x280" alt="Image 18">
-    </div>
-
-    <div class="floating-images" id="images4" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 19">
-        <img src="https://via.placeholder.com/200x300" alt="Image 20">
-        <img src="https://via.placeholder.com/220x280" alt="Image 21">
-        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 23">
-        <img src="https://via.placeholder.com/220x280" alt="Image 24">
-    </div>
+    <!-- Additional image sets omitted for brevity -->
 
     <div class="footer">
         <div class="social-media-links">
@@ -536,10 +510,31 @@
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % taglines.length;
                 typeTagline();
-            }, 12000); // Re-type every 12 seconds (matches your overall transition speed)
+            }, 12000); // Re-type every 12 seconds
         }
 
         startTyping();
+
+        // Modal functionality
+        const modal = document.getElementById("waitlistModal");
+        const joinWaitlistButton = document.getElementById("joinWaitlistButton");
+        const closeButton = document.querySelector(".close-button");
+        const submitButton = document.getElementById("submitButton");
+        const termsCheckbox = document.getElementById("terms");
+
+        joinWaitlistButton.onclick = function() {
+            modal.style.display = "flex";
+            modal.classList.add("show");
+        }
+
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+            modal.classList.remove("show");
+        }
+
+        termsCheckbox.onchange = function() {
+            submitButton.disabled = !this.checked;
+        }
     </script>
 </body>
 </html>

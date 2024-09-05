@@ -8,14 +8,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
 
-        body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow: hidden;
-            background-color: white;
-            transition: background-color 2s ease-in-out;
-            animation: fadeIn 1s ease-in-out;
-        }
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+    background-color: white;
+    transition: background-color 2s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+    height: 200vh; /* This will make the page twice as tall */
+}
+
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -660,45 +662,12 @@
 
 .input-container input::placeholder {
     color: #aaa;
-    font-weight: 200 !important; /* Lighter gray for text */
-   
 }
 
 .input-container i,
 .input-container input {
     font-size: inherit;
 }
-
-        /* Placeholder styling for WebKit-based browsers (Chrome, Safari, etc.) */
-::-webkit-input-placeholder {
-    color: #aaa;
-    font-weight: 200;
-}
-
-/* Placeholder styling for Mozilla-based browsers (Firefox) */
-::-moz-placeholder {
-    color: #aaa;
-    font-weight: 200;
-}
-
-/* Internet Explorer */
-:-ms-input-placeholder {
-    color: #aaa;
-    font-weight: 200;
-}
-
-/* Older Edge */
-:-moz-placeholder {
-    color: #aaa;
-    font-weight: 200;
-}
-
-/* Default */
-::placeholder {
-    color: #aaa;
-    font-weight: 200;
-}
-
         
     </style>
 </head>
@@ -718,7 +687,6 @@
             <span class="cursor"></span> <!-- Cursor is always present -->
         </div>
         <button id="joinWaitlistButton">Join waitlist</button>
-        <button class="secondary-button">Places</button>
     </div>
 
     <!-- Full-Screen Modal -->
@@ -947,12 +915,12 @@
             submitButton.disabled = !this.checked;
         }
 
-        // Modal functionality for Places button
+       // Modal functionality for Designers button (formerly Places button)
 const placesModal = document.getElementById("placesModal");
-const placesButton = document.querySelector(".secondary-button");
+const designersButton = document.querySelector(".header-button");
 const placesCloseButton = placesModal.querySelector(".close-button");
 
-placesButton.onclick = function() {
+designersButton.onclick = function() {
     placesModal.style.display = "flex";
     placesModal.classList.add("show");
 }

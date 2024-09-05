@@ -515,109 +515,134 @@
 
     <script>
         const taglines = [
-            "Discover the best in hospitality",
-            "Shop local - or wherever your journey takes you",
-            "Merch from iconic places, designed by creators and guests alike",
-            "Savor the moments, one remarkable gift at a time"
-        ];
+    "Discover the best in hospitality",
+    "Shop local - or wherever your journey takes you",
+    "Merch from iconic places, designed by creators and guests alike",
+    "Savor the moments, one remarkable gift at a time"
+];
 
-        const colors = [
-            "#F6EAE3",
-            "#ECEDEC",
-            "#F4F5E0",
-            "#FAF8F6"
-        ];
+const colors = [
+    "#F6EAE3",
+    "#ECEDEC",
+    "#F4F5E0",
+    "#FAF8F6"
+];
 
-        const imagesSets = [
-            document.getElementById('images1'),
-            document.getElementById('images2'),
-            document.getElementById('images3'),
-            document.getElementById('images4')
-        ];
+const imagesSets = [
+    document.getElementById('images1'),
+    document.getElementById('images2'),
+    document.getElementById('images3'),
+    document.getElementById('images4')
+];
 
-        let currentIndex = 0;
-        const dynamicTextElement = document.querySelector('.dynamic-text');
-        const cursorElement = document.querySelector('.cursor');
+let currentIndex = 0;
+const dynamicTextElement = document.querySelector('.dynamic-text');
+const cursorElement = document.querySelector('.cursor');
 
-    function typeTagline() {
-    const tagline = taglines[currentIndex];  // Get the current tagline
+function typeTagline(tagline, callback) {
     let i = 0;
-    
     const typingInterval = setInterval(() => {
         if (i < tagline.length) {
             dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
             i++;
         } else {
-            clearInterval(typingInterval);  // Stop when finished
+            clearInterval(typingInterval);  // Stop typing when finished
+            if (callback) callback();  // Call the next function when done
         }
-    }, 75);  // Adjust speed as needed
+    }, 75);  // Typing speed
 }
 
+function backspaceTagline(callback) {
+    const text = dynamicTextElement.textContent;
+    let i = text.length;
 
-
-        function randomizeImagePositions(set) {
-            const positions = [
-                { top: '0%', left: '15%' },
-                { top: '10%', left: '45%' },
-                { top: '30%', left: '10%' },
-                { top: '0%', left: '65%' },
-                { top: '40%', left: '60%' },
-                { top: '60%', left: '30%' }
-            ];
-
-            for (let i = positions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [positions[i], positions[j]] = [positions[j], positions[i]];
-            }
-
-            set.querySelectorAll('img').forEach((img, index) => {
-                img.style.top = positions[index].top;
-                img.style.left = positions[index].left;
-            });
-
-            set.querySelector('img:nth-child(4)').style.zIndex = 4;
+    const backspaceInterval = setInterval(() => {
+        if (i > 0) {
+            dynamicTextElement.textContent = text.slice(0, i - 1);  // Remove characters one by one
+            i--;
+        } else {
+            clearInterval(backspaceInterval);  // Stop backspacing when done
+            if (callback) callback();  // Call the next function when done
         }
+    }, 50);  // Backspacing speed
+}
 
-        function fadeImages() {
-            const previousIndex = currentIndex;
-            currentIndex = (currentIndex + 1) % imagesSets.length;
-
-            const previousSet = imagesSets[previousIndex];
-            const nextSet = imagesSets[currentIndex];
-
-            previousSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '0';
-                }, i * 100);
+function cycleTaglines() {
+    const tagline = taglines[currentIndex];  // Get the current tagline
+    typeTagline(tagline, () => {  // First type the tagline
+        setTimeout(() => {  // Hold the tagline for 3 seconds
+            backspaceTagline(() => {  // Then backspace it
+                currentIndex = (currentIndex + 1) % taglines.length;  // Move to the next tagline
+                setTimeout(cycleTaglines, 500);  // Type the next tagline after a short delay
             });
+        }, 3000);  // Keep the tagline visible for 3 seconds before backspacing
+    });
+}
 
+function randomizeImagePositions(set) {
+    const positions = [
+        { top: '0%', left: '15%' },
+        { top: '10%', left: '45%' },
+        { top: '30%', left: '10%' },
+        { top: '0%', left: '65%' },
+        { top: '40%', left: '60%' },
+        { top: '60%', left: '30%' }
+    ];
+
+    for (let i = positions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [positions[i], positions[j]] = [positions[j], positions[i]];
+    }
+
+    set.querySelectorAll('img').forEach((img, index) => {
+        img.style.top = positions[index].top;
+        img.style.left = positions[index].left;
+    });
+
+    set.querySelector('img:nth-child(4)').style.zIndex = 4;
+}
+
+function fadeImages() {
+    const previousIndex = currentIndex;
+    currentIndex = (currentIndex + 1) % imagesSets.length;
+
+    const previousSet = imagesSets[previousIndex];
+    const nextSet = imagesSets[currentIndex];
+
+    previousSet.querySelectorAll('img').forEach((img, i) => {
+        setTimeout(() => {
+            img.style.opacity = '0';
+        }, i * 100);
+    });
+
+    setTimeout(() => {
+        previousSet.style.display = 'none';
+
+        nextSet.style.display = 'flex';
+        randomizeImagePositions(nextSet);
+        nextSet.querySelectorAll('img').forEach((img, i) => {
             setTimeout(() => {
-                previousSet.style.display = 'none';
+                img.style.opacity = '1';
+            }, i * 100);
+        });
+    }, 1000);
+}
 
-                nextSet.style.display = 'flex';
-                randomizeImagePositions(nextSet);
-                nextSet.querySelectorAll('img').forEach((img, i) => {
-                    setTimeout(() => {
-                        img.style.opacity = '1';
-                    }, i * 100);
-                });
-            }, 1200);
-        }
+function changeBackgroundColor() {
+    const nextColor = colors[currentIndex];
+    document.getElementById('background').style.backgroundColor = nextColor;
+}
 
-        function changeBackgroundColor() {
-            const nextColor = colors[currentIndex];
-            document.getElementById('background').style.backgroundColor = nextColor;
-        }
+function startTransitions() {
+    cycleTaglines();  // Start typing and backspacing the taglines
+    changeBackgroundColor();
+    fadeImages();
+}
 
-        function startTransitions() {
-            typeTagline();
-            changeBackgroundColor();
-            fadeImages();
-        }
+setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
 
-        setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
+startTransitions();  // Start the first transition immediately
 
-        startTransitions();  // Start the first transition immediately
 
         // Modal functionality
         const modal = document.getElementById("waitlistModal");

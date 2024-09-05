@@ -42,6 +42,24 @@
             max-width: 50%;
         }
 
+        .header-button {
+    position: absolute;
+    top: 9%; /* Same height as .header-text */
+    right: 80px; /* Positions the button on the right side */
+    padding: 12px 24px;
+    font-size: 1em;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+}
+
+.header-button:hover {
+    background-color: black;
+}
+
         .container {
             position: relative;
             height: 100vh;
@@ -115,7 +133,7 @@
         button {
             margin-top: 0px;
             padding: 12px 24px;
-            font-size: .95em;
+            font-size: .9em;
             color: white;
             background-color: #333;
             border: 2px solid #333;
@@ -136,7 +154,7 @@
         .secondary-button {
             margin-top: 8px;
             padding: 12px 24px;
-            font-size: .95em;
+            font-size: .9em;
             color: #333;
             background-color: white;
             border: 1px solid #333; /* Thinner border */
@@ -234,8 +252,8 @@
 }
 
 .floating-images img:nth-child(4) {
-    width: 260px; 
-    height: 340px; /* Set size for the fourth (largest) image */
+    width: 280px; 
+    height: 360px; /* Set size for the fourth (largest) image */
     animation: float4 25s linear infinite;
 }
 
@@ -431,7 +449,7 @@
 
         .modal-content .checkbox-container input[type="checkbox"] {
             margin-right: 5px;
-            margin-top: 1px;
+            margin-top: 3px;
             cursor: pointer;
         }
 
@@ -488,6 +506,8 @@
     <div class="header-text">
         Shop unforgettable restaurants, hotels, and experiences
     </div>
+    
+    <button class="header-button">Design with us</button>
 
     <div class="container">
         <h1>Memorably</h1>
@@ -583,7 +603,7 @@
         const taglines = [
             "Discover the best in hospitality",
             "Shop local - or wherever your journey takes you",
-            "Merch from iconic places, designed by creators and guests alike",
+            "Merch from iconic places, designed by experts and fans alike",
             "Savor the moments, one remarkable gift at a time"
         ];
 

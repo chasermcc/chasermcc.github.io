@@ -642,9 +642,10 @@
 }
 
 .input-container i {
-    color: #777; /* Darker gray for magnifying glass */
-    font-size: 1em;
-    margin-right: 8px; /* Gap between icon and text */
+    color: #999; /* Darker gray for magnifying glass */
+    font-size: 0.9em;
+    margin-right: 8px;
+    font-weight: 200;
 }
 
 .input-container input {
@@ -659,13 +660,42 @@
 
 .input-container input::placeholder {
     color: #aaa;
-    font-weight: 200; /* Lighter gray for text */
+    font-weight: 200 !important; /* Lighter gray for text */
    
 }
 
 .input-container i,
 .input-container input {
     font-size: inherit;
+}
+
+        /* Placeholder styling for WebKit-based browsers (Chrome, Safari, etc.) */
+::-webkit-input-placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+
+/* Placeholder styling for Mozilla-based browsers (Firefox) */
+::-moz-placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+
+/* Internet Explorer */
+:-ms-input-placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+
+/* Older Edge */
+:-moz-placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+
+/* Default */
+::placeholder {
+    color: #aaa;
     font-weight: 200;
 }
 

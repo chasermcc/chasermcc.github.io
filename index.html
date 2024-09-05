@@ -27,7 +27,7 @@ body {
         .background {
             position: absolute;
             width: 100%;
-            height: calc(100% + 100px);
+            height: calc(100% + 80px);
             top: 0;
             left: 0;
             z-index: -1;
@@ -259,6 +259,7 @@ body {
 }
 
 .floating-images img:nth-child(4) {
+    margin-bottom: 90px;
     width: 280px; 
     height: 360px; /* Set size for the fourth (largest) image */
     animation: float4 25s linear infinite;
@@ -840,7 +841,7 @@ body {
                 { top: '25%', left: '10%' },
                 { top: '0%', left: '80%' },
                 { top: '35%', left: '70%' },
-                { top: '60%', left: '30%' }
+                { top: '50%', left: '30%' }
             ];
 
             for (let i = positions.length - 1; i > 0; i--) {

@@ -669,6 +669,32 @@ body {
 .input-container input {
     font-size: inherit;
 }
+
+    /* Style for the second half of the page */
+.second-half {
+    background-color: #FAF8F6;
+    height: calc(100vh - 60px); /* Adjusts for the height of the first section */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px; /* 100px space from where the first section ends */
+    position: relative;
+}
+
+/* Style for the large centered text box */
+.large-text-box {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #333;
+    max-width: 80%;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
         
     </style>
 </head>
@@ -936,5 +962,13 @@ placesCloseButton.onclick = function() {
 
         
     </script>
+
+    <div class="second-half">
+    <div class="large-text-box">
+        <p>The coolest merch from the best spots — Find them on Memorably</p>
+    </div>
+</div>
+
+    
 </body>
 </html>

@@ -399,7 +399,7 @@
             font-size: 2.6em;
             margin-bottom: 2px;
             position: relative;
-            top: -34px;
+            top: -35px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -503,6 +503,36 @@
             background-color: #ccc;
             cursor: default;
         }
+
+        /* Full-Screen Modal Styles for Places */
+.places-modal {
+    background-color: #ECEDEC; /* Example different background */
+}
+
+.places-modal-content {
+    background-color: #FFF; /* Adjust content area background */
+    max-width: 650px; /* Adjust size if needed */
+}
+
+.places-modal-content h1 {
+    font-size: 2.2em; /* Adjust heading size */
+}
+
+.places-modal-content p {
+    font-size: 0.95em; /* Adjust text size */
+    margin-bottom: 60px; /* Add more space */
+}
+
+.places-modal-content button[type="submit"] {
+    background-color: #222; /* Change button color if desired */
+    width: 62%; /* Change button width */
+}
+
+.places-modal-content button[type="submit"]:hover {
+    background-color: #555; /* Hover color */
+}
+
+        
     </style>
 </head>
 <body>
@@ -545,12 +575,12 @@
         </div>
     </div>
 
-    <!-- Full-Screen Modal for Places -->
-<div id="placesModal" class="modal">
-    <div class="modal-content">
+   <!-- Full-Screen Modal for Places -->
+<div id="placesModal" class="modal places-modal">
+    <div class="modal-content places-modal-content">
         <span class="close-button">&times;</span>
         <h1>Memorably</h1>
-        <p>Memorably is a new shopping platform celebrating the best hospitality brands from across the globe through exceptional merch.</p>
+        <p>Enter your details for the best recommendations on places</p>
         <form id="placesForm">
             <label for="email">Email</label>
             <input type="email" id="placesEmail" name="email" required>
@@ -558,6 +588,7 @@
         </form>
     </div>
 </div>
+
 
 
     <div class="floating-images" id="images1">

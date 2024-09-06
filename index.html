@@ -879,18 +879,17 @@ body {
     }, 80);  // Adjust speed as needed
 }
 
-
-
-        function randomizeImagePositions(set) {
-            const positions = [
-                { top: '0%', left: '0%' },
-                { top: '0%', left: '0%' },
-                { top: '0%', left: '0%' },
-                { top: '0%', left: '0%' },
-                { top: '0%', left: '0%' },
-                { top: '0%', left: '0%' }
-            ];
-
+        
+        
+               function randomizeImagePositions(set) {
+        const positions = [
+        { top: '5%', left: '20%' },
+        { top: '10%', left: '50%' },
+        { top: '25%', left: '10%' },
+        { top: '0%', left: '80%' },
+        { top: '35%', left: '70%' },
+        { top: '50%', left: '30%' }
+        ];
             for (let i = positions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [positions[i], positions[j]] = [positions[j], positions[i]];

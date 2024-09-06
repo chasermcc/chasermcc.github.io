@@ -183,38 +183,23 @@ body {
         }
 
        .floating-images {
-    position: absolute;  /* Keeps the element from scrolling with the page */
-    top: calc(1.8% + 91px);  /* Keeps it under the header */
-    right: 55px;  
-    left: 34%; 
-    width: auto;  /* Adjust width dynamically */
+    position: absolute;
+    top: calc(1.8% + 91px); 
+    right: 60px;  
+    left: 33%; 
+    width: auto;
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 25px;
     z-index: 10;
-}
-
-/* For smaller screens, reduce the left margin to prevent overlap */
-@media screen and (max-width: 768px) {
-    .floating-images {
-        left: 30%;  /* Adjust left margin for smaller screens */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .floating-images {
-        left: 20%;  /* Further adjust left margin for very small screens */
-        right: 5px;  /* Add some padding on the right */
-        padding: 10px;  /* Reduce padding */
-    }
 }
 
 
         .floating-images img {
             position: absolute;
             object-fit: cover;
-            border-radius: 40px; /* Increased border radius for more rounded edges */
+            border-radius: 40px;
             animation: float 15s linear infinite;
             transition: opacity 1s ease-in-out, width 0.5s ease, height 0.5s ease;
             opacity: 0;

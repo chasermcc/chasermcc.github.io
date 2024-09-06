@@ -182,21 +182,36 @@ body {
             color: white;
         }
 
-        .floating-images {
-            position: fixed;
-            top: calc(1.8%+30px);
-            right: 25px;
-            left: 40%;
-            width: auto;
-            height: auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            background: white;
-            opacity: 1;
-            transition: width 0.5s ease, height 0.5s ease;
-            z-index: 10;
-        }
+       .floating-images {
+    position: absolute;  /* Keeps the element from scrolling with the page */
+    top: calc(1.8% + 50px);  /* Keeps it under the header */
+    right: 10px;  /* 10px from the right edge */
+    left: 40%;  /* Stay around 40% from the left */
+    width: auto;  /* Adjust width dynamically */
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;  /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+/* For smaller screens, reduce the left margin to prevent overlap */
+@media screen and (max-width: 768px) {
+    .floating-images {
+        left: 30%;  /* Adjust left margin for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .floating-images {
+        left: 20%;  /* Further adjust left margin for very small screens */
+        right: 5px;  /* Add some padding on the right */
+        padding: 10px;  /* Reduce padding */
+    }
+}
+
 
         .floating-images img {
             position: absolute;

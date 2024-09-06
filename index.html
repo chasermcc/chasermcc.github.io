@@ -695,6 +695,85 @@ body {
     line-height: 1.2em;
 }
 
+        .second-half {
+    background-color: #FAF8F6;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.carousel-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover,
+.carousel-button.active {
+    background-color: #555;
+}
+
+.show-all-button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+}
+
+.show-all-button:hover {
+    background-color: #555;
+}
+
+
 
         
     </style>
@@ -961,12 +1040,76 @@ placesCloseButton.onclick = function() {
     placesModal.classList.remove("show");
 }
 
+
+        const images = document.querySelectorAll('.carousel-image');
+const buttons = document.querySelectorAll('.carousel-button');
+let currentIndex = 0;
+let autoRotateInterval;
+
+// Function to update the active image and button
+function updateCarousel(index) {
+    images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+    });
+    buttons.forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+}
+
+// Function to automatically rotate images
+function autoRotate() {
+    autoRotateInterval = setInterval(() => {
+        let nextIndex = (currentIndex + 1) % images.length;
+        updateCarousel(nextIndex);
+    }, 4000); // Rotates every 4 seconds
+}
+
+// Event listeners for buttons
+buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        clearInterval(autoRotateInterval); // Stop auto-rotate on button click
+        updateCarousel(index);
+        autoRotate(); // Resume auto-rotate after button click
+    });
+});
+
+// Start auto-rotation
+autoRotate();
+
         
     </script>
 
     <div class="second-half">
     <div class="large-text-box">
         <p>The coolest merch from the best spots— Find it on Memorably</p>
+
+    <div class="second-half">
+    <!-- Rotating images container -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="https://via.placeholder.com/500x300?text=New+York" alt="New York" class="carousel-image active">
+            <img src="https://via.placeholder.com/500x300?text=Dallas" alt="Dallas" class="carousel-image">
+            <img src="https://via.placeholder.com/500x300?text=Los+Angeles" alt="Los Angeles" class="carousel-image">
+            <img src="https://via.placeholder.com/500x300?text=Chicago" alt="Chicago" class="carousel-image">
+            <img src="https://via.placeholder.com/500x300?text=Where+to?" alt="Where to?" class="carousel-image">
+        </div>
+
+        <!-- City selection buttons -->
+        <div class="carousel-controls">
+            <button class="carousel-button active" data-index="0">New York</button>
+            <button class="carousel-button" data-index="1">Dallas</button>
+            <button class="carousel-button" data-index="2">Los Angeles</button>
+            <button class="carousel-button" data-index="3">Chicago</button>
+            <button class="carousel-button" data-index="4">Where to?</button>
+        </div>
+
+        <!-- "Show all restaurants" button -->
+        <button class="show-all-button">Show all restaurants</button>
+    </div>
+</div>
+
+        
     </div>
 </div>
 

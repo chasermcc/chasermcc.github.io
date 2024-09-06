@@ -864,7 +864,7 @@ body {
 
         
         
-              function randomizeImagePositions(set) {
+           function randomizeImagePositions(set) {
     const centralPosition = { top: '20%', left: '45%' };  // Center the largest image (4th) here
 
     const surroundingPositions = [
@@ -875,24 +875,38 @@ body {
         { top: '50%', left: '15%' }
     ];
 
-    // Shuffle and apply positions for the surrounding images (not the largest one)
-    for (let i = surroundingPositions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [surroundingPositions[i], surroundingPositions[j]] = [surroundingPositions[j], surroundingPositions[i]];
+    const images = set.querySelectorAll('img'); // Select all images within the set
+
+    // Ensure the set has at least 6 images to avoid errors
+    if (images.length < 6) {
+        console.error("Not enough images to apply positions.");
+        return;
     }
 
-    // Assign the positions
-    set.querySelectorAll('img').forEach((img, index) => {
-        if (index === 3) { // 4th image is positioned centrally
-            img.style.top = centralPosition.top;
-            img.style.left = centralPosition.left;
-            img.style.zIndex = 4;  // Ensure largest image stays in front
-        } else {
-            img.style.top = surroundingPositions[index].top;
-            img.style.left = surroundingPositions[index].left;
+    // Assign the central position to the 4th image
+    images[3].style.top = centralPosition.top;
+    images[3].style.left = centralPosition.left;
+    images[3].style.zIndex = 4;  // Ensure the largest image is in front
+
+    // Shuffle and assign surrounding positions to the other images
+    for (let i = surroundingPositions.length - 1; i >= 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        const tempPosition = surroundingPositions[i];
+        surroundingPositions[i] = surroundingPositions[randomIndex];
+        surroundingPositions[randomIndex] = tempPosition;
+    }
+
+    // Assign the shuffled surrounding positions to the remaining images
+    let surroundingImageIndex = 0;
+    images.forEach((img, index) => {
+        if (index !== 3) {  // Skip the central (4th) image
+            img.style.top = surroundingPositions[surroundingImageIndex].top;
+            img.style.left = surroundingPositions[surroundingImageIndex].left;
+            surroundingImageIndex++;
         }
     });
 }
+
 
         function fadeImages() {
             const previousIndex = currentIndex;

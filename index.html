@@ -864,27 +864,35 @@ body {
 
         
         
-               function randomizeImagePositions(set) {
-        const positions = [
-        { top: '5%', left: '10%' },
-        { top: '15%', left: '45%' },
-        { top: '20%', left: '8%' },
-        { top: '5%', left: '75%' },
-        { top: '35%', left: '70%' },
-        { top: '45%', left: '30%' }
-        ];
-            for (let i = positions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [positions[i], positions[j]] = [positions[j], positions[i]];
-            }
+              function randomizeImagePositions(set) {
+    const centralPosition = { top: '20%', left: '45%' };  // Center the largest image (4th) here
 
-            set.querySelectorAll('img').forEach((img, index) => {
-                img.style.top = positions[index].top;
-                img.style.left = positions[index].left;
-            });
+    const surroundingPositions = [
+        { top: '5%', left: '10%' },    // Randomly position others around
+        { top: '10%', left: '75%' },
+        { top: '35%', left: '20%' },
+        { top: '40%', left: '70%' },
+        { top: '50%', left: '15%' }
+    ];
 
-            set.querySelector('img:nth-child(4)').style.zIndex = 4;
+    // Shuffle and apply positions for the surrounding images (not the largest one)
+    for (let i = surroundingPositions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [surroundingPositions[i], surroundingPositions[j]] = [surroundingPositions[j], surroundingPositions[i]];
+    }
+
+    // Assign the positions
+    set.querySelectorAll('img').forEach((img, index) => {
+        if (index === 3) { // 4th image is positioned centrally
+            img.style.top = centralPosition.top;
+            img.style.left = centralPosition.left;
+            img.style.zIndex = 4;  // Ensure largest image stays in front
+        } else {
+            img.style.top = surroundingPositions[index].top;
+            img.style.left = surroundingPositions[index].left;
         }
+    });
+}
 
         function fadeImages() {
             const previousIndex = currentIndex;

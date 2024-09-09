@@ -736,9 +736,26 @@ body {
     cursor: pointer;
     position: relative; /* For the underline animation */
     overflow: hidden;
-    width: 200px; /* Set fixed width for consistency */
-    height: auto; /* Allow the container height to adjust with text */
+    width: 200px; /* Fixed width */
+    height: 220px; /* Fixed height */
     text-align: left;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent the image from overflowing */
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease; /* Smooth zoom effect */
+}
+
+.image-container:hover .image-wrapper img {
+    transform: scale(1.1) translateX(-15px); /* Zoom and shift without changing container size */
 }
 /* Remove the blue underline from the link */
 .image-container a {
@@ -1149,40 +1166,48 @@ placesCloseButton.onclick = function() {
     <!-- Image Row -->
 <div class="image-row">
     <!-- Image and Text Container 1 -->
-    <div class="image-container">
-        <a href="#">
-        <img src="https://via.placeholder.com/120x150" alt="Image 1">
+   <div class="image-container">
+    <a href="#">
+        <div class="image-wrapper">
+            <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
-            </a>
-    </div>
+        <p class="location-description">Dallas, Texas</p>
+    </a>
+</div>
 
     <!-- Image and Text Container 2 -->
-    <div class="image-container">
-        <a href="#">
-        <img src="https://via.placeholder.com/120x150" alt="Image 2">
+   <div class="image-container">
+    <a href="#">
+        <div class="image-wrapper">
+            <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
-            </a>
-    </div>
+        <p class="location-description">Dallas, Texas</p>
+    </a>
+</div>
 
     <!-- Image and Text Container 3 -->
     <div class="image-container">
-        <a href="#">
-        <img src="https://via.placeholder.com/120x150" alt="Image 3">
+    <a href="#">
+        <div class="image-wrapper">
+            <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
-            </a>
-    </div>
+        <p class="location-description">Dallas, Texas</p>
+    </a>
+</div>
 
     <!-- Image and Text Container 4 -->
-    <div class="image-container">
-        <a href="#">
-        <img src="https://via.placeholder.com/120x150" alt="Image 4">
+   <div class="image-container">
+    <a href="#">
+        <div class="image-wrapper">
+            <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
-            </a>
-    </div>
+        <p class="location-description">Dallas, Texas</p>
+    </a>
+</div>
 </div>
 
 

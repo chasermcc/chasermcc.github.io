@@ -842,47 +842,39 @@ body {
 
     
         
-    /* Style for the second half of the page */
-.second-half {
+  .second-half {
     background-color: #FAF8F6;
-    height: calc(170vh - 50px); /* Adjusts for the height of the first section */
+    height: calc(170vh - 50px);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px; /* 100px space from where the first section ends */
+    flex-direction: column; /* Change to column to stack elements vertically */
+    align-items: center;
+    padding-top: 50px;
     position: relative;
 }
 
-/* Style for the large centered text box */
-.large-text-box {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2em;
-    color: #555;
-    max-width: 45%;
+/* Container to hold the two text boxes */
+.text-container {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the text boxes */
     text-align: center;
+    margin-bottom: 20px; /* Add space between text boxes and input form */
+}
+
+.large-text-box, .mission-text-box {
     padding: 20px;
     background-color: transparent;
-    font-weight: 250;
-    letter-spacing: .01em;
-    line-height: 1.2em;
+    max-width: 100%;
 }
-        .mission-text-box {
-    font-family: 'Inter', sans-serif; /* Same as other text */
-    font-size: 1em; /* Smaller font size */
-    color: #444; /* Lighter gray color */
-    max-width: 60%; /* Similar width to the large-text-box */
-    text-align: center; /* Center-align text */
-    margin-top: 20px; /* Space between the large-text-box and this one */
-    line-height: 1.5em; /* Adjust for better readability */
-    padding: 20px;
-    background-color: transparent;
-}
-        .input-form-box {
-    max-width: 60%; /* Align with large-text-box */
-    margin-top: 30px; /* Space between the mission-text-box and the input form */
+
+/* Style for the input form, same as before */
+.input-form-box {
+    max-width: 60%;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left; /* Align the form to the left */
+    text-align: left; /* Align form to the left */
 }
 
 .input-button-container {
@@ -898,9 +890,9 @@ body {
     border: 1px solid #444;
     border-radius: 0px;
     text-align: left;
-    margin: 0; /* Remove any default margin */
+    margin: 0;
     box-sizing: border-box;
-    border-right: none; /* Remove the border on the right side */
+    border-right: none;
 }
 
 #suggestPlaceButton {
@@ -913,7 +905,7 @@ body {
     cursor: pointer;
     margin: 0;
     transition: background-color 0.2s ease;
-    border-left: none; /* Remove border between the input and button */
+    border-left: none; /* Remove border between input and button */
 }
 
 #suggestPlaceButton:hover {
@@ -921,13 +913,10 @@ body {
 }
 
 #suggestPlaceInput::placeholder {
-    color: transparent; /* Hide placeholder text to create the blank effect */
+    color: transparent; /* Hide placeholder text */
 }
 
-
-
-
-        
+ 
     </style>
 </head>
 <body>
@@ -1278,22 +1267,29 @@ placesCloseButton.onclick = function() {
 
     </div>
 
-    <div class="second-half">
-    <div class="large-text-box">
-        <p>Where to next?</p>
-    </div>
+   <div class="second-half">
+    <!-- Create a container to wrap the two text boxes -->
+    <div class="text-container">
+        <div class="large-text-box">
+            <p>Where to next?</p>
+        </div>
+
         <div class="mission-text-box">
-        <p>Our mission is to create exceptional merch for the world's finest places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports local brands.</p>
+            <p>Our mission is to create exceptional merch for the world's finest places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports those brands.</p>
+        </div>
     </div>
-        <div class="input-form-box">
+
+    <!-- Add the new input form underneath the text boxes -->
+    <div class="input-form-box">
         <form id="suggestPlaceForm">
             <div class="input-button-container">
                 <input type="text" id="suggestPlaceInput" placeholder=" " required>
                 <button type="submit" id="suggestPlaceButton">Continue</button>
             </div>
         </form>
-        </div>
+    </div>
 </div>
+
 
     
 </body>

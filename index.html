@@ -686,42 +686,36 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Align elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
 }
 
 .text-box {
-    top: 80px;
-    width: 70%;
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 34px; 
     font-weight: 350;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Space between text and images */
     color: #444;
 }
 
 .image-row {
-    top: 185px;
-    width: 60%;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: center; /* Center images horizontally */
+    gap: 10px; /* Add space between images */
 }
 
 .image-row img {
-    width: 150px;
-    height: 170px;
+    width: 120px;
+    height: 150px;
     object-fit: cover;
 }
 
-}
-
 .products-button {
-    margin-top: 20px; /* Add margin to push it below the image-row */
+    margin-top: 20px; /* Ensure it’s below the image-row */
     padding: 10px 20px;
-    border: 2px solid #333; /* Match the "Places" button style */
+    border: 2px solid #333;
     background-color: transparent;
     color: #333;
     cursor: pointer;
@@ -731,6 +725,7 @@ body {
     background-color: black;
     color: white;
 }
+
 
     
         
@@ -1049,7 +1044,7 @@ placesCloseButton.onclick = function() {
         
     </script>
     
-  <div id="font-color">
+  <div id="transition-section">
     <div class="text-box">Unique merch from your favorite spots - Find them on Memorably</div>
     <div class="image-row">
         <img src="https://via.placeholder.com/120x150" alt="Image 1">

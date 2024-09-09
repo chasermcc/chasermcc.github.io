@@ -844,33 +844,48 @@ body {
         
   .second-half {
     background-color: #FAF8F6;
-    height: calc(170vh - 50px);
+    height: calc(170vh - 50px); /* Adjusted height */
     display: flex;
-    flex-direction: column; /* Change to column to stack elements vertically */
+    flex-direction: column; /* Stack the text-container and form vertically */
     align-items: center;
     padding-top: 50px;
     position: relative;
 }
 
-/* Container to hold the two text boxes */
+/* Container for the two text boxes side by side */
 .text-container {
-    max-width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center-align the text boxes */
+    max-width: 80%; /* Adjusted width for the two text boxes */
+    display: flex; /* Flexbox to stack the text boxes horizontally */
+    flex-direction: row;
+    justify-content: space-between; /* Add space between the two text boxes */
+    margin-bottom: 30px; /* Space between text boxes and the input form */
+}
+
+/* Styling for the large text */
+.large-text-box {
+    width: 45%; /* Adjust width to fit the container */
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    color: #555;
     text-align: center;
-    margin-bottom: 20px; /* Add space between text boxes and input form */
+    font-weight: 250;
+    letter-spacing: .01em;
+    line-height: 1.3em;
 }
 
-.large-text-box, .mission-text-box {
-    padding: 20px;
-    background-color: transparent;
-    max-width: 100%;
+/* Styling for the mission text box */
+.mission-text-box {
+    width: 45%; /* Adjust width to fit the container */
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    color: #666;
+    text-align: center;
+    line-height: 1.5em;
 }
 
-/* Style for the input form, same as before */
+/* Styling for the input form */
 .input-form-box {
-    max-width: 60%;
+    max-width: 60%; /* Align with large-text-box */
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -906,6 +921,7 @@ body {
     margin: 0;
     transition: background-color 0.2s ease;
     border-left: none; /* Remove border between input and button */
+    height: 100%; /* Ensure it is aligned properly with the input */
 }
 
 #suggestPlaceButton:hover {
@@ -1268,10 +1284,10 @@ placesCloseButton.onclick = function() {
     </div>
 
    <div class="second-half">
-    <!-- Create a container to wrap the two text boxes -->
+    <!-- Container for the two text boxes -->
     <div class="text-container">
         <div class="large-text-box">
-            <p>Where to next?</p>
+            <p>The coolest merch from the best spots— Find it on Memorably</p>
         </div>
 
         <div class="mission-text-box">
@@ -1279,7 +1295,7 @@ placesCloseButton.onclick = function() {
         </div>
     </div>
 
-    <!-- Add the new input form underneath the text boxes -->
+    <!-- Add the input form underneath the two text boxes -->
     <div class="input-form-box">
         <form id="suggestPlaceForm">
             <div class="input-button-container">

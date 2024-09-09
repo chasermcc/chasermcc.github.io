@@ -712,7 +712,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px; /* Space between image and text */
+    gap: 6px; /* Space between image and text */
 }
 
 .image-row img {
@@ -728,6 +728,15 @@ body {
     max-width: 200px; /* Match the image width */
     margin: 0;
     padding-left: 0;
+}
+
+    .location-description {
+    font-size: 0.8em; /* Slightly smaller font size */
+    color: #999; /* Lighter gray color */
+    font-weight: 200;
+    text-align: left; /* Align to the left */
+    margin: 2px 0 0 0; /* Small margin to separate from the description */
+    max-width: 200px; /* Match the image width */
 }
 
 
@@ -1067,31 +1076,36 @@ placesCloseButton.onclick = function() {
     <div class="text-box"><p>Unique merch from your favorite spots— Find it on Memorably</p></div>
     
     <!-- Image Row -->
-    <div class="image-row">
-        <!-- Image and Text Container 1 -->
-        <div class="image-container">
-            <img src="https://via.placeholder.com/120x150" alt="Image 1">
-            <p class="image-description">Place Name</p>
-        </div>
-
-        <!-- Image and Text Container 2 -->
-        <div class="image-container">
-            <img src="https://via.placeholder.com/120x150" alt="Image 2">
-            <p class="image-description">Place Name</p>
-        </div>
-
-        <!-- Image and Text Container 3 -->
-        <div class="image-container">
-            <img src="https://via.placeholder.com/120x150" alt="Image 3">
-            <p class="image-description">Place Name</p>
-        </div>
-
-        <!-- Image and Text Container 4 -->
-        <div class="image-container">
-            <img src="https://via.placeholder.com/120x150" alt="Image 4">
-            <p class="image-description">Place Name</p>
-        </div>
+<div class="image-row">
+    <!-- Image and Text Container 1 -->
+    <div class="image-container">
+        <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        <p class="image-description">Place Name</p>
+        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
     </div>
+
+    <!-- Image and Text Container 2 -->
+    <div class="image-container">
+        <img src="https://via.placeholder.com/120x150" alt="Image 2">
+        <p class="image-description">Place Name</p>
+        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+    </div>
+
+    <!-- Image and Text Container 3 -->
+    <div class="image-container">
+        <img src="https://via.placeholder.com/120x150" alt="Image 3">
+        <p class="image-description">Place Name</p>
+        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+    </div>
+
+    <!-- Image and Text Container 4 -->
+    <div class="image-container">
+        <img src="https://via.placeholder.com/120x150" alt="Image 4">
+        <p class="image-description">Place Name</p>
+        <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+    </div>
+</div>
+
 
     <!-- Products Button -->
     <button class="products-button">Shop our first places</button>

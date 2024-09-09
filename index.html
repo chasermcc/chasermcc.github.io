@@ -705,14 +705,29 @@ body {
 .image-row {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 8px; /* Space between each image-text pair */
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the image and text */
+    gap: 8px; /* Space between image and text */
 }
 
 .image-row img {
-    width: 220px;
-    height: 240px;
+    width: 200px;
+    height: 220px;
     object-fit: cover;
 }
+
+.image-description {
+    font-size: 0.9em;
+    text-align: center;
+    color: #333;
+    max-width: 200px; /* Match the image width */
+}
+
 
 .products-button {
     padding: 10px 20px;
@@ -1048,12 +1063,35 @@ placesCloseButton.onclick = function() {
     
   <div id="transition-section">
     <div class="text-box"><p>Unique merch from your favorite spots— Find it on Memorably</p></div>
+    
+    <!-- Image Row -->
     <div class="image-row">
-        <img src="https://via.placeholder.com/120x150" alt="Image 1">
-        <img src="https://via.placeholder.com/120x150" alt="Image 2">
-        <img src="https://via.placeholder.com/120x150" alt="Image 3">
-        <img src="https://via.placeholder.com/120x150" alt="Image 4">
+        <!-- Image and Text Container 1 -->
+        <div class="image-container">
+            <img src="https://via.placeholder.com/120x150" alt="Image 1">
+            <p class="image-description">Place Name</p>
+        </div>
+
+        <!-- Image and Text Container 2 -->
+        <div class="image-container">
+            <img src="https://via.placeholder.com/120x150" alt="Image 2">
+            <p class="image-description">Place Name</p>
+        </div>
+
+        <!-- Image and Text Container 3 -->
+        <div class="image-container">
+            <img src="https://via.placeholder.com/120x150" alt="Image 3">
+            <p class="image-description">Place Name</p>
+        </div>
+
+        <!-- Image and Text Container 4 -->
+        <div class="image-container">
+            <img src="https://via.placeholder.com/120x150" alt="Image 4">
+            <p class="image-description">Place Name</p>
+        </div>
     </div>
+
+    <!-- Products Button -->
     <button class="products-button">Shop our first places</button>
 </div>
 

@@ -689,7 +689,7 @@ body {
 
 #transition-section {
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-color: white;
     margin: 0;
     padding: 0;
@@ -698,37 +698,40 @@ body {
 
 .text-box {
     position: absolute;
-    top: 80px; /* 50px + 30px = 80px from the top */
-    width: 100%;
+    top: 80px;
+    width: 70%;
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 36px; /* Adjusted to match "second-half" text box */
-    font-weight: normal; /* Style should match the "second-half" text box */
+    font-size: 34px; 
+    font-weight: 350;
 }
 
 .image-row {
     position: absolute;
-    top: 185px; /* Moved down to make room for larger text */
+    top: 185px;
     width: 100%;
     display: flex;
-    justify-content: space-around; /* Spread out the images */
-    gap: 30px; /* Extra space between images */
+    justify-content: space-around;
+    gap: 10px;
 }
 
 .image-row img {
-    width: 150px; /* Set image width */
-    height: 150px; /* Set image height */
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+}
+
 }
 
 .products-button {
     position: absolute;
-    top: 380px; /* Moved lower to accommodate larger images */
+    top: 400px; /* Moved lower to accommodate larger images */
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
-    border: 2px solid blue; /* Match the "Places" button style */
+    border: 2px #333; /* Match the "Places" button style */
     background-color: transparent;
-    color: blue;
+    color: #333;
     cursor: pointer;
 }
 
@@ -1054,13 +1057,13 @@ placesCloseButton.onclick = function() {
         
     </script>
     
-   <div id="transition-section">
-    <div class="text-box">Unique merch from your favorite spots- Find them on Memorably</div>
+  <div id="transition-section">
+    <div class="text-box">Unique merch from your favorite spots - Find them on Memorably</div>
     <div class="image-row">
-        <img src="image1.jpg" alt="Image 1">
-        <img src="image2.jpg" alt="Image 2">
-        <img src="image3.jpg" alt="Image 3">
-        <img src="image4.jpg" alt="Image 4">
+        <img src="https://via.placeholder.com/120x150" alt="Image 1">
+        <img src="https://via.placeholder.com/120x150" alt="Image 2">
+        <img src="https://via.placeholder.com/120x150" alt="Image 3">
+        <img src="https://via.placeholder.com/120x150" alt="Image 4">
     </div>
     <button class="products-button">Products</button>
 </div>

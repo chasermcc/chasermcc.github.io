@@ -703,14 +703,28 @@ body {
     margin-bottom: 30px;
     color: #333;
     max-width: 49%;
-    transform: translateY(-28px)
+    line-height: 1.3em;
+    transform: translateY(-35px);
+}
+
+.text-box p {
+    margin: 0; /* Remove default margins */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.line-1 {
+    /* Styling specific to the first line */
+}
+
+.line-2 {
+    /* Styling specific to the second line */
 }
 
 .image-row {
     display: flex;
     justify-content: center;
     gap: 8px; /* Space between each image-text pair */
-    transform: translateY(-50px)
+    transform: translateY(-60px)
 }
 
 .image-container {
@@ -1084,7 +1098,11 @@ placesCloseButton.onclick = function() {
     </script>
     
   <div id="transition-section">
-    <div class="text-box"><p>Unique merch from your favorite spots— Find it on Memorably</p></div>
+    <div class="text-box">
+    <p class="line-1">Unique merch from your favorite spots—</p>
+    <p class="line-2">Find it on Memorably</p>
+</div>
+
     
     <!-- Image Row -->
 <div class="image-row">

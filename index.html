@@ -731,8 +731,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px; /* Space between image and text */
+    gap: 8px;
     cursor: pointer;
+    position: relative; /* For the underline animation */
+    overflow: hidden; /* To ensure image doesn't overflow when zoomed */
+}
+
+        .image-container:hover img {
+    transform: scale(1.1) translateX(-15px); /* Zoom and shift to the left */
+    transition: transform 0.4s ease; /* Smooth transition */
 }
 
 .image-row img {
@@ -741,6 +748,7 @@ body {
     object-fit: cover;
 }
 
+/* Underline Effect */
 .image-description {
     font-size: 0.9em;
     text-align: left;
@@ -750,6 +758,22 @@ body {
     padding-left: 0;
     font-weight: 450;
     letter-spacing: .01em;
+    position: relative; /* To position the underline */
+}
+
+.image-description::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position the underline just below the text */
+    left: 0;
+    height: 1px; /* 1px height line */
+    width: 0;
+    background-color: #333;
+    transition: width 0.4s ease; /* Smooth width expansion */
+}
+
+.image-container:hover .image-description::after {
+    width: 100%; /* Expand the underline on hover */
 }
 
 .location-description {
@@ -1108,30 +1132,38 @@ placesCloseButton.onclick = function() {
 <div class="image-row">
     <!-- Image and Text Container 1 -->
     <div class="image-container">
+        <a href="#">
         <img src="https://via.placeholder.com/120x150" alt="Image 1">
         <p class="image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+            </a>
     </div>
 
     <!-- Image and Text Container 2 -->
     <div class="image-container">
+        <a href="#">
         <img src="https://via.placeholder.com/120x150" alt="Image 2">
         <p class="image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+            </a>
     </div>
 
     <!-- Image and Text Container 3 -->
     <div class="image-container">
+        <a href="#">
         <img src="https://via.placeholder.com/120x150" alt="Image 3">
         <p class="image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+            </a>
     </div>
 
     <!-- Image and Text Container 4 -->
     <div class="image-container">
+        <a href="#">
         <img src="https://via.placeholder.com/120x150" alt="Image 4">
         <p class="image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p> <!-- New location text -->
+            </a>
     </div>
 </div>
 

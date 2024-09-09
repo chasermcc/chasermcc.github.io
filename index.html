@@ -734,7 +734,17 @@ body {
     gap: 8px;
     cursor: pointer;
     position: relative; /* For the underline animation */
-    overflow: hidden; /* To ensure image doesn't overflow when zoomed */
+    overflow: hidden;
+    width: 200px; /* Set fixed width for consistency */
+    height: 220px; /* Set fixed height for consistency */
+}
+        /* Remove the blue underline from the link */
+.image-container a {
+    text-decoration: none; /* Remove default underline */
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
         .image-container:hover img {
@@ -742,20 +752,25 @@ body {
     transition: transform 0.4s ease; /* Smooth transition */
 }
 
-.image-row img {
-    width: 200px;
-    height: 220px;
+/* Maintain the original image size and apply the zoom effect */
+.image-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
 }
+
+.image-container:hover img {
+    transform: scale(1.1) translateX(-15px); /* Zoom without affecting the container size */
+}
+
 
 /* Underline Effect */
 .image-description {
     font-size: 0.9em;
     text-align: left;
     color: #333;
-    max-width: 200px; /* Match the image width */
     margin: 0;
-    padding-left: 0;
     font-weight: 450;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
@@ -764,16 +779,17 @@ body {
 .image-description::after {
     content: '';
     position: absolute;
-    bottom: -2px; /* Position the underline just below the text */
+    bottom: -2px;
     left: 0;
     height: 1px; /* 1px height line */
     width: 0;
     background-color: #333;
-    transition: width 0.4s ease; /* Smooth width expansion */
+    transition: width 1s ease; /* Slow down the underline effect */
+    max-width: 100%; /* Ensure it only grows to the length of the text */
 }
 
 .image-container:hover .image-description::after {
-    width: 100%; /* Expand the underline on hover */
+    width: 100%; /* Expand the underline to the width of the text */
 }
 
 .location-description {

@@ -851,19 +851,19 @@ body {
     padding-top: 50px;
     position: relative;
 }
-
-/* Container for the two text boxes side by side */
+/* Adjust the text-container to stack elements vertically */
 .text-container {
-    max-width: 90%; /* Adjusted width for the two text boxes */
-    display: flex; /* Flexbox to stack the text boxes horizontally */
-    flex-direction: row;
-    justify-content: space-between; /* Add space between the two text boxes */
-    margin-bottom: 30px; /* Space between text boxes and the input form */
+    max-width: 80%; /* Adjust width to center elements */
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    margin-bottom: 30px; /* Space between text boxes and input form */
 }
 
-/* Styling for the large text */
+/* Adjust the large text box to take full width when in column layout */
 .large-text-box {
-    width: 30%; /* Adjust width to fit the container */
+    width: 100%; /* Full width of the container */
     font-family: 'Playfair Display', serif;
     font-size: 2.2em;
     color: #555;
@@ -871,16 +871,18 @@ body {
     font-weight: 250;
     letter-spacing: .01em;
     line-height: 1.3em;
+    margin-bottom: 20px; /* Add space between the large text and mission text */
 }
 
-/* Styling for the mission text box */
+/* Adjust the mission text box to take full width when in column layout */
 .mission-text-box {
-    width: 60%; /* Adjust width to fit the container */
+    width: 100%; /* Full width of the container */
     font-family: 'Inter', sans-serif;
     font-size: 1em;
     color: #666;
     text-align: center;
     line-height: 1.5em;
+    margin-bottom: 30px; /* Add space between the mission text and the input form */
 }
 
 /* Styling for the input form */
@@ -1293,7 +1295,7 @@ placesCloseButton.onclick = function() {
         </div>
 
         <div class="mission-text-box">
-            <p>Our mission is to create exceptional merch for the world's finest places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports those brands.</p>
+            <p>Our mission is to create exceptional merch for the world's best places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports those brands.</p>
         </div>
     </div>
 

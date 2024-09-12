@@ -972,6 +972,50 @@ body {
     line-height: 1.3em; /* Maintain readable line height */
     text-align: center;
 }
+        /* Container for the Popular Suggestions section */
+.popular-suggestions-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Title for Popular Suggestions */
+.suggestions-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Container for the clickable bubbles */
+.bubble-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/* Bubbles styling */
+.bubble {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    font-weight: 300;
+    color: #444;
+    background-color: transparent;
+    border: 1px solid #444;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+
+/* Hover effect for the bubbles */
+.bubble:hover {
+    background-color: black;
+    color: white;
+}
+
 
 
  
@@ -1366,6 +1410,28 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/100" alt="Location 3">
             <p class="location-description">Paris</p>
         </div>
+    </div>
+</div>
+
+       <!-- New section for Popular Suggestions -->
+<div class="popular-suggestions-container">
+    <div class="suggestions-title">
+        Popular suggestions
+    </div>
+    <div class="bubble-container">
+        <!-- Example Bubbles -->
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name</button>
     </div>
 </div>
 

@@ -972,10 +972,15 @@ body {
     line-height: 1.3em; /* Maintain readable line height */
     text-align: center;
 }
-        /* Container for the Popular Suggestions section */
-.popular-suggestions-container {
-    text-align: center;
+      /* Container for Popular Suggestions Section */
+.popular-suggestions-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 /* Title for Popular Suggestions */
@@ -986,17 +991,17 @@ body {
     margin-bottom: 20px;
 }
 
-/* Container for the clickable bubbles */
+/* Bubble Container */
 .bubble-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-left: 40px;
-    margin-right: 40px;
+    gap: 12px; /* Adjust the space between bubbles */
+    width: 100%;
+    max-width: 80%; /* Control the max width for better spacing */
 }
 
-/* Bubbles styling */
+/* Individual Bubble */
 .bubble {
     padding: 10px 20px;
     font-size: 0.9em;
@@ -1008,13 +1013,33 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     display: inline-block;
+    white-space: nowrap; /* Prevent text from breaking to a new line */
+    text-align: center;
+    flex-grow: 0; /* Allow the button to grow only based on its content */
+    flex-shrink: 1; /* Allow the button to shrink to fit within the row */
 }
 
-/* Hover effect for the bubbles */
+/* Hover effect for bubbles */
 .bubble:hover {
     background-color: black;
     color: white;
 }
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .bubble-container {
+        max-width: 95%; /* Adjust container width on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .bubble-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+
 
 
 
@@ -1413,25 +1438,30 @@ placesCloseButton.onclick = function() {
     </div>
 </div>
 
-       <!-- New section for Popular Suggestions -->
-<div class="popular-suggestions-container">
+      <!-- Popular Suggestions Section -->
+<div class="popular-suggestions-section">
     <div class="suggestions-title">
         Popular suggestions
     </div>
     <div class="bubble-container">
-        <!-- Example Bubbles -->
+        <!-- First row of bubbles -->
+        <button class="bubble">Place Name 1</button>
+        <button class="bubble">Place Name 123</button>
         <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name 2</button>
+        <button class="bubble">Place Name 234</button>
         <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
-        <button class="bubble">Place Name</button>
+        <button class="bubble">Place Name 3</button>
+        <button class="bubble">Place Name 345</button>
+        <!-- Second row of bubbles -->
+        <button class="bubble">Place Name 5</button>
+        <button class="bubble">Place Name 6</button>
+        <button class="bubble">Place Name 7</button>
+        <button class="bubble">Place Name 8</button>
+        <button class="bubble">Place Name 5</button>
+        <button class="bubble">Place Name 6</button>
+        <button class="bubble">Place Name 7</button>
+        <button class="bubble">Place Name 8</button>
     </div>
 </div>
 

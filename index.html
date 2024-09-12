@@ -992,6 +992,7 @@ body {
     color: #444;
     margin-bottom: 0px;
     letter-spacing: .01em;
+    transform: translateY(-50px);
 }
 
 /* Bubble Container */
@@ -1002,13 +1003,14 @@ body {
     gap: 10px; /* Adjust the space between bubbles */
     width: 100%;
     max-width: 80%; /* Control the max width for better spacing */
+    transform: translateY(-50px);
 }
 
 /* Individual Bubble */
 .bubble {
     padding: 14px 14px; /* Adjust padding as needed */
     font-size: 0.9em;
-    font-weight: 125;
+    font-weight: 100;
     letter-spacing: .01em;
     color: #444;
     background-color: white;
@@ -1447,7 +1449,7 @@ placesCloseButton.onclick = function() {
 
 <!-- New Container for Popular Suggestions -->
 <div class="popular-suggestions-section">
-    <div class="suggestions-title">Popular suggestions</div>
+    <div class="suggestions-title">Top suggestions</div>
     <div class="bubble-container">
         <!-- First row of bubbles -->
         <button class="bubble">Balthazar</button>

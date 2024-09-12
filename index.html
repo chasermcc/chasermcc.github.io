@@ -857,8 +857,8 @@ body {
 /* Adjust the text-container to stack elements vertically */
  .text-container {
             flex: 1; /* Take up available space */
-            max-width: 50%; /* Adjust to allow space for the right-side images */
-            margin-right: 50px; /* Space between text and popular locations */
+            max-width: 52%; /* Adjust to allow space for the right-side images */
+            margin-right: 35px; /* Space between text and popular locations */
             text-align: left;
         }
 
@@ -959,6 +959,19 @@ body {
             object-fit: cover;
             transition: transform 0.3s ease;
         }
+
+        .location-item {
+    text-align: center; /* Center the image and text */
+}
+
+.location-description {
+    font-size: 0.8em;
+    color: #555;
+    margin-top: 8px; /* Add space between the image and the description */
+    max-width: 100px; /* Ensure the text doesn't overflow */
+    line-height: 1.3em; /* Maintain readable line height */
+}
+
 
  
     </style>
@@ -1334,12 +1347,23 @@ placesCloseButton.onclick = function() {
     </div>
 
     <!-- Right side: Popular Locations -->
-    <div class="popular-locations-container">
-        <div class="popular-locations-title">Popular locations</div>
-        <div class="popular-locations-images">
+   <div class="popular-locations-container">
+    <div class="popular-locations-title">Popular locations</div>
+    <div class="popular-locations-images">
+        <!-- Location 1 -->
+        <div class="location-item">
             <img src="https://via.placeholder.com/100" alt="Location 1">
+            <p class="location-description">New York</p>
+        </div>
+        <!-- Location 2 -->
+        <div class="location-item">
             <img src="https://via.placeholder.com/100" alt="Location 2">
+            <p class="location-description">Los Angeles</p>
+        </div>
+        <!-- Location 3 -->
+        <div class="location-item">
             <img src="https://via.placeholder.com/100" alt="Location 3">
+            <p class="location-description">Paris</p>
         </div>
     </div>
 </div>

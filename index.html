@@ -1004,7 +1004,7 @@ body {
 
 /* Individual Bubble */
 .bubble {
-    padding: 6px 12px;
+    padding: 6px 12px; /* Adjust padding as needed */
     font-size: 0.9em;
     font-weight: 300;
     color: #444;
@@ -1013,11 +1013,10 @@ body {
     border-radius: 40px;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
-    display: inline-block;
-    white-space: nowrap; /* Prevent text from breaking to a new line */
+    display: inline-block; /* Ensure the width is based on the content */
+    white-space: nowrap; /* Prevent text from wrapping to a new line */
     text-align: center;
-    flex-grow: 0; /* Allow the button to grow only based on its content */
-    flex-shrink: 1; /* Allow the button to shrink to fit within the row */
+    flex-grow: 0; /* Ensure bubbles don't grow to fill the space */
 }
 
 /* Hover effect for bubbles */

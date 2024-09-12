@@ -847,13 +847,16 @@ body {
     height: calc(170vh - 50px); /* Adjusted height */
     display: flex;
     flex-direction: column; /* Stack the text-container and form vertically */
-    align-items: center;
+    align-items: flex-start;
     padding-top: 50px;
     position: relative;
+    padding-left: 80px;
 }
 /* Adjust the text-container to stack elements vertically */
 .text-container {
     max-width: 45%; /* Adjust width to center elements */
+    margin-left: 80px;
+    text-align: left;
     display: flex;
     flex-direction: column; /* Change to column layout */
     justify-content: flex-start;
@@ -888,7 +891,7 @@ body {
 /* Styling for the input form */
 .input-form-box {
     width: 45%; /* Align with large-text-box */
-    margin-left: 10%;
+    margin-left: 80px;
     text-align: left; /* Align form to the left */
 }
 
@@ -896,6 +899,7 @@ body {
     display: flex;
     align-items: center;
     width: 70%;
+    margin-left: 80px;
 }
 
 #suggestPlaceInput {

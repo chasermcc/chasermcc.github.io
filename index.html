@@ -1016,8 +1016,11 @@ body {
     display: inline-block; /* Ensure the width is based on the content */
     white-space: nowrap; /* Prevent text from wrapping to a new line */
     text-align: center;
-    flex-grow: 0; /* Ensure bubbles don't grow to fill the space */
+    flex-grow: 0; /* Remove this if present */
+    flex-shrink: 0; /* Allow bubbles to shrink if content is short */
+    width: auto; /* Allow the width to adjust automatically */
 }
+
 
 /* Hover effect for bubbles */
 .bubble:hover {

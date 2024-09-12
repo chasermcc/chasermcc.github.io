@@ -853,11 +853,11 @@ body {
 }
 /* Adjust the text-container to stack elements vertically */
 .text-container {
-    max-width: 80%; /* Adjust width to center elements */
+    max-width: 70%; /* Adjust width to center elements */
     display: flex;
     flex-direction: column; /* Change to column layout */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
+    justify-content: flex-start;
+    align-items: flex-start; /* Center horizontally */
     margin-bottom: 30px; /* Space between text boxes and input form */
 }
 
@@ -867,7 +867,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 2.2em;
     color: #555;
-    text-align: center;
+    text-align: left;
     font-weight: 250;
     letter-spacing: .01em;
     line-height: 1.3em;
@@ -880,14 +880,14 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 1em;
     color: #666;
-    text-align: center;
+    text-align: left;
     line-height: 1.5em;
     margin-bottom: 30px; /* Add space between the mission text and the input form */
 }
 
 /* Styling for the input form */
 .input-form-box {
-    width: 50%; /* Align with large-text-box */
+    width: 100%; /* Align with large-text-box */
     margin-left: 10%;
     text-align: left; /* Align form to the left */
 }
@@ -895,7 +895,7 @@ body {
 .input-button-container {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 70%;
 }
 
 #suggestPlaceInput {

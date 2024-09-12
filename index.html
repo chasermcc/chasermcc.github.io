@@ -992,7 +992,7 @@ body {
     color: #444;
     margin-bottom: 0px;
     letter-spacing: .01em;
-    transform: translateY(-50px);
+    transform: translateY(-100px);
 }
 
 /* Bubble Container */
@@ -1003,7 +1003,7 @@ body {
     gap: 10px; /* Adjust the space between bubbles */
     width: 100%;
     max-width: 80%; /* Control the max width for better spacing */
-    transform: translateY(-50px);
+    transform: translateY(-100px);
 }
 
 /* Individual Bubble */
@@ -1047,6 +1047,22 @@ body {
     }
 }
 
+/* Horizontal Separator Line for Recent Section */
+.recent-separator {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    width: 80%; /* Set width to 80% of the screen */
+    margin: 40px auto 20px auto; /* Center the separator and add spacing */
+}
+
+/* Recent Bubble Container */
+.recent-bubble-container {
+    justify-content: space-evenly; /* Distribute bubbles evenly */
+    gap: 10px; /* Space between bubbles */
+    width: 100%; /* Full width of the container */
+    max-width: 80%; /* Adjust width for better spacing */
+    margin: 20px auto; /* Center the bubble row */
+}
 
 
 
@@ -1470,6 +1486,28 @@ placesCloseButton.onclick = function() {
         <button class="bubble">Honor Bar</button>
     </div>
 </div>
+
+<!-- New "Recent" Section -->
+<div class="recent-section">
+    <!-- Horizontal Separator -->
+    <hr class="recent-separator">
+
+    <!-- Recent Title -->
+    <div class="suggestions-title">Recent</div>
+
+    <!-- Single Line of Bubbles -->
+    <div class="bubble-container recent-bubble-container">
+        <button class="bubble">Upland</button>
+        <button class="bubble">The Dead Rabbit NYC</button>
+        <button class="bubble">JG Melon</button>
+        <button class="bubble">Per Se</button>
+        <button class="bubble">Maison Close Restaurant</button>
+        <button class="bubble">The Mansion Restaurant</button>
+        <button class="bubble">The Charles</button>
+        <button class="bubble">Toulouse</button>
+    </div>
+</div>
+
 
     
 </body>

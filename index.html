@@ -858,7 +858,7 @@ body {
  .text-container {
             flex: 1; /* Take up available space */
             max-width: 60%; /* Adjust to allow space for the right-side images */
-            margin-right: 20px; /* Space between text and popular locations */
+            margin-right: 50px; /* Space between text and popular locations */
             text-align: left;
         }
 
@@ -1309,27 +1309,37 @@ placesCloseButton.onclick = function() {
     </div>
 
    <div class="second-half">
-        <!-- Left side: Mission Text -->
-        <div class="text-container">
-            <div class="large-text-box">
-                <p>Let's go where you love</p>
-            </div>
-
-            <div class="mission-text-box">
-                <p>Our mission is to create exceptional merch for the world's best places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports those brands.</p>
-            </div>
+    <!-- Left side: Mission Text -->
+    <div class="text-container">
+        <div class="large-text-box">
+            <p>Let's go where you love</p>
         </div>
 
-        <!-- Right side: Popular Locations -->
-        <div class="popular-locations-container">
-            <div class="popular-locations-title">Popular locations</div>
-            <div class="popular-locations-images">
-                <img src="https://via.placeholder.com/100" alt="Location 1">
-                <img src="https://via.placeholder.com/100" alt="Location 2">
-                <img src="https://via.placeholder.com/100" alt="Location 3">
-            </div>
+        <div class="mission-text-box">
+            <p>Our mission is to create exceptional merch for the world's best places. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you unique merch that celebrates and supports those brands.</p>
+        </div>
+
+        <!-- Input form to suggest places -->
+        <div class="input-form-box">
+            <form id="suggestPlaceForm">
+                <div class="input-button-container">
+                    <input type="text" id="suggestPlaceInput" placeholder="Suggest a place" required>
+                    <button type="submit" id="suggestPlaceButton">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+
+    <!-- Right side: Popular Locations -->
+    <div class="popular-locations-container">
+        <div class="popular-locations-title">Popular locations</div>
+        <div class="popular-locations-images">
+            <img src="https://via.placeholder.com/100" alt="Location 1">
+            <img src="https://via.placeholder.com/100" alt="Location 2">
+            <img src="https://via.placeholder.com/100" alt="Location 3">
+        </div>
+    </div>
+</div>
 
     
 </body>

@@ -65,12 +65,12 @@ body {
 }
 
 .sticky-input {
-    width: 300px;
+    width: 250px;
     padding: 10px;
     border: 1px solid #444;
     border-radius: 0px;
     font-size: 1em;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 .sticky-button {
@@ -983,7 +983,7 @@ body {
             padding: 12px 20px;
             font-size: 1em;
             color: white;
-            background-color: #333;
+            background-color: #444;
             border: 1px solid #333;
             cursor: pointer;
             transition: background-color 0.2s ease;
@@ -1194,7 +1194,7 @@ body {
             Shop unforgettable restaurants, hotels, and experiences
         </div>
         <div class="sticky-right">
-            <input type="text" id="stickyWaitlistInput" placeholder="Enter your email" class="sticky-input">
+            <input type="text" id="stickyWaitlistInput" placeholder="Email address" class="sticky-input">
             <button id="stickyJoinWaitlistButton" class="sticky-button">Join waitlist</button>
         </div>
     </div>
@@ -1317,7 +1317,7 @@ body {
     <script>
        // Get references to the sticky header
 const stickyHeader = document.getElementById('stickyHeader');
-const stickyPoint = 300; // Adjust this value to set when the header appears
+const stickyPoint = 500; // Adjust this value to set when the header appears
 
 // Scroll event listener
 window.onscroll = function() {

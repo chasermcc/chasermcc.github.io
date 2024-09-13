@@ -799,7 +799,7 @@ body {
     font-weight: 450;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
-    width: 100%;
+    width: auto;
 }
 
 /* Custom underline that grows with a slower effect */
@@ -811,12 +811,12 @@ body {
     height: 1px; /* 1px height line */
     width: 0;
     background-color: #333;
-    transition: width 1s ease; /* Slow down the underline effect */
-    max-width: 100%; /* Ensure it only grows to the length of the text */
+    transition: width 2s ease; /* Slow down the underline effect */
+    max-width: auto; /* Ensure it only grows to the length of the text */
 }
 
 .image-container:hover .image-description::after {
-    width: 50%; /* Expand the underline to the width of the text */
+    width: auto; /* Expand the underline to the width of the text */
 }
 
 .location-description {
@@ -825,7 +825,7 @@ body {
     margin: 0; /* Small margin to separate from the description */
     font-weight: 350;
     text-align: left; /* Align text to the left */
-    width: 100%; /* Ensure it takes up full width */
+    width: auto; /* Ensure it takes up full width */
 }
 
 
@@ -990,6 +990,7 @@ body {
     text-align: center;
     background-color: #FAF8F6;
     height: auto;
+    transform: translateY(20px);
 }
 
 /* Title for Popular Suggestions */
@@ -997,7 +998,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.2em;
     color: #444;
-    margin-top: 5px;
+    margin-top: 0px;
     letter-spacing: .01em;
     text-align: center;
 }
@@ -1043,6 +1044,7 @@ body {
     background-color: #FAF8F6;
     margin-top: 0px;
     height: auto; /* Remove the extra space */
+    transform: translateY(-50px);
 }
 
         

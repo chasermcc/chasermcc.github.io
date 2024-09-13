@@ -316,25 +316,29 @@ body {
             color: #111;
         }
 
-        .footer .upper-links {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: #111;
-            text-decoration: none;
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
+     .partner-button {
+    margin-top: 8px;
+    padding: 12px 24px;
+    font-size: .9em;
+    font-weight: 250;
+    color: #444;
+    background-color: white; /* White background */
+    border: 1px solid #333;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    display: inline-block;
+    width: auto; /* Adjust width automatically */
+    position: relative;
+    z-index: 15;
+    letter-spacing: .01em;
+}
 
-        .footer .upper-links a {
-            color: #111;
-            text-decoration: none;
-            font-weight: 500;
-        }
+.partner-button:hover {
+    background-color: black;
+    color: white;
+}
 
-        .footer .upper-links a:hover {
-            color: #777;
-        }
 
         .footer .lower-links {
             font-size: 0.8em;
@@ -1082,7 +1086,7 @@ body {
     color: #999;
     letter-spacing: .01em;
     font-weight: 175;
-    font-size: 0.8em;
+    font-size: 0.75em;
     font-family: 'Inter', sans-serif;
 }
 
@@ -1225,9 +1229,11 @@ body {
             </a>
         </div>
 
-        <div class="upper-links">
-            <a href="#">Sell on Memorably</a>
-        </div>
+       <!-- Change this link into a button -->
+<div class="upper-links">
+    <button class="partner-button">Sell on Memorably</button>
+</div>
+
     </div>
 
     <script>
@@ -1475,7 +1481,7 @@ placesCloseButton.onclick = function() {
         <div class="input-form-box">
             <form id="suggestPlaceForm">
                 <div class="input-button-container">
-                    <input type="text" id="suggestPlaceInput" placeholder=""Balthazar, New York"" required>
+                    <input type="text" id="suggestPlaceInput" placeholder=" "Balthazar, New York" " required>
                     <button type="submit" id="suggestPlaceButton">Submit</button>
                 </div>
             </form>

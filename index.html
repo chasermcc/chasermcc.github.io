@@ -286,12 +286,17 @@ body {
 
 
 
-        .footer {
-            position: relative;
-            left: 80px;
-            font-size: 0.9em;
-            color: #555;
-        }
+       .footer {
+    position: absolute;
+    bottom: 160px; /* Move it up by setting bottom to 160px */
+    left: 80px;
+    z-index: 20; /* Ensure it appears above the background */
+    font-size: 0.9em;
+    color: #555;
+    width: 100%; /* Stretch the footer to cover full width */
+    text-align: left; /* Align content to the left */
+    background-color: transparent; /* Make sure it shows the background */
+}
 
         .footer .social-media-links {
             display: flex;

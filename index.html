@@ -13,7 +13,8 @@
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+    overflow-y: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+    overflow-x: hidden;
     background-color: #FAF8F6;
     transition: background-color 2s ease-in-out;
     animation: fadeIn 1s ease-in-out;
@@ -189,8 +190,7 @@ body {
        .floating-images {
     position: absolute;
     top: calc(1.8% + 91px); 
-    right: 60px;  
-    left: 33%; 
+    right: 60px;   
     width: auto;
     height: 600px;
     display: flex;
@@ -1053,7 +1053,7 @@ body {
     border: none;
     border-top: 1px solid #e0e0e0;
     width: 80%; /* Set width to 80% of the screen */
-    margin: 30px auto 20px auto; /* Center the separator and add spacing */
+    margin: 30px auto 30px auto; /* Center the separator and add spacing */
     background-color: #FAF8F6;
 }
 

@@ -191,7 +191,7 @@ body {
     position: absolute;
     top: calc(1.8% + 91px); 
     right: 60px; 
-    left: auto;
+    left: 33%;
     width: auto;
     height: 600px;
     display: flex;
@@ -721,6 +721,8 @@ body {
 
 .image-row {
     display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
     justify-content: center;
     gap: 8px; /* Space between each image-text pair */
     transform: translateY(-28px)

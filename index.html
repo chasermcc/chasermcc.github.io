@@ -832,7 +832,7 @@ body {
     color: #444;
     cursor: pointer;
     transform: translateY(30px);
-    font-weight: 300;
+    font-weight: 250;
     letter-spacing: .01em;
 }
 
@@ -1062,6 +1062,44 @@ body {
     margin-top: 0px;
 }
 
+/* Bottom Footer Section */
+.bottom-footer {
+    height: 75px;
+    background-color: white; /* White background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    text-align: center;
+    color: #333;
+    font-size: 0.9em;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-content p {
+    margin: 0; /* Remove margin for the copyright text */
+    padding-bottom: 5px;
+}
+
+.footer-links {
+    margin-top: 5px;
+}
+
+.footer-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85em;
+    margin: 0 10px; /* Space between links */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: #555;
+}
 
 
 
@@ -1505,6 +1543,17 @@ placesCloseButton.onclick = function() {
         <button class="bubble">The Mansion Restaurant</button>
         <button class="bubble">The Charles</button>
         <button class="bubble">Toulouse</button>
+    </div>
+</div>
+
+    <!-- Footer section for Terms of Service and Privacy Policy -->
+<div class="bottom-footer">
+    <div class="footer-content">
+        <p>&copy; 2024 Memorably, Inc.</p>
+        <div class="footer-links">
+            <a href="#">Terms of Service</a> |
+            <a href="#">Privacy Policy</a>
+        </div>
     </div>
 </div>
 

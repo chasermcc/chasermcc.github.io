@@ -223,7 +223,7 @@ body {
         transform: translate(0, 0);
     }
     100% {
-        transform: translate(-10px, 10px); /* Slight movement */
+        transform: translate(-20px, 20px); /* Slight movement */
     }
 }
 
@@ -300,10 +300,9 @@ body {
     z-index: 20; /* Ensure it appears above the background */
     font-size: 0.9em;
     color: #555;
-    width: 100%; /* Stretch the footer to cover full width */
+    width: calc(100%-160px); /* Stretch the footer to cover full width */
     text-align: left; /* Align content to the left */
     background-color: transparent; /* Make sure it shows the background */
-    max-width: 100%;
 }
 
         .footer .social-media-links {

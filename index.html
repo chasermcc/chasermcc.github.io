@@ -204,6 +204,7 @@ body {
     flex-wrap: wrap;
     padding: 25px;
     z-index: 10;
+    overflow: hidden;
 }
 
 
@@ -376,6 +377,11 @@ body {
             justify-content: center;
             align-items: center;
         }
+       
+        body.modal-open {
+    overflow: hidden;
+}
+
 
         .modal.show {
             animation: fadeInModal 0.2s ease-in-out;
@@ -848,7 +854,7 @@ body {
         
  .second-half {
             background-color: #FAF8F6;
-            height: calc(325px); /* Adjusted height */
+            height: 325px; /* Adjusted height */
             display: flex; /* Use flex to align content side by side */
             align-items: flex-start;
             justify-content: space-between; /* Space between left and right columns */
@@ -1329,11 +1335,13 @@ body {
         joinWaitlistButton.onclick = function() {
             modal.style.display = "flex";
             modal.classList.add("show");
+            document.body.classList.add("modal-open"); // Disable body scroll when modal is open
         }
 
         closeButton.onclick = function() {
             modal.style.display = "none";
             modal.classList.remove("show");
+            document.body.classList.remove("modal-open");
         }
 
         termsCheckbox.onchange = function() {

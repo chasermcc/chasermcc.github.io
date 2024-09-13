@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +12,9 @@
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
-    background-color: white;
+    overflow-y: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+    overflow-x: hidden;
+    background-color: #FAF8F6;
     transition: background-color 2s ease-in-out;
     animation: fadeIn 1s ease-in-out;
     min-height: 100vh;
@@ -189,8 +189,8 @@ body {
        .floating-images {
     position: absolute;
     top: calc(1.8% + 91px); 
-    right: 60px;  
-    left: 33%; 
+    right: 60px; 
+    left: 33%;
     width: auto;
     height: 600px;
     display: flex;
@@ -790,42 +790,33 @@ body {
 }
 
 
-/* Underline Effect */
-.image-description {
+.transition-location-description {
     font-size: 0.9em;
     text-align: left;
     color: #333;
     margin: 0 0 8px 0;
-    font-weight: 450;
+    font-weight: 300;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
     width: 100%;
 }
 
-/* Custom underline that grows with a slower effect */
-.image-description::after {
+/* Custom underline that grows with a slower effect for transition section */
+.transition-location-description::after {
     content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
     height: 1px; /* 1px height line */
-    width: 0;
+    width: 0; /* Initially, no width */
     background-color: #333;
     transition: width 1s ease; /* Slow down the underline effect */
     max-width: 100%; /* Ensure it only grows to the length of the text */
 }
 
-.image-container:hover .image-description::after {
-    width: 50%; /* Expand the underline to the width of the text */
-}
-
-.location-description {
-    font-size: 0.8em; /* Slightly smaller font size */
-    color: #888; /* Lighter gray color */
-    margin: 0; /* Small margin to separate from the description */
-    font-weight: 350;
-    text-align: left; /* Align text to the left */
-    width: 100%; /* Ensure it takes up full width */
+/* On hover, the underline should grow to full width */
+.image-container:hover .transition-location-description::after {
+    width: 100%; /* Expand the underline to the width of the text */
 }
 
 
@@ -985,7 +976,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 0px;
+    margin-top: 30px;
     margin-bottom: 0px;
     text-align: center;
     background-color: #FAF8F6;
@@ -997,7 +988,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.2em;
     color: #444;
-    margin-top: 5px;
+    margin-top: 0px;
     letter-spacing: .01em;
     text-align: center;
 }
@@ -1041,8 +1032,11 @@ body {
 
 .recent-section {
     background-color: #FAF8F6;
-    margin-top: 0px;
+    margin-top: 65px;
     height: auto; /* Remove the extra space */
+}
+        .suggestions-title {
+    margin-bottom: 0px; /* Adds space between title and separator */
 }
 
         
@@ -1050,7 +1044,7 @@ body {
     border: none;
     border-top: 1px solid #e0e0e0;
     width: 80%; /* Set width to 80% of the screen */
-    margin: 0px auto 0px auto; /* Center the separator and add spacing */
+    margin: 30px auto 30px auto; /* Center the separator and add spacing */
     background-color: #FAF8F6;
 }
 
@@ -1061,7 +1055,8 @@ body {
     gap: 10px; /* Space between bubbles */
     width: 100%; /* Full width of the container */
     max-width: 80%; /* Adjust width for better spacing */
-    margin: 20px auto; /* Center the bubble row */
+    margin: 0px auto; /* Center the bubble row */
+    margin-top: 0px;
 }
 
 
@@ -1372,7 +1367,7 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p>
+        <p class="transition-location-description">Dallas, Texas</p>
     </a>
 </div>
 

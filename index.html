@@ -27,6 +27,63 @@ body {
             to { opacity: 1; }
         }
 
+    /* Sticky Header Styling */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 100;
+}
+
+.sticky-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 80px; /* Adjust padding for alignment */
+}
+
+.sticky-left {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.09em;
+    color: #222;
+}
+
+.sticky-right {
+    display: flex;
+    align-items: center;
+}
+
+.sticky-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 0px;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.sticky-button {
+    padding: 12px 24px;
+    font-size: 0.9em;
+    color: white;
+    background-color: #444;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 0px;
+}
+
+.sticky-button:hover {
+    background-color: black;
+}
+
+        
         .background {
             position: absolute;
             width: 100%;
@@ -1124,6 +1181,18 @@ body {
     </style>
 </head>
 <body>
+    <div id="stickyHeader" class="sticky-header">
+    <div class="sticky-header-content">
+        <div class="sticky-left">
+            Shop unforgettable restaurants, hotels, and experiences
+        </div>
+        <div class="sticky-right">
+            <input type="text" id="stickyWaitlistInput" placeholder="Enter your email" class="sticky-input">
+            <button id="stickyJoinWaitlistButton" class="sticky-button">Join waitlist</button>
+        </div>
+    </div>
+</div>
+ 
     <div class="background" id="background"></div>
 
     <div class="header-text">
@@ -1239,6 +1308,20 @@ body {
     </div>
 
     <script>
+        // Get references to the sticky header
+const stickyHeader = document.getElementById('stickyHeader');
+const stickyPoint = 500; // Adjust this value to set when the header appears
+
+// Scroll event listener
+window.onscroll = function() {
+    if (window.pageYOffset > stickyPoint) {
+        stickyHeader.style.display = 'block';
+    } else {
+        stickyHeader.style.display = 'none';
+    }
+};
+
+        
         const taglines = [
             "Discover the best in hospitality",
             "Shop local - or wherever your journey takes you",

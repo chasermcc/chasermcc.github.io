@@ -786,7 +786,7 @@ body {
     font-size: 0.9em;
     text-align: left;
     color: #333;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     font-weight: 450;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
@@ -810,36 +810,16 @@ body {
     width: 100%; /* Expand the underline to the width of the text */
 }
 
-
 .transition-location-description {
     font-size: 0.8em;
     text-align: left;
-    color: #333;
+    color: #777;
     margin: 0 0 8px 0;
-    font-weight: 350;
+    font-weight: 325;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
     width: 100%;
 }
-
-/* Custom underline that grows with a slower effect for transition section */
-.transition-location-description::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 1px; /* 1px height line */
-    width: 0; /* Initially, no width */
-    background-color: #333;
-    transition: width 1s ease; /* Slow down the underline effect */
-    max-width: 100%; /* Ensure it only grows to the length of the text */
-}
-
-/* On hover, the underline should grow to full width */
-.image-container:hover .transition-location-description::after {
-    width: 100%; /* Expand the underline to the width of the text */
-}
-
 
 .products-button {
     padding: 10px 20px;

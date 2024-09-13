@@ -197,7 +197,6 @@ body {
     flex-wrap: wrap;
     padding: 25px;
     z-index: 10;
-    overflow: hidden;
 }
 
 
@@ -724,14 +723,6 @@ body {
     white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.line-1 {
-    /* Styling specific to the first line */
-}
-
-.line-2 {
-    /* Styling specific to the second line */
-}
-
 .image-row {
     display: flex;
     justify-content: center;
@@ -757,7 +748,7 @@ body {
     height: 220px;
     overflow: hidden; /* Prevent the image from overflowing */
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .image-wrapper img {
@@ -795,36 +786,44 @@ body {
     transform: scale(1.1); /* Zoom without affecting the container size */
 }
 
-
-.transition-location-description {
+        .image-description {
     font-size: 0.9em;
     text-align: left;
     color: #333;
-    margin: 0 0 8px 0;
-    font-weight: 300;
+    margin: 0 0 6px 0;
+    font-weight: 450;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
     width: 100%;
 }
 
-/* Custom underline that grows with a slower effect for transition section */
-.transition-location-description::after {
+/* Custom underline that grows with a slower effect */
+.image-description::after {
     content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
     height: 1px; /* 1px height line */
-    width: 0; /* Initially, no width */
+    width: 0;
     background-color: #333;
     transition: width 1s ease; /* Slow down the underline effect */
     max-width: 100%; /* Ensure it only grows to the length of the text */
 }
 
-/* On hover, the underline should grow to full width */
-.image-container:hover .transition-location-description::after {
+.image-container:hover .image-description::after {
     width: 100%; /* Expand the underline to the width of the text */
 }
 
+.transition-location-description {
+    font-size: 0.9em;
+    text-align: left;
+    color: #666;
+    margin: 0 0 6px 0;
+    font-weight: 300;
+    letter-spacing: .01em;
+    position: relative; /* To position the underline */
+    width: 100%;
+}
 
 .products-button {
     padding: 10px 20px;
@@ -841,9 +840,7 @@ body {
     background-color: black;
     color: white;
 }
-
-
-    
+ 
         
  .second-half {
             background-color: #FAF8F6;
@@ -1386,7 +1383,7 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p>
+        <p class="transition-location-description">Dallas, Texas</p>
     </a>
 </div>
 
@@ -1396,7 +1393,7 @@ placesCloseButton.onclick = function() {
         <div class="image-wrapper">
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
-        <p class="image-description">Place Name</p>
+        <p class="transition-image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p>
     </a>
 </div>
@@ -1407,7 +1404,7 @@ placesCloseButton.onclick = function() {
         <div class="image-wrapper">
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
-        <p class="image-description">Place Name</p>
+        <p class="transition-image-description">Place Name</p>
         <p class="location-description">Dallas, Texas</p>
     </a>
 </div>

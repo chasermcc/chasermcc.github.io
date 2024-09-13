@@ -719,14 +719,6 @@ body {
     white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.line-1 {
-    /* Styling specific to the first line */
-}
-
-.line-2 {
-    /* Styling specific to the second line */
-}
-
 .image-row {
     display: flex;
     justify-content: center;
@@ -790,13 +782,41 @@ body {
     transform: scale(1.1); /* Zoom without affecting the container size */
 }
 
-
-.transition-location-description {
+        .image-description {
     font-size: 0.9em;
     text-align: left;
     color: #333;
     margin: 0 0 8px 0;
-    font-weight: 300;
+    font-weight: 450;
+    letter-spacing: .01em;
+    position: relative; /* To position the underline */
+    width: 100%;
+}
+
+/* Custom underline that grows with a slower effect */
+.image-description::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 1px; /* 1px height line */
+    width: 0;
+    background-color: #333;
+    transition: width 1s ease; /* Slow down the underline effect */
+    max-width: 100%; /* Ensure it only grows to the length of the text */
+}
+
+.image-container:hover .image-description::after {
+    width: 100%; /* Expand the underline to the width of the text */
+}
+
+
+.transition-location-description {
+    font-size: 0.8em;
+    text-align: left;
+    color: #333;
+    margin: 0 0 8px 0;
+    font-weight: 350;
     letter-spacing: .01em;
     position: relative; /* To position the underline */
     width: 100%;
@@ -1379,7 +1399,7 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p>
+        <p class="transition-location-description">Dallas, Texas</p>
     </a>
 </div>
 
@@ -1390,7 +1410,7 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p>
+        <p class="transition-location-description">Dallas, Texas</p>
     </a>
 </div>
 
@@ -1401,7 +1421,7 @@ placesCloseButton.onclick = function() {
             <img src="https://via.placeholder.com/120x150" alt="Image 1">
         </div>
         <p class="image-description">Place Name</p>
-        <p class="location-description">Dallas, Texas</p>
+        <p class="transition-location-description">Dallas, Texas</p>
     </a>
 </div>
 </div>

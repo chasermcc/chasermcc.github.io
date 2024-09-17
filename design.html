@@ -92,19 +92,19 @@
             resize: none;
         }
 
-        .apply-form select {
+     .apply-form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    background-color: white;
-    border-radius: 0px;
+    background-color: white; /* Ensure white background */
+    border-radius: 0px; /* Remove border-radius */
     font-size: .8em;
     font-weight: 200;
     height: 42px;
-    cursor: pointer; /* Change cursor to pointer */
-    appearance: none; /* Removes default browser dropdown arrow */
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"%3E%3Cpath fill="gray" d="M7 10l5 5 5-5z"/%3E%3C/svg%3E');
+    cursor: pointer; /* Ensure cursor is pointer */
+    appearance: none; /* Remove default browser styling */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
@@ -113,9 +113,10 @@
 }
 
 .apply-form select:focus {
-    outline: none; /* Remove default outline on focus */
+    outline: none; /* Remove focus outline */
     border-color: #444; /* Optional: Change border color on focus */
 }
+
 
 .apply-form {
     position: relative; /* Ensures proper alignment of custom arrow */

@@ -1499,23 +1499,6 @@ window.onscroll = function() {
             submitButton.disabled = !this.checked;
         }
 
-    // Modal functionality for Designers button (formerly Places button)
-const placesModal = document.getElementById("placesModal");
-const designersButton = document.querySelector(".header-button");
-const placesCloseButton = placesModal.querySelector(".close-button");
-
-designersButton.onclick = function() {
-    placesModal.style.display = "flex";
-    placesModal.classList.add("show");
-    document.body.classList.add("modal-open"); // Disable body scroll when modal is open
-}
-
-placesCloseButton.onclick = function() {
-    placesModal.style.display = "none";
-    placesModal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-}
-
 
         
     </script>

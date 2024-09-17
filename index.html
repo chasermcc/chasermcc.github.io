@@ -471,6 +471,8 @@ body {
             max-width: 600px;
             text-align: center;
             color: #111111;
+            overflow-y: auto;
+            max-height: 80vh;
         }
 
         .close-button {
@@ -1263,7 +1265,7 @@ body {
     <div class="modal-content places-modal-content">
         <span class="close-button">&times;</span>
         <h1>Memorably</h1>
-        <p>Memorably is a new shopping platform celebrating unforgettable places through exceptional merch.</p>
+        <p>Memorably is a new AI-powered shopping platform celebrating unforgettable places through exceptional merch.</p>
         <form id="placesForm" class="search-form">
     <div class="input-container">
         <i class="fas fa-search"></i> <!-- Magnifying glass icon -->
@@ -1506,11 +1508,13 @@ const placesCloseButton = placesModal.querySelector(".close-button");
 designersButton.onclick = function() {
     placesModal.style.display = "flex";
     placesModal.classList.add("show");
+    document.body.classList.add("modal-open"); // Disable body scroll when modal is open
 }
 
 placesCloseButton.onclick = function() {
     placesModal.style.display = "none";
     placesModal.classList.remove("show");
+    document.body.classList.remove("modal-open");
 }
 
         

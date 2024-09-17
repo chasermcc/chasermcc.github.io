@@ -92,31 +92,6 @@
             resize: none;
         }
 
-     .apply-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    background-color: white; /* Ensure white background */
-    border-radius: 0px; /* Remove border-radius */
-    font-size: .8em;
-    font-weight: 200;
-    height: 42px;
-    cursor: pointer; /* Ensure cursor is pointer */
-    appearance: none; /* Remove default browser styling */
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    -webkit-appearance: none; /* Hide default arrow in WebKit browsers */
-    -moz-appearance: none; /* Hide default arrow in Firefox */
-}
-
-.apply-form select:focus {
-    outline: none; /* Remove focus outline */
-    border-color: #444; /* Optional: Change border color on focus */
-}
-
 
 .apply-form {
     position: relative; /* Ensures proper alignment of custom arrow */
@@ -165,6 +140,23 @@
                 width: 100%;
             }
         }
+        .terms-text {
+    font-size: .8em;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.4;
+    font-weight: 100;
+}
+
+.terms-text a {
+    color: #555;
+    text-decoration: underline;
+}
+
+.terms-text a:hover {
+    color: black;
+}
+
 
     </style>
 </head>
@@ -184,27 +176,26 @@
                 <!-- Apply Form -->
                 <div class="apply-form">
                     <form id="designerApplicationForm">
-                        <label for="name">Name/Social Media Handle</label>
+                        <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
 
                         <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" required>
 
-                        <label for="portfolio">Website/Portfolio URL</label>
+                        <label for="portfolio">Social Media Handle (Optional)</label>
                         <input type="text" id="portfolio" name="portfolio" required>
 
-                        <label for="experience">Design Experience</label>
-                        <select id="experience" name="experience" required>
-                            <option value="" disabled selected></option>
-                            <option value="junior">Junior</option>
-                            <option value="mid-level">Mid-level</option>
-                            <option value="senior">Senior</option>
-                        </select>
-
+                       <label for="message">Website/Portfolio URL (Optional)</label>
+                        <input type="text" id="experience" name="experience" required>    
 
                         <button type="submit">Submit Application</button>
-                    </form>
-                </div>
+                    <p class="terms-text">
+            By submitting, you're agreeing to Memorably's 
+            <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
+            <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                    </p>
+                </form>
+            </div>
             </div>
         </div>
     </div>

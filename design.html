@@ -8,6 +8,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 
+        .fade-in {
+          opacity: 0;
+          transition: opacity 1.5s ease-in;
+        }
+        
+        .fade-in.show {
+          opacity: 1;
+        }
+
+        
         * {
             margin: 0;
             padding: 0;
@@ -162,6 +172,10 @@
 </head>
 <body>
 
+    <div class="fade-in">Content 1</div>
+    <div class="fade-in">Content 2</div>
+    <div class="fade-in">Content 3</div>
+
     <div class="split-screen">
         <!-- Left Half: Full-screen Image -->
         <div class="left-half"></div>
@@ -201,10 +215,22 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  fadeElements.forEach(element => {
+    setTimeout(() => {
+      element.classList.add('show');
+    }, 500); // You can adjust the delay here if needed
+  });
+});
+
         document.getElementById('designerApplicationForm').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Thank you for applying! We will review your submission.');
         });
+
+        
     </script>
 
 </body>

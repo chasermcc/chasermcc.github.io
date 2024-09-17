@@ -210,23 +210,23 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-  const fadeElements = document.querySelectorAll('.fade-in');
-  
-  fadeElements.forEach(element => {
-    setTimeout(() => {
-      element.classList.add('show');
-    }, 500); // You can adjust the delay here if needed
-  });
-});
-
         document.getElementById('designerApplicationForm').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Thank you for applying! We will review your submission.');
         });
-
-        
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    fadeElements.forEach(element => {
+      setTimeout(() => {
+        element.classList.add('show');
+      }, 500); // Adjust the delay as needed
+    });
+  });
+</script>
+
 
 </body>
 </html>

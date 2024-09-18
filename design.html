@@ -17,7 +17,6 @@
           opacity: 1;
         }
 
-        
         * {
             margin: 0;
             padding: 0;
@@ -102,20 +101,6 @@
             resize: none;
         }
 
-
-.apply-form {
-    position: relative; /* Ensures proper alignment of custom arrow */
-}
-
-/* Style the select for smaller screens */
-@media (max-width: 768px) {
-    .apply-form select {
-        width: 100%; /* Ensures the dropdown fits smaller screens */
-    }
-}
-
-        
-
         .apply-form button {
             background-color: #444;
             color: white;
@@ -150,83 +135,75 @@
                 width: 100%;
             }
         }
+
         .terms-text {
-    font-size: .8em;
-    color: #555;
-    margin-top: 20px;
-    line-height: 1.4;
-    font-weight: 100;
-}
+            font-size: .8em;
+            color: #555;
+            margin-top: 20px;
+            line-height: 1.4;
+            font-weight: 100;
+        }
 
-.terms-text a {
-    color: #555;
-    text-decoration: underline;
-}
+        .terms-text a {
+            color: #555;
+            text-decoration: underline;
+        }
 
-.terms-text a:hover {
-    color: black;
-}
-
+        .terms-text a:hover {
+            color: black;
+        }
 
     </style>
 </head>
 <body>
-    <div class="split-screen">
-        <!-- Left Half: Full-screen Image -->
-        <div class="left-half"></div>
+    <!-- Add fade-in class to the container of the entire content -->
+    <div class="fade-in">
+        <div class="split-screen">
+            <!-- Left Half: Full-screen Image -->
+            <div class="left-half"></div>
 
-        <!-- Right Half: Scrollable Content -->
-        <div class="right-half">
-            <div class="content">
-                <h1>Creativity Welcome</h1>
-                <p>Memorably is a new shopping platform celebrating the world's favorite places through exceptional merch. Although our own design team works hard to create unique pieces, creative ideas can come from anyone. Whether you're a beginner or a professional, join our growing community of designers making the best places around the globe stand out.</p>
+            <!-- Right Half: Scrollable Content -->
+            <div class="right-half">
+                <div class="content">
+                    <h1>Creativity Welcome</h1>
+                    <p>Memorably is a new shopping platform celebrating the world's favorite places through exceptional merch. Although our own design team works hard to create unique pieces, creative ideas can come from anyone. Whether you're a beginner or a professional, join our growing community of designers making the best places around the globe stand out.</p>
 
+                    <!-- Apply Form -->
+                    <div class="apply-form">
+                        <form id="designerApplicationForm">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
 
-                <!-- Apply Form -->
-                <div class="apply-form">
-                    <form id="designerApplicationForm">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
 
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
+                            <label for="portfolio">Social Media Handle (Optional)</label>
+                            <input type="text" id="portfolio" name="portfolio" required>
 
-                        <label for="portfolio">Social Media Handle (Optional)</label>
-                        <input type="text" id="portfolio" name="portfolio" required>
+                            <label for="message">Website/Portfolio URL (Optional)</label>
+                            <input type="text" id="experience" name="experience" required>    
 
-                       <label for="message">Website/Portfolio URL (Optional)</label>
-                        <input type="text" id="experience" name="experience" required>    
-
-                        <button type="submit">Submit</button>
-                    <p class="terms-text">
-            By submitting, you're agreeing to Memorably's 
-            <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
-            <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
-                    </p>
-                </form>
-            </div>
+                            <button type="submit">Submit</button>
+                            <p class="terms-text">
+                                By submitting, you're agreeing to Memorably's 
+                                <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
+                                <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript to trigger the fade-in effect -->
     <script>
-        document.getElementById('designerApplicationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Thank you for applying! We will review your submission.');
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeInContainer = document.querySelector('.fade-in');
+            setTimeout(() => {
+                fadeInContainer.classList.add('show');
+            }, 500); // Adjust the delay as needed
         });
     </script>
-    <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    fadeElements.forEach(element => {
-      setTimeout(() => {
-        element.classList.add('show');
-      }, 500); // Adjust the delay as needed
-    });
-  });
-</script>
-
-
 </body>
 </html>

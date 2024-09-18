@@ -9,6 +9,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
 
+        /* Fade-in and rise effect */
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -1230,9 +1243,10 @@ body {
 
     
     <div class="container">
-        <h1>Memorably</h1>
-        <div class="dynamic-text-container">
-            <div class="dynamic-text"></div>
+        <h1 class="fade-in-scroll">Memorably</h1>
+        <div class="dynamic-text-container fade-in-scroll">
+    <div class="dynamic-text"></div>
+</div>
             <span class="cursor"></span> <!-- Cursor is always present -->
         </div>
         <button id="joinWaitlistButton">Join waitlist</button>
@@ -1503,15 +1517,12 @@ window.onscroll = function() {
         
     </script>
     
-  <div id="transition-section">
+ <div id="transition-section" class="fade-in-scroll">
     <div class="text-box">
-    <p class="line-1">Unique merch from your favorite spots—</p>
-    <p class="line-2">Find it on Memorably</p>
-</div>
-
-    
-    <!-- Image Row -->
-<div class="image-row">
+        <p class="line-1">Unique merch from your favorite spots—</p>
+        <p class="line-2">Find it on Memorably</p>
+    </div>
+    <div class="image-row">
     <!-- Image and Text Container 1 -->
    <div class="image-container">
     <a href="#">
@@ -1565,7 +1576,7 @@ window.onscroll = function() {
 
     </div>
 
- <div class="second-half">
+ <div class="second-half fade-in-scroll">
     <!-- Left side: Mission Text -->
     <div class="text-container">
         <div class="large-text-box">
@@ -1665,8 +1676,23 @@ window.onscroll = function() {
         </div>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const fadeElements = document.querySelectorAll('.fade-in-scroll');
 
+    const onScroll = () => {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < window.innerHeight - 100) {
+                element.classList.add('show');
+            }
+        });
+    };
 
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // Trigger the effect in case elements are already in view
+});
+</script>
     
 </body>
 </html>

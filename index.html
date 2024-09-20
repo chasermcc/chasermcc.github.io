@@ -500,7 +500,7 @@ body {
         }
 
         .modal-content input[type="email"], .modal-content button[type="submit"] {
-            width: 100%; /* Make the input and button fit within the modal width */
+            width: 435px;
         }
 
         .modal-content h1 {
@@ -612,6 +612,7 @@ body {
             background-color: #ccc;
             cursor: default;
             }
+        
         .modal-content input[type="email"].error {
         border-color: red;
           }
@@ -620,6 +621,22 @@ body {
             color: red;
         }
 
+        #emailLabel, #errorMessage {
+    font-size: 0.7em; /* Set label and error message font size */
+    color: red;
+    margin-top: 4px;
+}
+
+#errorMessage {
+    display: none; /* Initially hidden */
+    margin-top: 2px;
+    font-size: 0.65em; /* Slightly smaller than label */
+}
+
+.modal-content input[type="email"]:focus {
+    outline: none; /* Remove default browser outline */
+    border-color: #444; /* Optional: Set a custom border color on focus */
+}
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
@@ -1094,7 +1111,7 @@ body {
             <form id="waitlistForm">
                 <label for="email">Email address</label>
                 <input type="email" id="email" name="email" required>
-                <span id="errorMessage" style="display:none; color: red; font-size: 0.8em;">Please enter a valid email address</span>
+                <span id="errorMessage">Please enter a valid email address</span>
                 <button type="button" id="submitButton">Sign up</button>
             </form>
                 <div class="checkbox-container">
@@ -1323,7 +1340,6 @@ window.onscroll = function() {
             document.body.classList.remove("modal-open");
         }
 
-        // JavaScript for form validation
 document.getElementById("submitButton").addEventListener("click", function() {
     const emailInput = document.getElementById("email");
     const emailLabel = document.getElementById("emailLabel");
@@ -1333,14 +1349,12 @@ document.getElementById("submitButton").addEventListener("click", function() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(emailInput.value)) {
-        // If the email is valid, remove error styles and proceed
+        // Valid email: hide error message and remove error styling
         emailInput.classList.remove("error");
         emailLabel.classList.remove("error");
         errorMessage.style.display = "none";
-        // Proceed to the next step for valid emails (you can implement this in the next phase)
-        console.log("Valid email submitted:", emailInput.value);
     } else {
-        // If the email is invalid, show error message and apply error styles
+        // Invalid email: show error message and apply error styling
         emailInput.classList.add("error");
         emailLabel.classList.add("error");
         errorMessage.style.display = "block";
@@ -1353,13 +1367,13 @@ document.getElementById("email").addEventListener("input", function() {
     const emailLabel = document.getElementById("emailLabel");
     const errorMessage = document.getElementById("errorMessage");
 
-    // Reset error styles when user types
     if (emailInput.classList.contains("error")) {
         emailInput.classList.remove("error");
         emailLabel.classList.remove("error");
         errorMessage.style.display = "none";
     }
 });
+
 
         
     </script>

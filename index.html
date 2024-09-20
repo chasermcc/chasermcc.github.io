@@ -254,29 +254,31 @@ body {
             background-color: black;
         }
 
-        .secondary-button {
-            margin-top: 8px;
-            padding: 12px 24px;
-            font-size: .9em;
-            font-weight: 250;
-            color: #444;
-            background-color: transparent;
-            border: 1px solid #333;
-            border-radius: 0px;
-            cursor: pointer;
-            transition: background-color 0.1s ease, color 0.1s ease;
-            display: inline-block;
-            width: 180px;
-            position: relative;
-            z-index: 15;
-            transform: translateY(45px);
-            letter-spacing: .01em;
-        }
+   .first-places-button {
+    margin-top: 8px;
+    padding: 12px 24px;
+    font-size: 0.9em;
+    font-weight: 250;
+    color: #444;
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
+    display: inline-block;
+    width: 180px;
+    position: relative;
+    z-index: 15;
+    transform: translateY(45px);
+    letter-spacing: .01em;
+}
 
-        .secondary-button:hover {
-            background-color: black;
-            color: white;
-        }
+.first-places-button:hover {
+    background-color: black;
+    color: white;
+}
+
+
 
        .floating-images {
     position: absolute;
@@ -1242,14 +1244,16 @@ body {
 
 
     
- <div class="container">
+<div class="container">
     <h1>Memorably</h1>
     <div class="dynamic-text-container">
         <div class="dynamic-text"></div>
         <span class="cursor"></span>
     </div>
     <button id="joinWaitlistButton">Join waitlist</button>
+    <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
 </div>
+
 
 
     <!-- Full-Screen Modal -->

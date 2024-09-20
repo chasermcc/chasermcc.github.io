@@ -469,8 +469,8 @@ body {
         .close-button {
             background-color: transparent;
             border: none;
-            width: 46px;
-            height: 46px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -506,8 +506,8 @@ body {
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.38em;
-            margin-bottom: -8px;
-            margin-top: 50px;
+            margin-bottom: -2px;
+            margin-top: 72px;
             position: relative;
             max-width: 100%;
             text-align: center;
@@ -611,7 +611,15 @@ body {
         .modal-content button[type="submit"]:disabled {
             background-color: #ccc;
             cursor: default;
+            }
+        .modal-content input[type="email"].error {
+        border-color: red;
+          }
+        
+        #emailLabel.error {
+            color: red;
         }
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
@@ -1086,14 +1094,15 @@ body {
             <form id="waitlistForm">
                 <label for="email">Email address</label>
                 <input type="email" id="email" name="email" required>
-                 <button type="submit" id="submitButton" disabled>Sign up</button>
+                <span id="errorMessage" style="display:none; color: red; font-size: 0.8em;">Please enter a valid email address</span>
+                <button type="button" id="submitButton">Sign up</button>
+            </form>
                 <div class="checkbox-container">
                     <label for="terms">By proceeding, you agree to Memorably's 
                         <b><a href="#">Terms</a></b> and  
                         <b><a href="#">Privacy Policy</a></b>.
                     </label>
                 </div>
-            </form>
         </div>
     </div>
   </div>
@@ -1313,6 +1322,44 @@ window.onscroll = function() {
             modal.classList.remove("show");
             document.body.classList.remove("modal-open");
         }
+
+        // JavaScript for form validation
+document.getElementById("submitButton").addEventListener("click", function() {
+    const emailInput = document.getElementById("email");
+    const emailLabel = document.getElementById("emailLabel");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Simple email validation regex
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(emailInput.value)) {
+        // If the email is valid, remove error styles and proceed
+        emailInput.classList.remove("error");
+        emailLabel.classList.remove("error");
+        errorMessage.style.display = "none";
+        // Proceed to the next step for valid emails (you can implement this in the next phase)
+        console.log("Valid email submitted:", emailInput.value);
+    } else {
+        // If the email is invalid, show error message and apply error styles
+        emailInput.classList.add("error");
+        emailLabel.classList.add("error");
+        errorMessage.style.display = "block";
+    }
+});
+
+// Remove the error styling when user starts typing again
+document.getElementById("email").addEventListener("input", function() {
+    const emailInput = document.getElementById("email");
+    const emailLabel = document.getElementById("emailLabel");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Reset error styles when user types
+    if (emailInput.classList.contains("error")) {
+        emailInput.classList.remove("error");
+        emailLabel.classList.remove("error");
+        errorMessage.style.display = "none";
+    }
+});
 
         
     </script>

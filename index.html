@@ -8,117 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
-
-        /* Fade-in and rise effect */
-.fade-in-scroll {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-in-scroll.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
         
-body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow-y: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
-    overflow-x: hidden;
-    background-color: #FAF8F6;
-    transition: background-color 2s ease-in-out;
-    animation: fadeIn 1s ease-in-out;
-    min-height: 100vh;
-    height: auto;
-}
-
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow-y: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+            overflow-x: hidden;
+            background-color: #FAF8F6;
+            transition: background-color 2s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+            min-height: 100vh;
+            height: auto;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-  /* Sticky Header Styling */
-.sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0; /* Start with height 0 for the grow effect */
-    background-color: white;
-    border-bottom: 1px solid #ddd; /* Light gray line at the bottom */
-    overflow: hidden; /* Ensure smooth grow effect */
-    z-index: 100;
-    transition: height 0.4s ease; /* Animate the height */
-}
-
-.sticky-header.visible {
-    height: 80px; /* Grow to 80px */
-}
-
-.sticky-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 60px; /* Adjust padding for alignment */
-}
-
-.sticky-left {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.09em;
-    color: #333;
-}
-
-.sticky-right {
-    display: flex;
-    align-items: center;
-}
-
-.sticky-input {
-    width: 250px;
-    padding: 9px;
-    border: 1px solid #333;
-    border-radius: 0px;
-    font-size: 1em;
-    margin-right: 0px;
-    height: 30px;
-    font-color: #aaa;
-    font-weight: 200;
-    letter-spacing: .01em;
-}
-        .sticky-input::placeholder {
-    color: #aaa; /* Set the color of the placeholder text */
-    opacity: 1; /* Ensure the opacity is full so it shows clearly */
-    letter-spacing: .01em;
-    font-weight: 250;
-    font-size: .85em;
-}
-
-
-.sticky-button {
-    padding: 8px 16px;
-    font-size: 0.85em;
-    color: white;
-    background-color: #444;
-    border: 1px solid #333;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    border-radius: 0px;
-    transform: none;
-    height: 50px;
-    width: auto;
-    font-weight: 250;
-}
-
-.sticky-button:hover {
-    background-color: black;
-}
-
-
-        
         .background {
             position: absolute;
             width: 100%;
@@ -145,7 +52,7 @@ body {
     right: 65px;
     padding: 12px 24px;
     font-size: .88em;
-    font-weight: 250;
+    font-weight: 200;
     background-color: #444;
     color: white;
     border: none;
@@ -158,7 +65,7 @@ body {
 
 .header-button:hover {
     background-color: black;
-    font-weight: 250;
+    font-weight: 200;
 }
 
         .container {
@@ -225,7 +132,7 @@ body {
     30% { opacity: 0.7; } 
     40% { opacity: 0.6; } 
     50% { opacity: 0.5; }    
-    60% { opacity: 0.4; }  
+    60% { opacity: 0.3; }  
     70% { opacity: 0;   }   
     100% {opacity: 1;   }      
 }
@@ -254,47 +161,44 @@ body {
         button:hover {
             background-color: black;
         }
-
-   .first-places-button {
-    margin-top: 8px;
-    padding: 10px 20px;
-    font-size: 0.88em;
-    font-weight: 200;
-    color: #444;
-    background-color: transparent;
-    border: 1px solid #333;
-    border-radius: 0px;
-    cursor: pointer;
-    transition: background-color 0.1s ease, color 0.1s ease;
-    display: inline-block;
-    width: 180px;
-    position: relative;
-    z-index: 15;
-    transform: translateY(45px);
-    letter-spacing: .01em;
-    height: 42px;
-}
-
-.first-places-button:hover {
-    background-color: black;
-    color: white;
-}
-
-
-
-       .floating-images {
-    position: absolute;
-    top: calc(1.8% + 91px); 
-    right: 60px; 
-    left: 33%;
-    width: auto;
-    height: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 25px;
-    z-index: 10;
-}
-
+        
+        .first-places-button {
+            margin-top: 8px;
+            padding: 10px 20px;
+            font-size: 0.88em;
+            font-weight: 200;
+            color: #444;
+            background-color: transparent;
+            border: 1px solid #333;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: background-color 0.1s ease, color 0.1s ease;
+            display: inline-block;
+            width: 180px;
+            position: relative;
+            z-index: 15;
+            transform: translateY(45px);
+            letter-spacing: .01em;
+            height: 42px;
+        }
+        
+        .first-places-button:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        .floating-images {
+            position: absolute;
+            top: calc(1.8% + 91px); 
+            right: 60px; 
+            left: 33%;
+            width: auto;
+            height: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px;
+            z-index: 10;
+        }
 
         .floating-images img {
             position: absolute;
@@ -309,91 +213,91 @@ body {
         }
 
         @keyframes float1 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-20px, 20px); /* Slight movement */
-    }
-}
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-20px, 20px);
+            }
+        }
 
-@keyframes float2 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-30px, 40px); /* Slight movement */
-    }
-}
+        @keyframes float2 {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-30px, 40px);
+            }
+        }
+        
+        @keyframes float3 {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(25px, 20px);
+            }
+        }
+        
+        @keyframes float4 {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-20px, -40px);
+            }
+        }
+        
+        .floating-images img:nth-child(1) {
+            width: 220px;
+            height: 280px; 
+            animation: float1 20s linear infinite; 
+        }
+        
+        .floating-images img:nth-child(2) {
+            width: 200px;
+            height: 260px; 
+            animation: float2 22s linear infinite;
+        }
+        
+        .floating-images img:nth-child(3) {
+            width: 200px;
+            height: 260px; 
+            animation: float3 18s linear infinite;
+        }
+        
+        .floating-images img:nth-child(4) {
+            margin-bottom: 75px;
+            width: 280px; 
+            height: 340px;
+            animation: float4 25s linear infinite;
+        }
+        
+        .floating-images img:nth-child(5) {
+            width: 160px;
+            height: 200px;
+            animation: float1 30s linear infinite;
+        }
+        
+        .floating-images img:nth-child(6) {
+            width: 160px;
+            height: 180px;
+            animation: float3 28s linear infinite;
+        }
 
-@keyframes float3 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(25px, 20px); /* Slight movement */
-    }
-}
 
-@keyframes float4 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-20px, -40px); /* Slight movement */
-    }
-}
-
-.floating-images img:nth-child(1) {
-    width: 220px;
-    height: 280px; 
-    animation: float1 20s linear infinite; 
-}
-
-.floating-images img:nth-child(2) {
-    width: 200px;
-    height: 260px; 
-    animation: float2 22s linear infinite;
-}
-
-.floating-images img:nth-child(3) {
-    width: 200px;
-    height: 260px; 
-    animation: float3 18s linear infinite;
-}
-
-.floating-images img:nth-child(4) {
-    margin-bottom: 90px;
-    width: 280px; 
-    height: 340px;
-    animation: float4 25s linear infinite;
-}
-
-.floating-images img:nth-child(5) {
-    width: 160px;
-    height: 200px;
-    animation: float1 30s linear infinite;
-}
-
-.floating-images img:nth-child(6) {
-    width: 160px;
-    height: 180px;
-    animation: float3 28s linear infinite;
-}
-
-
-
-       .footer {
-    position: absolute;
-    bottom: 60px; /* Move it up by setting bottom to 160px */
-    left: 80px;
-    z-index: 20; /* Ensure it appears above the background */
-    font-size: 0.9em;
-    color: #555;
-    width: calc(100%-160px); /* Stretch the footer to cover full width */
-    text-align: left; /* Align content to the left */
-    background-color: transparent; /* Make sure it shows the background */
-}
+    
+        .footer {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            z-index: 20;
+            font-size: 0.9em;
+            color: #555;
+            width: calc(100%-160px);
+            text-align: left;
+            background-color: transparent;
+        }
 
         .footer .social-media-links {
             display: flex;
@@ -448,8 +352,8 @@ body {
         }
        
         body.modal-open {
-    overflow: hidden;
-}
+            overflow: hidden;
+        }
 
 
         .modal.show {
@@ -484,8 +388,6 @@ body {
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1;
             transform: translateY(-4px);
-            
-          
         }
 
         .close-button:hover {
@@ -493,7 +395,6 @@ body {
             font-weight: 200;
         }
 
-      
         .modal-content h1, .modal-content p, .modal-content label, .modal-content input[type="email"], .modal-content button[type="submit"] {
             max-width: 100%;
             box-sizing: border-box;
@@ -590,6 +491,7 @@ body {
         .modal-content button[type="submit"] {
             padding: 12px 24px;
             font-size: 1em;
+            font-weight: 200;
             color: white;
             background-color: #444;
             border: none;
@@ -613,509 +515,66 @@ body {
             cursor: default;
             }
 
-/* Style for the input field and button */
-.modal-content input[type="email"], #submitButton {
-    width: 435px;
-}
-
-/* Style for the error message */
-#errorMessage {
-    display: none;
-    color: #862110;
-    font-size: 0.74em;
-    text-align: left;
-    margin: 1px auto;
-    width: 435px;
-    letter-spacing: .01em;
-}
-
-/* Style for the label when there's an error */
-#emailLabel.error {
-    color: #862110;
-}
-
-/* Remove default focus outline and adjust border color on focus */
-.modal-content input[type="email"]:focus {
-    outline: none;
-    border-color: #444;
-}
-
-/* Style for the button */
-#submitButton {
-    padding: 12px 24px;
-    font-size: 1em;
-    color: white;
-    background-color: #444;
-    border: none;
-    border-radius: 0px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 10px;
-    width: 435px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    transform: none;
-}
-
-/* Hover effect for the button */
-#submitButton:hover {
-    background-color: black;
-}
-
-/* Disabled state for the button (if needed) */
-#submitButton:disabled {
-    background-color: #ccc;
-    cursor: default;
-}
-
-/* Style for the input when there's an error */
-.modal-content input[type="email"].error {
-    border-color: #862110;
-}
-
-
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-
-#transition-section {
-    width: 100%;
-    height: 648px;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Align elements vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-}
-
-.text-box {
-    text-align: center;
-    letter-spacing: .01em;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px; 
-    font-weight: 250;
-    margin-bottom: 30px;
-    color: #333;
-    max-width: 49%;
-    line-height: 1.3em;
-    transform: translateY(-38px);
-}
-
-.text-box p {
-    margin: 0; /* Remove default margins */
-    white-space: nowrap; /* Prevent text from wrapping */
-}
-
-.image-row {
-    display: flex;
-    justify-content: center;
-    gap: 8px; /* Space between each image-text pair */
-    transform: translateY(-28px)
-}
-
-/* Image Container Hover Styles */
-.image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    cursor: pointer;
-    position: relative; /* For the underline animation */
-    overflow: hidden;
-    width: 200px; /* Fixed width */
-    text-align: left;
-}
-
-.image-wrapper {
-    width: 100%;
-    height: 220px;
-    overflow: hidden; /* Prevent the image from overflowing */
-    position: relative;
-    margin-bottom: 6px;
-}
-
-.image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease; /* Smooth zoom effect */
-}
-
-.image-container:hover .image-wrapper img {
-    transform: scale(1.1); /* Zoom and shift without changing container size */
-}
-/* Remove the blue underline from the link */
-.image-container a {
-    text-decoration: none; /* Remove default underline */
-    color: inherit;
-    display: block;
-    width: 100%;
-}
-
-        .image-container:hover img {
-    transform: scale(1.1); /* Zoom and shift to the left */
-    transition: transform 0.4s ease; /* Smooth transition */
-}
-
-/* Maintain the original image size and apply the zoom effect */
-.image-container img {
-    width: 100%; /* Ensure the image width is always 100% */
-    height: auto; /* Adjust height automatically to preserve aspect ratio */
-    object-fit: cover;
-    transition: transform 0.4s ease; /* Smooth zoom effect */
-}
-
-.image-container:hover img {
-    transform: scale(1.1); /* Zoom without affecting the container size */
-}
-
-        .image-description {
-    font-size: 0.9em;
-    text-align: left;
-    color: #333;
-    margin: 0 0 6px 0;
-    font-weight: 450;
-    letter-spacing: .01em;
-    position: relative; /* To position the underline */
-    width: 100%;
-}
-
-/* Custom underline that grows with a slower effect */
-.image-description::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 1px; /* 1px height line */
-    width: 0;
-    background-color: #333;
-    transition: width 1s ease; /* Slow down the underline effect */
-    max-width: 100%; /* Ensure it only grows to the length of the text */
-}
-
-.image-container:hover .image-description::after {
-    width: 100%; /* Expand the underline to the width of the text */
-}
-
-.transition-location-description {
-    font-size: 0.8em;
-    text-align: left;
-    color: #666;
-    margin: 0 0 6px 0;
-    font-weight: 350;
-    letter-spacing: .01em;
-    position: relative; /* To position the underline */
-    width: 100%;
-}
-
-.products-button {
-    padding: 10px 20px;
-    border: 1px solid #444;
-    background-color: transparent;
-    color: #444;
-    cursor: pointer;
-    transform: translateY(30px);
-    font-weight: 250;
-    letter-spacing: .01em;
-}
-
-.products-button:hover {
-    background-color: black;
-    color: white;
-}
- 
-        
- .second-half {
-            background-color: #FAF8F6;
-            height: 325px; /* Adjusted height */
-            display: flex; /* Use flex to align content side by side */
-            align-items: flex-start;
-            justify-content: space-between; /* Space between left and right columns */
-            padding-top: 50px;
-            padding-left: 80px;
-            padding-right: 80px; /* Ensure some spacing on the right side */
-            position: relative;
-            height: auto;
+        /* Style for the input field and button */
+        .modal-content input[type="email"], #submitButton {
+            width: 435px;
         }
         
-/* Adjust the text-container to stack elements vertically */
- .text-container {
-            flex: 1; /* Take up available space */
-            max-width: 52%; /* Adjust to allow space for the right-side images */
-            margin-right: 35px; /* Space between text and popular locations */
+        /* Style for the error message */
+        #errorMessage {
+            display: none;
+            color: #862110;
+            font-size: 0.74em;
             text-align: left;
-        }
-
-/* Adjust the large text box to take full width when in column layout */
-.large-text-box {
-    width: 100%; /* Full width of the container */
-    font-family: 'Playfair Display', serif;
-    font-size: 2.1em;
-    color: #444;
-    text-align: left;
-    font-weight: 225;
-    letter-spacing: .01em;
-    line-height: 1em;
-    margin-bottom: 0px; /* Add space between the large text and mission text */
-}
-
-/* Adjust the mission text box to take full width when in column layout */
- .mission-text-box {
-            font-family: 'Inter', sans-serif;
-            font-size: .95em;
+            margin: 1px auto;
+            width: 435px;
             letter-spacing: .01em;
-            color: #555;
-            line-height: 1.5em;
-            margin-bottom: 30px;
         }
-
-/* Styling for the input form */
- .input-form-box {
-            width: 525px;
-            margin-top: 40px; /* Add space between mission text and input form */
+        
+        /* Style for the label when there's an error */
+        #emailLabel.error {
+            color: #862110;
         }
-
-
- .input-button-container {
-            display: flex;
-            align-items: center;
+        
+        /* Remove default focus outline and adjust border color on focus */
+        .modal-content input[type="email"]:focus {
+            outline: none;
+            border-color: #444;
         }
-
- #suggestPlaceInput {
-            width: 400px; /* Adjust input width */
-            padding: 12px;
-            font-size: 1em;
-            border: 1px solid #444;
-            text-align: left;
-            box-sizing: border-box;
-            border-right: none; /* Remove border on the right */
-            height: 50px;
-            background-color: transparent;
-        }
-
- #suggestPlaceButton {
-            width: 125px; /* Adjust button width */
-            padding: 12px 20px;
+        
+        /* Style for the button */
+        #submitButton {
+            padding: 12px 24px;
             font-size: 1em;
             color: white;
             background-color: #444;
-            border: 1px solid #333;
+            border: none;
+            border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            border-left: none; /* Remove border between input and button */
+            margin-top: 10px;
+            width: 435px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
             transform: none;
-            height: 50px;
         }
-#suggestPlaceButton:hover {
-    background-color: black;
-}
-
-#suggestPlaceInput::placeholder {
-    color: #aaa;
-    font-size: .9em;
-    letter-spacing: .01em;
-    font-weight: 300; /* Hide placeholder text */
-}
         
- .popular-locations-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            max-width: 35%; /* Adjust for spacing */
-            transform: translateY(25px);
+        /* Hover effect for the button */
+        #submitButton:hover {
+            background-color: black;
         }
-
-       .popular-locations-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1em;
-            color: #444;
-            margin-bottom: 20px;
-            text-align: center;
-            letter-spacing: .01em;
-        }
-
-       .popular-locations-images {
-            display: flex;
-            gap: 20px; /* Space between images */
-        }
-
-
-      .popular-locations-images img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .location-item {
-    text-align: center; /* Center the image and text */
-}
-
-.location-description {
-    font-size: 0.75em;
-    color: #666;
-    margin-top: 8px; /* Add space between the image and the description */
-    max-width: 100px; /* Ensure the text doesn't overflow */
-    line-height: 1.3em; /* Maintain readable line height */
-    text-align: center;
-}
-      /* Container for Popular Suggestions Section */
-.popular-suggestions-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 0px;
-    text-align: center;
-    background-color: #FAF8F6;
-    height: auto;
-}
-
-/* Title for Popular Suggestions */
-.suggestions-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2em;
-    color: #444;
-    margin-top: 0px;
-    letter-spacing: .01em;
-    text-align: center;
-}
-
-/* Bubble Container */
-.bubble-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px; /* Adjust the space between bubbles */
-    width: 100%;
-    max-width: 80%; /* Control the max width for better spacing */
-}
-
-/* Individual Bubble */
-.bubble {
-    padding: 14px 14px; /* Adjust padding as needed */
-    font-size: 0.88em;
-    font-weight: 50;
-    letter-spacing: .01em;
-    cursor: default;
-    color: #555;
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 40px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    display: inline-block; /* Ensure the width is based on the content */
-    white-space: nowrap; /* Prevent text from wrapping to a new line */
-    text-align: center;
-    flex-grow: 0; /* Remove this if present */
-    flex-shrink: 0; /* Allow bubbles to shrink if content is short */
-    width: auto; /* Allow the width to adjust automatically */
-}
-
-
-/* Hover effect for bubbles */
-.bubble:hover {
-    background-color: black;
-    color: white;
-}
-
-.recent-section {
-    background-color: #FAF8F6;
-    margin-top: 65px;
-    height: auto; /* Remove the extra space */
-}
-        .suggestions-title {
-    margin-bottom: 0px; /* Adds space between title and separator */
-}
-
         
-.recent-separator {
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    width: 80%; /* Set width to 80% of the screen */
-    margin: 30px auto 30px auto; /* Center the separator and add spacing */
-    background-color: #FAF8F6;
-}
+        /* Style for the input when there's an error */
+        .modal-content input[type="email"].error {
+            border-color: #862110;
+        }
 
-
-/* Recent Bubble Container */
-.recent-bubble-container {
-    justify-content: center; /* Distribute bubbles evenly */
-    gap: 10px; /* Space between bubbles */
-    width: 100%; /* Full width of the container */
-    max-width: 80%; /* Adjust width for better spacing */
-    margin: 0px auto; /* Center the bubble row */
-    margin-bottom: 80px;
-}
-
-/* Bottom Footer Section */
-.bottom-footer {
-    height: 100px;
-    background-color: white; /* White background */
-    display: flex;
-    align-items: left;
-    padding-left: 80px;
-    position: relative;
-    z-index: 10;
-}
-
-.footer-content {
-    text-align: left;
-    color: #999;
-    letter-spacing: .01em;
-    font-weight: 175;
-    font-size: 0.85em;
-    font-family: 'Inter', sans-serif;
-}
-
-.footer-content p {
-    margin-left: 9px; /* Remove margin for the copyright text */
-    padding-bottom: 4px;
-    padding-top: 8px;
-    font-size: .85em;
-    font-weight: 200;
-    letter-spacing: .01em;
-}
-
-.footer-links {
-    margin-top: 5px;
-}
-
-.footer-links a {
-    color: #999;
-    text-decoration: none;
-    font-size: 0.85em;
-    font-weight: 200;
-    letter-spacing: .01em;
-    margin: 0 8px; /* Space between links */
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-    color: #555;
-}
-
-
-
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
     </style>
 </head>
 <body>
-    <div id="stickyHeader" class="sticky-header">
-    <div class="sticky-header-content">
-        <div class="sticky-left">
-            Shop unforgettable restaurants, hotels, and experiences
-        </div>
-        <div class="sticky-right">
-            <input type="text" id="stickyWaitlistInput" placeholder="Email address" class="sticky-input">
-            <button id="stickyJoinWaitlistButton" class="sticky-button">Join waitlist</button>
-        </div>
-    </div>
-</div>
  
     <div class="background" id="background"></div>
 
@@ -1137,13 +596,11 @@ body {
     <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
 </div>
 
-
-
 <!-- Full-Screen Modal -->
 <div id="waitlistModal" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
-        <h1>Unique merch from unforgettable spots&mdash;<br>Find it on Memorably</h1>
+        <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
         <p>Sign up to shop the world's favorite places and help us find yours</p>
         <form id="waitlistForm" novalidate>
             <label for="email" id="emailLabel">Email address</label>
@@ -1159,8 +616,6 @@ body {
         </div>
     </div>
 </div>
-
-
 
     <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
@@ -1210,25 +665,9 @@ body {
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </div>
-
-
     </div>
 
     <script>
-       // Get references to the sticky header
-const stickyHeader = document.getElementById('stickyHeader');
-const stickyPoint = 500; // Adjust this value to set when the header appears
-
-// Scroll event listener
-window.onscroll = function() {
-    if (window.pageYOffset > stickyPoint) {
-        stickyHeader.classList.add('visible');
-    } else {
-        stickyHeader.classList.remove('visible');
-    }
-};
-
-
         
         const taglines = [
             "Discover the best in hospitality",
@@ -1261,12 +700,12 @@ window.onscroll = function() {
     
     const typingInterval = setInterval(() => {
         if (i < tagline.length) {
-            dynamicTextElement.textContent = tagline.slice(0, i + 1);  // Add each character
+            dynamicTextElement.textContent = tagline.slice(0, i + 1);
             i++;
         } else {
-            clearInterval(typingInterval);  // Stop when finished
+            clearInterval(typingInterval);
         }
-    }, 80);  // Adjust speed as needed
+    }, 90);  // Adjust speed as needed
 }
 
         
@@ -1284,7 +723,6 @@ window.onscroll = function() {
 
     const images = set.querySelectorAll('img'); // Select all images within the set
 
-    // Ensure the set has at least 6 images to avoid errors
     if (images.length < 6) {
         console.error("Not enough images to apply positions.");
         return;
@@ -1313,7 +751,6 @@ window.onscroll = function() {
         }
     });
 }
-
 
         function fadeImages() {
             const previousIndex = currentIndex;
@@ -1375,17 +812,14 @@ window.onscroll = function() {
             document.body.classList.remove("modal-open");
         }
 
-// Remove any existing event listeners on the submitButton
-// document.getElementById("submitButton").removeEventListener("click", ...);
+        // Form submission event
+        const waitlistForm = document.getElementById("waitlistForm");
 
-// Form submission event
-const waitlistForm = document.getElementById("waitlistForm");
-
-waitlistForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
+    waitlistForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("emailLabel");
+        const errorMessage = document.getElementById("errorMessage");
 
     // Simple email validation regex
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1426,170 +860,8 @@ document.getElementById("email").addEventListener("input", function() {
         errorMessage.style.display = "none";
     }
 });
-
-
-        
-    </script>
     
- <div id="transition-section" class="fade-in-scroll">
-    <div class="text-box">
-        <p class="line-1">Unique merch from your favorite spots—</p>
-        <p class="line-2">Find it on Memorably</p>
-    </div>
-    <div class="image-row">
-    <!-- Image and Text Container 1 -->
-   <div class="image-container">
-    <a href="#">
-        <div class="image-wrapper">
-            <img src="https://via.placeholder.com/120x150" alt="Image 1">
-        </div>
-        <p class="image-description">Place Name</p>
-        <p class="transition-location-description">Dallas, Texas</p>
-    </a>
-</div>
-
-    <!-- Image and Text Container 2 -->
-   <div class="image-container">
-    <a href="#">
-        <div class="image-wrapper">
-            <img src="https://via.placeholder.com/120x150" alt="Image 1">
-        </div>
-        <p class="image-description">Place Name</p>
-        <p class="transition-location-description">Dallas, Texas</p>
-    </a>
-</div>
-
-    <!-- Image and Text Container 3 -->
-    <div class="image-container">
-    <a href="#">
-        <div class="image-wrapper">
-            <img src="https://via.placeholder.com/120x150" alt="Image 1">
-        </div>
-        <p class="image-description">Place Name</p>
-        <p class="transition-location-description">Dallas, Texas</p>
-    </a>
-</div>
-
-    <!-- Image and Text Container 4 -->
-   <div class="image-container">
-    <a href="#">
-        <div class="image-wrapper">
-            <img src="https://via.placeholder.com/120x150" alt="Image 1">
-        </div>
-        <p class="image-description">Place Name</p>
-        <p class="transition-location-description">Dallas, Texas</p>
-    </a>
-</div>
-</div>
-
-
-    <!-- Products Button -->
-    <button class="products-button">Shop our first places</button>
-</div>
-
-
-    </div>
-
- <div class="second-half fade-in-scroll">
-    <!-- Left side: Mission Text -->
-    <div class="text-container">
-        <div class="large-text-box">
-            <p>Let's go where you love</p>
-        </div>
-
-        <div class="mission-text-box">
-            <p>Our mission is to empower the world’s favorite places and their guests to showcase what makes them unique through exceptional merch. Help us connect with them by letting us know your favorite restaurants, hotels, or other places and we'll work to bring you exclusive goods that celebrate and support those brands.</p>
-        </div>
-
-        <!-- Input form to suggest places -->
-        <div class="input-form-box">
-            <form id="suggestPlaceForm">
-                <div class="input-button-container">
-                    <input type="text" id="suggestPlaceInput" placeholder="&quot;Balthazar, New York&quot;" required>
-                    <button type="submit" id="suggestPlaceButton">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Right side: Popular Locations -->
-    <div class="popular-locations-container">
-        <div class="popular-locations-title">Popular locations</div>
-        <div class="popular-locations-images">
-            <!-- Location 1 -->
-            <div class="location-item">
-                <img src="https://via.placeholder.com/100" alt="Location 1">
-                <p class="location-description">New York</p>
-            </div>
-            <!-- Location 2 -->
-            <div class="location-item">
-                <img src="https://via.placeholder.com/100" alt="Location 2">
-                <p class="location-description">Los Angeles</p>
-            </div>
-            <!-- Location 3 -->
-            <div class="location-item">
-                <img src="https://via.placeholder.com/100" alt="Location 3">
-                <p class="location-description">Paris</p>
-            </div>
-        </div>
-    </div>
-</div> <!-- End of second-half container -->
-
-<!-- New Container for Popular Suggestions -->
-<div class="popular-suggestions-section fade-in-scroll">
-    <div class="suggestions-title">Top suggestions</div>
-    <div class="bubble-container">
-        <!-- First row of bubbles -->
-        <button class="bubble">Balthazar</button>
-        <button class="bubble">Minetta Tavern</button>
-        <button class="bubble">The Modern</button>
-        <button class="bubble">Gramercy Tavern</button>
-        <button class="bubble">Bestia</button>
-        <button class="bubble">Redbird</button>
-        <button class="bubble">Girl & the Goat Los Angeles</button>
-        <button class="bubble">Here's Looking At You</button>
-        <!-- Second row of bubbles -->
-        <button class="bubble">Castaway</button>
-        <button class="bubble">Le Cinq</button>
-        <button class="bubble">Le Table de Colette</button>
-        <button class="bubble">Boutary</button>
-        <button class="bubble">Bistro 31</button>
-        <button class="bubble">Café Pacific</button>
-        <button class="bubble">Honor Bar</button>
-    </div>
-</div>
-
-<!-- New "Recent" Section -->
-<div class="recent-section fade-in-scroll">
-    <!-- Horizontal Separator -->
-    <hr class="recent-separator">
-
-    <!-- Recent Title -->
-    <div class="suggestions-title">Recent</div>
-
-    <!-- Single Line of Bubbles -->
-    <div class="bubble-container recent-bubble-container">
-        <button class="bubble">Upland</button>
-        <button class="bubble">The Dead Rabbit NYC</button>
-        <button class="bubble">JG Melon</button>
-        <button class="bubble">Per Se</button>
-        <button class="bubble">Maison Close Restaurant</button>
-        <button class="bubble">The Mansion Restaurant</button>
-        <button class="bubble">The Charles</button>
-        <button class="bubble">Toulouse</button>
-    </div>
-</div>
-
-    <!-- Footer section for Terms of service and Privacy policy -->
-<div class="bottom-footer">
-    <div class="footer-content">
-        <p>&copy; 2024 Memorably, Inc.</p>
-        <div class="footer-links">
-            <a href="#">Terms of service</a> |
-            <a href="#">Privacy policy</a>
-        </div>
-    </div>
-</div>
+    </script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const fadeElements = document.querySelectorAll('.fade-in-scroll');

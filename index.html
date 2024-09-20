@@ -612,31 +612,67 @@ body {
             background-color: #ccc;
             cursor: default;
             }
-        
-        .modal-content input[type="email"].error {
-        border-color: red;
-          }
-        
-        #emailLabel.error {
-            color: red;
-        }
 
-        #emailLabel, #errorMessage {
-    font-size: 0.7em; /* Set label and error message font size */
-    color: red;
-    margin-top: 4px;
+/* Style for the input field and button */
+.modal-content input[type="email"], #submitButton {
+    width: 435px;
 }
 
+/* Style for the error message */
 #errorMessage {
-    display: none; /* Initially hidden */
-    margin-top: 2px;
-    font-size: 0.65em; /* Slightly smaller than label */
+    display: none;
+    color: red;
+    font-size: 0.7em;
+    text-align: left;
+    margin: 4px auto 0 auto;
+    width: 435px;
 }
 
-.modal-content input[type="email"]:focus {
-    outline: none; /* Remove default browser outline */
-    border-color: #444; /* Optional: Set a custom border color on focus */
+/* Style for the label when there's an error */
+#emailLabel.error {
+    color: red;
 }
+
+/* Remove default focus outline and adjust border color on focus */
+.modal-content input[type="email"]:focus {
+    outline: none;
+    border-color: #444;
+}
+
+/* Style for the button */
+#submitButton {
+    padding: 12px 24px;
+    font-size: 1em;
+    color: white;
+    background-color: #444;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    width: 435px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: none;
+}
+
+/* Hover effect for the button */
+#submitButton:hover {
+    background-color: black;
+}
+
+/* Disabled state for the button (if needed) */
+#submitButton:disabled {
+    background-color: #ccc;
+    cursor: default;
+}
+
+/* Style for the input when there's an error */
+.modal-content input[type="email"].error {
+    border-color: red;
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
@@ -1102,28 +1138,27 @@ body {
 
 
 
-    <!-- Full-Screen Modal -->
-    <div id="waitlistModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h1>Unique merch from unforgettable spots&mdash;<br>Find it on Memorably</h1>
-            <p>Sign up to shop the world's favorite places and help us find yours</p>
-            <form id="waitlistForm">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" required>
-                <span id="errorMessage">Please enter a valid email address</span>
-                <button type="button" id="submitButton">Sign up</button>
-            </form>
-                <div class="checkbox-container">
-                    <label for="terms">By proceeding, you agree to Memorably's 
-                        <b><a href="#">Terms</a></b> and  
-                        <b><a href="#">Privacy Policy</a></b>.
-                    </label>
-                </div>
+<!-- Full-Screen Modal -->
+<div id="waitlistModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1>Unique merch from unforgettable spots&mdash;<br>Find it on Memorably</h1>
+        <p>Sign up to shop the world's favorite places and help us find yours</p>
+        <form id="waitlistForm">
+            <label for="email" id="emailLabel">Email address</label>
+            <input type="email" id="email" name="email" required>
+            <span id="errorMessage">Please enter a valid email address</span>
+            <button type="button" id="submitButton">Sign up</button>
+        </form>
+        <div class="checkbox-container">
+            <label for="terms">By proceeding, you agree to Memorably's 
+                <b><a href="#">Terms</a></b> and  
+                <b><a href="#">Privacy Policy</a></b>.
+            </label>
         </div>
     </div>
-  </div>
 </div>
+
 
 
 

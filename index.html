@@ -12,7 +12,7 @@
         body {
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow-y: auto; /* Change from 'hidden' to 'auto' to allow scrolling */
+            overflow-y: auto;
             overflow-x: hidden;
             background-color: #FAF8F6;
             transition: background-color 2s ease-in-out;
@@ -47,26 +47,26 @@
         }
 
         .header-button {
-    position: absolute;
-    top: 1.8%;
-    right: 65px;
-    padding: 12px 24px;
-    font-size: .88em;
-    font-weight: 200;
-    background-color: #444;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0px;
-    line-height: 1.2em;
-    transition: background-color 0.1s ease;
-    width: auto;
-}
-
-.header-button:hover {
-    background-color: black;
-    font-weight: 200;
-}
+            position: absolute;
+            top: 1.8%;
+            right: 65px;
+            padding: 12px 24px;
+            font-size: .88em;
+            font-weight: 200;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0px;
+            line-height: 1.2em;
+            transition: background-color 0.1s ease;
+            width: auto;
+        }
+        
+        .header-button:hover {
+            background-color: black;
+            font-weight: 200;
+        }
 
         .container {
             position: relative;
@@ -92,51 +92,48 @@
             transform: translateY(-25px);
         }
 
-   .dynamic-text-container {
-    display: flex;
-    align-items: flex-start; /* Align the text to the top */
-    height: 3.1em; /* Adjust to hold exactly two lines of text */
-    max-width: 320px;
-    overflow: hidden; /* Ensure extra text is hidden */
-    line-height: 1.3em;
-    position: relative;
-    z-index: 10;
-}
+        .dynamic-text-container {
+            display: flex;
+            align-items: flex-start; /* Align the text to the top */
+            height: 3.1em; /* Adjust to hold exactly two lines of text */
+            max-width: 320px;
+            overflow: hidden; /* Ensure extra text is hidden */
+            line-height: 1.3em;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .dynamic-text {
+            font-size: 1.2em;
+            color: #111;
+            white-space: pre-wrap; /* Allow text to wrap */
+            flex-grow: 1; /* Allow the text to take as much space as needed */
+            line-height: 1.3em; /* Ensure proper line height */
+            position: relative;
+            z-index: 20;
+        }
+        
+        .dynamic-text:after {
+            content: ''; /* Empty content to act as the cursor */
+            border-right: 3px solid #333;
+            height: 1.3em;
+            display: inline-block;
+            animation: blink-cursor 0.7s steps(1) infinite;
+            vertical-align: bottom;
+            margin-left: 2px; /* Adjust the cursor position */
+        }
 
-.dynamic-text {
-    font-size: 1.2em;
-    color: #111;
-    white-space: pre-wrap; /* Allow text to wrap */
-    flex-grow: 1; /* Allow the text to take as much space as needed */
-    line-height: 1.3em; /* Ensure proper line height */
-    position: relative;
-    z-index: 20;
-}
-
-.dynamic-text:after {
-    content: ''; /* Empty content to act as the cursor */
-    border-right: 3px solid #333;
-    height: 1.3em;
-    display: inline-block;
-    animation: blink-cursor 0.7s steps(1) infinite;
-    vertical-align: bottom;
-    margin-left: 2px; /* Adjust the cursor position */
-}
-
-
-
-      @keyframes blink-cursor {
-    0% { opacity: 1;    } 
-    10% { opacity: .9;  }   
-    20% { opacity: 0.8; }  
-    30% { opacity: 0.7; } 
-    40% { opacity: 0.6; } 
-    50% { opacity: 0.5; }    
-    60% { opacity: 0.3; }  
-    70% { opacity: 0;   }   
-    100% {opacity: 1;   }      
-}
-
+        @keyframes blink-cursor {
+            0% { opacity: 1;    } 
+            10% { opacity: .9;  }   
+            20% { opacity: 0.8; }  
+            30% { opacity: 0.7; } 
+            40% { opacity: 0.6; } 
+            50% { opacity: 0.5; }    
+            60% { opacity: 0.3; }  
+            70% { opacity: 0;   }   
+            100% {opacity: 1;   }      
+        }
 
         button {
             margin-top: 0px;
@@ -285,8 +282,6 @@
             animation: float3 28s linear infinite;
         }
 
-
-    
         .footer {
             position: absolute;
             bottom: 60px;
@@ -313,23 +308,6 @@
 
         .social-button:hover {
             color: black;
-        }
-
-
-        .footer .lower-links {
-            font-size: 0.8em;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .footer .lower-links a {
-            color: #555;
-            text-decoration: underline;
-        }
-
-        .footer .lower-links a:hover {
-            text-decoration: none;
         }
 
         /* Full-Screen Modal Styles */
@@ -515,12 +493,10 @@
             cursor: default;
             }
 
-        /* Style for the input field and button */
         .modal-content input[type="email"], #submitButton {
             width: 435px;
         }
         
-        /* Style for the error message */
         #errorMessage {
             display: none;
             color: #862110;
@@ -531,18 +507,15 @@
             letter-spacing: .01em;
         }
         
-        /* Style for the label when there's an error */
         #emailLabel.error {
             color: #862110;
         }
         
-        /* Remove default focus outline and adjust border color on focus */
         .modal-content input[type="email"]:focus {
             outline: none;
             border-color: #444;
         }
         
-        /* Style for the button */
         #submitButton {
             padding: 12px 24px;
             font-size: 1em;
@@ -560,12 +533,10 @@
             transform: none;
         }
         
-        /* Hover effect for the button */
         #submitButton:hover {
             background-color: black;
         }
         
-        /* Style for the input when there's an error */
         .modal-content input[type="email"].error {
             border-color: #862110;
         }
@@ -582,40 +553,38 @@
         Shop unforgettable restaurants, hotels, and experiences
     </div>
     
-  <button class="header-button" onclick="window.location.href='https://chasermcc.github.io/design.html'">Designers</button>
-
-
+      <button class="header-button" onclick="window.location.href='https://chasermcc.github.io/design.html'">Designers</button>
     
-<div class="container">
-    <h1>Memorably</h1>
-    <div class="dynamic-text-container">
-        <div class="dynamic-text"></div>
-        <span class="cursor"></span>
+    <div class="container">
+        <h1>Memorably</h1>
+        <div class="dynamic-text-container">
+            <div class="dynamic-text"></div>
+            <span class="cursor"></span>
+        </div>
+        <button id="joinWaitlistButton">Join waitlist</button>
+        <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
-    <button id="joinWaitlistButton">Join waitlist</button>
-    <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
-</div>
 
-<!-- Full-Screen Modal -->
-<div id="waitlistModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
-        <p>Sign up to shop the world's favorite places and help us find yours</p>
-        <form id="waitlistForm" novalidate>
-            <label for="email" id="emailLabel">Email address</label>
-            <input type="email" id="email" name="email">
-            <span id="errorMessage">Please enter a valid email address</span>
-            <button type="submit" id="submitButton">Sign up</button>
-        </form>
-        <div class="checkbox-container">
-            <label for="terms">By proceeding, you agree to Memorably's 
-                <b><a href="#">Terms</a></b> and  
-                <b><a href="#">Privacy Policy</a></b>.
-            </label>
+    <!-- Full-Screen Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
+            <p>Sign up to shop the world's favorite places and help us find yours</p>
+            <form id="waitlistForm" novalidate>
+                <label for="email" id="emailLabel">Email address</label>
+                <input type="email" id="email" name="email">
+                <span id="errorMessage">Please enter a valid email address</span>
+                <button type="submit" id="submitButton">Sign up</button>
+            </form>
+            <div class="checkbox-container">
+                <label for="terms">By proceeding, you agree to Memorably's 
+                    <b><a href="#">Terms</a></b> and  
+                    <b><a href="#">Privacy Policy</a></b>.
+                </label>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
@@ -694,46 +663,41 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const cursorElement = document.querySelector('.cursor');
 
-    function typeTagline() {
-    const tagline = taglines[currentIndex];  // Get the current tagline
-    let i = 0;
-    
-    const typingInterval = setInterval(() => {
-        if (i < tagline.length) {
-            dynamicTextElement.textContent = tagline.slice(0, i + 1);
-            i++;
-        } else {
-            clearInterval(typingInterval);
-        }
-    }, 70);  // Adjust speed as needed
-}
-
+        function typeTagline() {
+        const tagline = taglines[currentIndex];
+        let i = 0;
         
+        const typingInterval = setInterval(() => {
+            if (i < tagline.length) {
+                dynamicTextElement.textContent = tagline.slice(0, i + 1);
+                i++;
+            } else {
+                clearInterval(typingInterval);
+            }
+        }, 60);  // Speed
+    }
         
-           function randomizeImagePositions(set) {
-    const centralPosition = { top: '15%', left: '40%' };  // Center the largest image (4th) here
+    function randomizeImagePositions(set) {
+    const centralPosition = { top: '15%', left: '40%' };
 
     const surroundingPositions = [
-        { top: '4%', left: '8%' },    // Randomly position others around
+        { top: '4%', left: '8%' },
         { top: '7%', left: '65%' },
         { top: '28%', left: '20%' },
         { top: '44%', left: '78%' },
         { top: '52%', left: '15%' }
     ];
 
-    const images = set.querySelectorAll('img'); // Select all images within the set
-
+    const images = set.querySelectorAll('img');
     if (images.length < 6) {
         console.error("Not enough images to apply positions.");
         return;
     }
 
-    // Assign the central position to the 4th image
-    images[3].style.top = centralPosition.top;
-    images[3].style.left = centralPosition.left;
-    images[3].style.zIndex = 4; 
+        images[3].style.top = centralPosition.top;
+        images[3].style.left = centralPosition.left;
+        images[3].style.zIndex = 4; 
                
-    // Shuffle and assign surrounding positions to the other images
     for (let i = surroundingPositions.length - 1; i >= 0; i--) {
         const randomIndex = Math.floor(Math.random() * (i + 1));
         const tempPosition = surroundingPositions[i];
@@ -741,10 +705,9 @@
         surroundingPositions[randomIndex] = tempPosition;
     }
 
-    // Assign the shuffled surrounding positions to the remaining images
     let surroundingImageIndex = 0;
     images.forEach((img, index) => {
-        if (index !== 3) {  // Skip the central (4th) image
+        if (index !== 3) {
             img.style.top = surroundingPositions[surroundingImageIndex].top;
             img.style.left = surroundingPositions[surroundingImageIndex].left;
             surroundingImageIndex++;
@@ -775,7 +738,7 @@
                         img.style.opacity = '1';
                     }, i * 100);
                 });
-            }, 1200);
+            }, 1000);
         }
 
         function changeBackgroundColor() {
@@ -789,11 +752,10 @@
             fadeImages();
         }
 
-        setInterval(startTransitions, 12000);  // Repeat transitions every 12 seconds
+        setInterval(startTransitions, 10000);
 
-        startTransitions();  // Start the first transition immediately
+        startTransitions();
 
-        // Modal functionality
         const modal = document.getElementById("waitlistModal");
         const joinWaitlistButton = document.getElementById("joinWaitlistButton");
         const closeButton = document.querySelector(".close-button");
@@ -812,7 +774,6 @@
             document.body.classList.remove("modal-open");
         }
 
-        // Form submission event
         const waitlistForm = document.getElementById("waitlistForm");
 
     waitlistForm.addEventListener("submit", function(event) {
@@ -821,34 +782,28 @@
         const emailLabel = document.getElementById("emailLabel");
         const errorMessage = document.getElementById("errorMessage");
 
-    // Simple email validation regex
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailInput.value.trim() === "") {
-        // If the email field is empty
         emailInput.classList.add("error");
         emailLabel.classList.add("error");
         errorMessage.textContent = "Please enter your email address";
         errorMessage.style.display = "block";
     } else if (!emailPattern.test(emailInput.value)) {
-        // If the email is invalid
         emailInput.classList.add("error");
         emailLabel.classList.add("error");
         errorMessage.textContent = "Please enter a valid email address";
         errorMessage.style.display = "block";
     } else {
-        // If the email is valid
         emailInput.classList.remove("error");
         emailLabel.classList.remove("error");
         errorMessage.style.display = "none";
 
-        // Proceed to the next step
         console.log("Valid email submitted:", emailInput.value);
         // You can add your code here to handle the successful submission
     }
 });
 
-// Remove the error styling when the user starts typing again
 document.getElementById("email").addEventListener("input", function() {
     const emailInput = document.getElementById("email");
     const emailLabel = document.getElementById("emailLabel");
@@ -862,23 +817,6 @@ document.getElementById("email").addEventListener("input", function() {
 });
     
     </script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const fadeElements = document.querySelectorAll('.fade-in-scroll');
 
-    const onScroll = () => {
-        fadeElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < window.innerHeight - 100) {
-                element.classList.add('show');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', onScroll);
-    onScroll(); // Trigger the effect in case elements are already in view
-});
-</script>
-    
 </body>
 </html>

@@ -516,7 +516,7 @@ body {
 
         .modal-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3em;
+            font-size: 1.31em;
             margin-bottom: 0px;
             position: relative;
             top: -10px;
@@ -525,7 +525,7 @@ body {
 
         .modal-content p {
             font-family: 'Inter', sans-serif;
-            font-size: .85em;
+            font-size: .83em;
             margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -542,7 +542,7 @@ body {
             font-weight: 200;
             margin-bottom: 2px;
             display: block;
-            color: #666;
+            color: #555;
             text-align: left;
             margin-left: auto;
             margin-right: auto;
@@ -554,7 +554,7 @@ body {
             font-size: 1em;
             margin-bottom: 20px;
             width: 425px;
-            border: 1px solid #aaa;
+            border: 1px solid #ccc;
             border-radius: 0px;
             text-align: left;
             margin-left: auto;
@@ -566,12 +566,11 @@ body {
         .modal-content .checkbox-container {
             display: flex;
             align-items: flex-start;
-            text-align: center;
             margin-bottom: 20px;
             color: #444;
             margin-left: auto;
             margin-right: auto;
-            width: 425px; /* Matching width to the email input form */
+            width: 425px;
         }
 
 
@@ -579,6 +578,7 @@ body {
             font-size: 0.74em;
             font-weight: 150;
             line-height: 1.4em;
+            text-align: center;
             color: #999;
             word-wrap: break-word;
             width: 100%;
@@ -586,7 +586,7 @@ body {
 
         .modal-content .checkbox-container a {
             color: #777777;
-            font-weight: bold;
+            font-weight: 400;
             text-decoration: underline;
             cursor: pointer;
         }
@@ -1093,7 +1093,7 @@ body {
             <h1>Unique merch from unforgettable spots&mdash;<br>Find it on Memorably</h1>
             <p>Sign up below to shop the world's favorite places and help us find yours.</p>
             <form id="waitlistForm">
-                <label for="email">Email</label>
+                <label for="email">Email address</label>
                 <input type="email" id="email" name="email" required>
                 <div class="checkbox-container">
                     <label for="terms">By proceeding, you agree to Memorably's 
@@ -1259,8 +1259,8 @@ window.onscroll = function() {
     // Assign the central position to the 4th image
     images[3].style.top = centralPosition.top;
     images[3].style.left = centralPosition.left;
-    images[3].style.zIndex = 4;  // Ensure the largest image is in front
-
+    images[3].style.zIndex = 4; 
+               
     // Shuffle and assign surrounding positions to the other images
     for (let i = surroundingPositions.length - 1; i >= 0; i--) {
         const randomIndex = Math.floor(Math.random() * (i + 1));
@@ -1332,7 +1332,7 @@ window.onscroll = function() {
         joinWaitlistButton.onclick = function() {
             modal.style.display = "flex";
             modal.classList.add("show");
-            document.body.classList.add("modal-open"); // Disable body scroll when modal is open
+            document.body.classList.add("modal-open");
         }
 
         closeButton.onclick = function() {
@@ -1340,11 +1340,6 @@ window.onscroll = function() {
             modal.classList.remove("show");
             document.body.classList.remove("modal-open");
         }
-
-        termsCheckbox.onchange = function() {
-            submitButton.disabled = !this.checked;
-        }
-
 
         
     </script>

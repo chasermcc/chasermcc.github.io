@@ -345,6 +345,8 @@
             color: #333;
             border-radius: 0px;
             position: relative;
+            display: flex;
+            align-items: center;
             overflow: hidden;
         }
 
@@ -436,7 +438,7 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 0px;
-            margin-top: 0px;
+            margin-top: 20px;
             color: #444;
             margin-left: auto;
             margin-right: auto;
@@ -546,7 +548,7 @@
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 9px auto;
+            margin: 20px auto;
             width: 435px;
         }
         
@@ -586,7 +588,7 @@
             border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.1s ease;
-            margin: 10px auto 0 auto;
+            margin: 10px auto;
             box-sizing: border-box;
         }
         
@@ -620,38 +622,35 @@
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
 
-    <!-- Full-Screen Modal -->
-    <div id="waitlistModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
-            <p>Sign up to shop the world's favorite places and help us find yours</p>
-            
-            <form id="waitlistForm" novalidate>
-                <label for="email" id="emailLabel">Email address</label>
-                <input type="email" id="email" name="email">
-                <span id="errorMessage">Please enter a valid email address</span>
-                <button type="submit" id="submitButton">Sign up</button>
-            </form>
-            
-            <div class="separator">
-                <span>or</span>
-            </div>
-
-            <button id="googleSignInButton">
-                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
-                Continue with Google
-            </button>
-
-            
-            <div class="checkbox-container">
-                <label for="terms">By proceeding, you agree to Memorably's 
-                    <b><a href="#">Terms</a></b> and  
-                    <b><a href="#">Privacy Policy</a></b>.
-                </label>
-            </div>
+       <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
+        <p>Sign up to shop the world's favorite places and help us find yours</p>
+        
+        <form id="waitlistForm" novalidate>
+            <label for="email" id="emailLabel">Email address</label>
+            <input type="email" id="email" name="email">
+            <span id="errorMessage">Please enter a valid email address</span>
+            <button type="submit" id="submitButton">Sign up</button>
+        </form>
+        
+        <div class="separator">
+            <span>or</span>
+        </div>
+    
+        <button id="googleSignInButton">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+            Continue with Google
+        </button>
+    
+        <div class="checkbox-container">
+            <label for="terms">By proceeding, you agree to Memorably's 
+                <b><a href="#">Terms</a></b> and  
+                <b><a href="#">Privacy Policy</a></b>.
+            </label>
         </div>
     </div>
+
 
     <div class="floating-images" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">

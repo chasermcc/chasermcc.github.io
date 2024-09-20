@@ -621,16 +621,17 @@ body {
 /* Style for the error message */
 #errorMessage {
     display: none;
-    color: red;
-    font-size: 0.7em;
+    color: #862110;
+    font-size: 0.73em;
     text-align: left;
-    margin: 4px auto 0 auto;
+    margin: 2px auto 0 auto;
     width: 435px;
+    letter-spacing: .01em;
 }
 
 /* Style for the label when there's an error */
 #emailLabel.error {
-    color: red;
+    color: #862110;
 }
 
 /* Remove default focus outline and adjust border color on focus */
@@ -670,7 +671,7 @@ body {
 
 /* Style for the input when there's an error */
 .modal-content input[type="email"].error {
-    border-color: red;
+    border-color: #862110;
 }
 
 
@@ -1144,11 +1145,11 @@ body {
         <span class="close-button">&times;</span>
         <h1>Unique merch from unforgettable spots&mdash;<br>Find it on Memorably</h1>
         <p>Sign up to shop the world's favorite places and help us find yours</p>
-        <form id="waitlistForm">
+        <form id="waitlistForm" novalidate>
             <label for="email" id="emailLabel">Email address</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email">
             <span id="errorMessage">Please enter a valid email address</span>
-            <button type="button" id="submitButton">Sign up</button>
+            <button type="submit" id="submitButton">Sign up</button>
         </form>
         <div class="checkbox-container">
             <label for="terms">By proceeding, you agree to Memorably's 
@@ -1158,7 +1159,6 @@ body {
         </div>
     </div>
 </div>
-
 
 
 
@@ -1375,7 +1375,14 @@ window.onscroll = function() {
             document.body.classList.remove("modal-open");
         }
 
-document.getElementById("submitButton").addEventListener("click", function() {
+// Remove any existing event listeners on the submitButton
+// document.getElementById("submitButton").removeEventListener("click", ...);
+
+// Form submission event
+const waitlistForm = document.getElementById("waitlistForm");
+
+waitlistForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
     const emailInput = document.getElementById("email");
     const emailLabel = document.getElementById("emailLabel");
     const errorMessage = document.getElementById("errorMessage");
@@ -1383,20 +1390,31 @@ document.getElementById("submitButton").addEventListener("click", function() {
     // Simple email validation regex
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (emailPattern.test(emailInput.value)) {
-        // Valid email: hide error message and remove error styling
+    if (emailInput.value.trim() === "") {
+        // If the email field is empty
+        emailInput.classList.add("error");
+        emailLabel.classList.add("error");
+        errorMessage.textContent = "Please enter your email address";
+        errorMessage.style.display = "block";
+    } else if (!emailPattern.test(emailInput.value)) {
+        // If the email is invalid
+        emailInput.classList.add("error");
+        emailLabel.classList.add("error");
+        errorMessage.textContent = "Please enter a valid email address";
+        errorMessage.style.display = "block";
+    } else {
+        // If the email is valid
         emailInput.classList.remove("error");
         emailLabel.classList.remove("error");
         errorMessage.style.display = "none";
-    } else {
-        // Invalid email: show error message and apply error styling
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.style.display = "block";
+
+        // Proceed to the next step
+        console.log("Valid email submitted:", emailInput.value);
+        // You can add your code here to handle the successful submission
     }
 });
 
-// Remove the error styling when user starts typing again
+// Remove the error styling when the user starts typing again
 document.getElementById("email").addEventListener("input", function() {
     const emailInput = document.getElementById("email");
     const emailLabel = document.getElementById("emailLabel");

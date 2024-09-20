@@ -316,6 +316,7 @@
             to { opacity: 1; }
         }
 
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -328,26 +329,20 @@
             justify-content: center;
             align-items: center;
         }
-       
-        body.modal-open {
-            overflow: hidden;
-        }
-
+        
         .modal.show {
-            animation: fadeInModal 0.2s ease-in-out;
+            display: flex;
         }
-
+        
         .modal-content {
             background-color: white;
             width: 500px;
             padding: 18px;
             text-align: center;
             color: #333;
-            border-radius: 0px;
             position: relative;
-            display: flex;
-            align-items: center;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .close-button {
@@ -434,17 +429,17 @@
             box-sizing: border-box;
         }
 
+       /* Checkbox Container */
         .modal-content .checkbox-container {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 0px;
+            display: block;
             margin-top: 20px;
+            margin-bottom: 0;
             color: #444;
+            width: 435px;
             margin-left: auto;
             margin-right: auto;
-            width: 435px;
         }
-
+        
         .modal-content .checkbox-container label {
             font-size: 0.74em;
             font-weight: 150;
@@ -453,7 +448,7 @@
             color: #999;
             word-wrap: break-word;
             width: 100%;
-            margin-top: 30px;
+            margin-top: 0;
         }
 
         .modal-content .checkbox-container a {
@@ -543,12 +538,12 @@
             border-color: #862110;
         }
 
-        /* Separator styles */
+       /* Separator styles */
         .separator {
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 20px auto;
+            margin: 20px 0;
             width: 435px;
         }
         
@@ -560,11 +555,11 @@
         }
         
         .separator:not(:empty)::before {
-            margin-right: .5em;
+            margin-right: 0.5em;
         }
         
         .separator:not(:empty)::after {
-            margin-left: .5em;
+            margin-left: 0.5em;
         }
         
         .separator span {
@@ -573,23 +568,27 @@
             font-weight: 250;
         }
         
-        /* Google Sign-In Button styles */
+     /* Google Sign-In Button styles */
         #googleSignInButton {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 435px;
             padding: 10px;
-            font-size: .88em;
-            font-weight: 175;
+            font-size: 0.88em;
+            font-weight: 400;
             color: #666;
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.1s ease;
-            margin: 10px auto;
+            margin: 0 auto;
             box-sizing: border-box;
+        }
+        
+        #googleSignInButton:hover {
+            background-color: #f7f7f7;
         }
         
         #googleSignInButton img {
@@ -597,6 +596,7 @@
             height: 22px;
             margin-right: 10px;
         }
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -622,7 +622,9 @@
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
 
-       <div class="modal-content">
+     <!-- Full-Screen Modal -->
+<div id="waitlistModal" class="modal">
+    <div class="modal-content">
         <span class="close-button">&times;</span>
         <h1>Unique merch from unforgettable spots&mdash;<br>find it on Memorably</h1>
         <p>Sign up to shop the world's favorite places and help us find yours</p>
@@ -634,22 +636,26 @@
             <button type="submit" id="submitButton">Sign up</button>
         </form>
         
+        <!-- Separator with 'or' text -->
         <div class="separator">
             <span>or</span>
         </div>
-    
+
+        <!-- Continue with Google button -->
         <button id="googleSignInButton">
             <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
             Continue with Google
         </button>
-    
+
+        <!-- Terms and Privacy Policy text -->
         <div class="checkbox-container">
-            <label for="terms">By proceeding, you agree to Memorably's 
+            <label>By proceeding, you agree to Memorably's 
                 <b><a href="#">Terms</a></b> and  
                 <b><a href="#">Privacy Policy</a></b>.
             </label>
         </div>
     </div>
+</div>
 
 
     <div class="floating-images" id="images1">

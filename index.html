@@ -409,7 +409,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.78em;
             font-weight: 200;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             display: block;
             color: #555;
             text-align: left;
@@ -620,6 +620,32 @@
             margin-right: 10px;
         }
 
+        /* Styles for the brand signup box */
+        .brand-signup {
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            padding: 15px;
+            width: 435px;
+            margin: 20px 0 0 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.85em;
+            color: #555;
+            line-height: 1.4em;
+            letter-spacing: .01em;
+        }
+        
+        .brand-signup a {
+            text-decoration: underline;
+            color: #444;
+            cursor: pointer;
+        }
+        
+        .brand-signup a:hover {
+            text-decoration: none;
+            color: #000;
+        }
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -669,6 +695,11 @@
             <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
             Continue with Google
         </button>
+
+        <!-- New Text Box for Brands -->
+        <div class="brand-signup">
+            Are you a brand? <a href="#" class="brand-signup-link">Sign up to sell on Memorably</a>
+        </div>
 
         <!-- Terms and Privacy Policy text -->
         <div class="checkbox-container">

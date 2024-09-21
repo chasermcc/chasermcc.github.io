@@ -333,6 +333,11 @@
         .modal.show {
             display: flex;
         }
+    
+        body.modal-open {
+            overflow: hidden;
+        }
+
         
         .modal-content {
             background-color: white;
@@ -484,8 +489,8 @@
 
         .modal-content button[type="submit"] {
             padding: 12px 24px;
-            font-size: 1em;
-            font-weight: 200;
+            font-size: .96em;
+            font-weight: 175;
             color: white;
             background-color: #444;
             border: none;
@@ -625,16 +630,16 @@
         .brand-signup {
             background-color: #f7f7f7;
             border-radius: 5px;
-            padding: 14px 14px 14px 14px;
+            padding: 13px 13px 13px 13px;
             width: 435px;
             margin: 20px 0 0 0;
             box-sizing: border-box;
             text-align: center;
-            font-size: 0.84em;
+            font-size: 0.85em;
             color: #444;
-            line-height: 1.3em;
+            line-height: 1.2em;
             letter-spacing: .01em;
-            font-weight: 250;
+            font-weight: 300;
         }
         
         .brand-signup a {
@@ -684,7 +689,7 @@
             <label for="email" id="emailLabel">Email address</label>
             <input type="email" id="email" name="email">
             <span id="errorMessage">Please enter a valid email address</span>
-            <button type="submit" id="submitButton">Sign up</button>
+            <button type="submit" id="submitButton">Sign up for early access</button>
         </form>
         
         <!-- Separator with 'or' text -->
@@ -897,11 +902,10 @@
             document.body.classList.add("modal-open");
         }
 
-        closeButton.onclick = function() {
-            modal.style.display = "none";
-            modal.classList.remove("show");
-            document.body.classList.remove("modal-open");
+            closeButton.onclick = function() {
+            closeModal();
         }
+
 
         const waitlistForm = document.getElementById("waitlistForm");
 
@@ -944,6 +948,24 @@ document.getElementById("email").addEventListener("input", function() {
         errorMessage.style.display = "none";
     }
 });
+        window.onclick = function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+        function closeModal() {
+    modal.style.display = "none";
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+}
+
+            // Prevent clicks inside modal content from closing the modal
+    const modalContent = document.querySelector(".modal-content");
+    modalContent.onclick = function(event) {
+        event.stopPropagation();
+    }
+
     
     </script>
 

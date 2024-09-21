@@ -334,18 +334,18 @@
             display: flex;
         }
         
-       .modal-content {
+        .modal-content {
             background-color: white;
             width: 500px;
             padding: 18px;
             text-align: center;
             color: #333;
             position: relative;
-            display: flex; 
-            flex-direction: column;
-            align-items: center;
             overflow: hidden;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .close-button {
@@ -432,16 +432,32 @@
             box-sizing: border-box;
         }
 
-       /* Checkbox Container */
-        .modal-content .checkbox-container {
-            display: block;
-            margin-top: 20px;
-            margin-bottom: 0;
-            color: #444;
-            width: 435px;
-            margin-left: auto;
-            margin-right: auto;
+        .checkbox-container {
+            margin-top: 15px;
         }
+
+               
+        #waitlistForm,
+        #submitButton,
+        #googleSignInButton,
+        .checkbox-container {
+            width: 435px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+
+        
+        .modal-content .checkbox-container p {
+            font-size: 0.74em;
+            font-weight: 150;
+            line-height: 1.4em;
+            text-align: center;
+            color: #999;
+            word-wrap: break-word;
+            width: 100%;
+        }
+
         
         .modal-content .checkbox-container label {
             font-size: 0.74em;
@@ -587,7 +603,8 @@
             border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.1s ease;
-            margin: 10px 0;
+            margin-top: 0px;
+            margin-bottom: 15px;
             box-sizing: border-box;
         }
         
@@ -653,11 +670,12 @@
 
         <!-- Terms and Privacy Policy text -->
         <div class="checkbox-container">
-            <label>By proceeding, you agree to Memorably's 
+            <p>By proceeding, you agree to Memorably's 
                 <b><a href="#">Terms</a></b> and  
                 <b><a href="#">Privacy Policy</a></b>.
-            </label>
+            </p>
         </div>
+
     </div>
 </div>
 

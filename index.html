@@ -946,81 +946,137 @@
     word-wrap: break-word;
 }
 
-        @media (max-width: 768px) {
-    /* For tablets (iPad) and smaller screens */
-    
+       /* Media queries for smaller screens */
+@media (max-width: 768px) {
+    /* Reduce margins to 15px */
     body {
-        padding: 15px;
+        padding: 0 15px;
     }
-    
+
+    /* Adjust header text */
     .header-text {
-        font-size: 1em; /* Reduce font size for smaller screens */
-        left: 15px; /* Reduce the left margin */
-        max-width: calc(100% - 80px); /* Allow space for the Designers button */
+        font-size: 0.95em; /* Smaller font size */
+        left: 15px;
+        right: 15px; /* Ensure it doesn't overflow */
+        max-width: calc(100% - 30px); /* Account for padding */
+        top: 5%;
     }
-    
+
+    /* Change header text content */
+    #header-text {
+        content: "Shop unforgettable places";
+    }
+
+    /* Adjust header button */
     .header-button {
-        right: 15px; /* Reduce the right margin */
+        right: 15px;
+        top: 5%;
+        font-size: 0.85em;
     }
-    
+
+    /* Adjust container padding */
     .container {
         padding-left: 15px;
-    }
-    
-    h1 {
-        font-size: 2em; /* Slightly reduce the heading size */
+        padding-right: 15px;
+        padding-top: 80px; /* Move content higher */
     }
 
+    /* Move "Memorably" header higher */
+    .container h1 {
+        margin-top: 0;
+    }
+
+    /* Adjust dynamic text container */
     .dynamic-text-container {
-        max-width: 100%; /* Adjust the width of dynamic text for smaller screens */
-        padding-right: 15px; /* Add padding to avoid overlap */
+        max-width: 100%;
+        margin-right: 15px;
     }
 
-    /* Move images below the dynamic text for smaller screens */
+    /* Adjust buttons */
+    button {
+        width: auto; /* Let buttons adjust width automatically */
+    }
+
+    /* Adjust social media links margin */
+    .footer {
+        left: 10px;
+        bottom: 20px;
+    }
+
+    /* Adjust floating images */
     .floating-images {
-        position: static;
+        position: relative;
+        top: 20px; /* Adjust as needed */
+        left: 0;
+        right: 0;
+        margin: 20px auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
-        margin-top: 30px; /* Add space below dynamic text */
-        width: 100%;
+        padding: 0;
         height: auto;
-        padding: 0; /* Remove unnecessary padding */
     }
 
     .floating-images img {
-        width: 100px; /* Reduce size of images for smaller screens */
+        width: 80px; /* Smaller images */
         height: auto;
-        margin: 5px; /* Space between images */
+        margin: 5px;
         position: relative;
-        opacity: 1; /* Ensure images remain visible */
+        opacity: 1;
+        animation: none; /* Remove floating animations on small screens */
     }
 
-    /* Move "Memorably" header and dynamic text higher on the screen */
-    .container {
-        padding-top: 20px; /* Move everything up */
+    /* Hide the cursor after dynamic text */
+    .dynamic-text:after {
+        display: none;
     }
 }
 
 @media (max-width: 576px) {
-    /* For smartphones (iPhone/Android) */
-    
+    /* Further adjustments for smartphones */
     .header-text {
-        font-size: 0.9em; /* Further reduce font size for phones */
+        font-size: 0.85em;
+        top: 5%;
     }
-    
+
+    .header-button {
+        font-size: 0.8em;
+        top: 5%;
+    }
+
+    /* Adjust padding */
+    .container {
+        padding-top: 60px;
+    }
+
+    /* Reduce image sizes further */
     .floating-images img {
-        width: 80px; /* Even smaller for smartphones */
+        width: 60px;
         margin: 3px;
     }
 
-    .dynamic-text-container {
-        font-size: 1em; /* Reduce the size of dynamic text slightly */
+    /* Adjust font sizes */
+    h1 {
+        font-size: 1.8em;
     }
 
-    button {
-        width: 160px; /* Slightly reduce button width */
-        font-size: 0.85em;
+    .dynamic-text {
+        font-size: 1em;
+    }
+}
+        /* In the media queries for smaller screens */
+@media (max-width: 768px) {
+    .floating-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .floating-images img {
+        flex: 0 0 auto; /* Prevent images from stretching */
+        margin: 5px;
     }
 }
 
@@ -1033,9 +1089,10 @@
  
     <div class="background" id="background"></div>
 
-    <div class="header-text">
-        Shop unforgettable restaurants, hotels, and experiences
+    <div class="header-text" id="header-text">
+    Shop unforgettable restaurants, hotels, and experiences
     </div>
+
     
       <button class="header-button" onclick="window.location.href='https://chasermcc.github.io/design.html'">Designers</button>
     
@@ -1047,6 +1104,41 @@
         </div>
         <button id="joinWaitlistButton">Join waitlist</button>
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
+         <div class="floating-images" id="images1">
+        <img src="https://via.placeholder.com/240x320" alt="Image 1">
+        <img src="https://via.placeholder.com/200x300" alt="Image 2">
+        <img src="https://via.placeholder.com/220x280" alt="Image 3">
+        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 5">
+        <img src="https://via.placeholder.com/220x280" alt="Image 6">
+    </div>
+
+    <div class="floating-images" id="images2" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 7">
+        <img src="https://via.placeholder.com/200x300" alt="Image 8">
+        <img src="https://via.placeholder.com/220x280" alt="Image 9">
+        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 11">
+        <img src="https://via.placeholder.com/220x280" alt="Image 12">
+    </div>
+
+    <div class="floating-images" id="images3" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 13">
+        <img src="https://via.placeholder.com/200x300" alt="Image 14">
+        <img src="https://via.placeholder.com/220x280" alt="Image 15">
+        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 17">
+        <img src="https://via.placeholder.com/220x280" alt="Image 18">
+    </div>
+
+    <div class="floating-images" id="images4" style="display: none;">
+        <img src="https://via.placeholder.com/240x320" alt="Image 19">
+        <img src="https://via.placeholder.com/200x300" alt="Image 20">
+        <img src="https://via.placeholder.com/220x280" alt="Image 21">
+        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
+        <img src="https://via.placeholder.com/180x240" alt="Image 23">
+        <img src="https://via.placeholder.com/220x280" alt="Image 24">
+    </div>
     </div>
 
   <!-- Full-Screen Modal -->
@@ -1126,41 +1218,7 @@
 
 
 
-    <div class="floating-images" id="images1">
-        <img src="https://via.placeholder.com/240x320" alt="Image 1">
-        <img src="https://via.placeholder.com/200x300" alt="Image 2">
-        <img src="https://via.placeholder.com/220x280" alt="Image 3">
-        <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 5">
-        <img src="https://via.placeholder.com/220x280" alt="Image 6">
-    </div>
-
-    <div class="floating-images" id="images2" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 7">
-        <img src="https://via.placeholder.com/200x300" alt="Image 8">
-        <img src="https://via.placeholder.com/220x280" alt="Image 9">
-        <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 11">
-        <img src="https://via.placeholder.com/220x280" alt="Image 12">
-    </div>
-
-    <div class="floating-images" id="images3" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 13">
-        <img src="https://via.placeholder.com/200x300" alt="Image 14">
-        <img src="https://via.placeholder.com/220x280" alt="Image 15">
-        <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 17">
-        <img src="https://via.placeholder.com/220x280" alt="Image 18">
-    </div>
-
-    <div class="floating-images" id="images4" style="display: none;">
-        <img src="https://via.placeholder.com/240x320" alt="Image 19">
-        <img src="https://via.placeholder.com/200x300" alt="Image 20">
-        <img src="https://via.placeholder.com/220x280" alt="Image 21">
-        <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
-        <img src="https://via.placeholder.com/180x240" alt="Image 23">
-        <img src="https://via.placeholder.com/220x280" alt="Image 24">
-    </div>
+   
 
     <div class="footer">
         <div class="social-media-links">
@@ -1217,69 +1275,91 @@
         }, 55);  // Speed
     }
         
-    function randomizeImagePositions(set) {
-    const centralPosition = { top: '15%', left: '40%' };
-
-    const surroundingPositions = [
-        { top: '4%', left: '8%' },
-        { top: '7%', left: '65%' },
-        { top: '28%', left: '19%' },
-        { top: '44%', left: '78%' },
-        { top: '54%', left: '14%' }
-    ];
-
+function randomizeImagePositions(set) {
     const images = set.querySelectorAll('img');
-    if (images.length < 6) {
-        console.error("Not enough images to apply positions.");
-        return;
-    }
 
+    if (window.innerWidth > 768) {
+        // For larger screens, use absolute positioning
+        const centralPosition = { top: '15%', left: '40%' };
+
+        // Positions for surrounding images
+        const surroundingPositions = [
+            { top: '4%', left: '8%' },
+            { top: '7%', left: '65%' },
+            { top: '28%', left: '19%' },
+            { top: '44%', left: '78%' },
+            { top: '54%', left: '14%' }
+        ];
+
+        // Position the central image (typically the largest)
+        images[3].style.position = 'absolute';
         images[3].style.top = centralPosition.top;
         images[3].style.left = centralPosition.left;
-        images[3].style.zIndex = 4; 
-               
-    for (let i = surroundingPositions.length - 1; i >= 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-        const tempPosition = surroundingPositions[i];
-        surroundingPositions[i] = surroundingPositions[randomIndex];
-        surroundingPositions[randomIndex] = tempPosition;
-    }
+        images[3].style.zIndex = 4;
 
-    let surroundingImageIndex = 0;
-    images.forEach((img, index) => {
-        if (index !== 3) {
-            img.style.top = surroundingPositions[surroundingImageIndex].top;
-            img.style.left = surroundingPositions[surroundingImageIndex].left;
-            surroundingImageIndex++;
+        // Shuffle the surrounding positions for other images
+        for (let i = surroundingPositions.length - 1; i >= 0; i--) {
+            const randomIndex = Math.floor(Math.random() * (i + 1));
+            const tempPosition = surroundingPositions[i];
+            surroundingPositions[i] = surroundingPositions[randomIndex];
+            surroundingPositions[randomIndex] = tempPosition;
         }
-    });
+
+        // Apply positions to the surrounding images
+        let surroundingImageIndex = 0;
+        images.forEach((img, index) => {
+            if (index !== 3) {
+                img.style.position = 'absolute';
+                img.style.top = surroundingPositions[surroundingImageIndex].top;
+                img.style.left = surroundingPositions[surroundingImageIndex].left;
+                surroundingImageIndex++;
+            }
+        });
+    } else {
+        // For smaller screens, reset styles to use flexbox layout
+        images.forEach((img) => {
+            img.style.position = '';
+            img.style.top = '';
+            img.style.left = '';
+            img.style.zIndex = '';
+        });
+        // The layout will now be handled by flexbox in CSS for smaller screens
+    }
 }
 
-        function fadeImages() {
-            const previousIndex = currentIndex;
-            currentIndex = (currentIndex + 1) % imagesSets.length;
+// Example of triggering the image positioning when transitioning sets
+function fadeImages() {
+    const previousIndex = currentIndex;
+    currentIndex = (currentIndex + 1) % imagesSets.length;
 
-            const previousSet = imagesSets[previousIndex];
-            const nextSet = imagesSets[currentIndex];
+    const previousSet = imagesSets[previousIndex];
+    const nextSet = imagesSets[currentIndex];
 
-            previousSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '0';
-                }, i * 100);
-            });
+    previousSet.querySelectorAll('img').forEach((img, i) => {
+        setTimeout(() => {
+            img.style.opacity = '0';
+        }, i * 100);
+    });
 
+    setTimeout(() => {
+        previousSet.style.display = 'none';
+
+        nextSet.style.display = 'flex';
+        randomizeImagePositions(nextSet);  // Apply positions when showing the new set
+        nextSet.querySelectorAll('img').forEach((img, i) => {
             setTimeout(() => {
-                previousSet.style.display = 'none';
+                img.style.opacity = '1';
+            }, i * 100);
+        });
+    }, 900);
+}
 
-                nextSet.style.display = 'flex';
-                randomizeImagePositions(nextSet);
-                nextSet.querySelectorAll('img').forEach((img, i) => {
-                    setTimeout(() => {
-                        img.style.opacity = '1';
-                    }, i * 100);
-                });
-            }, 900);
-        }
+// Reapply image positions when the window is resized
+window.addEventListener('resize', function() {
+    const currentSet = imagesSets[currentIndex];
+    randomizeImagePositions(currentSet);
+});
+
 
         function changeBackgroundColor() {
             const nextColor = colors[currentIndex];
@@ -1528,6 +1608,20 @@ function showNotificationBubble() {
     return (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
+function updateHeaderText() {
+    const headerTextElement = document.getElementById('header-text');
+    if (window.innerWidth <= 768) {
+        headerTextElement.textContent = 'Shop unforgettable places';
+    } else {
+        headerTextElement.textContent = 'Shop unforgettable restaurants, hotels, and experiences';
+    }
+}
+
+// Call the function on page load
+updateHeaderText();
+
+// Add an event listener for window resize
+window.addEventListener('resize', updateHeaderText);
 
 
     

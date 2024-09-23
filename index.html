@@ -874,24 +874,7 @@
     opacity: 0;
 }
 
-        /* Styles for Social Media Links in Modal */
-.modal-social-links {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-.modal-social-links .social-button {
-    font-size: 27px;
-    color: #333;
-    transition: color 0.2s ease;
-}
-
-.modal-social-links .social-button:hover {
-    color: black;
-}
+      
 
         /* Flex Container for Thank You Content */
 .thankyou-flex-container {
@@ -927,6 +910,19 @@
 
 .modal-social-links {
     margin-bottom: 40px;
+}
+
+        /* Styling for the Instagram link in the info-box */
+.info-box a {
+    text-decoration: underline;
+    color: #444;
+    font-weight: 700; /* Bold for visibility */
+    cursor: pointer;
+}
+
+.info-box a:hover {
+    color: black; /* Slight hover effect */
+    text-decoration: none;
 }
 
 
@@ -1011,23 +1007,16 @@
             <!-- Separator without 'or' text -->
             <div class="separator no-text"></div>
             
-            <!-- Info Text Box -->
             <div class="info-box">
-                In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
+            In the meantime, help us connect with your favorite places by suggesting them below or 
+            <b><a href="https://www.instagram.com/shopmemorably" target="_blank" class="info-link">messaging us on Instagram</a></b>, 
+            and we'll work to bring you unique merch that celebrates and supports those brands.
             </div>
+
             <!-- Suggestion Form -->
             <div class="suggestion-form">
                 <input type="text" id="suggestionInput" placeholder="Balthazar in New York">
                 <button id="suggestionSubmitButton">Submit</button>
-            </div>
-            <!-- Social Media Links -->
-            <div class="social-media-links modal-social-links">
-                <a href="https://www.instagram.com/shopmemorably" target="_blank" class="social-button">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com" target="_blank" class="social-button">
-                    <i class="fab fa-tiktok"></i>
-                </a>
             </div>
             </div>
 

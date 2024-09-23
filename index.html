@@ -783,21 +783,45 @@
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
 
-   <!-- Full-Screen Modal -->
+  <!-- Full-Screen Modal -->
 <div id="waitlistModal" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
 
         <!-- Original Modal Content -->
         <div id="originalContent">
-            <!-- ... existing content ... -->
+            <!-- Sign up form content -->
+            <form id="waitlistForm" novalidate>
+                <label for="email" id="emailLabel">Email address</label>
+                <input type="email" id="email" name="email">
+                <span id="errorMessage">Please enter a valid email address</span>
+                <button type="submit" id="submitButton">Sign up for early access</button>
+            </form>
+
+            <!-- Separator with 'or' text -->
+            <div class="separator">
+                <span>or</span>
+            </div>
+
             <!-- Continue with Google button -->
             <button id="googleSignInButton" class="secondary-button">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
                 Continue with Google
             </button>
-            <!-- ... existing content ... -->
-        </div>
+
+            <!-- New Text Box for Brands -->
+            <div class="brand-signup">
+                Are you a brand? <a href="#" class="brand-signup-link">Sign up to sell on Memorably</a>
+            </div>
+
+            <!-- Terms and Privacy Policy text -->
+            <div class="checkbox-container">
+                <p>By proceeding, you agree to Memorably's 
+                    <b><a href="#">Terms</a></b> and  
+                    <b><a href="#">Privacy Policy</a></b>.
+                </p>
+            </div>
+        </div> <!-- Closing #originalContent -->
 
         <!-- New Modal Content after form submission -->
         <div id="thankYouContent" style="display: none;">
@@ -818,9 +842,10 @@
             <div class="info-box">
                 In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- Closing #thankYouContent -->
+
+    </div> <!-- Closing .modal-content -->
+</div> <!-- Closing #waitlistModal -->
 
 
 

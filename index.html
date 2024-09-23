@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
+
         
         body {
             margin: 0;
@@ -1067,8 +1068,6 @@
         font-size: 1em;
     }
 }
-        
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
     </style>
 </head>
@@ -1245,6 +1244,7 @@
         ];
 
         let currentIndex = 0;
+        
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const cursorElement = document.querySelector('.cursor');
 
@@ -1261,8 +1261,6 @@
             }
         }, 55);  // Speed
     }
-
-    let currentIndex = 0;
 
     function randomizeImagePositions(set) {
         const images = set.querySelectorAll('img');
@@ -1304,9 +1302,9 @@
             });
         } else {
             // For smaller screens, use a flex layout without absolute positioning
-            images.forEach((img) => {
-                img.style.position = '';
-                img.style.top = '';
+            images.forEach((img, index) => {
+                img.style.position = 'absolute';
+                img.style.top = '0';
                 img.style.left = '';
                 img.style.zIndex = '';
             });
@@ -1364,12 +1362,6 @@
             changeBackgroundColor();
             fadeImages();
         }
-
-        setInterval(startTransitions, 9000);
-
-        startTransitions();
-
-        // ... Existing code ...
 
 const modal = document.getElementById("waitlistModal");
 const joinWaitlistButton = document.getElementById("joinWaitlistButton");

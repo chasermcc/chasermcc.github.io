@@ -723,7 +723,8 @@
     color: #444;
 }
         /* Exit Button Styles */
-#exitButton {
+/* Ensure exitButton gets specific styles */
+#thankYouContent #exitButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -742,12 +743,13 @@
     box-sizing: border-box;
 }
 
-/* Hover state */
-#exitButton:hover {
+/* Hover state for Exit button */
+#thankYouContent #exitButton:hover {
     background-color: #eaeaea; /* Light gray background on hover */
     color: #333; /* Text color stays #333 on hover */
     border-color: #ccc; /* Optional: border color can stay the same */
 }
+
 
 
 /* Separator Styles without 'or' text */
@@ -783,7 +785,7 @@
     margin: 15px auto;
     width: 435px;
     word-wrap: break-word;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 

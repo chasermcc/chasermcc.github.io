@@ -184,31 +184,49 @@
             color: white;
         }
         
+       .floating-images {
+        position: relative;
+        width: 100%;
+        height: 100px; /* Adjust height to make images smaller */
+        margin: 10px 0; /* Add margin to position images */
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap; /* Ensure overlapping */
+    }
+
+    .floating-images img {
+        width: 60px; /* Small size for the images */
+        height: auto;
+        position: absolute;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .floating-images img:nth-child(1) { left: 30%; z-index: 3; }
+    .floating-images img:nth-child(2) { left: 35%; z-index: 2; }
+    .floating-images img:nth-child(3) { left: 40%; z-index: 4; }
+    .floating-images img:nth-child(4) { left: 45%; z-index: 1; }
+    .floating-images img:nth-child(5) { left: 50%; z-index: 5; }
+    .floating-images img:nth-child(6) { left: 55%; z-index: 2; }
+
+    /* Media queries for small screens */
+    @media (max-width: 768px) {
         .floating-images {
-            position: absolute;
-            top: calc(1.8% + 91px); 
-            right: 60px; 
-            left: 33%;
-            width: auto;
-            height: 600px;
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px 20px 15px 20px;
-            z-index: 10;
+            height: 80px;
         }
-
         .floating-images img {
-            position: absolute;
-            object-fit: cover;
-            border-radius: 32px;
-            animation: float 15s linear infinite;
-            transition: opacity 1s ease-in-out, width 0.8s ease, height 0.8s ease;
-            opacity: 0;
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+            width: 50px; /* Smaller size for mobile */
         }
+    }
 
+    @media (max-width: 576px) {
+        .floating-images {
+            height: 60px;
+        }
+        .floating-images img {
+            width: 40px; /* Further reduce size for smaller screens */
+        }
+    }
         @keyframes float1 {
             0% {
                 transform: translate(0, 0);
@@ -1304,90 +1322,107 @@
         }, 55);  // Speed
     }
         
-function randomizeImagePositions(set) {
-    const images = set.querySelectorAll('img');
+<script>
+    const imagesSets = [
+        document.getElementById('images1'),
+        document.getElementById('images2'),
+        document.getElementById('images3'),
+        document.getElementById('images4')
+    ];
 
-    if (window.innerWidth > 768) {
-        // For larger screens, use absolute positioning
-        const centralPosition = { top: '15%', left: '40%' };
+    let currentIndex = 0;
 
-        // Positions for surrounding images
-        const surroundingPositions = [
-            { top: '4%', left: '8%' },
-            { top: '7%', left: '65%' },
-            { top: '28%', left: '19%' },
-            { top: '44%', left: '78%' },
-            { top: '54%', left: '14%' }
-        ];
+    function randomizeImagePositions(set) {
+        const images = set.querySelectorAll('img');
 
-        // Position the central image (typically the largest)
-        images[3].style.position = 'absolute';
-        images[3].style.top = centralPosition.top;
-        images[3].style.left = centralPosition.left;
-        images[3].style.zIndex = 4;
+        if (window.innerWidth > 768) {
+            // For larger screens, position the images absolutely
+            const centralPosition = { top: '15%', left: '40%' };
+            const surroundingPositions = [
+                { top: '4%', left: '8%' },
+                { top: '7%', left: '65%' },
+                { top: '28%', left: '19%' },
+                { top: '44%', left: '78%' },
+                { top: '54%', left: '14%' }
+            ];
 
-        // Shuffle the surrounding positions for other images
-        for (let i = surroundingPositions.length - 1; i >= 0; i--) {
-            const randomIndex = Math.floor(Math.random() * (i + 1));
-            const tempPosition = surroundingPositions[i];
-            surroundingPositions[i] = surroundingPositions[randomIndex];
-            surroundingPositions[randomIndex] = tempPosition;
-        }
+            // Set the central image
+            images[3].style.position = 'absolute';
+            images[3].style.top = centralPosition.top;
+            images[3].style.left = centralPosition.left;
+            images[3].style.zIndex = 4;
 
-        // Apply positions to the surrounding images
-        let surroundingImageIndex = 0;
-        images.forEach((img, index) => {
-            if (index !== 3) {
-                img.style.position = 'absolute';
-                img.style.top = surroundingPositions[surroundingImageIndex].top;
-                img.style.left = surroundingPositions[surroundingImageIndex].left;
-                surroundingImageIndex++;
+            // Shuffle the positions for the surrounding images
+            for (let i = surroundingPositions.length - 1; i >= 0; i--) {
+                const randomIndex = Math.floor(Math.random() * (i + 1));
+                const tempPosition = surroundingPositions[i];
+                surroundingPositions[i] = surroundingPositions[randomIndex];
+                surroundingPositions[randomIndex] = tempPosition;
             }
-        });
-    } else {
-        // For smaller screens, reset styles to use flexbox layout
-        images.forEach((img) => {
-            img.style.position = '';
-            img.style.top = '';
-            img.style.left = '';
-            img.style.zIndex = '';
-        });
-        // The layout will now be handled by flexbox in CSS for smaller screens
+
+            // Apply positions to the other images
+            let surroundingImageIndex = 0;
+            images.forEach((img, index) => {
+                if (index !== 3) {  // Skip the central image
+                    img.style.position = 'absolute';
+                    img.style.top = surroundingPositions[surroundingImageIndex].top;
+                    img.style.left = surroundingPositions[surroundingImageIndex].left;
+                    surroundingImageIndex++;
+                }
+            });
+        } else {
+            // For smaller screens, use a flex layout without absolute positioning
+            images.forEach((img) => {
+                img.style.position = '';
+                img.style.top = '';
+                img.style.left = '';
+                img.style.zIndex = '';
+            });
+        }
     }
-}
 
-// Example of triggering the image positioning when transitioning sets
-function fadeImages() {
-    const previousIndex = currentIndex;
-    currentIndex = (currentIndex + 1) % imagesSets.length;
+    function fadeImages() {
+        const previousIndex = currentIndex;
+        currentIndex = (currentIndex + 1) % imagesSets.length;
 
-    const previousSet = imagesSets[previousIndex];
-    const nextSet = imagesSets[currentIndex];
+        const previousSet = imagesSets[previousIndex];
+        const nextSet = imagesSets[currentIndex];
 
-    previousSet.querySelectorAll('img').forEach((img, i) => {
+        // Fade out the previous set of images
+        previousSet.querySelectorAll('img').forEach((img, i) => {
+            setTimeout(() => {
+                img.style.opacity = '0';
+            }, i * 100); // Staggered fade-out
+        });
+
         setTimeout(() => {
-            img.style.opacity = '0';
-        }, i * 100);
+            previousSet.style.display = 'none';
+
+            // Display the new set of images
+            nextSet.style.display = 'flex';
+            randomizeImagePositions(nextSet);  // Position the new images
+            nextSet.querySelectorAll('img').forEach((img, i) => {
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, i * 100); // Staggered fade-in
+            });
+        }, 900); // Wait for the fade-out to complete before switching sets
+    }
+
+    // Reapply image positions when the window is resized
+    window.addEventListener('resize', function() {
+        const currentSet = imagesSets[currentIndex];
+        randomizeImagePositions(currentSet);
     });
 
-    setTimeout(() => {
-        previousSet.style.display = 'none';
+    function startTransitions() {
+        fadeImages();
+    }
 
-        nextSet.style.display = 'flex';
-        randomizeImagePositions(nextSet);  // Apply positions when showing the new set
-        nextSet.querySelectorAll('img').forEach((img, i) => {
-            setTimeout(() => {
-                img.style.opacity = '1';
-            }, i * 100);
-        });
-    }, 900);
-}
+    setInterval(startTransitions, 9000);  // Change images every 9 seconds
 
-// Reapply image positions when the window is resized
-window.addEventListener('resize', function() {
-    const currentSet = imagesSets[currentIndex];
-    randomizeImagePositions(currentSet);
-});
+    // Initial setup
+    randomizeImagePositions(imagesSets[currentIndex]);
 
 
         function changeBackgroundColor() {

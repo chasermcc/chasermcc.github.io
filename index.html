@@ -788,17 +788,18 @@
     font-weight: 400;
 }
 
-        /* Suggestion Form Styles */
+/* Suggestion Form Styles */
 .suggestion-form {
     display: flex;
     width: 435px;
     margin: 15px auto;
     box-sizing: border-box;
+    height: 42px; /* Set the total height of the form */
 }
 
 #suggestionInput {
     flex: 1;
-    padding: 12px;
+    padding: 10px 12px; /* Adjust padding to fit the height */
     font-size: 0.88em;
     font-weight: 400;
     color: #666;
@@ -806,10 +807,9 @@
     border: 1px solid #ccc;
     border-right: none; /* Connect with the button */
     border-radius: 0px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     transition: border-color 0.1s ease;
     box-sizing: border-box;
+    height: calc(100% - 2px); /* Adjust for border */
 }
 
 #suggestionInput::placeholder {
@@ -822,23 +822,25 @@
 }
 
 #suggestionSubmitButton {
-    padding: 12px 24px;
-    font-size: 0.96em;
-    font-weight: 175;
+    width: 150px; /* Fixed width */
+    padding: 10px 12px; /* Adjust padding */
+    font-size: 0.88em;
+    font-weight: 400;
     color: white;
     background-color: #444;
     border: 1px solid #444;
     border-left: none; /* Connect with the input field */
-    border-radius: 0px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 0;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    height: calc(100% - 2px); /* Adjust for border */
+    box-sizing: border-box;
 }
 
 #suggestionSubmitButton:hover {
     background-color: black;
 }
+
 
         /* Notification Bubble Styles */
 .notification-bubble {
@@ -855,6 +857,7 @@
     opacity: 0;
     transition: all 0.5s ease;
     z-index: 1000;
+    font-weight: 450;
 }
 
 /* Show state */
@@ -1326,7 +1329,7 @@ function showNotificationBubble() {
     // Create the bubble element
     const bubble = document.createElement('div');
     bubble.className = 'notification-bubble';
-    bubble.textContent = 'Suggestion received. Thanks!';
+    bubble.textContent = 'Suggestion received, thanks!';
     
     document.body.appendChild(bubble);
     

@@ -1274,6 +1274,13 @@ function showThankYouContent(position) {
     document.getElementById("waitlistPosition").textContent = position;
     thankYouContent.style.display = "block";
 
+      // Trigger confetti animation
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
     // Add event listener to the Share button
     const shareButton = document.getElementById("shareButton");
     shareButton.onclick = function() {
@@ -1417,5 +1424,8 @@ function showNotificationBubble() {
     
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    
 </body>
 </html>

@@ -68,40 +68,47 @@
             font-weight: 200;
         }
 
-        .container {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding-left: 80px;
-            color: #333;
-        }
+  .container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* Center vertically */
+    align-items: center;        /* Center horizontally */
+    padding-left: 0;            /* Remove left padding */
+    color: #333;
+    z-index: 10;                /* Ensure text is above images */
+}
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            letter-spacing: .02em;
-            font-weight: 375;
-            margin: 0 0 0 0;
-            color: #222;
-            position: relative;
-            z-index: 10;
-            max-width: 50%;
-            transform: translateY(-25px);
-        }
 
-        .dynamic-text-container {
-            display: flex;
-            align-items: flex-start; /* Align the text to the top */
-            height: 3.1em; /* Adjust to hold exactly two lines of text */
-            max-width: 320px;
-            overflow: hidden; /* Ensure extra text is hidden */
-            line-height: 1.3em;
-            position: relative;
-            z-index: 10;
-        }
+   h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    letter-spacing: .02em;
+    font-weight: 375;
+    margin: 0;
+    color: #222;
+    position: relative;
+    z-index: 10;
+    max-width: 80%;             /* Adjust as needed */
+    text-align: center;         /* Center align text */
+    transform: translateY(0);   /* Remove any vertical translation */
+}
+
+.dynamic-text-container {
+    display: flex;
+    align-items: center;       /* Center vertically */
+    justify-content: center;   /* Center horizontally */
+    height: auto;
+    max-width: 80%;            /* Adjust as needed */
+    overflow: hidden;
+    line-height: 1.3em;
+    position: relative;
+    z-index: 10;
+    text-align: center;        /* Center align text */
+    margin-top: 10px;
+}
+
         
         .dynamic-text {
             font-size: 1.2em;
@@ -136,7 +143,7 @@
         }
 
         button {
-            margin-top: 0px;
+            margin-top: 20px;
             padding: 12px 24px;
             font-size: .9em;
             font-weight: 400;
@@ -150,7 +157,7 @@
             width: 180px;
             position: relative;
             z-index: 15;
-            transform: translateY(45px);
+            transform: none;
             letter-spacing: .01em;
             height: 42px;
         }
@@ -174,7 +181,7 @@
             width: 180px;
             position: relative;
             z-index: 15;
-            transform: translateY(45px);
+            transform: none;
             letter-spacing: .01em;
             height: 42px;
         }
@@ -183,105 +190,93 @@
             background-color: black;
             color: white;
         }
-        
-        .floating-images {
-            position: absolute;
-            top: calc(1.8% + 91px); 
-            right: 60px; 
-            left: 33%;
-            width: auto;
-            height: 600px;
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px 20px 15px 20px;
-            z-index: 10;
-        }
 
-        .floating-images img {
-            position: absolute;
-            object-fit: cover;
-            border-radius: 32px;
-            animation: float 15s linear infinite;
-            transition: opacity 1s ease-in-out, width 0.8s ease, height 0.8s ease;
-            opacity: 0;
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
-        }
+        /* Ensure container (text and buttons) is above images */
+.container {
+    z-index: 10;
+}
 
-        @keyframes float1 {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-22px, 22px);
-            }
-        }
+/* Images are behind the text */
+.image-set {
+    z-index: 5;
+}
 
-        @keyframes float2 {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-32px, 42px);
-            }
-        }
         
-        @keyframes float3 {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(26px, 22px);
-            }
-        }
-        
-        @keyframes float4 {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-22px, -42px);
-            }
-        }
-        
-        .floating-images img:nth-child(1) {
-            width: 225px;
-            height: 285px; 
-            animation: float1 20s linear infinite; 
-        }
-        
-        .floating-images img:nth-child(2) {
-            width: 210px;
-            height: 265px; 
-            animation: float2 22s linear infinite;
-        }
-        
-        .floating-images img:nth-child(3) {
-            width: 210px;
-            height: 265px; 
-            animation: float3 18s linear infinite;
-        }
-        
-        .floating-images img:nth-child(4) {
-            margin-bottom: 75px;
-            width: 285px; 
-            height: 345px;
-            animation: float4 25s linear infinite;
-        }
-        
-        .floating-images img:nth-child(5) {
-            width: 165px;
-            height: 210px;
-            animation: float1 30s linear infinite;
-        }
-        
-        .floating-images img:nth-child(6) {
-            width: 170px;
-            height: 185px;
-            animation: float3 28s linear infinite;
-        }
+      /* Remove the .floating-images class and replace with .image-set */
+.image-set {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    overflow: hidden;
+    z-index: 5;              /* Adjust z-index as needed */
+}
 
+.image-set img {
+    position: absolute;
+    border-radius: 0px;         /* Remove border radius */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+    max-width: none;            /* Allow images to exceed container width */
+    height: auto;
+}
+
+.image-set img.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.image-set img.hide {
+    opacity: 0;
+    transform: scale(0.8);      /* Slightly shrink when hiding */
+}
+
+/* Position each image */
+.image-set img:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    width: 300px; /* Adjust sizes as needed */
+}
+
+.image-set img:nth-child(2) {
+    top: 10%;
+    right: 15%;
+    width: 280px;
+}
+
+.image-set img:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+    width: 320px;
+}
+
+.image-set img:nth-child(4) {
+    bottom: 15%;
+    right: 20%;
+    width: 290px;
+}
+
+.image-set img:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center this image */
+    width: 350px;
+}
+        /* Hide all image sets by default */
+.image-set {
+    display: none;
+}
+
+/* Show the first image set */
+#images1 {
+    display: block;
+}
+
+        
         .footer {
             position: absolute;
             bottom: 60px;
@@ -1048,40 +1043,36 @@
 
 
 
-    <div class="floating-images" id="images1">
+    <div class="image-set" id="images1">
         <img src="https://via.placeholder.com/240x320" alt="Image 1">
         <img src="https://via.placeholder.com/200x300" alt="Image 2">
         <img src="https://via.placeholder.com/220x280" alt="Image 3">
         <img src="https://via.placeholder.com/260x340" alt="Image 4 (largest)">
         <img src="https://via.placeholder.com/180x240" alt="Image 5">
-        <img src="https://via.placeholder.com/220x280" alt="Image 6">
     </div>
 
-    <div class="floating-images" id="images2" style="display: none;">
+    <div class="image-set" id="images2" style="display: none;">
         <img src="https://via.placeholder.com/240x320" alt="Image 7">
         <img src="https://via.placeholder.com/200x300" alt="Image 8">
         <img src="https://via.placeholder.com/220x280" alt="Image 9">
         <img src="https://via.placeholder.com/260x340" alt="Image 10 (largest)">
         <img src="https://via.placeholder.com/180x240" alt="Image 11">
-        <img src="https://via.placeholder.com/220x280" alt="Image 12">
     </div>
 
-    <div class="floating-images" id="images3" style="display: none;">
+    <div class="image-set" id="images3" style="display: none;">
         <img src="https://via.placeholder.com/240x320" alt="Image 13">
         <img src="https://via.placeholder.com/200x300" alt="Image 14">
         <img src="https://via.placeholder.com/220x280" alt="Image 15">
         <img src="https://via.placeholder.com/260x340" alt="Image 16 (largest)">
         <img src="https://via.placeholder.com/180x240" alt="Image 17">
-        <img src="https://via.placeholder.com/220x280" alt="Image 18">
     </div>
 
-    <div class="floating-images" id="images4" style="display: none;">
+    <div class="image-set" id="images4" style="display: none;">
         <img src="https://via.placeholder.com/240x320" alt="Image 19">
         <img src="https://via.placeholder.com/200x300" alt="Image 20">
         <img src="https://via.placeholder.com/220x280" alt="Image 21">
         <img src="https://via.placeholder.com/260x340" alt="Image 22 (largest)">
         <img src="https://via.placeholder.com/180x240" alt="Image 23">
-        <img src="https://via.placeholder.com/220x280" alt="Image 24">
     </div>
 
     <div class="footer">
@@ -1139,70 +1130,33 @@
         }, 55);  // Speed
     }
         
-    function randomizeImagePositions(set) {
-    const centralPosition = { top: '15%', left: '40%' };
+function fadeImages() {
+    const previousIndex = currentIndex;
+    currentIndex = (currentIndex + 1) % imagesSets.length;
 
-    const surroundingPositions = [
-        { top: '4%', left: '8%' },
-        { top: '7%', left: '65%' },
-        { top: '28%', left: '19%' },
-        { top: '44%', left: '78%' },
-        { top: '54%', left: '14%' }
-    ];
+    const previousSet = imagesSets[previousIndex];
+    const nextSet = imagesSets[currentIndex];
 
-    const images = set.querySelectorAll('img');
-    if (images.length < 6) {
-        console.error("Not enough images to apply positions.");
-        return;
-    }
+    // Hide previous images
+    previousSet.querySelectorAll('img').forEach((img) => {
+        img.classList.remove('show');
+        img.classList.add('hide');
+    });
 
-        images[3].style.top = centralPosition.top;
-        images[3].style.left = centralPosition.left;
-        images[3].style.zIndex = 4; 
-               
-    for (let i = surroundingPositions.length - 1; i >= 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-        const tempPosition = surroundingPositions[i];
-        surroundingPositions[i] = surroundingPositions[randomIndex];
-        surroundingPositions[randomIndex] = tempPosition;
-    }
+    // After transition, hide the previous set
+    setTimeout(() => {
+        previousSet.style.display = 'none';
+    }, 1000); // Match the duration of the CSS transition
 
-    let surroundingImageIndex = 0;
-    images.forEach((img, index) => {
-        if (index !== 3) {
-            img.style.top = surroundingPositions[surroundingImageIndex].top;
-            img.style.left = surroundingPositions[surroundingImageIndex].left;
-            surroundingImageIndex++;
-        }
+    // Show next images
+    nextSet.style.display = 'block';
+    nextSet.querySelectorAll('img').forEach((img, i) => {
+        img.classList.remove('hide');
+        img.classList.add('show');
     });
 }
 
-        function fadeImages() {
-            const previousIndex = currentIndex;
-            currentIndex = (currentIndex + 1) % imagesSets.length;
-
-            const previousSet = imagesSets[previousIndex];
-            const nextSet = imagesSets[currentIndex];
-
-            previousSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '0';
-                }, i * 100);
-            });
-
-            setTimeout(() => {
-                previousSet.style.display = 'none';
-
-                nextSet.style.display = 'flex';
-                randomizeImagePositions(nextSet);
-                nextSet.querySelectorAll('img').forEach((img, i) => {
-                    setTimeout(() => {
-                        img.style.opacity = '1';
-                    }, i * 100);
-                });
-            }, 900);
-        }
-
+        
         function changeBackgroundColor() {
             const nextColor = colors[currentIndex];
             document.getElementById('background').style.backgroundColor = nextColor;

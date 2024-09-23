@@ -184,17 +184,16 @@
             color: white;
         }
 
-        /* Keep these styles */
-.floating-images {
+ .floating-images {
     position: absolute;
-    top: calc(1.8% + 91px); 
-    right: 60px; 
+    top: calc(1.8% + 91px);
+    right: 60px;
     left: 33%;
     width: auto;
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    padding: 20px 20px 15px 20px;
+    padding: 20px;
     z-index: 10;
 }
 
@@ -209,6 +208,7 @@
     height: auto;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
 }
+
 
  .floating-images img:nth-child(1) {
             width: 225px;
@@ -1006,7 +1006,7 @@
         bottom: 20px;
     }
 
-  .floating-images {
+ .floating-images {
         position: relative;
         width: 100%;
         height: 80px;
@@ -1032,12 +1032,6 @@
     .floating-images img:nth-child(4) { left: 50%; z-index: 1; }
     .floating-images img:nth-child(5) { left: 55%; z-index: 5; }
     .floating-images img:nth-child(6) { left: 60%; z-index: 2; }
-}
-
-@media (max-width: 576px) {
-    .floating-images img {
-        width: 50px;
-    }
 }
 
 
@@ -1267,13 +1261,6 @@
             }
         }, 55);  // Speed
     }
-        
-    const imagesSets = [
-        document.getElementById('images1'),
-        document.getElementById('images2'),
-        document.getElementById('images3'),
-        document.getElementById('images4')
-    ];
 
     let currentIndex = 0;
 

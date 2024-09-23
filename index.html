@@ -696,6 +696,68 @@
     background-color: black;
 }
 
+        /* Styles for Secondary Buttons (Continue with Google and Exit) */
+.secondary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 435px;
+    padding: 12px;
+    font-size: 0.88em;
+    font-weight: 400;
+    color: #666;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: border-color 0.1s ease, color 0.1s ease;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transform: none;
+}
+
+.secondary-button:hover {
+    border-color: #444;
+    color: #444;
+}
+
+/* Separator Styles without 'or' text */
+.separator.no-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+    width: 435px;
+}
+
+.separator.no-text::before,
+.separator.no-text::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.separator.no-text:not(:empty)::before {
+    margin-right: 0.5em;
+}
+
+.separator.no-text:not(:empty)::after {
+    margin-left: 0.5em;
+}
+
+/* Styles for the info text box */
+.info-box {
+    font-size: 0.85em;
+    color: #333;
+    line-height: 1.4em;
+    text-align: center;
+    margin: 15px auto;
+    width: 435px;
+    word-wrap: break-word;
+    font-weight: 200;
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -763,15 +825,27 @@
             </div>
         </div>
 
-        <!-- New Modal Content after form submission -->
-        <div id="thankYouContent" style="display: none;">
-            <h1>Memorably</h1>
-            <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
-            <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
-            <button id="shareButton">Share</button>
-        </div>
+      <!-- New Modal Content after form submission -->
+<div id="thankYouContent" style="display: none;">
+    <h1>Memorably</h1>
+    <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
+    <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
+    
+    <!-- Share Button -->
+    <button id="shareButton">Share</button>
+    
+    <!-- Exit Button -->
+    <button id="exitButton" class="secondary-button">Exit</button>
+    
+    <!-- Separator without 'or' text -->
+    <div class="separator no-text"></div>
+    
+    <!-- Info Text Box -->
+    <div class="info-box">
+        In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
     </div>
 </div>
+    </div>
 
 
     <div class="floating-images" id="images1">
@@ -1019,6 +1093,12 @@ document.getElementById("email").addEventListener("input", function() {
     modalContent.onclick = function(event) {
         event.stopPropagation();
     }
+        // Reset modal content for future use
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+    originalContent.style.display = "block";
+    thankYouContent.style.display = "none";
+}
 
         // ... Existing code ...
 
@@ -1079,9 +1159,15 @@ function showThankYouContent(position) {
 
     // Add event listener to the Share button
     const shareButton = document.getElementById("shareButton");
-    shareButton.addEventListener("click", function() {
+    shareButton.onclick = function() {
         shareWebsite();
-    });
+    };
+
+    // Add event listener to the Exit button
+    const exitButton = document.getElementById("exitButton");
+    exitButton.onclick = function() {
+        closeModal();
+    };
 }
 
 function shareWebsite() {

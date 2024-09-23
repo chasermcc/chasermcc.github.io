@@ -696,6 +696,68 @@
     background-color: black;
 }
 
+        /* Styles for the Exit button (same as the "Continue with Google" button) */
+.secondary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 435px;
+    padding: 12px;
+    font-size: 0.88em;
+    font-weight: 400;
+    color: #666;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transform: none;
+}
+
+.secondary-button:hover {
+    border-color: #444;
+    color: #444;
+}
+
+/* Adjust the separator style without the "or" text */
+#thankYouContent .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+    width: 435px;
+}
+
+#thankYouContent .separator::before,
+#thankYouContent .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+#thankYouContent .separator:not(:empty)::before {
+    margin-right: 0.5em;
+}
+
+#thankYouContent .separator:not(:empty)::after {
+    margin-left: 0.5em;
+}
+
+/* Styles for the info text box */
+.info-box {
+    font-size: 0.85em;
+    color: #333;
+    line-height: 1.4em;
+    text-align: center;
+    margin: 15px auto;
+    width: 435px;
+    word-wrap: break-word;
+    font-weight: 200;
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -744,10 +806,11 @@
             </div>
 
             <!-- Continue with Google button -->
-            <button id="googleSignInButton">
+            <button id="googleSignInButton" class="secondary-button">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
                 Continue with Google
             </button>
+
 
             <!-- New Text Box for Brands -->
             <div class="brand-signup">
@@ -763,14 +826,27 @@
             </div>
         </div>
 
-        <!-- New Modal Content after form submission -->
-        <div id="thankYouContent" style="display: none;">
-            <h1>Memorably</h1>
-            <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
-            <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
-            <button id="shareButton">Share</button>
-        </div>
+       <!-- New Modal Content after form submission -->
+<div id="thankYouContent" style="display: none;">
+    <h1>Memorably</h1>
+    <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
+    <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
+    
+    <!-- Share Button -->
+    <button id="shareButton">Share</button>
+    
+    <!-- Exit Button -->
+    <button id="exitButton" class="secondary-button">Exit</button>
+    
+    <!-- Separator -->
+    <div class="separator"></div>
+    
+    <!-- Info Text Box -->
+    <div class="info-box">
+        In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
     </div>
+</div>
+
 </div>
 
 
@@ -1127,6 +1203,33 @@ function copyToClipboard(text) {
 }
 
 // ... Existing code ...
+
+function showThankYouContent(position) {
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+
+    // Hide existing content
+    originalContent.style.display = "none";
+
+    // Show the thank you content
+    document.getElementById("waitlistPosition").textContent = position;
+    thankYouContent.style.display = "block";
+
+    // Add event listener to the Share button
+    const shareButton = document.getElementById("shareButton");
+    shareButton.addEventListener("click", function() {
+        shareWebsite();
+    });
+
+    // Add event listener to the Exit button
+    const exitButton = document.getElementById("exitButton");
+    exitButton.addEventListener("click", function() {
+        closeModal();
+    });
+}
+
+// ... Existing code ...
+
 
     
     </script>

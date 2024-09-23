@@ -183,50 +183,71 @@
             background-color: black;
             color: white;
         }
+
+        /* Keep these styles */
+.floating-images {
+    position: absolute;
+    top: calc(1.8% + 91px); 
+    right: 60px; 
+    left: 33%;
+    width: auto;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 20px 15px 20px;
+    z-index: 10;
+}
+
+.floating-images img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 32px;
+    animation: float 15s linear infinite;
+    transition: opacity 1s ease-in-out, width 0.8s ease, height 0.8s ease;
+    opacity: 0;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+ .floating-images img:nth-child(1) {
+            width: 225px;
+            height: 285px; 
+            animation: float1 20s linear infinite; 
+        }
         
-       .floating-images {
-        position: relative;
-        width: 100%;
-        height: 100px; /* Adjust height to make images smaller */
-        margin: 10px 0; /* Add margin to position images */
-        display: flex;
-        justify-content: center;
-        flex-wrap: nowrap; /* Ensure overlapping */
-    }
-
-    .floating-images img {
-        width: 60px; /* Small size for the images */
-        height: auto;
-        position: absolute;
-        opacity: 1;
-        transition: opacity 1s ease-in-out;
-    }
-
-    .floating-images img:nth-child(1) { left: 30%; z-index: 3; }
-    .floating-images img:nth-child(2) { left: 35%; z-index: 2; }
-    .floating-images img:nth-child(3) { left: 40%; z-index: 4; }
-    .floating-images img:nth-child(4) { left: 45%; z-index: 1; }
-    .floating-images img:nth-child(5) { left: 50%; z-index: 5; }
-    .floating-images img:nth-child(6) { left: 55%; z-index: 2; }
-
-    /* Media queries for small screens */
-    @media (max-width: 768px) {
-        .floating-images {
-            height: 80px;
+        .floating-images img:nth-child(2) {
+            width: 210px;
+            height: 265px; 
+            animation: float2 22s linear infinite;
         }
-        .floating-images img {
-            width: 50px; /* Smaller size for mobile */
+        
+        .floating-images img:nth-child(3) {
+            width: 210px;
+            height: 265px; 
+            animation: float3 18s linear infinite;
         }
-    }
+        
+        .floating-images img:nth-child(4) {
+            margin-bottom: 75px;
+            width: 285px; 
+            height: 345px;
+            animation: float4 25s linear infinite;
+        }
+        
+        .floating-images img:nth-child(5) {
+            width: 165px;
+            height: 210px;
+            animation: float1 30s linear infinite;
+        }
+        
+        .floating-images img:nth-child(6) {
+            width: 170px;
+            height: 185px;
+            animation: float3 28s linear infinite;
+        }
+    
 
-    @media (max-width: 576px) {
-        .floating-images {
-            height: 60px;
-        }
-        .floating-images img {
-            width: 40px; /* Further reduce size for smaller screens */
-        }
-    }
         @keyframes float1 {
             0% {
                 transform: translate(0, 0);
@@ -263,42 +284,6 @@
             }
         }
         
-        .floating-images img:nth-child(1) {
-            width: 225px;
-            height: 285px; 
-            animation: float1 20s linear infinite; 
-        }
-        
-        .floating-images img:nth-child(2) {
-            width: 210px;
-            height: 265px; 
-            animation: float2 22s linear infinite;
-        }
-        
-        .floating-images img:nth-child(3) {
-            width: 210px;
-            height: 265px; 
-            animation: float3 18s linear infinite;
-        }
-        
-        .floating-images img:nth-child(4) {
-            margin-bottom: 75px;
-            width: 285px; 
-            height: 345px;
-            animation: float4 25s linear infinite;
-        }
-        
-        .floating-images img:nth-child(5) {
-            width: 165px;
-            height: 210px;
-            animation: float1 30s linear infinite;
-        }
-        
-        .floating-images img:nth-child(6) {
-            width: 170px;
-            height: 185px;
-            animation: float3 28s linear infinite;
-        }
 
         .footer {
             position: absolute;
@@ -1021,60 +1006,37 @@
         bottom: 20px;
     }
 
-   .floating-images {
-    position: relative;
-    width: 100%;
-    height: 80px; /* Fixed height */
-    overflow: visible;
-    margin: 0 auto;
-    display: block;
-}
-
+  .floating-images {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        margin: 10px 0;
+        display: block;
+        overflow: hidden;
+    }
 
     .floating-images img {
         width: 60px;
         height: auto;
         margin: 0;
         opacity: 1;
-        animation: none; /* Remove floating animations if desired */
-        /* Positioning for overlapping */
+        animation: none;
         position: absolute;
-    }
-
-    /* Position images to overlap within the container */
-    .floating-images img:nth-child(1) {
-        left: 35%;
-        z-index: 3;
-    }
-    .floating-images img:nth-child(2) {
-        left: 40%;
-        z-index: 2;
-    }
-    .floating-images img:nth-child(3) {
-        left: 45%;
-        z-index: 4;
-    }
-    .floating-images img:nth-child(4) {
-        left: 50%;
-        z-index: 1;
-    }
-    .floating-images img:nth-child(5) {
-        left: 55%;
-        z-index: 5;
-    }
-    .floating-images img:nth-child(6) {
-        left: 60%;
-        z-index: 2;
-    }
-
-    /* Adjust top positioning to vertically center images */
-    .floating-images img {
         top: 0;
+        transform: translateX(-50%);
     }
 
-    /* Ensure that images overlap and stay within the container */
+    .floating-images img:nth-child(1) { left: 35%; z-index: 3; }
+    .floating-images img:nth-child(2) { left: 40%; z-index: 2; }
+    .floating-images img:nth-child(3) { left: 45%; z-index: 4; }
+    .floating-images img:nth-child(4) { left: 50%; z-index: 1; }
+    .floating-images img:nth-child(5) { left: 55%; z-index: 5; }
+    .floating-images img:nth-child(6) { left: 60%; z-index: 2; }
+}
+
+@media (max-width: 576px) {
     .floating-images img {
-        transform: translateX(-50%);
+        width: 50px;
     }
 }
 
@@ -1111,23 +1073,7 @@
         font-size: 1em;
     }
 }
-        /* In the media queries for smaller screens */
-@media (max-width: 768px) {
-    .floating-images {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-
-    .floating-images img {
-        flex: 0 0 auto; /* Prevent images from stretching */
-        margin: 5px;
-    }
-}
-
-
+        
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
     </style>
@@ -1322,7 +1268,6 @@
         }, 55);  // Speed
     }
         
-<script>
     const imagesSets = [
         document.getElementById('images1'),
         document.getElementById('images2'),
@@ -1399,7 +1344,7 @@
             previousSet.style.display = 'none';
 
             // Display the new set of images
-            nextSet.style.display = 'flex';
+            nextSet.style.display = 'block';
             randomizeImagePositions(nextSet);  // Position the new images
             nextSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
@@ -1415,9 +1360,6 @@
         randomizeImagePositions(currentSet);
     });
 
-    function startTransitions() {
-        fadeImages();
-    }
 
     setInterval(startTransitions, 9000);  // Change images every 9 seconds
 

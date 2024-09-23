@@ -1018,89 +1018,30 @@
 
         startTransitions();
 
-        const modal = document.getElementById("waitlistModal");
-        const joinWaitlistButton = document.getElementById("joinWaitlistButton");
-        const closeButton = document.querySelector(".close-button");
-        const submitButton = document.getElementById("submitButton");
-        const termsCheckbox = document.getElementById("terms");
-
-        joinWaitlistButton.onclick = function() {
-            modal.style.display = "flex";
-            modal.classList.add("show");
-            document.body.classList.add("modal-open");
-        }
-
-            closeButton.onclick = function() {
-            closeModal();
-        }
-
-
-        const waitlistForm = document.getElementById("waitlistForm");
-
-    waitlistForm.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const emailInput = document.getElementById("email");
-        const emailLabel = document.getElementById("emailLabel");
-        const errorMessage = document.getElementById("errorMessage");
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailInput.value.trim() === "") {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter your email address";
-        errorMessage.style.display = "block";
-    } else if (!emailPattern.test(emailInput.value)) {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter a valid email address";
-        errorMessage.style.display = "block";
-    } else {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-
-        console.log("Valid email submitted:", emailInput.value);
-        // You can add your code here to handle the successful submission
-    }
-});
-
-document.getElementById("email").addEventListener("input", function() {
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
-
-    if (emailInput.classList.contains("error")) {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-    }
-});
-        window.onclick = function(event) {
-    if (event.target === modal) {
-        closeModal();
-    }
-}
-
-        function closeModal() {
-    modal.style.display = "none";
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-}
-
-            // Prevent clicks inside modal content from closing the modal
-    const modalContent = document.querySelector(".modal-content");
-    modalContent.onclick = function(event) {
-        event.stopPropagation();
-    }
-        // Reset modal content for future use
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-    originalContent.style.display = "block";
-    thankYouContent.style.display = "none";
-}
-
         // ... Existing code ...
+
+const modal = document.getElementById("waitlistModal");
+const joinWaitlistButton = document.getElementById("joinWaitlistButton");
+const closeButton = document.querySelector(".close-button");
+
+joinWaitlistButton.onclick = function() {
+    modal.style.display = "flex";
+    modal.classList.add("show");
+    document.body.classList.add("modal-open");
+};
+
+closeButton.onclick = function() {
+    closeModal();
+};
+
+// Prevent clicks inside modal content from closing the modal
+const modalContent = document.querySelector(".modal-content");
+modalContent.onclick = function(event) {
+    event.stopPropagation();
+};
+
+// Form validation and submission
+const waitlistForm = document.getElementById("waitlistForm");
 
 waitlistForm.addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent default form submission
@@ -1130,11 +1071,8 @@ waitlistForm.addEventListener("submit", function(event) {
 
         // Placeholder for sending email to your database or Airtable
         // You can replace this with an AJAX request or fetch call to your backend
-        // For example:
-        // sendEmailToServer(emailInput.value);
 
         // Simulate getting the user's position on the waitlist
-        // In a real application, you'd get this number from your backend
         let waitlistPosition = localStorage.getItem('waitlistPosition');
         if (!waitlistPosition) {
             waitlistPosition = Math.floor(Math.random() * 1000) + 1; // Simulate position
@@ -1212,7 +1150,40 @@ function copyToClipboard(text) {
     document.body.removeChild(textarea);
 }
 
-// ... Existing code ...
+function closeModal() {
+    modal.style.display = "none";
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+
+    // Reset modal content for future use
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+    originalContent.style.display = "block";
+    thankYouContent.style.display = "none";
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+
+// Clear error messages when the user types
+document.getElementById("email").addEventListener("input", function() {
+    const emailInput = document.getElementById("email");
+    const emailLabel = document.getElementById("emailLabel");
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (emailInput.classList.contains("error")) {
+        emailInput.classList.remove("error");
+        emailLabel.classList.remove("error");
+        errorMessage.style.display = "none";
+    }
+});
+
+// ... Existing code for floating images and taglines ...
+
 
     
     </script>

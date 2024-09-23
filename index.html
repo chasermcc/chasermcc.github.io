@@ -351,6 +351,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 550px;
         }
 
         .close-button {
@@ -873,6 +874,61 @@
     opacity: 0;
 }
 
+        /* Styles for Social Media Links in Modal */
+.modal-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.modal-social-links .social-button {
+    font-size: 27px;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.modal-social-links .social-button:hover {
+    color: black;
+}
+
+        /* Flex Container for Thank You Content */
+.thankyou-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Adjust margins for elements inside the flex container */
+#thankYouContent h1 {
+    margin-top: 40px;
+}
+
+#thankYouContent p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#thankYouContent button {
+    margin-top: 10px;
+}
+
+.info-box {
+    margin-top: 20px;
+}
+
+.suggestion-form {
+    margin-top: 15px;
+}
+
+.modal-social-links {
+    margin-bottom: 40px;
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -941,6 +997,7 @@
 
         <!-- New Modal Content after form submission -->
         <div id="thankYouContent" style="display: none;">
+            <div class="thankyou-flex-container">
             <h1>Memorably</h1>
             <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
             <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
@@ -963,6 +1020,16 @@
                 <input type="text" id="suggestionInput" placeholder="Balthazar in New York">
                 <button id="suggestionSubmitButton">Submit</button>
             </div>
+            <!-- Social Media Links -->
+            <div class="social-media-links modal-social-links">
+                <a href="https://www.instagram.com/shopmemorably" target="_blank" class="social-button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com" target="_blank" class="social-button">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
 
         </div> <!-- Closing #thankYouContent -->
 

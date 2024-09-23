@@ -97,28 +97,26 @@
 
 .dynamic-text-container {
     display: flex;
-    align-items: center;       /* Center vertically */
-    justify-content: center;   /* Center horizontally */
-    height: auto;
-    max-width: 80%;            /* Adjust as needed */
-    overflow: hidden;
-    line-height: 1.3em;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
     position: relative;
     z-index: 10;
-    text-align: center;        /* Center align text */
-    margin-top: 10px;
+    text-align: left; /* Align text to left */
 }
 
-        
-        .dynamic-text {
-            font-size: 1.2em;
-            color: #111;
-            white-space: pre-wrap; /* Allow text to wrap */
-            flex-grow: 1; /* Allow the text to take as much space as needed */
-            line-height: 1.3em; /* Ensure proper line height */
-            position: relative;
-            z-index: 20;
-        }
+.dynamic-text {
+    font-size: 1.2em;
+    color: #111;
+    white-space: normal; /* Allow text to wrap */
+    line-height: 1.3em;
+    position: relative;
+    z-index: 20;
+    text-align: left;
+    max-width: 300px; /* Adjust as needed */
+}
+
         
         .dynamic-text:after {
             content: ''; /* Empty content to act as the cursor */
@@ -191,15 +189,25 @@
             color: white;
         }
 
-        /* Ensure container (text and buttons) is above images */
+        /* Move buttons down by 50px */
+button#joinWaitlistButton {
+    margin-top: 70px; /* Original margin + 50px */
+}
+
+button#firstPlacesButton {
+    margin-top: 10px; /* Keep some space between the buttons */
+}
+
+
+/* Ensure text and buttons are above images */
 .container {
     z-index: 10;
 }
 
-/* Images are behind the text */
 .image-set {
     z-index: 5;
 }
+
 
         
       /* Remove the .floating-images class and replace with .image-set */
@@ -218,54 +226,59 @@
 
 .image-set img {
     position: absolute;
-    border-radius: 0px;         /* Remove border radius */
+    border-radius: 0px;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     opacity: 0;
-    max-width: none;            /* Allow images to exceed container width */
+    transform: translateY(20px); /* Start 20px lower */
+    max-width: none;
     height: auto;
 }
 
 .image-set img.show {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0); /* Rise up to the original position */
 }
 
 .image-set img.hide {
     opacity: 0;
-    transform: scale(0.8);      /* Slightly shrink when hiding */
+    transform: translateY(20px); /* Move down when hiding */
 }
 
-/* Position each image */
+
+/* Image touching the left side */
 .image-set img:nth-child(1) {
-    top: 20%;
-    left: 15%;
-    width: 300px; /* Adjust sizes as needed */
+    top: 25%;
+    left: 0%; /* Touching the left edge */
+    width: 200px;
 }
 
+/* Image touching the bottom */
+.image-set img:nth-child(3) {
+    bottom: 0%; /* Touching the bottom edge */
+    left: 25%;
+    width: 210px;
+}
+
+/* Adjust positions of other images */
 .image-set img:nth-child(2) {
     top: 10%;
-    right: 15%;
-    width: 280px;
-}
-
-.image-set img:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
-    width: 320px;
+    right: 10%;
+    width: 185px;
 }
 
 .image-set img:nth-child(4) {
     bottom: 15%;
     right: 20%;
-    width: 290px;
+    width: 190px;
 }
 
 .image-set img:nth-child(5) {
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center this image */
-    width: 350px;
+    transform: translate(-50%, -50%);
+    width: 230px;
 }
+
         /* Hide all image sets by default */
 .image-set {
     display: none;
@@ -1091,12 +1104,13 @@
 
     <script>
         
-        const taglines = [
-            "Discover the best in hospitality",
-            "Shop your neighborhood favorites - or wherever your journey takes you",
-            "Merch from iconic places, designed by experts and guests alike",
-            "Savor the moments one remarkable gift at a time"
-        ];
+       const taglines = [
+    "Discover the best in hospitality",
+    "Shop your neighborhood favorites\nor wherever your journey takes you",
+    "Merch from iconic places,\ndesigned by experts and guests alike",
+    "Savor the moments\none remarkable gift at a time"
+];
+
 
         const colors = [
             "#F6EAE3",
@@ -1116,19 +1130,26 @@
         const dynamicTextElement = document.querySelector('.dynamic-text');
         const cursorElement = document.querySelector('.cursor');
 
-        function typeTagline() {
-        const tagline = taglines[currentIndex];
-        let i = 0;
-        
-        const typingInterval = setInterval(() => {
-            if (i < tagline.length) {
-                dynamicTextElement.textContent = tagline.slice(0, i + 1);
-                i++;
+      function typeTagline() {
+    const tagline = taglines[currentIndex];
+    let i = 0;
+    dynamicTextElement.innerHTML = ''; // Clear previous text
+    
+    const typingInterval = setInterval(() => {
+        if (i < tagline.length) {
+            const currentChar = tagline.charAt(i);
+            if (currentChar === '\n') {
+                dynamicTextElement.innerHTML += '<br>'; // Insert line break
             } else {
-                clearInterval(typingInterval);
+                dynamicTextElement.innerHTML += currentChar;
             }
-        }, 55);  // Speed
-    }
+            i++;
+        } else {
+            clearInterval(typingInterval);
+        }
+    }, 55);  // Typing speed
+}
+
         
 function fadeImages() {
     const previousIndex = currentIndex;

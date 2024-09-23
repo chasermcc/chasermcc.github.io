@@ -946,6 +946,84 @@
     word-wrap: break-word;
 }
 
+        @media (max-width: 768px) {
+    /* For tablets (iPad) and smaller screens */
+    
+    body {
+        padding: 15px;
+    }
+    
+    .header-text {
+        font-size: 1em; /* Reduce font size for smaller screens */
+        left: 15px; /* Reduce the left margin */
+        max-width: calc(100% - 80px); /* Allow space for the Designers button */
+    }
+    
+    .header-button {
+        right: 15px; /* Reduce the right margin */
+    }
+    
+    .container {
+        padding-left: 15px;
+    }
+    
+    h1 {
+        font-size: 2em; /* Slightly reduce the heading size */
+    }
+
+    .dynamic-text-container {
+        max-width: 100%; /* Adjust the width of dynamic text for smaller screens */
+        padding-right: 15px; /* Add padding to avoid overlap */
+    }
+
+    /* Move images below the dynamic text for smaller screens */
+    .floating-images {
+        position: static;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 30px; /* Add space below dynamic text */
+        width: 100%;
+        height: auto;
+        padding: 0; /* Remove unnecessary padding */
+    }
+
+    .floating-images img {
+        width: 100px; /* Reduce size of images for smaller screens */
+        height: auto;
+        margin: 5px; /* Space between images */
+        position: relative;
+        opacity: 1; /* Ensure images remain visible */
+    }
+
+    /* Move "Memorably" header and dynamic text higher on the screen */
+    .container {
+        padding-top: 20px; /* Move everything up */
+    }
+}
+
+@media (max-width: 576px) {
+    /* For smartphones (iPhone/Android) */
+    
+    .header-text {
+        font-size: 0.9em; /* Further reduce font size for phones */
+    }
+    
+    .floating-images img {
+        width: 80px; /* Even smaller for smartphones */
+        margin: 3px;
+    }
+
+    .dynamic-text-container {
+        font-size: 1em; /* Reduce the size of dynamic text slightly */
+    }
+
+    button {
+        width: 160px; /* Slightly reduce button width */
+        font-size: 0.85em;
+    }
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  

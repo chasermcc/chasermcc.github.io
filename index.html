@@ -925,6 +925,19 @@
     text-decoration: none;
 }
 
+        .notify-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85em;
+    color: #555;
+    font-weight: 200;
+    margin-bottom: 27px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 435px;
+    line-height: 1.4em;
+    word-wrap: break-word;
+}
+
 
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
  
@@ -995,8 +1008,8 @@
         <div id="thankYouContent" style="display: none;">
             <div class="thankyou-flex-container">
             <h1>Memorably</h1>
-            <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
-            <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
+            <p>Congrats, you're <b><span id="waitlistPosition"></span></b> on the waitlist.</p>
+            <p class="notify-text">We'll notify you when we launch!</p>
             
             <!-- Share Button -->
             <button id="shareButton">Share</button>
@@ -1270,6 +1283,9 @@ function showThankYouContent(position) {
     // Hide existing content
     originalContent.style.display = "none";
 
+    // Calculate ordinal suffix
+    const ordinalSuffix = getOrdinalSuffix(position);
+
     // Show the thank you content
     document.getElementById("waitlistPosition").textContent = position;
     thankYouContent.style.display = "block";
@@ -1277,8 +1293,8 @@ function showThankYouContent(position) {
       // Trigger confetti animation
     confetti({
         particleCount: 75,
-        spread: 20,
-        origin: { y: 0.8 },
+        spread: 35,
+        origin: { y: 0.7 },
         colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
     });
 
@@ -1418,6 +1434,12 @@ function showNotificationBubble() {
             }
         }
     });
+}
+
+        function getOrdinalSuffix(n) {
+    const s = ["th", "st", "nd", "rd"],
+          v = n % 100;
+    return (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 

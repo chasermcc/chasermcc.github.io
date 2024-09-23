@@ -778,7 +778,7 @@
 
 /* Styles for the info text box */
 .info-box {
-    font-size: 0.88em;
+    font-size: 0.86em;
     color: #333;
     line-height: 1.3em;
     text-align: center;
@@ -786,6 +786,87 @@
     width: 435px;
     word-wrap: break-word;
     font-weight: 400;
+}
+
+        /* Suggestion Form Styles */
+.suggestion-form {
+    display: flex;
+    width: 435px;
+    margin: 15px auto;
+    box-sizing: border-box;
+}
+
+#suggestionInput {
+    flex: 1;
+    padding: 12px;
+    font-size: 0.88em;
+    font-weight: 400;
+    color: #666;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-right: none; /* Connect with the button */
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: border-color 0.1s ease;
+    box-sizing: border-box;
+}
+
+#suggestionInput::placeholder {
+    color: #999;
+}
+
+#suggestionInput:focus {
+    outline: none;
+    border-color: #444;
+}
+
+#suggestionSubmitButton {
+    padding: 12px 24px;
+    font-size: 0.96em;
+    font-weight: 175;
+    color: white;
+    background-color: #444;
+    border: 1px solid #444;
+    border-left: none; /* Connect with the input field */
+    border-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#suggestionSubmitButton:hover {
+    background-color: black;
+}
+
+        /* Notification Bubble Styles */
+.notification-bubble {
+    position: fixed;
+    bottom: -50px; /* Start off-screen */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 12px 24px;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    font-size: 0.9em;
+    color: #333;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+/* Show state */
+.notification-bubble.show {
+    bottom: 30px; /* Adjust as needed */
+    opacity: 1;
+}
+
+/* Hide state */
+.notification-bubble.hide {
+    bottom: -50px;
+    opacity: 0;
 }
 
 
@@ -873,6 +954,12 @@
             <div class="info-box">
                 In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
             </div>
+            <!-- Suggestion Form -->
+            <div class="suggestion-form">
+                <input type="text" id="suggestionInput" placeholder="Balthazar in New York">
+                <button id="suggestionSubmitButton">Submit</button>
+            </div>
+
         </div> <!-- Closing #thankYouContent -->
 
     </div> <!-- Closing .modal-content -->
@@ -1214,7 +1301,57 @@ document.getElementById("email").addEventListener("input", function() {
     }
 });
 
-// ... Existing code for floating images and taglines ...
+// Suggestion submission handling
+const suggestionInput = document.getElementById('suggestionInput');
+const suggestionSubmitButton = document.getElementById('suggestionSubmitButton');
+
+suggestionSubmitButton.addEventListener('click', function() {
+    const suggestionText = suggestionInput.value.trim();
+    if (suggestionText !== "") {
+        // Simulate sending the suggestion (e.g., log it to console)
+        console.log("Suggestion submitted:", suggestionText);
+        
+        // Clear the input field
+        suggestionInput.value = "";
+
+        // Show the notification bubble
+        showNotificationBubble();
+    } else {
+        // Optionally, display a validation message
+        alert("Please enter a suggestion before submitting.");
+    }
+});
+
+function showNotificationBubble() {
+    // Create the bubble element
+    const bubble = document.createElement('div');
+    bubble.className = 'notification-bubble';
+    bubble.textContent = 'Suggestion received. Thanks!';
+    
+    document.body.appendChild(bubble);
+    
+    // Trigger reflow to ensure the animation starts
+    void bubble.offsetWidth;
+    
+    // Add the 'show' class to start the animation
+    bubble.classList.add('show');
+
+    // Remove the bubble after 3 seconds
+    setTimeout(function() {
+        bubble.classList.remove('show');
+        bubble.classList.add('hide');
+    }, 3000); // 3 seconds
+
+    // Remove the bubble from DOM after the animation ends
+    bubble.addEventListener('animationend', function(event) {
+        if (event.animationName === 'bubbleOut') {
+            if (bubble.parentNode) {
+                bubble.parentNode.removeChild(bubble);
+            }
+        }
+    });
+}
+
 
 
     

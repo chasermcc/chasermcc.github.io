@@ -675,6 +675,19 @@
     font-weight: 400;
     letter-spacing: 0em;
 }
+        #thankYouContent .notify-text {
+    font-family: 'Inter', sans-serif !important; /* Add !important to enforce the font-family */
+    font-size: 0.85em;
+    color: #555;
+    font-weight: 200;
+    margin-bottom: 27px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 435px;
+    line-height: 1.4em;
+    word-wrap: break-word;
+}
+
 
 #thankYouContent button {
     padding: 12px 24px;
@@ -1286,8 +1299,8 @@ function showThankYouContent(position) {
     // Calculate ordinal suffix
     const ordinalSuffix = getOrdinalSuffix(position);
 
-    // Show the thank you content
-    document.getElementById("waitlistPosition").textContent = position;
+    // Show the thank you content with ordinal number and suffix
+    document.getElementById("waitlistPosition").textContent = position + ordinalSuffix;
     thankYouContent.style.display = "block";
 
       // Trigger confetti animation

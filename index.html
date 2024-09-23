@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -696,7 +697,7 @@
     background-color: black;
 }
 
-        /* Styles for the Exit button (same as the "Continue with Google" button) */
+        /* Styles for Secondary Buttons (Continue with Google and Exit) */
 .secondary-button {
     display: flex;
     align-items: center;
@@ -710,7 +711,7 @@
     border: 1px solid #ccc;
     border-radius: 0px;
     cursor: pointer;
-    transition: background-color 0.1s ease;
+    transition: border-color 0.1s ease, color 0.1s ease;
     margin-top: 15px;
     margin-bottom: 15px;
     box-sizing: border-box;
@@ -723,7 +724,7 @@
 }
 
 /* Adjust the separator style without the "or" text */
-#thankYouContent .separator {
+.separator.no-text {
     display: flex;
     align-items: center;
     text-align: center;
@@ -731,18 +732,18 @@
     width: 435px;
 }
 
-#thankYouContent .separator::before,
-#thankYouContent .separator::after {
+.separator.no-text::before,
+.separator.no-text::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid #ccc;
 }
 
-#thankYouContent .separator:not(:empty)::before {
+.separator.no-text:not(:empty)::before {
     margin-right: 0.5em;
 }
 
-#thankYouContent .separator:not(:empty)::after {
+.separator.no-text:not(:empty)::after {
     margin-left: 0.5em;
 }
 
@@ -783,7 +784,7 @@
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
 
-    <!-- Full-Screen Modal -->
+  <!-- Full-Screen Modal -->
 <div id="waitlistModal" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
@@ -811,7 +812,6 @@
                 Continue with Google
             </button>
 
-
             <!-- New Text Box for Brands -->
             <div class="brand-signup">
                 Are you a brand? <a href="#" class="brand-signup-link">Sign up to sell on Memorably</a>
@@ -826,28 +826,29 @@
             </div>
         </div>
 
-       <!-- New Modal Content after form submission -->
-<div id="thankYouContent" style="display: none;">
-    <h1>Memorably</h1>
-    <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
-    <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
-    
-    <!-- Share Button -->
-    <button id="shareButton">Share</button>
-    
-    <!-- Exit Button -->
-    <button id="exitButton" class="secondary-button">Exit</button>
-    
-    <!-- Separator -->
-    <div class="separator"></div>
-    
-    <!-- Info Text Box -->
-    <div class="info-box">
-        In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
+        <!-- New Modal Content after form submission -->
+        <div id="thankYouContent" style="display: none;">
+            <h1>Memorably</h1>
+            <p>Congrats, you're <span id="waitlistPosition"></span> on the waitlist.</p>
+            <p style="font-size: 0.85em; color: #555;">We'll notify you when we launch!</p>
+            
+            <!-- Share Button -->
+            <button id="shareButton">Share</button>
+            
+            <!-- Exit Button -->
+            <button id="exitButton" class="secondary-button">Exit</button>
+            
+            <!-- Separator -->
+            <div class="separator no-text"></div>
+            
+            <!-- Info Text Box -->
+            <div class="info-box">
+                In the meantime, help us connect with your favorite places by suggesting them below or messaging us on Instagram, and we'll work to bring you unique merch that celebrates and supports those brands.
+            </div>
+        </div>
     </div>
 </div>
 
-</div>
 
 
     <div class="floating-images" id="images1">
@@ -1202,7 +1203,49 @@ function copyToClipboard(text) {
     document.body.removeChild(textarea);
 }
 
-// ... Existing code ...
+        // ... Existing code ...
+
+waitlistForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    const emailInput = document.getElementById("email");
+    const emailLabel = document.getElementById("emailLabel");
+    const errorMessage = document.getElementById("errorMessage");
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailInput.value.trim() === "") {
+        emailInput.classList.add("error");
+        emailLabel.classList.add("error");
+        errorMessage.textContent = "Please enter your email address";
+        errorMessage.style.display = "block";
+    } else if (!emailPattern.test(emailInput.value)) {
+        emailInput.classList.add("error");
+        emailLabel.classList.add("error");
+        errorMessage.textContent = "Please enter a valid email address";
+        errorMessage.style.display = "block";
+    } else {
+        emailInput.classList.remove("error");
+        emailLabel.classList.remove("error");
+        errorMessage.style.display = "none";
+
+        // Simulate logging the email
+        console.log("Valid email submitted:", emailInput.value);
+
+        // Placeholder for sending email to your database or Airtable
+        // You can replace this with an AJAX request or fetch call to your backend
+
+        // Simulate getting the user's position on the waitlist
+        // In a real application, you'd get this number from your backend
+        let waitlistPosition = localStorage.getItem('waitlistPosition');
+        if (!waitlistPosition) {
+            waitlistPosition = Math.floor(Math.random() * 1000) + 1; // Simulate position
+            localStorage.setItem('waitlistPosition', waitlistPosition);
+        }
+
+        // Update the modal content
+        showThankYouContent(waitlistPosition);
+    }
+});
 
 function showThankYouContent(position) {
     const originalContent = document.getElementById("originalContent");
@@ -1226,6 +1269,66 @@ function showThankYouContent(position) {
     exitButton.addEventListener("click", function() {
         closeModal();
     });
+}
+
+function shareWebsite() {
+    const shareData = {
+        title: 'Memorably',
+        text: 'Check out Memorably!',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).then(() => {
+            console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+    } else {
+        // Fallback for browsers that do not support the Web Share API
+        copyToClipboard(window.location.href);
+        alert('Link copied to clipboard!');
+    }
+}
+
+function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+
+    // Prevent scrolling to bottom of page in Microsoft Edge.
+    textarea.style.position = 'fixed';
+    textarea.style.top = '0';
+    textarea.style.left = '0';
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        console.log('Copying to clipboard was successful!');
+    } catch (err) {
+        console.error('Could not copy text:', err);
+    }
+
+    document.body.removeChild(textarea);
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+
+    // Reset modal content to original for future use
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+    originalContent.style.display = "block";
+    thankYouContent.style.display = "none";
+}
+
+// Ensure modalContent click doesn't close the modal
+const modalContent = document.querySelector(".modal-content");
+modalContent.onclick = function(event) {
+    event.stopPropagation();
 }
 
 // ... Existing code ...

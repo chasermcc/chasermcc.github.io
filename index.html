@@ -937,7 +937,7 @@
     text-decoration: none;
 }
 
-        .notify-text {
+.notify-text {
     font-family: 'Inter', sans-serif;
     font-size: 0.85em;
     color: #555;
@@ -1147,7 +1147,20 @@
     .modal-content {
         height: 100%;
         width: 100%;
-        padding: 18px 25px 18px 25px;
+        padding: 15px 0;
+    }
+
+    .modal-content h1 {
+        font-size: 1.2em;
+        letter-spacing: 0;
+    }
+
+    .modal-content input[type="email"],.modal-content button[type="submit"], .modal-content p, 
+    .modal-content label, #waitlistForm, #submitButton, #googleSignInButton, .checkbox-container, 
+    #errorMessage, .separator, .brand-signup, #thankYouContent p, #thankYouContent .notify-text, 
+    #thankYouContent button, .secondary-button, #thankYouContent #exitButton, .separator.no-text, 
+    .info-box, .suggestion-form, .notify-text {
+        width: 95%
     }
         
     </style>

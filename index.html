@@ -185,33 +185,33 @@
             color: white;
         }
 
- .floating-images {
-    position: absolute;
-    top: calc(1.8% + 91px);
-    right: 60px;
-    left: 33%;
-    width: auto;
-    height: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    z-index: 10;
-}
+         .floating-images {
+            position: absolute;
+            top: calc(1.8% + 91px);
+            right: 60px;
+            left: 33%;
+            width: auto;
+            height: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            z-index: 10;
+        }
+        
+        .floating-images img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 32px;
+            animation: float 15s linear infinite;
+            transition: opacity 1s ease-in-out, width 0.9s ease, height 0.9s ease;
+            opacity: 0;
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+        }
 
-.floating-images img {
-    position: absolute;
-    object-fit: cover;
-    border-radius: 32px;
-    animation: float 15s linear infinite;
-    transition: opacity 1s ease-in-out, width 0.9s ease, height 0.9s ease;
-    opacity: 0;
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
-}
 
-
- .floating-images img:nth-child(1) {
+        .floating-images img:nth-child(1) {
             width: 225px;
             height: 285px; 
             animation: float1 20s linear infinite; 
@@ -1305,12 +1305,12 @@
 
             <!-- Terms and Privacy Policy text -->
             <div class="checkbox-container">
-                <p>By proceeding, you agree to Memorably's 
+                <p>By proceeding, you agree to our 
                     <b><a href="#">Terms</a></b> and  
                     <b><a href="#">Privacy Policy</a></b>.
                 </p>
             </div>
-        </div> <!-- Closing #originalContent -->
+        </div>
 
         <!-- New Modal Content after form submission -->
         <div id="thankYouContent" style="display: none;">
@@ -1341,14 +1341,10 @@
             </div>
             </div>
 
-        </div> <!-- Closing #thankYouContent -->
+        </div>
 
-    </div> <!-- Closing .modal-content -->
-</div> <!-- Closing #waitlistModal -->
-
-
-
-   
+    </div>
+</div>
 
     <div class="footer">
         <div class="social-media-links">
@@ -1370,7 +1366,7 @@
     const taglines = [
         "Discover the best in hospitality",
         "Shop your neighborhood favorites - or wherever your journey takes you",
-        "Merch from iconic places, designed by experts and guests alike",
+        "Merch from iconic places, designed by professionals and guests alike",
         "Savor the moments one remarkable gift at a time"
     ];
 

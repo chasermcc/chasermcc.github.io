@@ -1154,21 +1154,38 @@
     .modal-content h1 {
         font-size: 1.2em;
         letter-spacing: 0;
+        margin: 0 auto;
     }
 
-    .modal-content input[type="email"],.modal-content button[type="submit"], .modal-content p, 
-    .modal-content label, #waitlistForm, #submitButton, #googleSignInButton, .checkbox-container, 
-    #errorMessage, .separator, .brand-signup, #thankYouContent p, #thankYouContent .notify-text, 
-    #thankYouContent button, .secondary-button, #thankYouContent #exitButton, .separator.no-text, 
-    .info-box, .suggestion-form, .notify-text {
-        width: 93%;
-        text-align: center;
-        margin: 0;
+    .modal-content input[type="email"], 
+    .modal-content button[type="submit"], 
+    .modal-content p, 
+    .modal-content label, 
+    #waitlistForm, 
+    #submitButton, 
+    #googleSignInButton, 
+    .checkbox-container, 
+    #errorMessage, 
+    .separator, 
+    .brand-signup, 
+    #thankYouContent p, 
+    #thankYouContent .notify-text, 
+    #thankYouContent button, 
+    .secondary-button, 
+    #thankYouContent #exitButton, 
+    .separator.no-text, 
+    .info-box, 
+    .suggestion-form, 
+    .notify-text {
+        width: 95%; /* Make the elements responsive by taking 95% width */
+        margin: 0 auto; /* Center all elements */
+        text-align: center; /* Center the text inside elements */
     }
 
     .modal-content input[type="email"], .modal-content label, #errorMessage {
         text-align: left;
     }
+}
         
     </style>
 </head>

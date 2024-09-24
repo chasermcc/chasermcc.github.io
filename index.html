@@ -1289,6 +1289,11 @@
 
     // Position images based on screen size
     function randomizeImagePositions(set) {
+        imagesSets.forEach(imageSet => {
+        if (imageSet !== set) {
+            imageSet.style.display = 'none';
+        }
+    });
         const images = set.querySelectorAll('img');
 
         if (window.innerWidth > 768) {
@@ -1340,32 +1345,32 @@
         }
     }
 
-    // Fade images in and out
-    function fadeImages() {
-        const previousSet = imagesSets[currentIndex];
-        currentIndex = (currentIndex + 1) % imagesSets.length;
-        const nextSet = imagesSets[currentIndex];
+  function fadeImages() {
+    const previousSet = imagesSets[currentIndex];
+    currentIndex = (currentIndex + 1) % imagesSets.length;
+    const nextSet = imagesSets[currentIndex];
 
-        // Fade out the previous set of images
-        previousSet.querySelectorAll('img').forEach((img, i) => {
-            setTimeout(() => {
-                img.style.opacity = '0';
-            }, i * 100); // Staggered fade-out
-        });
-
+    // Fade out the previous set of images
+    previousSet.querySelectorAll('img').forEach((img, i) => {
         setTimeout(() => {
-            previousSet.style.display = 'none';
+            img.style.opacity = '0';
+        }, i * 100); // Staggered fade-out
+    });
 
-            // Display the new set of images
-            nextSet.style.display = 'block';
-            randomizeImagePositions(nextSet);  // Position the new images
-            nextSet.querySelectorAll('img').forEach((img, i) => {
-                setTimeout(() => {
-                    img.style.opacity = '1';
-                }, i * 100); // Staggered fade-in
-            });
-        }, 900); // Wait for the fade-out to complete before switching sets
-    }
+    setTimeout(() => {
+        previousSet.style.display = 'none';  // Ensure previous set is hidden
+
+        // Display the new set of images
+        nextSet.style.display = 'block';     // Ensure the next set is shown
+        randomizeImagePositions(nextSet);    // Reposition images based on screen size
+        nextSet.querySelectorAll('img').forEach((img, i) => {
+            setTimeout(() => {
+                img.style.opacity = '1';
+            }, i * 100); // Staggered fade-in
+        });
+    }, 900);  // Wait for the fade-out to complete before switching sets
+}
+
 
     // Change background color
     function changeBackgroundColor() {

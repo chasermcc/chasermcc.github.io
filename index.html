@@ -320,152 +320,381 @@
             to { opacity: 1; }
         }
 
- /* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+    
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        
+        .modal-content {
+            background-color: white;
+            width: 500px;
+            padding: 18px;
+            text-align: center;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 550px;
+        }
+
+        .close-button {
+            background-color: transparent;
+            border: none;
+            width: 45px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 33px;
+            font-weight: 175;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            color: #444;
+            transition: background-color 0.1s ease, color 0.1s ease;
+            line-height: 1;
+            transform: translateY(-4px);
+        }
+
+        .close-button:hover {
+            color: black;
+            font-weight: 200;
+        }
+
+        .modal-content h1, .modal-content p, .modal-content label, .modal-content input[type="email"], .modal-content button[type="submit"] {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .modal-content input[type="email"], .modal-content button[type="submit"] {
+            width: 435px;
+        }
+
+        .modal-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.38em;
+            margin-bottom: -2px;
+            margin-top: 72px;
+            position: relative;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .modal-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: .85em;
+            margin-bottom: 27px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 435px;
+            line-height: 1.4em;
+            color: #555;
+            word-wrap: break-word;
+            font-weight: 200;
+        }
+
+        .modal-content label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78em;
+            font-weight: 200;
+            margin-bottom: 3px;
+            display: block;
+            color: #555;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            width: 435px;
+        }
+
+        .modal-content input[type="email"] {
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            width: 435px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .checkbox-container {
+            margin-top: 15px;
+        }
+
+               
+        #waitlistForm,
+        #submitButton,
+        #googleSignInButton,
+        .checkbox-container {
+            width: 435px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+
+        
+        .modal-content .checkbox-container p {
+            font-size: 0.74em;
+            font-weight: 150;
+            line-height: 1.4em;
+            text-align: center;
+            color: #999;
+            word-wrap: break-word;
+            width: 100%;
+        }
+
+        
+        .modal-content .checkbox-container label {
+            font-size: 0.74em;
+            font-weight: 150;
+            line-height: 1.4em;
+            text-align: center;
+            color: #999;
+            word-wrap: break-word;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .modal-content .checkbox-container a {
+            color: #777777;
+            font-weight: 400;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .modal-content .checkbox-container a:hover {
+            color: #777777;
+            text-decoration: none;
+        }
+
+        .modal-content button[type="submit"] {
+            padding: 12px 24px;
+            font-size: .96em;
+            font-weight: 175;
+            color: white;
+            background-color: #444;
+            border: none;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+            width: 435px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: none;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        .modal-content button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: default;
+            }
+
+        .modal-content input[type="email"], #submitButton {
+            width: 435px;
+        }
+        
+        #errorMessage {
+            display: none;
+            color: #862110;
+            font-size: 0.74em;
+            text-align: left;
+            margin: 1px auto;
+            width: 435px;
+            letter-spacing: .01em;
+        }
+        
+        #emailLabel.error {
+            color: #862110;
+        }
+        
+        .modal-content input[type="email"]:focus {
+            outline: none;
+            border-color: #444;
+        }
+        
+        #submitButton {
+            padding: 12px 24px;
+            font-size: .9em;
+            color: white;
+            font-weight: 200;
+            background-color: #444;
+            border: none;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 12px;
+            margin-bottom: 0px;
+            width: 435px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: none;
+        }
+        
+        #submitButton:hover {
+            background-color: black;
+        }
+        
+        .modal-content input[type="email"].error {
+            border-color: #862110;
+        }
+
+       /* Separator styles */
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0;
+            width: 435px;
+        }
+        
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .separator:not(:empty)::before {
+            margin-right: 0.5em;
+        }
+        
+        .separator:not(:empty)::after {
+            margin-left: 0.5em;
+        }
+        
+        .separator span {
+            font-size: 0.85em;
+            color: #444;
+            font-weight: 250;
+        }
+        
+     /* Google Sign-In Button styles */
+        #googleSignInButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 435px;
+            padding: 12px;
+            font-size: 0.88em;
+            font-weight: 400;
+            color: #666;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: background-color 0.1s ease;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            transform: none;
+        }
+        
+        #googleSignInButton:hover {
+            border-color: #444;
+            font-color: #444;
+        }
+        
+        #googleSignInButton img {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+        }
+
+        /* Styles for the brand signup box */
+        .brand-signup {
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            padding: 13px 13px 13px 13px;
+            width: 435px;
+            margin: 20px 0 0 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.85em;
+            color: #333;
+            line-height: 1.2em;
+            letter-spacing: .01em;
+            font-weight: 325;
+        }
+        
+        .brand-signup a {
+            text-decoration: underline;
+            color: #444;
+            cursor: pointer;
+        }
+        
+        .brand-signup a:hover {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* Styles for the thank you content */
+#thankYouContent h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    margin-bottom: 0px;
+    margin-top: 45px;
 }
 
-.modal.show {
-    display: flex;
-}
-
-body.modal-open {
-    overflow: hidden;
-}
-
-.modal-content {
-    background-color: white;
-    width: 500px;
-    padding: 18px;
-    text-align: center;
-    color: #333;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 550px;
-}
-
-/* Close Button */
-.close-button {
-    background-color: transparent;
-    border: none;
-    width: 45px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 33px;
-    font-weight: 175;
-    cursor: pointer;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    color: #444;
-    transition: background-color 0.1s ease, color 0.1s ease;
-    line-height: 1;
-    transform: translateY(-4px);
-}
-
-.close-button:hover {
-    color: black;
-    font-weight: 200;
-}
-
-/* Modal Content Elements */
-.modal-content h1,
-.modal-content p,
-.modal-content label,
-.modal-content input[type="email"],
-.modal-content button[type="submit"],
-#googleSignInButton,
-.brand-signup,
-.separator,
-.checkbox-container,
-#errorMessage {
-    width: 435px;
-    max-width: 100%;
-    box-sizing: border-box;
+#thankYouContent p {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 1.3em;
+    margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
+    width: 435px;
+    line-height: 1.2em;
+    color: #333;
+    word-wrap: break-word;
+    font-weight: 400;
+    letter-spacing: 0em;
 }
-
-/* Heading */
-.modal-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.38em;
-    margin-top: 72px;
-    margin-bottom: 20px;
-}
-
-/* Paragraph Text */
-.modal-content p {
-    font-family: 'Inter', sans-serif;
+        #thankYouContent .notify-text {
+    font-family: 'Inter', sans-serif !important; /* Add !important to enforce the font-family */
     font-size: 0.85em;
-    margin-bottom: 27px;
+    color: #555;
+    font-weight: 200;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 435px;
     line-height: 1.4em;
-    color: #555;
-    font-weight: 200;
+    word-wrap: break-word;
 }
 
-/* Label */
-.modal-content label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.78em;
-    font-weight: 200;
-    margin-bottom: 5px;
-    display: block;
-    color: #555;
-    text-align: left;
-}
 
-/* Input Field */
-.modal-content input[type="email"] {
-    padding: 10px;
-    font-size: 1em;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    text-align: left;
-    display: block;
-}
-
-.modal-content input[type="email"]:focus {
-    outline: none;
-    border-color: #444;
-}
-
-.modal-content input[type="email"].error {
-    border-color: #862110;
-}
-
-#emailLabel.error {
-    color: #862110;
-}
-
-/* Error Message */
-#errorMessage {
-    display: none;
-    color: #862110;
-    font-size: 0.74em;
-    text-align: left;
-    margin-top: 2px;
-}
-
-/* Submit Button */
-#submitButton {
-    padding: 12px;
+#thankYouContent button {
+    padding: 12px 24px;
     font-size: 0.96em;
     font-weight: 175;
     color: white;
@@ -473,53 +702,25 @@ body.modal-open {
     border: none;
     border-radius: 0px;
     cursor: pointer;
-    margin-top: 15px;
-    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    width: 435px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: none;
 }
 
-#submitButton:hover {
+#thankYouContent button:hover {
     background-color: black;
 }
 
-#submitButton:disabled {
-    background-color: #ccc;
-    cursor: default;
-}
-
-/* Separator */
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.separator::before,
-.separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #ccc;
-}
-
-.separator:not(:empty)::before {
-    margin-right: 0.5em;
-}
-
-.separator:not(:empty)::after {
-    margin-left: 0.5em;
-}
-
-.separator span {
-    font-size: 0.85em;
-    color: #444;
-    font-weight: 250;
-}
-
-/* Google Sign-In Button */
-#googleSignInButton {
+        /* Styles for Secondary Buttons (Continue with Google and Exit) */
+.secondary-button {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 435px;
     padding: 12px;
     font-size: 0.88em;
     font-weight: 400;
@@ -528,131 +729,54 @@ body.modal-open {
     border: 1px solid #ccc;
     border-radius: 0px;
     cursor: pointer;
+    transition: border-color 0.1s ease, color 0.1s ease;
     margin-top: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     box-sizing: border-box;
+    transform: none;
 }
 
-#googleSignInButton:hover {
+.secondary-button:hover {
     border-color: #444;
     color: #444;
 }
-
-#googleSignInButton img {
-    width: 22px;
-    height: 22px;
-    margin-right: 10px;
-}
-
-/* Brand Signup Box */
-.brand-signup {
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    padding: 13px;
-    margin-top: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 0.85em;
-    color: #333;
-    line-height: 1.2em;
-    font-weight: 325;
-}
-
-.brand-signup a {
-    text-decoration: underline;
-    color: #444;
-    cursor: pointer;
-}
-
-.brand-signup a:hover {
-    text-decoration: none;
-    color: #000;
-}
-
-/* Checkbox Container */
-.checkbox-container {
-    margin-top: 15px;
-}
-
-.checkbox-container p {
-    font-size: 0.74em;
-    font-weight: 150;
-    line-height: 1.4em;
-    text-align: center;
-    color: #999;
-}
-
-.checkbox-container a {
-    color: #777777;
-    font-weight: 400;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.checkbox-container a:hover {
-    color: #777777;
-    text-decoration: none;
-}
-
-/* Thank You Content */
-#thankYouContent h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8em;
-    margin-top: 45px;
-    margin-bottom: 0;
-}
-
-#thankYouContent p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    color: #333;
-    font-weight: 400;
-}
-
-#thankYouContent .notify-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85em;
-    color: #555;
-    font-weight: 200;
-    margin-bottom: 20px;
-    line-height: 1.4em;
-}
-
-/* Share and Exit Buttons */
-#thankYouContent button {
+        /* Exit Button Styles */
+/* Ensure exitButton gets specific styles */
+#thankYouContent #exitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 435px;
     padding: 12px;
-    font-size: 0.96em;
-    font-weight: 175;
-    color: white;
-    background-color: #444;
-    border: none;
+    font-size: 0.88em;
+    font-weight: 400;
+    color: #333; /* Text color #333 */
+    background-color: transparent; /* Transparent background */
+    border: 0px solid #ccc;
     border-radius: 0px;
     cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
     margin-top: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
 }
 
-#thankYouContent button:hover {
-    background-color: black;
+/* Hover state for Exit button */
+#thankYouContent #exitButton:hover {
+    background-color: #eaeaea; /* Light gray background on hover */
+    color: #333; /* Text color stays #333 on hover */
+    border-color: #ccc; /* Optional: border color can stay the same */
 }
 
-/* Exit Button Specific Styles */
-#exitButton {
-    background-color: transparent;
-    color: #333;
-    margin-bottom: 10px;
-    border: none;
-}
 
-#exitButton:hover {
-    background-color: #eaeaea;
-}
 
-/* Separator without Text */
+/* Separator Styles without 'or' text */
 .separator.no-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
     margin: 14px 0;
+    width: 435px;
 }
 
 .separator.no-text::before,
@@ -662,40 +786,38 @@ body.modal-open {
     border-bottom: 1px solid #ccc;
 }
 
-/* Info Box */
+.separator.no-text:not(:empty)::before {
+    margin-right: 0.5em;
+}
+
+.separator.no-text:not(:empty)::after {
+    margin-left: 0.5em;
+}
+
+/* Styles for the info text box */
 .info-box {
     font-size: 0.89em;
     color: #444;
     line-height: 1.3em;
     text-align: center;
     margin: 18px auto;
+    width: 435px;
+    word-wrap: break-word;
     font-weight: 400;
 }
 
-.info-box a {
-    text-decoration: underline;
-    color: #444;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.info-box a:hover {
-    color: black;
-    text-decoration: none;
-}
-
-/* Suggestion Form */
+/* Suggestion Form Styles */
 .suggestion-form {
     display: flex;
     width: 435px;
     margin: 18px auto;
     box-sizing: border-box;
-    height: 42px;
+    height: 42px; /* Set the total height of the form */
 }
 
 #suggestionInput {
     flex: 1;
-    padding: 10px 12px;
+    padding: 10px 12px; /* Adjust padding to fit the height */
     font-size: 0.88em;
     font-weight: 400;
     color: #666;
@@ -703,6 +825,7 @@ body.modal-open {
     border: 1px solid #444;
     border-right: none;
     border-radius: 0px;
+    transition: border-color 0.1s ease;
     box-sizing: border-box;
     height: calc(100% - 2px);
 }
@@ -716,30 +839,32 @@ body.modal-open {
     border-color: #444;
 }
 
-#suggestionSubmitButton {
-    width: 150px;
-    padding: 10px 12px;
+.suggestion-form #suggestionSubmitButton {
+    width: 150px; /* Fixed width */
+    padding: 10px 12px; /* Adjust padding */
     font-size: 0.88em;
     font-weight: 400;
     color: white;
     background-color: #444;
     border: 1px solid #444;
-    border-left: none;
+    border-left: none; /* Connect with the input field */
     border-radius: 0;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    height: calc(100% - 2px);
+    height: calc(100% - 2px); /* Adjust for border */
     box-sizing: border-box;
+    margin-top: 0;
 }
 
 #suggestionSubmitButton:hover {
     background-color: black;
 }
 
-/* Notification Bubble */
+
+        /* Notification Bubble Styles */
 .notification-bubble {
     position: fixed;
-    bottom: -50px;
+    bottom: -50px; /* Start off-screen */
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -755,7 +880,7 @@ body.modal-open {
 
 /* Show state */
 .notification-bubble.show {
-    bottom: 30px;
+    bottom: 30px; /* Adjust as needed */
     opacity: 1;
 }
 
@@ -765,27 +890,29 @@ body.modal-open {
     opacity: 0;
 }
 
-/* Thank You Content Flex Container */
+      
+
+        /* Flex Container for Thank You Content */
 .thankyou-flex-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
 }
 
-.thankyou-flex-container h1 {
+/* Adjust margins for elements inside the flex container */
+#thankYouContent h1 {
     margin-top: 40px;
 }
 
-.thankyou-flex-container p {
+#thankYouContent p {
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
-.thankyou-flex-container button {
+#thankYouContent button {
     margin-top: 10px;
 }
 
@@ -1017,95 +1144,46 @@ body.modal-open {
         left: 30px;
 }
 
-   @media (max-width: 576px) {
     .modal-content {
-        height: auto;
+        height: 100%;
         width: 100%;
-        padding: 15px;
-    }
-
-    .modal-content h1,
-    .modal-content p,
-    .modal-content label,
-    .modal-content input[type="email"],
-    #submitButton,
-    #googleSignInButton,
-    .brand-signup,
-    .separator,
-    .checkbox-container,
-    #errorMessage,
-    #thankYouContent h1,
-    #thankYouContent p,
-    #thankYouContent .notify-text,
-    #thankYouContent button,
-    .secondary-button,
-    #exitButton,
-    .separator.no-text,
-    .info-box,
-    .suggestion-form {
-        width: 95%;
-        max-width: 95%;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 15px 0;
+        text-align: center;
     }
 
     .modal-content h1 {
         font-size: 1.2em;
-        margin-top: 50px;
+        letter-spacing: 0;
+        margin: 0 auto;
     }
 
-    .modal-content p,
-    .modal-content label,
-    #thankYouContent .notify-text {
-        font-size: 0.9em;
+    .modal-content input[type="email"], 
+    .modal-content button[type="submit"], 
+    .modal-content p, 
+    .modal-content label, 
+    #waitlistForm, 
+    #submitButton, 
+    #googleSignInButton, 
+    .checkbox-container, 
+    #errorMessage, 
+    .separator, 
+    .brand-signup, 
+    #thankYouContent p, 
+    #thankYouContent .notify-text, 
+    #thankYouContent button, 
+    .secondary-button, 
+    #thankYouContent #exitButton, 
+    .separator.no-text, 
+    .info-box, 
+    .suggestion-form, 
+    .notify-text {
+        width: 95%; /* Make the elements responsive by taking 95% width */
+        margin: 0 auto; /* Center all elements */
+        text-align: center; /* Center the text inside elements */
     }
 
-    .modal-content input[type="email"],
-    .modal-content label {
+    .modal-content input[type="email"], .modal-content label, #errorMessage {
         text-align: left;
-    }
-
-    /* Adjust Padding and Font Sizes */
-    #submitButton,
-    #googleSignInButton,
-    #thankYouContent button,
-    .secondary-button {
-        padding: 12px;
-        font-size: 0.9em;
-        width: 95%;
-        box-sizing: border-box;
-    }
-
-    /* Suggestion Form Adjustments */
-    .suggestion-form {
-        width: 95%;
-        margin: 18px auto;
-    }
-
-    #suggestionInput,
-    #suggestionSubmitButton {
-        height: 40px;
-    }
-
-    #suggestionInput {
-        font-size: 0.85em;
-    }
-
-    #suggestionSubmitButton {
-        font-size: 0.85em;
-    }
-
-    /* Adjust Margins for Consistency */
-    .modal-content p {
-        margin-bottom: 20px;
-    }
-
-    .checkbox-container {
-        margin-top: 20px;
-    }
-
-    .brand-signup {
-        margin-top: 25px;
     }
 }
         

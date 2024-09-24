@@ -1020,10 +1020,7 @@
     .floating-images img,
     .floating-images img:nth-child(1),
     .floating-images img:nth-child(2),
-    .floating-images img:nth-child(3),
-    .floating-images img:nth-child(4),
-    .floating-images img:nth-child(5),
-    .floating-images img:nth-child(6) {
+    .floating-images img:nth-child(3), {
         .floating-images img {
         width: 60px; 
         height: auto;
@@ -1032,6 +1029,11 @@
         position: relative;  
     }
 }
+    .floating-images img:nth-child(4), /* Hides the largest image */
+    .floating-images img:nth-child(5), /* Hides the 5th image */
+    .floating-images img:nth-child(6) { /* Hides the 6th image */
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {

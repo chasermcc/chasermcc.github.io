@@ -1008,33 +1008,39 @@
     }
 
  .floating-images {
-        position: relative;
-        width: 100%;
-        height: 80px;
-        margin: 10px 0;
-        display: block;
-        overflow: hidden;
+        position: relative !important;
+        width: 100% !important;
+        height: 80px !important;
+        margin: 10px 0 !important;
+        display: block !important;
+        overflow: hidden !important;
     }
 
-    .floating-images img {
-        width: 60px;
-        height: auto;
-        margin: 0;
-        opacity: 1;
-        animation: none;
-        position: absolute;
-        top: 0;
-        transform: translateX(-50%);
+    .floating-images img,
+    .floating-images img:nth-child(1),
+    .floating-images img:nth-child(2),
+    .floating-images img:nth-child(3),
+    .floating-images img:nth-child(4),
+    .floating-images img:nth-child(5),
+    .floating-images img:nth-child(6) {
+        width: 60px !important;
+        height: auto !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        animation: none !important;
+        position: absolute !important;
+        top: 0 !important;
+        transform: translateX(-50%) !important;
     }
 
-    .floating-images img:nth-child(1) { left: 35%; z-index: 3; }
-    .floating-images img:nth-child(2) { left: 40%; z-index: 2; }
-    .floating-images img:nth-child(3) { left: 45%; z-index: 4; }
-    .floating-images img:nth-child(4) { left: 50%; z-index: 1; }
-    .floating-images img:nth-child(5) { left: 55%; z-index: 5; }
-    .floating-images img:nth-child(6) { left: 60%; z-index: 2; }
+    /* Positioning each image */
+    .floating-images img:nth-child(1) { left: 35% !important; z-index: 3 !important; }
+    .floating-images img:nth-child(2) { left: 40% !important; z-index: 2 !important; }
+    .floating-images img:nth-child(3) { left: 45% !important; z-index: 4 !important; }
+    .floating-images img:nth-child(4) { left: 50% !important; z-index: 1 !important; }
+    .floating-images img:nth-child(5) { left: 55% !important; z-index: 5 !important; }
+    .floating-images img:nth-child(6) { left: 60% !important; z-index: 2 !important; }
 }
-
 
 @media (max-width: 576px) {
     /* Further adjustments for smartphones */
@@ -1068,7 +1074,22 @@
         font-size: 1em;
     }
 }
- 
+
+@media (min-width: 769px) {
+    .floating-images img:nth-child(1) {
+        width: 225px;
+        height: 285px; 
+        animation: float1 20s linear infinite; 
+    }
+    .floating-images img:nth-child(2) {
+        width: 210px;
+        height: 265px; 
+        animation: float2 22s linear infinite;
+    }
+    /* ... rest of your nth-child styles ... */
+}
+
+        
     </style>
 </head>
 <body>
@@ -1222,36 +1243,41 @@
 
     <script>
         
-        const taglines = [
-            "Discover the best in hospitality",
-            "Shop your neighborhood favorites - or wherever your journey takes you",
-            "Merch from iconic places, designed by experts and guests alike",
-            "Savor the moments one remarkable gift at a time"
-        ];
+       <script>
+    // Variable Declarations
+    const taglines = [
+        "Discover the best in hospitality",
+        "Shop your neighborhood favorites - or wherever your journey takes you",
+        "Merch from iconic places, designed by experts and guests alike",
+        "Savor the moments one remarkable gift at a time"
+    ];
 
-        const colors = [
-            "#F6EAE3",
-            "#ECEDEC",
-            "#F4F5E0",
-            "#FAF8F6"
-        ];
+    const colors = [
+        "#F6EAE3",
+        "#ECEDEC",
+        "#F4F5E0",
+        "#FAF8F6"
+    ];
 
-        const imagesSets = [
-            document.getElementById('images1'),
-            document.getElementById('images2'),
-            document.getElementById('images3'),
-            document.getElementById('images4')
-        ];
+    const imagesSets = [
+        document.getElementById('images1'),
+        document.getElementById('images2'),
+        document.getElementById('images3'),
+        document.getElementById('images4')
+    ];
 
-        let currentIndex = 0;
-        
-        const dynamicTextElement = document.querySelector('.dynamic-text');
-        const cursorElement = document.querySelector('.cursor');
+    let currentIndex = 0;
 
-        function typeTagline() {
+    const dynamicTextElement = document.querySelector('.dynamic-text');
+    const cursorElement = document.querySelector('.cursor');
+
+    // Function Definitions
+
+    // Typing effect for taglines
+    function typeTagline() {
         const tagline = taglines[currentIndex];
         let i = 0;
-        
+
         const typingInterval = setInterval(() => {
             if (i < tagline.length) {
                 dynamicTextElement.textContent = tagline.slice(0, i + 1);
@@ -1259,9 +1285,10 @@
             } else {
                 clearInterval(typingInterval);
             }
-        }, 55);  // Speed
+        }, 55);  // Adjust speed as needed
     }
 
+    // Position images based on screen size
     function randomizeImagePositions(set) {
         const images = set.querySelectorAll('img');
 
@@ -1301,21 +1328,23 @@
                 }
             });
         } else {
-            // For smaller screens, use a flex layout without absolute positioning
-            images.forEach((img, index) => {
-                img.style.position = 'absolute';
-                img.style.top = '0';
+            // For smaller screens, remove inline styles so CSS can take over
+            images.forEach((img) => {
+                img.style.position = '';
+                img.style.top = '';
                 img.style.left = '';
                 img.style.zIndex = '';
+                img.style.width = '';
+                img.style.height = '';
+                img.style.marginBottom = '';
             });
         }
     }
 
+    // Fade images in and out
     function fadeImages() {
-        const previousIndex = currentIndex;
+        const previousSet = imagesSets[currentIndex];
         currentIndex = (currentIndex + 1) % imagesSets.length;
-
-        const previousSet = imagesSets[previousIndex];
         const nextSet = imagesSets[currentIndex];
 
         // Fade out the previous set of images
@@ -1339,282 +1368,289 @@
         }, 900); // Wait for the fade-out to complete before switching sets
     }
 
-    // Reapply image positions when the window is resized
+    // Change background color
+    function changeBackgroundColor() {
+        const nextColor = colors[currentIndex];
+        document.getElementById('background').style.backgroundColor = nextColor;
+    }
+
+    // Start all transitions
+    function startTransitions() {
+        typeTagline();
+        changeBackgroundColor();
+        fadeImages();
+    }
+
+    // Initial Setup
+    imagesSets[currentIndex].style.display = 'block';
+    randomizeImagePositions(imagesSets[currentIndex]);
+    imagesSets[currentIndex].querySelectorAll('img').forEach((img) => {
+        img.style.opacity = '1';
+    });
+
+    // Event Listener for window resize
     window.addEventListener('resize', function() {
         const currentSet = imagesSets[currentIndex];
         randomizeImagePositions(currentSet);
     });
 
+    // Start the transitions immediately
+    startTransitions();
 
+    // Set interval for transitions
     setInterval(startTransitions, 9000);  // Change images every 9 seconds
 
-    // Initial setup
-    randomizeImagePositions(imagesSets[currentIndex]);
+    // Remaining JavaScript Code
 
+    // Modal and Waitlist Form Code
+    const modal = document.getElementById("waitlistModal");
+    const joinWaitlistButton = document.getElementById("joinWaitlistButton");
+    const closeButton = document.querySelector(".close-button");
 
-        function changeBackgroundColor() {
-            const nextColor = colors[currentIndex];
-            document.getElementById('background').style.backgroundColor = nextColor;
-        }
-
-        function startTransitions() {
-            typeTagline();
-            changeBackgroundColor();
-            fadeImages();
-        }
-
-const modal = document.getElementById("waitlistModal");
-const joinWaitlistButton = document.getElementById("joinWaitlistButton");
-const closeButton = document.querySelector(".close-button");
-
-joinWaitlistButton.onclick = function() {
-    modal.style.display = "flex";
-    modal.classList.add("show");
-    document.body.classList.add("modal-open");
-};
-
-closeButton.onclick = function() {
-    closeModal();
-};
-
-// Prevent clicks inside modal content from closing the modal
-const modalContent = document.querySelector(".modal-content");
-modalContent.onclick = function(event) {
-    event.stopPropagation();
-};
-
-// Form validation and submission
-const waitlistForm = document.getElementById("waitlistForm");
-
-waitlistForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailInput.value.trim() === "") {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter your email address";
-        errorMessage.style.display = "block";
-    } else if (!emailPattern.test(emailInput.value)) {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter a valid email address";
-        errorMessage.style.display = "block";
-    } else {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-
-        // Simulate logging the email
-        console.log("Valid email submitted:", emailInput.value);
-
-        // Placeholder for sending email to your database or Airtable
-        // You can replace this with an AJAX request or fetch call to your backend
-
-        // Simulate getting the user's position on the waitlist
-        let waitlistPosition = localStorage.getItem('waitlistPosition');
-        if (!waitlistPosition) {
-            waitlistPosition = Math.floor(Math.random() * 1000) + 1; // Simulate position
-            localStorage.setItem('waitlistPosition', waitlistPosition);
-        }
-
-        // Update the modal content
-        showThankYouContent(waitlistPosition);
-    }
-});
-
-function showThankYouContent(position) {
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-
-    // Hide existing content
-    originalContent.style.display = "none";
-
-    // Calculate ordinal suffix
-    const ordinalSuffix = getOrdinalSuffix(position);
-
-    // Show the thank you content with ordinal number and suffix
-    document.getElementById("waitlistPosition").textContent = position + ordinalSuffix;
-    thankYouContent.style.display = "block";
-
-      // Trigger confetti animation
-    confetti({
-        particleCount: 75,
-        spread: 35,
-        origin: { y: 0.7 },
-        colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
-    });
-
-    // Add event listener to the Share button
-    const shareButton = document.getElementById("shareButton");
-    shareButton.onclick = function() {
-        shareWebsite();
+    joinWaitlistButton.onclick = function() {
+        modal.style.display = "flex";
+        modal.classList.add("show");
+        document.body.classList.add("modal-open");
     };
 
-    // Add event listener to the Exit button
-    const exitButton = document.getElementById("exitButton");
-    exitButton.onclick = function() {
+    closeButton.onclick = function() {
         closeModal();
     };
-}
 
-function shareWebsite() {
-    const shareData = {
-        title: 'Memorably',
-        text: 'Check out Memorably!',
-        url: window.location.href
+    // Prevent clicks inside modal content from closing the modal
+    const modalContent = document.querySelector(".modal-content");
+    modalContent.onclick = function(event) {
+        event.stopPropagation();
     };
 
-    if (navigator.share) {
-        navigator.share(shareData).then(() => {
-            console.log('Thanks for sharing!');
-        })
-        .catch(console.error);
-    } else {
-        // Fallback for browsers that do not support the Web Share API
-        copyToClipboard(window.location.href);
-        alert('Link copied to clipboard!');
-    }
-}
+    // Form validation and submission
+    const waitlistForm = document.getElementById("waitlistForm");
 
-function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
+    waitlistForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("emailLabel");
+        const errorMessage = document.getElementById("errorMessage");
 
-    // Prevent scrolling to bottom of page in Microsoft Edge.
-    textarea.style.position = 'fixed';
-    textarea.style.top = '0';
-    textarea.style.left = '0';
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
+        if (emailInput.value.trim() === "") {
+            emailInput.classList.add("error");
+            emailLabel.classList.add("error");
+            errorMessage.textContent = "Please enter your email address";
+            errorMessage.style.display = "block";
+        } else if (!emailPattern.test(emailInput.value)) {
+            emailInput.classList.add("error");
+            emailLabel.classList.add("error");
+            errorMessage.textContent = "Please enter a valid email address";
+            errorMessage.style.display = "block";
+        } else {
+            emailInput.classList.remove("error");
+            emailLabel.classList.remove("error");
+            errorMessage.style.display = "none";
 
-    try {
-        document.execCommand('copy');
-        console.log('Copying to clipboard was successful!');
-    } catch (err) {
-        console.error('Could not copy text:', err);
-    }
+            // Simulate logging the email
+            console.log("Valid email submitted:", emailInput.value);
 
-    document.body.removeChild(textarea);
-}
+            // Placeholder for sending email to your database or Airtable
+            // You can replace this with an AJAX request or fetch call to your backend
 
-function closeModal() {
-    modal.style.display = "none";
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-
-    // Reset modal content for future use
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-    originalContent.style.display = "block";
-    thankYouContent.style.display = "none";
-}
-
-// Close modal when clicking outside of it
-window.onclick = function(event) {
-    if (event.target === modal) {
-        closeModal();
-    }
-};
-
-// Clear error messages when the user types
-document.getElementById("email").addEventListener("input", function() {
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
-
-    if (emailInput.classList.contains("error")) {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-    }
-});
-
-// Suggestion submission handling
-const suggestionInput = document.getElementById('suggestionInput');
-const suggestionSubmitButton = document.getElementById('suggestionSubmitButton');
-
-suggestionSubmitButton.addEventListener('click', function() {
-    const suggestionText = suggestionInput.value.trim();
-    if (suggestionText !== "") {
-        // Simulate sending the suggestion (e.g., log it to console)
-        console.log("Suggestion submitted:", suggestionText);
-        
-        // Clear the input field
-        suggestionInput.value = "";
-
-        // Show the notification bubble
-        showNotificationBubble();
-    } else {
-        // Optionally, display a validation message
-        alert("Please enter a suggestion before submitting.");
-    }
-});
-
-function showNotificationBubble() {
-    // Create the bubble element
-    const bubble = document.createElement('div');
-    bubble.className = 'notification-bubble';
-    bubble.textContent = 'Suggestion received, thanks!';
-    
-    document.body.appendChild(bubble);
-    
-    // Trigger reflow to ensure the animation starts
-    void bubble.offsetWidth;
-    
-    // Add the 'show' class to start the animation
-    bubble.classList.add('show');
-
-    // Remove the bubble after 3 seconds
-    setTimeout(function() {
-        bubble.classList.remove('show');
-        bubble.classList.add('hide');
-    }, 3000); // 3 seconds
-
-    // Remove the bubble from DOM after the animation ends
-    bubble.addEventListener('animationend', function(event) {
-        if (event.animationName === 'bubbleOut') {
-            if (bubble.parentNode) {
-                bubble.parentNode.removeChild(bubble);
+            // Simulate getting the user's position on the waitlist
+            let waitlistPosition = localStorage.getItem('waitlistPosition');
+            if (!waitlistPosition) {
+                waitlistPosition = Math.floor(Math.random() * 1000) + 1; // Simulate position
+                localStorage.setItem('waitlistPosition', waitlistPosition);
             }
+
+            // Update the modal content
+            showThankYouContent(waitlistPosition);
         }
     });
-}
 
-        function getOrdinalSuffix(n) {
-    const s = ["th", "st", "nd", "rd"],
-          v = n % 100;
-    return (s[(v - 20) % 10] || s[v] || s[0]);
-}
+    function showThankYouContent(position) {
+        const originalContent = document.getElementById("originalContent");
+        const thankYouContent = document.getElementById("thankYouContent");
 
-function updateHeaderText() {
-    const headerTextElement = document.getElementById('header-text');
-    if (window.innerWidth <= 768) {
-        headerTextElement.textContent = 'Shop unforgettable places';
-    } else {
-        headerTextElement.textContent = 'Shop unforgettable restaurants, hotels, and experiences';
+        // Hide existing content
+        originalContent.style.display = "none";
+
+        // Calculate ordinal suffix
+        const ordinalSuffix = getOrdinalSuffix(position);
+
+        // Show the thank you content with ordinal number and suffix
+        document.getElementById("waitlistPosition").textContent = position + ordinalSuffix;
+        thankYouContent.style.display = "block";
+
+        // Trigger confetti animation
+        confetti({
+            particleCount: 75,
+            spread: 35,
+            origin: { y: 0.7 },
+            colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
+        });
+
+        // Add event listener to the Share button
+        const shareButton = document.getElementById("shareButton");
+        shareButton.onclick = function() {
+            shareWebsite();
+        };
+
+        // Add event listener to the Exit button
+        const exitButton = document.getElementById("exitButton");
+        exitButton.onclick = function() {
+            closeModal();
+        };
     }
-}
 
-// Call the function on page load
-updateHeaderText();
+    function shareWebsite() {
+        const shareData = {
+            title: 'Memorably',
+            text: 'Check out Memorably!',
+            url: window.location.href
+        };
 
-// Add an event listener for window resize
-window.addEventListener('resize', updateHeaderText);
+        if (navigator.share) {
+            navigator.share(shareData).then(() => {
+                console.log('Thanks for sharing!');
+            })
+            .catch(console.error);
+        } else {
+            // Fallback for browsers that do not support the Web Share API
+            copyToClipboard(window.location.href);
+            alert('Link copied to clipboard!');
+        }
+    }
 
-window.addEventListener('resize', function() {
-    const currentSet = imagesSets[currentIndex];
-    randomizeImagePositions(currentSet);
-});
+    function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
 
-    
-    </script>
+        // Prevent scrolling to bottom of page in Microsoft Edge.
+        textarea.style.position = 'fixed';
+        textarea.style.top = '0';
+        textarea.style.left = '0';
+
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            console.log('Copying to clipboard was successful!');
+        } catch (err) {
+            console.error('Could not copy text:', err);
+        }
+
+        document.body.removeChild(textarea);
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        modal.classList.remove("show");
+        document.body.classList.remove("modal-open");
+
+        // Reset modal content for future use
+        const originalContent = document.getElementById("originalContent");
+        const thankYouContent = document.getElementById("thankYouContent");
+        originalContent.style.display = "block";
+        thankYouContent.style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+    // Clear error messages when the user types
+    document.getElementById("email").addEventListener("input", function() {
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("emailLabel");
+        const errorMessage = document.getElementById("errorMessage");
+
+        if (emailInput.classList.contains("error")) {
+            emailInput.classList.remove("error");
+            emailLabel.classList.remove("error");
+            errorMessage.style.display = "none";
+        }
+    });
+
+    // Suggestion submission handling
+    const suggestionInput = document.getElementById('suggestionInput');
+    const suggestionSubmitButton = document.getElementById('suggestionSubmitButton');
+
+    suggestionSubmitButton.addEventListener('click', function() {
+        const suggestionText = suggestionInput.value.trim();
+        if (suggestionText !== "") {
+            // Simulate sending the suggestion (e.g., log it to console)
+            console.log("Suggestion submitted:", suggestionText);
+
+            // Clear the input field
+            suggestionInput.value = "";
+
+            // Show the notification bubble
+            showNotificationBubble();
+        } else {
+            // Optionally, display a validation message
+            alert("Please enter a suggestion before submitting.");
+        }
+    });
+
+    function showNotificationBubble() {
+        // Create the bubble element
+        const bubble = document.createElement('div');
+        bubble.className = 'notification-bubble';
+        bubble.textContent = 'Suggestion received, thanks!';
+
+        document.body.appendChild(bubble);
+
+        // Trigger reflow to ensure the animation starts
+        void bubble.offsetWidth;
+
+        // Add the 'show' class to start the animation
+        bubble.classList.add('show');
+
+        // Remove the bubble after 3 seconds
+        setTimeout(function() {
+            bubble.classList.remove('show');
+            bubble.classList.add('hide');
+        }, 3000); // 3 seconds
+
+        // Remove the bubble from DOM after the animation ends
+        bubble.addEventListener('animationend', function(event) {
+            if (event.animationName === 'bubbleOut') {
+                if (bubble.parentNode) {
+                    bubble.parentNode.removeChild(bubble);
+                }
+            }
+        });
+    }
+
+    // Get ordinal suffix for waitlist position
+    function getOrdinalSuffix(n) {
+        const s = ["th", "st", "nd", "rd"],
+              v = n % 100;
+        return s[(v - 20) % 10] || s[v] || s[0];
+    }
+
+    // Update header text based on screen size
+    function updateHeaderText() {
+        const headerTextElement = document.getElementById('header-text');
+        if (window.innerWidth <= 768) {
+            headerTextElement.textContent = 'Shop unforgettable places';
+        } else {
+            headerTextElement.textContent = 'Shop unforgettable restaurants, hotels, and experiences';
+        }
+    }
+
+    // Call the function on page load
+    updateHeaderText();
+
+    // Add an event listener for window resize
+    window.addEventListener('resize', updateHeaderText);
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 

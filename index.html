@@ -972,6 +972,8 @@
         right: 15px;
         top: 5%;
         font-size: 0.85em;
+        padding: 8px 16px;
+        transform: none;
     }
 
     .container {
@@ -983,6 +985,7 @@
     .container h1 {
         margin-top: 0;
         padding-top: 0;
+        transform: translateY(-50px);
     }
 
     .dynamic-text-container {
@@ -994,6 +997,7 @@
        margin-top: 0px;
        top: 5%;
        padding: 8px 16px;
+       transform: none;
     }
 
     .footer {
@@ -1003,6 +1007,7 @@
 
     .floating-images {
         left: 0;
+        top: 0;
         position: relative;
         width: auto;
         height: auto;
@@ -1014,12 +1019,13 @@
         align-items: flex-start;
     }
     
-        .floating-images img {
-        max-width: 100px; 
-        max-height: 120px;
+    .floating-images img {
+        max-width: 130px; 
+        max-height: 160px;
         margin-bottom: 20px; 
         opacity: 1;
-        position: relative;  
+        position: relative; 
+        border-radius: 10px;
     }
     
     .floating-images img:nth-child(4), /* Hides the largest image */

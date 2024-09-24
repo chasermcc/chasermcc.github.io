@@ -822,12 +822,12 @@
     font-weight: 400;
     color: #666;
     background-color: white;
-    border: 1px solid #ccc;
-    border-right: none; /* Connect with the button */
+    border: 1px solid #444;
+    border-right: none;
     border-radius: 0px;
     transition: border-color 0.1s ease;
     box-sizing: border-box;
-    height: calc(100% - 2px); /* Adjust for border */
+    height: calc(100% - 2px);
 }
 
 #suggestionInput::placeholder {
@@ -988,7 +988,7 @@
         margin-top: 0;
         padding-top: 0;
         margin-bottom: 16px;
-        transform: translateY(99px);
+        transform: translateY(95px);
         font-size: 2.6em;
     }
 
@@ -997,6 +997,7 @@
         margin-right: 20px;
         transform: translateY(100px);
         margin-bottom: 10px;
+        height: 50px;
     }
 
     button {
@@ -1031,13 +1032,14 @@
         top: 0;
         position: relative;
         width: auto;
-        height: auto;
+        height: 225px;
         margin-top: 0px;
         margin-left: 0px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         transform: translateY(100px);
+        box-sizing: border-box;
     }
     
     .floating-images img {
@@ -1072,6 +1074,11 @@
         padding-top: 20px;
     }
 
+    .floating-images {
+        height: 175px;
+        box-sizing: border-box;
+    }
+    
     .floating-images img {
         max-width: 90px;
         max-height: 110px;

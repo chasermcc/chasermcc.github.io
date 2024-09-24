@@ -979,7 +979,7 @@
     .container {
         padding-left: 10px;
         padding-right: 15px;
-        padding-top: 30px;
+        padding-top: 20px;
     }
 
     /* Move "Memorably" header higher */
@@ -996,7 +996,7 @@
 
     /* Adjust buttons */
     button {
-        width: auto; /* Let buttons adjust width automatically */
+       margin-top: 20px;
     }
 
     /* Adjust social media links margin */
@@ -1007,15 +1007,16 @@
 
 .floating-images {
         position: relative;
-        width: 100%;
+        width: 90%;
         height: auto;
-        margin-top: 15px;
+        margin-top: 10px;
         margin-left: 10px;
-        display: flex; /* Removed !important */
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
         overflow: visible;
     }
+    
     .floating-images img,
     .floating-images img:nth-child(1),
     .floating-images img:nth-child(2),
@@ -1024,12 +1025,11 @@
     .floating-images img:nth-child(5),
     .floating-images img:nth-child(6) {
         .floating-images img {
-        width: 90px; 
+        width: 60px; 
         height: auto;
         margin-bottom: 10px; 
         opacity: 1;
-        position: relative; 
-        animation: none; 
+        position: relative;  
     }
 }
 }

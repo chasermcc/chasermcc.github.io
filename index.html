@@ -1043,16 +1043,35 @@
     }
     
     .floating-images img {
-        max-width: 130px; 
-        max-height: 160px;
         margin-bottom: -20px; 
         opacity: 1;
         z-index: auto;
         position: relative; 
         border-radius: 12px;
     }
-    
-    .floating-images img:nth-child(4), /* Hides the largest image */
+
+    .floating-images img:nth-child(1) {
+        width: 120px;
+        height: 150px;
+    }
+
+    .floating-images img:nth-child(2) {
+        width: 100px;
+        height: 130px;
+    }
+
+    .floating-images img:nth-child(3) {
+        width: 140px;
+        height: 180px;
+        margin-left: -10px;
+    }
+
+    .floating-images img:nth-child(4) {
+        width: 160px;
+        height: 200px;
+        z-index: 2; /* Make this image appear in front of others */
+    }
+
     .floating-images img:nth-child(5), /* Hides the 5th image */
     .floating-images img:nth-child(6) { /* Hides the 6th image */
         display: none;

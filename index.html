@@ -1005,19 +1005,17 @@
         bottom: 20px;
     }
 
- .floating-images {
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important; /* Let height adjust automatically */
-        margin-top: 15px !important;
-        margin-left: 10px !important; /* Set left margin */
-        display: flex !important;
-        flex-direction: column; /* Stack images vertically */
-        align-items: flex-start; /* Align images to the left */
-        justify-content: flex-start;
-        overflow: visible !important;
+.floating-images {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 15px;
+        margin-left: 10px;
+        display: flex; /* Removed !important */
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: visible;
     }
-
     .floating-images img,
     .floating-images img:nth-child(1),
     .floating-images img:nth-child(2),
@@ -1025,21 +1023,15 @@
     .floating-images img:nth-child(4),
     .floating-images img:nth-child(5),
     .floating-images img:nth-child(6) {
-        width: 90px !important; /* Adjust image size */
-        height: auto !important;
-        margin-bottom: 10px !important; /* Add some space between images */
-        opacity: 1 !important;
-        position: relative !important;
-        animation: none !important; /* Disable floating animation on small screens */
+        .floating-images img {
+        width: 90px; 
+        height: auto;
+        margin-bottom: 10px; 
+        opacity: 1;
+        position: relative; 
+        animation: none; 
     }
-
-    /* Positioning each image */
-    .floating-images img:nth-child(1) { left: 35% !important; z-index: 3 !important; }
-    .floating-images img:nth-child(2) { left: 40% !important; z-index: 2 !important; }
-    .floating-images img:nth-child(3) { left: 45% !important; z-index: 4 !important; }
-    .floating-images img:nth-child(4) { left: 50% !important; z-index: 1 !important; }
-    .floating-images img:nth-child(5) { left: 55% !important; z-index: 5 !important; }
-    .floating-images img:nth-child(6) { left: 60% !important; z-index: 2 !important; }
+}
 }
 
 @media (max-width: 576px) {

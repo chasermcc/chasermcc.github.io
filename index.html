@@ -952,12 +952,10 @@
 
        /* Media queries for smaller screens */
 @media (max-width: 768px) {
-    /* Reduce margins to 15px */
     body {
         padding: 0 15px;
     }
 
-    /* Adjust header text */
     .header-text {
         font-size: 0.95em; /* Smaller font size */
         left: 15px;
@@ -966,7 +964,6 @@
         top: 5%;
     }
 
-    /* Change header text content */
     #header-text {
         content: "Shop unforgettable places";
     }
@@ -980,14 +977,15 @@
 
     /* Adjust container padding */
     .container {
-        padding-left: 15px;
+        padding-left: 10px;
         padding-right: 15px;
-        padding-top: 80px; /* Move content higher */
+        padding-top: 30px;
     }
 
     /* Move "Memorably" header higher */
     .container h1 {
         margin-top: 0;
+        padding-top: 0;
     }
 
     /* Adjust dynamic text container */
@@ -1010,10 +1008,14 @@
  .floating-images {
         position: relative !important;
         width: 100% !important;
-        height: 80px !important;
-        margin: 10px 0 !important;
-        display: block;
-        overflow: hidden !important;
+        height: auto !important; /* Let height adjust automatically */
+        margin-top: 15px !important;
+        margin-left: 10px !important; /* Set left margin */
+        display: flex !important;
+        flex-direction: column; /* Stack images vertically */
+        align-items: flex-start; /* Align images to the left */
+        justify-content: flex-start;
+        overflow: visible !important;
     }
 
     .floating-images img,
@@ -1023,14 +1025,12 @@
     .floating-images img:nth-child(4),
     .floating-images img:nth-child(5),
     .floating-images img:nth-child(6) {
-        width: 60px !important;
+        width: 90px !important; /* Adjust image size */
         height: auto !important;
-        margin: 0 !important;
+        margin-bottom: 10px !important; /* Add some space between images */
         opacity: 1 !important;
-        animation: none !important;
-        position: absolute !important;
-        top: 0 !important;
-        transform: translateX(-50%) !important;
+        position: relative !important;
+        animation: none !important; /* Disable floating animation on small screens */
     }
 
     /* Positioning each image */

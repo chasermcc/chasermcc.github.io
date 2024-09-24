@@ -71,7 +71,7 @@
 
         .container {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -293,7 +293,7 @@
             z-index: 20;
             font-size: 0.9em;
             color: #555;
-            width: calc(100%-160px);
+            width: calc(100% - 160px);
             text-align: left;
             background-color: transparent;
         }
@@ -954,7 +954,6 @@
 @media (max-width: 768px) {
     body {
         padding: 15px 15px;
-        max-height: 100vh;
     }
 
     .header-text {
@@ -982,7 +981,8 @@
         padding-right: 15px;
         padding-top: 15px;
         padding-bottom: 40px;
-        max-height: 100vh;
+        height: auto;
+        justify-content: flex-start;
     }
 
     .container h1 {
@@ -1018,7 +1018,6 @@
         position: relative;
         width: auto;
         height: auto;
-        max-height: 50%;
         margin-top: 0px;
         margin-left: 0px;
         display: flex;

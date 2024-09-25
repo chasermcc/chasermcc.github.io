@@ -54,7 +54,7 @@
         padding: 12px 24px;
         font-size: .88em;
         font-weight: 200;
-        background-color: #444;
+        background-color: #AD8358;
         color: white;
         border: none;
         cursor: pointer;
@@ -116,12 +116,12 @@
         
     .dynamic-text:after {
         content: '';
-        border-right: 3px solid #333;
+        border-right: 3px solid #AD8358;
         height: 1.3em;
         display: inline-block;
         animation: blink-cursor 0.7s steps(1) infinite;
         vertical-align: bottom;
-        margin-left: 2px;
+        margin-left: 1px;
     }
 
     @keyframes blink-cursor {
@@ -685,7 +685,7 @@
         font-size: 0.96em;
         font-weight: 175;
         color: white;
-        background-color: #444;
+        background-color: #AD8358;
         border: none;
         border-radius: 0px;
         cursor: pointer;
@@ -847,7 +847,7 @@
         padding: 12px 24px;
         border-radius: 24px;
         font-size: 1em;
-        color: #333;
+        color: #AD8358;
         opacity: 0;
         transition: all 0.5s ease;
         z-index: 1000;
@@ -896,8 +896,9 @@
     
     .info-box a {
         color: #AD8358;
-        font-weight: 600;
+        font-weight: 400;
         cursor: pointer;
+        text-decoration: none;
     }
     
     .notify-text {
@@ -913,14 +914,14 @@
         word-wrap: break-word;
     }
 
-@keyframes fadeInModal {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 15px 15px;
+    @keyframes fadeInModal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
+        body {
+            padding: 15px 15px;
     }
 
     .close-button { 
@@ -1071,7 +1072,7 @@
     }
 }
 
-@media (max-width: 576px) {
+    @media (max-width: 576px) {
     .header-text {
         font-size: 1em;
         top: 5%;
@@ -1125,7 +1126,7 @@
     }
 
     .modal.show {
-        animation: fadeInModal 0.5s ease-in-out;
+        animation: fadeInModal 0.4s ease-in-out;
     }    
     
     .modal-content {
@@ -1176,7 +1177,7 @@
     }
 
     .notification-bubble {
-        background-color: black;
+        background-color: #AD8358;
         font-size: 0.8em;
         font-weight: 400;
         color: white;

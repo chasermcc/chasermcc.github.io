@@ -10,7 +10,7 @@
 
         .fade-in {
           opacity: 0;
-          transition: opacity 1s ease-in;
+          transition: opacity .8s ease-in;
         }
         
         .fade-in.show {
@@ -52,10 +52,11 @@
         .content {
             max-width: 450px;
             margin: 20px auto;
+            transform: translateX(-25px);
         }
 
         .content h1 {
-            font-size: 1.85em;
+            font-size: 1.84em;
             font-family: 'Playfair Display', serif;
             letter-spacing: .01em;
             color: #444;
@@ -64,7 +65,7 @@
         }
 
         .content p {
-            font-size: .8em;
+            font-size: .81em;
             color: #555;
             margin-bottom: 40px;
             line-height: 1.5;
@@ -135,19 +136,15 @@
 
         .terms-text {
             font-size: .8em;
-            color: #555;
+            color: #777;
             margin-top: 20px;
             line-height: 1.4;
             font-weight: 100;
         }
 
         .terms-text a {
-            color: #555;
+            color: #777;
             text-decoration: underline;
-        }
-
-        .terms-text a:hover {
-            color: black;
         }
 
     </style>
@@ -188,7 +185,7 @@
             const fadeInContainer = document.querySelector('.fade-in');
             setTimeout(() => {
                 fadeInContainer.classList.add('show');
-            }, 300);
+            }, 200);
         });
     </script>
 </body>

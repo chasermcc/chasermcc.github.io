@@ -136,7 +136,6 @@
             margin-bottom: 20px;
         }
 
-        /* Hide the Back button on larger screens */
         .apply-form .back-button {
             display: none;
         }
@@ -156,11 +155,11 @@
             background-color: black;
         }
 
-        #terms-text {
+        .terms-text {
             color: #999;
             font-size: .8em;
             margin-top: 20px;
-            line-height: 1.3;
+            line-height: 1.4;
             font-weight: 100;
             text-align: left;
             width: 100%;
@@ -190,26 +189,26 @@
                 flex-basis: 100%;
             }
 
-            /* Show the Back button on small screens */
             .apply-form .back-button {
                 display: inline-block;
                 background-color: transparent;
-                color: #333;
+                color: #444;
                 border: 1px solid #333;
                 cursor: pointer;
-                transition: background-color 0.2s ease;
+                transition: background-color 0.1s ease;
                 width: 48%;
                 font-size: .9em;
                 padding: 12px 24px;
                 border-radius: 0px;
+                font-weight: 300;
             }
 
             .apply-form .back-button:hover {
-                background-color: #f0f0f0;
+                background-color: black;
             }
 
             .apply-form .submit-button {
-                width: 48%; /* Adjusted for side-by-side on smaller screens */
+                width: 48%;
             }
 
             .apply-form .form-buttons {
@@ -224,7 +223,6 @@
     <div class="fade-in">
         <div class="split-screen">
             <div class="left-half">
-                <!-- Memorable logo linking to the main website -->
                 <div class="logo-title">
                     <a href="https://chasermcc.github.io">Memorably</a>
                 </div>
@@ -251,10 +249,9 @@
                             </div>
                         </form>
 
-                        <!-- Terms and conditions text placed correctly at the bottom -->
                         <p class="terms-text">
-                            By submitting, you're agreeing to Memorably's 
-                            <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
+                            By proceeding, you agree to our 
+                            <a href="terms-of-service.html" target="_blank">Terms</a> and 
                             <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
                         </p>
                     </div>

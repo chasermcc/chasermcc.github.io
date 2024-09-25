@@ -63,10 +63,25 @@
         line-height: 1.2em;
         transition: background-color 0.1s ease;
         width: auto;
+        background: linear-gradient(60deg, #AD8358, #E4DAD0, #AD8358); /* Gradient */
+        background-size: 200%; /* Double size for smooth transition */
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; /* Makes the gradient visible */
+        animation: shine 3s linear infinite; /* Add shine animation */
     }
     
     .header-button:hover {
         background-color: #E4DAD0;
+    }
+
+    @keyframes shine {
+        0% {
+            background-position: 0%;
+        }
+        100% {
+            background-position: 200%;
+        }
     }
 
     .container {
@@ -586,9 +601,10 @@
     }
     
     .separator span {
-        font-size: 0.85em;
+        font-size: 0.86em;
         color: #444;
-        font-weight: 275;
+        font-weight: 300;
+        letter-spacing: .01em;
     }
         
     #googleSignInButton {
@@ -685,7 +701,7 @@
     #thankYouContent button {
         padding: 12px 24px;
         font-size: 0.96em;
-        font-weight: 250;
+        font-weight: 300;
         color: white;
         background-color: #AD8358;
         border: none;
@@ -738,7 +754,7 @@
         padding: 12px;
         font-size: 0.88em;
         font-weight: 400;
-        color: #333;
+        color: #555;
         background-color: transparent;
         border: 0px solid #ccc;
         border-radius: 0px;

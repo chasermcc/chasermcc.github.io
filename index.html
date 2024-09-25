@@ -839,7 +839,7 @@
 
     .notification-bubble {
         position: fixed;
-        bottom: -50px;
+        bottom: 45px;
         left: 50%;
         transform: translateX(-50%);
         background-color: white;
@@ -851,6 +851,8 @@
         transition: all 0.5s ease;
         z-index: 1000;
         font-weight: 350;
+        max-width: calc(100% - 30px);
+        box-sizing: border-box;
     }
 
     .notification-bubble.show {

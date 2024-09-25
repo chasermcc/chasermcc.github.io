@@ -132,11 +132,16 @@
 
         .apply-form .form-buttons {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Align items to the left */
             margin-bottom: 20px;
         }
 
-        .apply-form button {
+        /* Hide the Back button on larger screens */
+        .apply-form .back-button {
+            display: none;
+        }
+
+        .apply-form .submit-button {
             background-color: #444;
             color: white;
             padding: 12px 24px;
@@ -144,22 +149,10 @@
             border-radius: 0px;
             cursor: pointer;
             font-size: .9em;
-            width: 48%; /* Set width to allow side-by-side display */
+            width: auto;
         }
 
-        .apply-form .back-button {
-            background-color: transparent;
-            color: #333;
-            border: 1px solid #333;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .apply-form .back-button:hover {
-            background-color: #f0f0f0;
-        }
-
-        .apply-form button:hover {
+        .apply-form .submit-button:hover {
             background-color: black;
         }
 
@@ -185,6 +178,7 @@
 
             .left-half {
                 display: block; /* Ensure logo still appears on smaller screens */
+                height: 200px; /* Adjust as needed */
             }
 
             .right-half {
@@ -192,23 +186,31 @@
                 flex-basis: 100%;
             }
 
-            .apply-form .form-buttons {
-                flex-direction: column;
-            }
-
-            .apply-form button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
+            /* Show the Back button on small screens */
             .apply-form .back-button {
-                width: 100%;
-                margin-bottom: 10px;
+                display: inline-block;
+                background-color: transparent;
+                color: #333;
+                border: 1px solid #333;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                width: 48%;
+                font-size: .9em;
+                padding: 12px 24px;
+                border-radius: 0px;
             }
 
-            .terms-text {
-                width: 100%;
-                margin-top: 10px;
+            .apply-form .back-button:hover {
+                background-color: #f0f0f0;
+            }
+
+            .apply-form .submit-button {
+                width: 48%;
+            }
+
+            .apply-form .form-buttons {
+                display: flex;
+                justify-content: space-between;
             }
         }
 
@@ -241,7 +243,7 @@
                             <div class="form-buttons">
                                 <!-- Back button and Submit button -->
                                 <button type="button" class="back-button" onclick="window.location.href='https://chasermcc.github.io'">Back</button>
-                                <button type="submit">Submit</button>
+                                <button type="submit" class="submit-button">Submit</button>
                             </div>
                         </form>
 

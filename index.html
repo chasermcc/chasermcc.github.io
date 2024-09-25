@@ -53,7 +53,7 @@
         right: 65px;
         padding: 12px 24px;
         font-size: .88em;
-        font-weight: 400;
+        font-weight: 500;
         background-color: transparent;
         color: #AD8358;
         border: none;
@@ -115,7 +115,7 @@
         
     .dynamic-text:after {
         content: '';
-        border-right: 3px solid #AD8358;
+        border-right: 3px solid #444;
         height: 1.3em;
         display: inline-block;
         animation: blink-cursor 0.7s steps(1) infinite;
@@ -698,7 +698,7 @@
     }
     
     #thankYouContent button:hover {
-        background-color: #E4DAD0;
+        background-color: #BF9F7F;
         font-weight: 400;
     }
 
@@ -828,14 +828,14 @@
         border-left: none;
         border-radius: 0;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.1s ease;
         height: calc(100% - 2px);
         box-sizing: border-box;
         margin-top: 0;
     }
     
     #suggestionSubmitButton:hover {
-        background-color: black;
+        background-color: black !important;
     }
 
     .notification-bubble {
@@ -846,16 +846,16 @@
         background-color: white;
         padding: 12px 24px;
         border-radius: 24px;
-        font-size: 1em;
+        font-size: .95em;
         color: #AD8358;
         opacity: 0;
         transition: all 0.5s ease;
         z-index: 1000;
-        font-weight: 400;
+        font-weight: 350;
     }
 
     .notification-bubble.show {
-        bottom: 30px;
+        bottom: 40px;
         opacity: 1;
     }
     
@@ -1192,7 +1192,7 @@
     <div class="header-text" id="header-text">
      Shop unforgettable restaurants, hotels, and experiences
      </div>
-      <button class="header-button" onclick="window.location.href='https://chasermcc.github.io/design.html'">Designers</button>
+      <button class="header-button" onclick="window.location.href='https://chasermcc.github.io/design.html'">Design</button>
     <div class="container">
         <h1>Memorably</h1>
         <div class="dynamic-text-container">

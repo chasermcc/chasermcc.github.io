@@ -45,14 +45,15 @@
         font-size: 1.09em;
         color: #333;
         max-width: 50%;
+        font-weight: 325;
     }
 
     .header-button {
         position: absolute;
         top: 1.8%;
         right: 65px;
-        padding: 8px 12px;
-        font-size: 1.04em;
+        padding: 8px 16px;
+        font-size: 1.06em;
         font-weight: 450;
         background-color: transparent;
         color: #AD8358;
@@ -83,7 +84,7 @@
         font-family: 'Playfair Display', serif;
         font-size: 2.5em;
         letter-spacing: .02em;
-        font-weight: 375;
+        font-weight: 370;
         margin: 0 0 0 0;
         color: #222;
         position: relative;
@@ -104,13 +105,14 @@
     }
         
     .dynamic-text {
-        font-size: 1.2em;
+        font-size: 1.21em;
         color: #111;
         white-space: pre-wrap;
         flex-grow: 1;
         line-height: 1.3em;
         position: relative;
         z-index: 20;
+        font-weight: 450;
     }
         
     .dynamic-text:after {
@@ -118,21 +120,23 @@
         border-right: 3px solid #444;
         height: 1.3em;
         display: inline-block;
-        animation: blink-cursor 0.75s steps(1) infinite;
+        animation: blink-cursor 0.77s steps(1) infinite;
         vertical-align: bottom;
         margin-left: 1px;
     }
 
     @keyframes blink-cursor {
-        0% { opacity: 1;    } 
-        10% { opacity: .9;  }   
+        0%  { opacity: 1.0; } 
+        10% { opacity: 0.9; }   
         20% { opacity: 0.8; }  
         30% { opacity: 0.7; } 
         40% { opacity: 0.6; } 
         50% { opacity: 0.5; }    
         60% { opacity: 0.3; }  
-        70% { opacity: 0;   }   
-        100% {opacity: 1;   }      
+        70% { opacity: 0.0; } 
+        80% { opacity: 0.4; }
+        90% { opacity: 0.8; }
+        100% {opacity: 1.0; }      
     }
 
     button {
@@ -193,7 +197,7 @@
         height: 600px;
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        padding: 18px;
         z-index: 10;
     }
     
@@ -303,7 +307,7 @@
     .social-button {
         font-size: 27px;
         color: #333;
-        transition: color 0.2s ease;
+        transition: color 0.1s ease;
     }
 
     .social-button:hover {
@@ -845,7 +849,7 @@
         background-color: white;
         padding: 12px 24px;
         border-radius: 24px;
-        font-size: .9em;
+        font-size: .91em;
         color: #AD8358;
         opacity: 0;
         transition: all 0.5s ease;
@@ -948,9 +952,9 @@
     .header-button {
         right: 25px;
         top: 5%;
-        font-size: 0.95em;
-        padding: 8px 8px;
-        transform: translateY(-11px);
+        font-size: 0.97em;
+        padding: 8px 12px;
+        transform: translateY(-12px);
         font-weight: 500;
     }
 
@@ -1305,8 +1309,8 @@
     
     const taglines = [
         "Discover the best in hospitality",
-        "Shop your neighborhood favorites - or wherever your journey takes you",
-        "Merch from iconic places, designed by professionals and guests alike",
+        "Shop your neighborhood favorites or wherever your journey takes you",
+        "Merch from iconic places designed by professionals and guests alike",
         "Savor the moments one remarkable gift at a time"
     ];
 

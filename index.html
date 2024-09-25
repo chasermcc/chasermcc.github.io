@@ -63,25 +63,10 @@
         line-height: 1.2em;
         transition: background-color 0.1s ease;
         width: auto;
-        background: linear-gradient(60deg, #AD8358, #E4DAD0, #AD8358); /* Gradient */
-        background-size: 200%; /* Double size for smooth transition */
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent; /* Makes the gradient visible */
-        animation: shine 3s linear infinite;
     }
     
     .header-button:hover {
         background-color: #E4DAD0;
-    }
-
-    @keyframes shine {
-        0% {
-            background-position: 0%;
-        }
-        100% {
-            background-position: 200%;
-        }
     }
 
     .container {
@@ -99,7 +84,7 @@
         font-family: 'Playfair Display', serif;
         font-size: 2.5em;
         letter-spacing: .02em;
-        font-weight: 370;
+        font-weight: 365;
         margin: 0 0 0 0;
         color: #222;
         position: relative;
@@ -176,6 +161,16 @@
 
     button:hover {
         background-color: black;
+    }
+
+    #joinWaitlistButton {
+        background-color: #444;
+        position: relative;
+        color: transparent;
+        font-weight: 550;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: inherit;
     }
     
     .first-places-button {

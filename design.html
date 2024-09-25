@@ -145,8 +145,18 @@
             background-color: black;
         }
 
-        .terms-text { 
+        .terms-text {
             color: #999;
+            font-size: .8em;
+            margin-top: 20px;
+            line-height: 1.4;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        .terms-text a {
+            color: #999;
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -189,20 +199,16 @@
             .apply-form button + button {
                 margin-left: 10px;
             }
+
+            /* Ensure terms-text stays at the bottom */
+            .terms-text {
+                margin-top: 20px;
+                width: 100%;
+                text-align: center;
+                order: 3;
+            }
         }
 
-        .terms-text {
-            font-size: .8em;
-            color: #999;
-            margin-top: 20px;
-            line-height: 1.4;
-            font-weight: 100;
-        }
-
-        .terms-text a {
-            color: #999;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -221,13 +227,13 @@
                     <div class="apply-form">
                         <form id="designerApplicationForm">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="First name" required>
+                            <input type="text" id="name" name="name" required>
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+                            <input type="email" id="email" name="email" required>
                             <label for="portfolio">Instagram Handle (Optional)</label>
-                            <input type="text" id="portfolio" name="portfolio" placeholder="@yourusername" required>
+                            <input type="text" id="portfolio" name="portfolio" required>
                             <label for="message">Website/Portfolio URL (Optional)</label>
-                            <input type="text" id="experience" name="experience" placeholder="yourportfolio.com" required>    
+                            <input type="text" id="experience" name="experience" required>    
                             <button type="submit">Submit</button>
                         </form>
                         <p class="terms-text">

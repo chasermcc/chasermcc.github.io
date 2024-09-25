@@ -6,7 +6,7 @@
     <title>Memorably | Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Lora:wght@400&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
 
         .fade-in {
@@ -55,6 +55,11 @@
             cursor: pointer;
         }
 
+        .logo-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .right-half {
             flex-basis: 50%;
             background-color: #FDFCFB;
@@ -70,7 +75,7 @@
 
         .content h1 {
             font-size: 1.38em;
-            font-family: 'Playfair Display', sans-serif;
+            font-family: 'Lora', serif; /* Changed font to Lora */
             letter-spacing: .01em;
             color: #444;
             margin-bottom: 20px;
@@ -150,7 +155,7 @@
             }
 
             .left-half {
-                display: none;
+                display: block; /* Ensure logo still appears on smaller screens */
             }
 
             .right-half {
@@ -158,8 +163,31 @@
                 flex-basis: 100%;
             }
 
+            .apply-form {
+                display: flex;
+                justify-content: space-between; /* Display buttons side by side */
+            }
+
             .apply-form button {
-                width: 100%;
+                width: 48%; /* Each button takes up 48% of the width */
+            }
+
+            .apply-form .back-button {
+                background-color: transparent;
+                color: #333;
+                border: 1px solid #333;
+                border-radius: 0px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+            .apply-form .back-button:hover {
+                background-color: #f0f0f0;
+            }
+
+            /* Add a gap between the two buttons */
+            .apply-form button + button {
+                margin-left: 10px;
             }
         }
 
@@ -181,7 +209,10 @@
     <div class="fade-in">
         <div class="split-screen">
             <div class="left-half">
-                <div class="logo-title">Memorably</div>
+                <!-- Memorable logo linking to the main website -->
+                <div class="logo-title">
+                    <a href="https://chasermcc.github.io">Memorably</a>
+                </div>
             </div>
             <div class="right-half">
                 <div class="content">
@@ -198,12 +229,12 @@
                             <label for="message">Website/Portfolio URL (Optional)</label>
                             <input type="text" id="experience" name="experience" placeholder="yourportfolio.com" required>    
                             <button type="submit">Submit</button>
-                            <p class="terms-text">
-                                By submitting, you're agreeing to Memorably's 
-                                <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
-                                <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
-                            </p>
                         </form>
+                        <p class="terms-text">
+                            By submitting, you're agreeing to Memorably's 
+                            <a href="terms-of-service.html" target="_blank">Terms of Service</a> and 
+                            <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -217,6 +248,14 @@
                 fadeInContainer.classList.add('show');
             }, 200);
         });
+
+        /* Add event listeners for buttons (back navigation) */
+        const backButton = document.querySelector('.back-button');
+        if (backButton) {
+            backButton.addEventListener('click', function() {
+                window.location.href = 'https://chasermcc.github.io';
+            });
+        }
     </script>
 </body>
 </html>

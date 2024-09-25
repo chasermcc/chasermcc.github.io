@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memorably | Apply as a Designer</title>
+    <title>Memorably | Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
@@ -34,7 +34,6 @@
             overflow: hidden;
         }
 
-        /* Left side: full-screen image */
         .left-half {
             flex-basis: 50%;
             background-image: url('https://via.placeholder.com/900x1200'); /* Replace with your image URL */
@@ -42,7 +41,6 @@
             background-position: center;
         }
 
-        /* Right side: scrollable content */
         .right-half {
             flex-basis: 50%;
             background-color: #FDFCFB;
@@ -116,14 +114,13 @@
             background-color: black;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .split-screen {
                 flex-direction: column;
             }
 
             .left-half {
-                height: 50vh;
+                height: 30vh;
                 background-position: center;
             }
 
@@ -156,33 +153,23 @@
     </style>
 </head>
 <body>
-    <!-- Add fade-in class to the container of the entire content -->
     <div class="fade-in">
         <div class="split-screen">
-            <!-- Left Half: Full-screen Image -->
             <div class="left-half"></div>
-
-            <!-- Right Half: Scrollable Content -->
             <div class="right-half">
                 <div class="content">
-                    <h1>Creativity Welcome</h1>
+                    <h1>Creativity welcome</h1>
                     <p>Memorably is a new shopping platform celebrating the world's favorite places through exceptional merch. Although our own design team works hard to create unique pieces, creative ideas can come from anyone. Whether you're a beginner or a professional, join our growing community of designers making the best places around the globe stand out.</p>
-
-                    <!-- Apply Form -->
                     <div class="apply-form">
                         <form id="designerApplicationForm">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
-
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required>
-
                             <label for="portfolio">Social Media Handle (Optional)</label>
                             <input type="text" id="portfolio" name="portfolio" required>
-
                             <label for="message">Website/Portfolio URL (Optional)</label>
                             <input type="text" id="experience" name="experience" required>    
-
                             <button type="submit">Submit</button>
                             <p class="terms-text">
                                 By submitting, you're agreeing to Memorably's 
@@ -196,13 +183,12 @@
         </div>
     </div>
 
-    <!-- JavaScript to trigger the fade-in effect -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const fadeInContainer = document.querySelector('.fade-in');
             setTimeout(() => {
                 fadeInContainer.classList.add('show');
-            }, 500); // Adjust the delay as needed
+            }, 400);
         });
     </script>
 </body>

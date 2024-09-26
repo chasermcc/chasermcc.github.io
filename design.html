@@ -173,92 +173,98 @@
             text-decoration: none;
         }
 
-        @media (max-width: 768px) {
-            .split-screen {
-                flex-direction: column;
-            }
+       @media (max-width: 768px) {
+    .split-screen {
+        flex-direction: column;
+    }
 
-            .left-half {
-                display: block; /* Ensure logo still appears on smaller screens */
-                height: 200px; /* Adjust as needed */
-            }
+    .left-half {
+        display: none; /* Hide the left half image */
+    }
 
-            .right-half {
-                padding: 40px 20px;
-                flex-basis: 100%;
-            }
+    .logo-title {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10; /* Keep the logo on top and visible */
+        font-size: 1.5em; /* Adjust size for smaller screens */
+    }
 
-            .apply-form .back-button {
-                display: inline-block;
-                background-color: transparent;
-                color: #444;
-                border: 1px solid #333;
-                cursor: pointer;
-                transition: background-color 0.1s ease;
-                width: 48%;
-                font-size: .9em;
-                padding: 12px 24px;
-                border-radius: 0px;
-                font-weight: 300;
-            }
+    .right-half {
+        flex-basis: 100%;
+        padding: 40px 20px;
+    }
 
-            .apply-form .back-button:hover {
-                background-color: black;
-                color: white;
-            }
+    /* Sticky footer */
+    .sticky-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -1px 6px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        z-index: 100; /* Ensure the footer is always on top */
+    }
 
-            .apply-form .submit-button {
-                width: 48%;
-            }
+    .sticky-footer button {
+        width: 48%;
+        font-size: 1em;
+        padding: 12px;
+        cursor: pointer;
+    }
 
-            .apply-form .form-buttons {
-                display: flex;
-                justify-content: space-between;
-            }
-        }
+    .right-half .apply-form {
+        margin-bottom: 60px; /* Create space for the sticky footer */
+    }
+
+    .apply-form .form-buttons {
+        display: none; /* Hide the default buttons on smaller screens */
+    }
+}
 
     </style>
 </head>
 <body>
     <div class="fade-in">
-        <div class="split-screen">
-            <div class="left-half">
-                <div class="logo-title">
-                    <a href="https://chasermcc.github.io">Memorably</a>
-                </div>
+    <div class="split-screen">
+        <div class="left-half">
+            <div class="logo-title">
+                <a href="https://chasermcc.github.io">Memorably</a>
             </div>
-            <div class="right-half">
-                <div class="content">
-                    <h1>Creativity welcome</h1>
-                    <p>Memorably is a new shopping platform celebrating the world's favorite places through exceptional merch. Although our own design team works hard to create unique pieces, creative ideas can come from anyone. Whether you're a beginner or a professional, join our growing community of designers making the best places around the globe stand out.</p>
-                    <div class="apply-form">
-                        <form id="designerApplicationForm">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                            <label for="portfolio">Instagram Handle (Optional)</label>
-                            <input type="text" id="portfolio" name="portfolio">
-                            <label for="message">Website/Portfolio URL (Optional)</label>
-                            <input type="text" id="experience" name="experience">    
-                            
-                            <div class="form-buttons">
-                                <!-- Back button and Submit button -->
-                                <button type="button" class="back-button" onclick="window.location.href='https://chasermcc.github.io'">Back</button>
-                                <button type="submit" class="submit-button">Submit</button>
-                            </div>
-                        </form>
-
-                        <p class="terms-text">
-                            By proceeding, you agree to our 
-                            <a href="terms-of-service.html" target="_blank">Terms</a> and 
-                            <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
-                        </p>
-                    </div>
+        </div>
+        <div class="right-half">
+            <div class="content">
+                <h1>Creativity welcome</h1>
+                <p>Memorably is a new shopping platform celebrating the world's favorite places through exceptional merch. Although our own team works hard, creative design ideas can come from anyone. Whether you're a beginner or a professional, join our growing community of designers and illustrators making the best places around the globe stand out.</p>
+                <div class="apply-form">
+                    <form id="designerApplicationForm">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="portfolio">Instagram Handle (Optional)</label>
+                        <input type="text" id="portfolio" name="portfolio">
+                        <label for="message">Website/Portfolio URL (Optional)</label>
+                        <input type="text" id="experience" name="experience">
+                    </form>
+                    <p class="terms-text">
+                        By proceeding, you agree to our 
+                        <a href="terms-of-service.html" target="_blank">Terms</a> and 
+                        <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="sticky-footer">
+    <button class="back-button" onclick="window.location.href='https://chasermcc.github.io'">Back</button>
+    <button class="submit-button" type="submit" form="designerApplicationForm">Submit</button>
+</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

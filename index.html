@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorably | Shop unforgettable places</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -898,11 +898,12 @@
             border-color: black;
         }
 
+        /* Notification Bubble */
         .notification-bubble {
             position: fixed;
             bottom: 45px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(20px);
             background-color: #AD8358;
             padding: 12px 24px;
             border-radius: 24px;
@@ -917,15 +918,27 @@
             display: none;
         }
 
+        /* Animation for rising and fading in */
+        @keyframes riseFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
         .notification-bubble.show {
             display: block;
-            opacity: 1;
+            animation: riseFadeIn 0.5s forwards;
         }
         
         .notification-bubble.hide {
             display: none;
         }
-        
+
         .thankyou-flex-container {
             flex-grow: 1;
             display: flex;
@@ -1597,6 +1610,9 @@
 
             const exitButton = document.getElementById("exitButton");
             exitButton.onclick = closeModal;
+
+            // Scroll back to top after submitting suggestion
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function shareWebsite() {
@@ -1698,13 +1714,14 @@
             document.body.appendChild(bubble);
 
             bubble.classList.add('show');
-            bubble.style.display = 'block';
 
             setTimeout(function() {
                 bubble.classList.remove('show');
                 bubble.classList.add('hide');
-                bubble.style.display = 'none';
-                bubble.remove();
+                // Remove the bubble after animation
+                setTimeout(() => {
+                    bubble.remove();
+                }, 500); // Match the duration of the animation
             }, 4000);
         }
 
@@ -1729,17 +1746,13 @@
         // Add event listener to handle window resizing
         window.addEventListener('resize', updateHeaderText);
 
+        /* Removed the scrollIntoView on focus to prevent excessive scrolling on mobile iOS
         suggestionInput.addEventListener('focus', function () {
-            // Option 1: Modify block to 'center'
             setTimeout(() => {
                 suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 300);
-
-            // Option 2: Remove scrollIntoView
-            // setTimeout(() => {
-            //     suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            // }, 300);
         });
+        */
 
         /* Adjust modal on keyboard */
         function adjustModalOnKeyboard() {

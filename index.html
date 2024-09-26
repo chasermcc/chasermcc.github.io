@@ -10,6 +10,17 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@400&display=swap');
 
+    *,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+        
     body {
         margin: 0;
         font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -344,6 +355,8 @@
 
     body.modal-open {
         overflow: hidden;
+        position: fixed;
+        width: 100%;
     }
 
     .modal-content {
@@ -358,8 +371,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 550px;
         overflow-y: auto;
+        max-height: 90vh;
+        -webkit-overflow-scrolling: touch;
     }
 
     .close-button {
@@ -656,8 +670,12 @@
     }
 
     #thankYouContent {
-        height: 100%;
-        overflow: hidden;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+
+    .thankyou-flex-container {
+        flex-grow: 1;
     }
         
     #thankYouContent h1 {
@@ -1211,9 +1229,11 @@
         text-align: center;
     }
 }    
-    #suggestionInput {
+    #suggestionInput,
+.modal-content input[type="email"] {
     font-size: 16px;
 }
+
 
         
     </style>
@@ -1601,16 +1621,23 @@
         document.body.removeChild(textarea);
     }
 
-    function closeModal() {
-        modal.style.display = "none";
-        modal.classList.remove("show");
-        document.body.classList.remove("modal-open");
+  function closeModal() {
+    modal.style.display = "none";
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+    document.body.style.position = ''; // Reset position
+    document.body.style.overflow = ''; // Reset overflow
 
-        const originalContent = document.getElementById("originalContent");
-        const thankYouContent = document.getElementById("thankYouContent");
-        originalContent.style.display = "block";
-        thankYouContent.style.display = "none";
-    }
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+    originalContent.style.display = "block";
+    thankYouContent.style.display = "none";
+
+    // Reset modal content max-height
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.style.maxHeight = '';
+}
+
 
     window.onclick = function(event) {
         if (event.target === modal) {
@@ -1681,8 +1708,30 @@
     updateHeaderText();
 
  suggestionInput.addEventListener('focus', function () {
-    suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Slight delay to allow the keyboard to appear
+    setTimeout(() => {
+        suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
 });
+
+
+    function adjustModalOnKeyboard() {
+    const modalContent = document.querySelector('.modal-content');
+
+    window.addEventListener('resize', function () {
+        if (document.body.classList.contains('modal-open')) {
+            // Get the current viewport height
+            const vh = window.innerHeight * 0.01;
+            // Set a CSS variable for the viewport height
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            // Adjust the modal content's max-height
+            modalContent.style.maxHeight = `calc(var(--vh, 1vh) * 100 - 30px)`; // Subtract any additional spacing as needed
+        }
+    });
+}
+
+adjustModalOnKeyboard(); // Call the function to initialize
+
 
 
     </script>

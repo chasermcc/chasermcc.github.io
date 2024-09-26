@@ -27,6 +27,7 @@
 body, html {
     height: 100%;
     font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 .split-screen {
@@ -186,8 +187,15 @@ body, html {
 }
 
 @media (max-width: 768px) {
+    body, html {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
     .split-screen {
         flex-direction: column;
+        height: auto;
+        overflow: visible;
     }
 
     .left-half {
@@ -204,6 +212,7 @@ body, html {
     .right-half {
         padding: 80px 20px;
         flex-basis: 100%;
+        overflow-y: visible;
     }
 
     .right-half .apply-form {

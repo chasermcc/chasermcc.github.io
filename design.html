@@ -31,6 +31,13 @@ body, html {
     overflow-y: auto;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+    border: 1px solid #ddd;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .split-screen {
     display: flex;
     height: 100vh;
@@ -198,10 +205,10 @@ body, html {
     .apply-form input[type="submit"],
     .submit-button,
     .back-button {
-        font-size: 16px; /* Increase font size to 16px to prevent zoom */
-        padding: 8px 10px; /* Reduce padding to compensate for larger font */
-        margin-bottom: 15px; /* Adjust margin as needed */
-        height: auto; /* Let height adjust based on font size */
+        font-size: 16px;
+        padding: 8px 10px;
+        margin-bottom: 15px;
+        height: auto;
     }
     
     .split-screen {
@@ -295,7 +302,6 @@ body, html {
                 <a href="https://chasermcc.github.io">Memorably</a>
             </div>
             <div class="left-half">
-                <!-- Left-half content (image) -->
             </div>
             <div class="right-half">
                 <div class="content">
@@ -313,7 +319,6 @@ body, html {
                             <input type="text" id="experience" name="experience">    
                             
                             <div class="form-buttons">
-                                <!-- Back button hidden on larger screens -->
                                 <button type="submit" class="submit-button">Submit</button>
                             </div>
                         </form>
@@ -329,7 +334,6 @@ body, html {
         </div>
     </div>
 
-    <!-- Sticky footer for smaller screens -->
     <div class="sticky-footer">
         <button type="button" class="back-button" onclick="window.location.href='https://chasermcc.github.io'">Back</button>
         <button type="submit" class="submit-button" form="designerApplicationForm">Submit</button>

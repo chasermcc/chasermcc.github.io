@@ -45,7 +45,7 @@ body, html {
 }
 
 .logo-title {
-    position: fixed; /* Keeps the logo always visible */
+    position: absolute;
     top: 30px;
     left: 40px;
     font-family: 'Playfair Display', serif;
@@ -130,7 +130,6 @@ body, html {
     border-color: black;
 }
 
-/* Button styles */
 .back-button {
     display: none; /* Initially hide the Back button on larger screens */
 }
@@ -143,7 +142,7 @@ body, html {
     border-radius: 0px;
     cursor: pointer;
     font-size: .9em;
-    width: 100%; /* Make Submit button full-width */
+    width: 100%;
 }
 
 .submit-button:hover {
@@ -157,10 +156,9 @@ body, html {
     margin-bottom: 20px;
 }
 
-/* Adjust for larger screens */
 @media (min-width: 769px) {
     .submit-button {
-        width: auto; /* Submit button back to normal width */
+        width: 50%;
         margin-right: 0;
     }
 
@@ -210,7 +208,7 @@ body, html {
 
     /* Create space for the sticky footer */
     .right-half .apply-form {
-        margin-bottom: 80px;
+        margin-bottom: 120px;
     }
 
     .back-button {

@@ -864,16 +864,16 @@
         font-weight: 350;
         max-width: calc(100% - 30px);
         box-sizing: border-box;
+        display: none;
     }
 
     .notification-bubble.show {
-        bottom: 45px;
+        display: block;
         opacity: 1;
     }
     
     .notification-bubble.hide {
-        bottom: -50px;
-        opacity: 0;
+        display: none;
     }
     
     .thankyou-flex-container {
@@ -1635,25 +1635,22 @@
         }
     });
 
-    function showNotificationBubble() {
-        const bubble = document.createElement('div');
-        bubble.className = 'notification-bubble';
-        bubble.textContent = 'Suggestion received, thanks!';
-        document.body.appendChild(bubble);
-        void bubble.offsetWidth;
-        bubble.classList.add('show');
-        setTimeout(function() {
-            bubble.classList.remove('show');
-            bubble.classList.add('hide');
-        }, 4000);
-        bubble.addEventListener('animationend', function(event) {
-            if (event.animationName === 'bubbleOut') {
-                if (bubble.parentNode) {
-                    bubble.parentNode.removeChild(bubble);
-                }
-            }
-        });
-    }
+   function showNotificationBubble() {
+    const bubble = document.createElement('div');
+    bubble.className = 'notification-bubble';
+    bubble.textContent = 'Suggestion received, thanks!';
+    document.body.appendChild(bubble);
+    
+    bubble.classList.add('show');
+    bubble.style.display = 'block';
+
+    setTimeout(function() {
+        bubble.classList.remove('show');
+        bubble.classList.add('hide');
+        bubble.style.display = 'none';
+    }, 4000);
+}
+
 
     function getOrdinalSuffix(n) {
         const s = ["th", "st", "nd", "rd"],

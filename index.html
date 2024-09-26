@@ -212,6 +212,7 @@ html, body {
         left: 33%;
         width: auto;
         height: auto;
+        min-height: 500px;
         display: flex;
         flex-wrap: wrap;
         padding: 18px;
@@ -636,7 +637,7 @@ html, body {
     
     #googleSignInButton:hover {
         border-color: black;
-        font-color: black;
+        color: black;
     }
     
     #googleSignInButton img {
@@ -985,10 +986,6 @@ html, body {
         right: 15px;
         max-width: 55%;
         top: 5%;
-    }
-
-    #header-text {
-        content: "Shop unforgettable places";
     }
 
     .header-button {
@@ -1360,7 +1357,7 @@ html, body {
     
 <script>
     
-   const taglines = [
+  const taglines = [
     "Discover the best in hospitality",
     "Shop your neighborhood favorites or wherever your journey takes you",
     "Merch from iconic places designed by professionals and guests alike",
@@ -1573,6 +1570,12 @@ function showThankYouContent(position) {
         colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
     });
 
+    // Adjust the confetti canvas z-index
+    const confettiCanvas = document.querySelector('canvas');
+    if (confettiCanvas) {
+        confettiCanvas.style.zIndex = '2000';
+    }
+
     const shareButton = document.getElementById("shareButton");
     shareButton.onclick = shareWebsite;
 
@@ -1700,14 +1703,36 @@ function updateHeaderText() {
     }
 }
 
+// Initial call to set the correct header text on page load
 updateHeaderText();
+
+// Add event listener to handle window resizing
+window.addEventListener('resize', updateHeaderText);
+
 
 suggestionInput.addEventListener('focus', function () {
     // Slight delay to allow the keyboard to appear
     setTimeout(() => {
-        suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); // Changed 'start' to 'nearest'
     }, 300);
 });
+
+/* Adjust modal on keyboard */
+function adjustModalOnKeyboard() {
+    const modalContent = document.querySelector('.modal-content');
+
+    window.addEventListener('resize', function () {
+        if (document.body.classList.contains('modal-open')) {
+            // Get the current viewport height
+            const vh = window.innerHeight * 0.90; // Adjusted to 90% for better fit
+            // Set the modal content's max-height
+            modalContent.style.maxHeight = `${vh}px`;
+        }
+    });
+}
+
+adjustModalOnKeyboard(); // Initialize the function
+
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>

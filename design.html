@@ -163,7 +163,7 @@ body, html {
     }
 
     .back-button {
-        display: none; /* Hide Back button on larger screens */
+        display: none;
     }
 }
 
@@ -192,13 +192,14 @@ body, html {
     }
 
     .left-half {
-        display: none; /* Hide the left half image */
+        display: none;
     }
 
     .logo-title {
         top: 20px;
         left: 20px;
         font-size: 1.5em;
+        display: absolute;
     }
 
     .right-half {
@@ -206,16 +207,15 @@ body, html {
         flex-basis: 100%;
     }
 
-    /* Create space for the sticky footer */
     .right-half .apply-form {
-        margin-bottom: 120px;
+        margin-bottom: 140px;
     }
 
     .back-button {
         display: inline-block;
         background-color: transparent;
         color: #444;
-        border: 1px solid #333;
+        border: 1px solid #444;
         cursor: pointer;
         transition: background-color 0.1s ease;
         width: 48%;
@@ -228,34 +228,32 @@ body, html {
     .back-button:hover {
         background-color: black;
         color: white;
+        border-color: black;
     }
 
     .submit-button {
         width: 48%;
         padding: 12px;
         font-size: .9em;
+        display: none;
     }
 
-    /* Sticky footer */
     .sticky-footer {
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
         background-color: white;
-        box-shadow: 0 -1px 6px rgba(0,0,0,0.1);
         display: flex;
         justify-content: space-between;
         padding: 10px 20px;
         z-index: 100;
     }
 
-    /* Make sure the right half scrolls without the sticky footer overlapping */
     .right-half {
         overflow-y: scroll;
     }
 
-    /* Ensure content is scrollable while the footer remains sticky */
     body, html {
         overflow: hidden;
     }

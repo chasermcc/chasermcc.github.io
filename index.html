@@ -56,6 +56,7 @@
             max-width: 50%;
             font-weight: 325;
             z-index: 15;
+            word-wrap: break-word;
         }
 
         .header-button {
@@ -113,7 +114,7 @@
         .dynamic-text-container {
             display: flex;
             align-items: flex-start;
-            height: 50px; /* Fixed height to prevent layout shifts */
+            height: auto; /* Adjusted to accommodate multiple lines */
             max-width: 320px;
             overflow: hidden;
             line-height: 1.3em;
@@ -124,9 +125,9 @@
         .dynamic-text {
             font-size: 1.21em;
             color: #111;
-            white-space: nowrap; /* Prevent text from wrapping */
+            white-space: normal; /* Allow text to wrap */
             overflow: hidden;
-            text-overflow: ellipsis;
+            text-overflow: clip;
             flex-grow: 1;
             line-height: 1.3em;
             position: relative;
@@ -175,6 +176,7 @@
             transform: translateY(45px);
             letter-spacing: .01em;
             height: 42px;
+            font-size: 16px; /* Ensures input fields have sufficient font size */
         }
 
         button:hover {
@@ -200,6 +202,7 @@
             transform: translateY(45px);
             letter-spacing: .01em;
             height: 42px;
+            font-size: 16px; /* Ensures input fields have sufficient font size */
         }
         
         .first-places-button:hover {
@@ -418,6 +421,7 @@
 
         .modal-content input[type="email"], .modal-content button[type="submit"] {
             width: 435px;
+            font-size: 16px; /* Prevent iOS zoom */
         }
 
         .modal-content h1 {
@@ -459,7 +463,7 @@
 
         .modal-content input[type="email"] {
             padding: 10px;
-            font-size: 1em;
+            font-size: 16px; /* Prevent iOS zoom */
             margin-bottom: 10px;
             width: 435px;
             border: 1px solid #ccc;
@@ -521,7 +525,7 @@
 
         .modal-content button[type="submit"] {
             padding: 12px 24px;
-            font-size: .96em;
+            font-size: 16px; /* Prevent iOS zoom */
             font-weight: 175;
             color: white;
             background-color: #444;
@@ -546,10 +550,6 @@
             cursor: default;
         }
 
-        .modal-content input[type="email"], #submitButton {
-            width: 435px;
-        }
-        
         #errorMessage {
             display: none;
             color: #862110;
@@ -564,36 +564,13 @@
             color: #862110;
         }
         
+        .modal-content input[type="email"].error {
+            border-color: #862110;
+        }
+
         .modal-content input[type="email"]:focus {
             outline: none;
             border-color: #444;
-        }
-        
-        #submitButton {
-            padding: 12px 24px;
-            font-size: .9em;
-            color: white;
-            font-weight: 200;
-            background-color: #444;
-            border: none;
-            border-radius: 0px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            margin-top: 12px;
-            margin-bottom: 0px;
-            width: 435px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            transform: none;
-        }
-        
-        #submitButton:hover {
-            background-color: black;
-        }
-        
-        .modal-content input[type="email"].error {
-            border-color: #862110;
         }
 
         .separator {
@@ -854,7 +831,7 @@
         #suggestionInput {
             flex: 1;
             padding: 10px 12px;
-            font-size: 0.88em;
+            font-size: 16px; /* Ensures font size >=16px to prevent iOS zoom */
             font-weight: 400;
             color: #666;
             background-color: white;
@@ -903,7 +880,7 @@
             position: fixed;
             bottom: 45px;
             left: 50%;
-            transform: translateX(-50%) translateY(20px);
+            transform: translateX(-50%) translateY(20px); /* Start slightly below */
             background-color: #AD8358;
             padding: 12px 24px;
             border-radius: 24px;
@@ -984,6 +961,7 @@
                 right: 15px;
                 max-width: 55%;
                 top: 5%;
+                word-wrap: break-word;
             }
 
             .header-button {
@@ -1016,7 +994,7 @@
                 margin-right: 20px;
                 transform: translateY(90px);
                 margin-bottom: 20px;
-                height: 50px;
+                height: auto; /* Adjust to accommodate multiple lines */
             }
 
             button {
@@ -1024,6 +1002,7 @@
                top: 5%;
                padding: 8px 16px;
                font-weight: 400;
+               font-size: 16px; /* Ensures font size >=16px to prevent iOS zoom */
             }
 
             #suggestionSubmitButton {
@@ -1059,7 +1038,7 @@
                 top: 0;
                 position: relative;
                 width: 100%;
-                height: 275px;
+                height: auto; /* Adjusted for better fit */
                 margin-top: 0px;
                 margin-left: 0px;
                 display: flex;
@@ -1078,32 +1057,34 @@
                 z-index: auto;
                 position: relative; 
                 border-radius: 12px;
+                width: auto; /* Allow responsive sizing */
+                height: auto;
             }
 
             .floating-images img:nth-child(1) {
-                width: 100px;
-                height: 130px;
+                width: 85px;
+                height: 105px;
                 margin: -10px -5px;
                 z-index: 1;
             }
 
             .floating-images img:nth-child(2) {
-                width: 85px;
+                width: 80px;
                 height: 95px;
                 margin: -70px -30px;
                 z-index: 2;
             }
 
             .floating-images img:nth-child(3) {
-                width: 110px;
-                height: 140px;
+                width: 95px;
+                height: 120px;
                 margin: -50px 15px;
                 z-index: 3;
             }
 
             .floating-images img:nth-child(4) {
-                width: 120px;
-                height: 145px;
+                width: 100px;
+                height: 125px;
                 margin: -20px -60px;
                 z-index: 4;
             }
@@ -1214,7 +1195,7 @@
             }
 
             .floating-images {
-                height: 210px;
+                height: auto; /* Adjusted for better fit */
                 box-sizing: border-box;
                 margin-top: -6px;
             }

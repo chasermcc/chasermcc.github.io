@@ -1205,6 +1205,11 @@
         text-align: center;
     }
 }    
+    #suggestionInput {
+    font-size: 16px;
+}
+
+        
     </style>
 </head>
 <body>
@@ -1670,6 +1675,17 @@
     updateHeaderText();
 
     window.addEventListener('resize', updateHeaderText);
+
+    window.addEventListener('resize', function () {
+    if (window.innerHeight < 500) {
+        // Keyboard is likely open, adjust layout
+        document.body.style.position = 'absolute';
+    } else {
+        // Keyboard is closed, reset layout
+        document.body.style.position = '';
+    }
+});
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 

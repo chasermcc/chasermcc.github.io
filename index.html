@@ -1674,29 +1674,11 @@
 
     updateHeaderText();
 
-    window.addEventListener('resize', updateHeaderText);
-
-    window.addEventListener('resize', function () {
-    if (window.innerHeight < 500) {
-        // Keyboard is likely open, adjust layout
-        document.body.style.position = 'absolute';
-    } else {
-        // Keyboard is closed, reset layout
-        document.body.style.position = '';
-    }
+ suggestionInput.addEventListener('focus', function () {
+    suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
-    const suggestionInput = document.getElementById('suggestionInput');
 
-function adjustViewportHeight() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
 
-adjustViewportHeight();
-
-window.addEventListener('resize', adjustViewportHeight);
-
-    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     

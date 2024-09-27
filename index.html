@@ -18,17 +18,18 @@
         html, body {
             overflow-x: hidden;
             width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow-y: hidden;
             background-color: #FAF8F6;
             transition: background-color 2s ease-in-out;
             animation: fadeIn 1s ease-in-out;
             min-height: 100vh;
-            height: auto;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -37,7 +38,7 @@
         }
 
         .background {
-            position: absolute;
+            position: fixed; /* Changed to fixed to cover the viewport */
             width: 100%;
             height: 100%;
             top: 0;
@@ -161,7 +162,7 @@
         button {
             margin-top: 0px;
             padding: 12px 24px;
-            font-size: .9em;
+            font-size: 16px; /* Consolidated font-size */
             font-weight: 500;
             color: #FAF8F6;
             background-color: #444;
@@ -176,7 +177,6 @@
             transform: translateY(45px);
             letter-spacing: .01em;
             height: 42px;
-            font-size: 16px;
         }
 
         button:hover {
@@ -352,6 +352,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
+            overflow: auto; /* Ensure modal can scroll if content overflows */
         }
         
         .modal.show {
@@ -359,8 +360,12 @@
             animation: fadeInModal 0.37s ease-in-out;
         }
 
+        /* Scroll-lock styles */
         body.modal-open {
+            position: fixed;
+            width: 100%;
             overflow: hidden;
+            /* top will be set dynamically via JS to prevent scroll jump */
         }
 
         .modal-content {
@@ -376,9 +381,10 @@
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
-            max-height: 100vh;
+            max-height: 90vh; /* Adjusted for better fit on mobile */
             -webkit-overflow-scrolling: touch;
             z-index: 1001;
+            border-radius: 8px; /* Optional: Adds slight rounding for aesthetics */
         }
 
         .close-button {
@@ -393,12 +399,11 @@
             font-weight: 200;
             cursor: pointer;
             position: absolute;
-            top: 0px;
-            right: 0px;
+            top: 10px; /* Adjusted for better spacing */
+            right: 10px; /* Adjusted for better spacing */
             color: #444;
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1;
-            transform: translateY(-4px);
             z-index: 1002;
         }
 
@@ -412,7 +417,8 @@
         }
 
         .modal-content input[type="email"], .modal-content button[type="submit"] {
-            width: 435px;
+            width: 100%; /* Changed to 100% for better responsiveness */
+            max-width: 435px;
             font-size: 16px;
         }
 
@@ -434,7 +440,8 @@
             margin-bottom: 27px;
             margin-left: auto;
             margin-right: auto;
-            width: 435px;
+            width: 100%; /* Changed to 100% for better responsiveness */
+            max-width: 435px;
             line-height: 1.4em;
             color: #555;
             word-wrap: break-word;
@@ -451,14 +458,16 @@
             text-align: left;
             margin-left: auto;
             margin-right: auto;
-            width: 435px;
+            width: 100%; /* Changed to 100% for better responsiveness */
+            max-width: 435px;
         }
 
         .modal-content input[type="email"] {
             padding: 10px;
             font-size: 16px;
             margin-bottom: 10px;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             border: 1px solid #ccc;
             border-radius: 0px;
             text-align: left;
@@ -470,7 +479,8 @@
 
         .checkbox-container {
             margin-top: 15px;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             box-sizing: border-box;
         }
 
@@ -478,8 +488,8 @@
         #submitButton,
         #googleSignInButton,
         .checkbox-container {
-            width: 435px;
-            max-width: 100%;
+            width: 100%;
+            max-width: 435px;
             box-sizing: border-box;
         }
         
@@ -527,7 +537,8 @@
             cursor: pointer;
             transition: background-color 0.1s ease;
             margin-top: 10px;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -549,7 +560,8 @@
             font-size: 0.74em;
             text-align: left;
             margin: 1px auto;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             letter-spacing: .01em;
         }
         
@@ -571,7 +583,8 @@
             align-items: center;
             text-align: center;
             margin: 15px 0;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
         }
         
         .separator::before,
@@ -600,7 +613,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             padding: 12px;
             font-size: 0.88em;
             font-weight: 400;
@@ -630,8 +644,9 @@
         .brand-signup {
             background-color: #f7f7f7;
             border-radius: 5px;
-            padding: 13px 13px 13px 13px;
-            width: 435px;
+            padding: 13px;
+            width: 100%;
+            max-width: 435px;
             margin: 20px 0 0 0;
             box-sizing: border-box;
             text-align: center;
@@ -689,7 +704,8 @@
             margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             line-height: 1.2em;
             color: #444;
             word-wrap: break-word;
@@ -704,7 +720,8 @@
             margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             line-height: 1.4em;
             word-wrap: break-word;
         }
@@ -720,7 +737,8 @@
             cursor: pointer;
             transition: background-color 0.1s ease;
             margin-top: 10px;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -736,7 +754,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             padding: 12px;
             font-size: 0.88em;
             font-weight: 400;
@@ -761,13 +780,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
             padding: 12px;
             font-size: 0.88em;
             font-weight: 400;
             color: #555;
             background-color: transparent;
-            border: 0px solid #ccc;
+            border: none; /* Changed from 0px solid #ccc to none */
             border-radius: 0px;
             cursor: pointer;
             transition: background-color 0.1s ease, color 0.1s ease;
@@ -788,14 +808,14 @@
             justify-content: center;
             text-align: center;
             margin: 15px auto;
-            width: 435px;
+            width: 100%;
+            max-width: 435px;
         }
 
         #thankYouContent .separator {
             justify-content: center;
         }
 
-        
         .separator.no-text::before,
         .separator.no-text::after {
             content: '';
@@ -938,6 +958,7 @@
            
             body.modal-open {
                 overflow: hidden;
+                /* Additional styles handled via JS */
             }
 
             .modal {
@@ -954,6 +975,8 @@
                 color: #222;
                 font-size: 38px;
                 font-weight: 300;
+                top: 10px; /* Adjusted for better spacing */
+                right: 10px; /* Adjusted for better spacing */
             }
 
             .suggestion-form {
@@ -1126,7 +1149,7 @@
                 animation: fadeInModal 0.37s ease-in-out;
             }    
             
-           .modal-content {
+            .modal-content {
                 height: 100%;
                 width: 100%;
                 padding: 15px;
@@ -1137,6 +1160,7 @@
                 justify-content: center;
                 align-items: center;
                 transform: none;
+                max-height: 100vh; /* Ensure modal doesn't exceed viewport */
             }
 
             .modal-content h1 {
@@ -1187,7 +1211,6 @@
 
             .modal-content input[type="submit"], #submitButton {
                 width: 100%;
-                
             }
 
             .notification-bubble {
@@ -1398,6 +1421,9 @@
     
    <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Variables to store scroll position
+    let scrollPosition = 0;
+
     // Function to calculate scrollbar width
     function getScrollbarWidth() {
         return window.innerWidth - document.documentElement.clientWidth;
@@ -1653,6 +1679,7 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.style.position = 'fixed';
         textarea.style.top = '0';
         textarea.style.left = '0';
+        textarea.style.opacity = '0'; // Make it invisible
 
         document.body.appendChild(textarea);
         textarea.focus();
@@ -1670,28 +1697,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function openModal() {
         console.log("openModal function called"); // Debugging
-        const scrollbarWidth = getScrollbarWidth();
-        document.body.style.paddingRight = `${scrollbarWidth}px`; // Prevent layout shift
-        modal.style.display = "flex";
-        modal.classList.add("show");
+        // Store the current scroll position
+        scrollPosition = window.scrollY || window.pageYOffset;
+        // Add modal-open class to body to lock scroll
         document.body.classList.add("modal-open");
+        // Apply fixed position to body to prevent background scroll
+        document.body.style.top = `-${scrollPosition}px`;
+        // Show the modal
+        modal.classList.add("show");
+        // Ensure modal is visible
+        modal.style.display = "flex";
     }
 
     function closeModal() {
         console.log("closeModal function called"); // Debugging
-        document.body.style.paddingRight = ''; // Remove added padding
-        modal.style.display = "none";
+        // Hide the modal
         modal.classList.remove("show");
+        modal.style.display = "none";
+        // Remove modal-open class from body
         document.body.classList.remove("modal-open");
-        /* Removed these lines as they're no longer needed */
-        /* document.body.style.position = ''; */
-        /* document.body.style.overflow = ''; */
-
+        // Remove fixed position and restore scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        window.scrollTo(0, scrollPosition);
+        // Reset content visibility
         const originalContent = document.getElementById("originalContent");
         const thankYouContent = document.getElementById("thankYouContent");
         originalContent.style.display = "block";
         thankYouContent.style.display = "none";
-
         // Reset modal content max-height
         const modalContent = document.querySelector('.modal-content');
         modalContent.style.maxHeight = '';
@@ -1807,8 +1840,14 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
+
+    // Prevent touchmove events from scrolling the background when modal is open
+    modal.addEventListener('touchmove', function(event) {
+        event.stopPropagation();
+    }, { passive: false });
 });
 </script>
+
 
     
 </body>

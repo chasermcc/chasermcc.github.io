@@ -361,8 +361,6 @@
 
         body.modal-open {
             overflow: hidden;
-            position: fixed;
-            width: 100%;
             overflow-y: auto;
         }
 
@@ -1024,23 +1022,20 @@
                padding: 8px 16px;
                font-weight: 400;
                font-size: 16px;
+               transform: none;
             }
 
-            #suggestionSubmitButton {
-                top: 0;
-            }
-
-            #googleSignInButton {
+            #suggestionSubmitButton, #googleSignInButton {
                 top: 0;
             }
 
             #joinWaitlistButton {
-                transform: translateY(192px);
+                transform: none;
                 font-weight: 400;
             }
 
             .first-places-button {
-                transform: translateY(190px);
+                transform: none;
                 margin-top: 8px;
                 font-weight: 400;
             }
@@ -1143,6 +1138,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                transform: none;
             }
 
             .modal-content h1 {

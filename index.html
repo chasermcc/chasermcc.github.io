@@ -114,7 +114,7 @@
         .dynamic-text-container {
             display: flex;
             align-items: flex-start;
-            height: auto; /* Adjusted to accommodate multiple lines */
+            min-height: 3.1em;
             max-width: 320px;
             overflow: hidden;
             line-height: 1.3em;
@@ -125,7 +125,7 @@
         .dynamic-text {
             font-size: 1.21em;
             color: #111;
-            white-space: normal; /* Allow text to wrap */
+            white-space: normal;
             overflow: hidden;
             text-overflow: clip;
             flex-grow: 1;
@@ -154,7 +154,7 @@
             50% { opacity: 0.3; }    
             55% { opacity: 0.2; }  
             70% { opacity: 0.0; } 
-            92% { opacity: 0.9; }
+            92% { opacity: 0.8; }
             100% {opacity: 1.0; }      
         }
 
@@ -176,7 +176,7 @@
             transform: translateY(45px);
             letter-spacing: .01em;
             height: 42px;
-            font-size: 16px; /* Ensures input fields have sufficient font size */
+            font-size: 16px;
         }
 
         button:hover {
@@ -187,7 +187,7 @@
         .first-places-button {
             margin-top: 8px;
             padding: 10px 20px;
-            font-size: 0.88em;
+            font-size: 0.86em;
             font-weight: 200;
             color: #444;
             background-color: transparent;
@@ -202,7 +202,6 @@
             transform: translateY(45px);
             letter-spacing: .01em;
             height: 42px;
-            font-size: 16px; /* Ensures input fields have sufficient font size */
         }
         
         .first-places-button:hover {
@@ -211,7 +210,6 @@
             border: 1px solid black;
         }
 
-        /* Floating Images */
         .floating-images {
             position: absolute;
             top: calc(1.8% + 91px);
@@ -221,10 +219,10 @@
             height: auto;
             display: flex;
             flex-wrap: wrap;
-            padding: 18px;
+            padding: 16px;
             z-index: 10;
-            justify-content: space-around; /* Even distribution */
-            align-items: center; /* Vertical alignment */
+            justify-content: space-around;
+            align-items: center;
         }
         
         .floating-images img {
@@ -237,7 +235,6 @@
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* Specific Animations for Images */
         .floating-images img:nth-child(1) {
             width: 225px;
             height: 285px; 
@@ -258,8 +255,8 @@
         
         .floating-images img:nth-child(4) {
             margin-bottom: 75px;
-            width: 285px; 
-            height: 345px;
+            width: 290px; 
+            height: 350px;
             animation: float4 25s linear infinite;
         }
         
@@ -311,7 +308,6 @@
             }
         }
         
-        /* Footer */
         .footer {
             position: absolute;
             bottom: 60px;
@@ -340,7 +336,6 @@
             color: black;
         }
 
-        /* Modal */
         @keyframes fadeInModal {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -407,7 +402,7 @@
             transition: background-color 0.1s ease, color 0.1s ease;
             line-height: 1;
             transform: translateY(-4px);
-            z-index: 1002; /* Ensure it's above modal-content */
+            z-index: 1002;
         }
 
         .close-button:hover {
@@ -421,7 +416,7 @@
 
         .modal-content input[type="email"], .modal-content button[type="submit"] {
             width: 435px;
-            font-size: 16px; /* Prevent iOS zoom */
+            font-size: 16px;
         }
 
         .modal-content h1 {
@@ -463,7 +458,7 @@
 
         .modal-content input[type="email"] {
             padding: 10px;
-            font-size: 16px; /* Prevent iOS zoom */
+            font-size: 16px;
             margin-bottom: 10px;
             width: 435px;
             border: 1px solid #ccc;
@@ -662,7 +657,7 @@
 
         #thankYouContent {
             max-height: 100%;
-            overflow-y: auto;
+            overflow-y: hidden;
             width: 100%;
             box-sizing: border-box;
         }
@@ -681,15 +676,15 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8em;
             margin-bottom: 0px;
-            margin-top: 40px;
+            margin-top: 38px;
             z-index: 1003;
         }
         
         #thankYouContent p {
             font-family: 'Playfair Display', sans-serif;
             font-size: 1.3em;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin-top: 5px;
+            margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
             width: 435px;
@@ -705,7 +700,7 @@
             font-size: 0.85em;
             color: #555;
             font-weight: 200;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
             width: 435px;
@@ -790,7 +785,7 @@
             display: flex;
             align-items: center;
             text-align: center;
-            margin: 14px 0;
+            margin: 5px 0;
             width: 435px;
         }
         
@@ -814,7 +809,7 @@
             color: #444;
             line-height: 1.3em;
             text-align: center;
-            margin: 15px auto;
+            margin: 5px auto;
             width: 435px;
             word-wrap: break-word;
             font-weight: 400;
@@ -823,7 +818,7 @@
         .suggestion-form {
             display: flex;
             width: 435px;
-            margin: 18px auto;
+            margin: 5px auto;
             box-sizing: border-box;
             height: 42px;
         }
@@ -875,12 +870,11 @@
             border-color: black;
         }
 
-        /* Notification Bubble */
         .notification-bubble {
             position: fixed;
-            bottom: 45px;
+            bottom: 50px;
             left: 50%;
-            transform: translateX(-50%) translateY(20px); /* Start slightly below */
+            transform: translateX(-50%) translateY(20px);
             background-color: #AD8358;
             padding: 12px 24px;
             border-radius: 24px;
@@ -888,14 +882,13 @@
             color: white;
             opacity: 0;
             transition: all 0.5s ease;
-            z-index: 2002; /* Above confetti and modal */
+            z-index: 2002;
             font-weight: 350;
             max-width: calc(100% - 30px);
             box-sizing: border-box;
             display: none;
         }
 
-        /* Animation for rising and fading in */
         @keyframes riseFadeIn {
             from {
                 opacity: 0;
@@ -928,11 +921,10 @@
         
         @media (min-width: 769px) {
             .floating-images {
-                min-height: 600px; /* Conditional min-height for larger screens */
+                min-height: 600px;
             }
         }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
             body {
                 padding: 15px 15px;
@@ -951,7 +943,7 @@
                 height: 55px;
                 width: 55px;
                 color: #222;
-                font-size: 37px;
+                font-size: 38px;
                 font-weight: 300;
             }
 
@@ -994,7 +986,7 @@
                 margin-right: 20px;
                 transform: translateY(90px);
                 margin-bottom: 20px;
-                height: auto; /* Adjust to accommodate multiple lines */
+                height: auto;
             }
 
             button {
@@ -1002,7 +994,7 @@
                top: 5%;
                padding: 8px 16px;
                font-weight: 400;
-               font-size: 16px; /* Ensures font size >=16px to prevent iOS zoom */
+               font-size: 16px;
             }
 
             #suggestionSubmitButton {
@@ -1014,12 +1006,12 @@
             }
 
             #joinWaitlistButton {
-                transform: translateY(100px);
+                transform: translateY(200px);
                 font-weight: 400;
             }
 
             .first-places-button {
-                transform: translateY(96px);
+                transform: translateY(200px);
                 margin-top: 8px;
                 font-weight: 400;
             }
@@ -1038,7 +1030,7 @@
                 top: 0;
                 position: relative;
                 width: 100%;
-                height: auto; /* Adjusted for better fit */
+                height: auto;
                 margin-top: 0px;
                 margin-left: 0px;
                 display: flex;
@@ -1057,7 +1049,7 @@
                 z-index: auto;
                 position: relative; 
                 border-radius: 12px;
-                width: auto; /* Allow responsive sizing */
+                width: auto;
                 height: auto;
             }
 
@@ -1089,8 +1081,8 @@
                 z-index: 4;
             }
 
-            .floating-images img:nth-child(5), /* Hides the 5th image */
-            .floating-images img:nth-child(6) { /* Hides the 6th image */
+            .floating-images img:nth-child(5),
+            .floating-images img:nth-child(6) {
                 display: none;
             }
 
@@ -1125,7 +1117,6 @@
                 font-weight: 390;
             }
 
-            /* Ensure all modal elements have 100% width */
             .modal-content h1,
             .modal-content p,
             .modal-content label,
@@ -1195,7 +1186,7 @@
             }
 
             .floating-images {
-                height: auto; /* Adjusted for better fit */
+                height: auto;
                 box-sizing: border-box;
                 margin-top: -6px;
             }
@@ -1219,11 +1210,8 @@
                 width: 100px;
                 height: 125px;
             }
-
-            /* Additional small screen adjustments can go here */
         }
 
-        /* Ensure confetti canvas is above all other elements */
         canvas {
             z-index: 2001; /* Above modal and notification bubble */
             position: fixed;
@@ -1285,7 +1273,6 @@
         <button id="firstPlacesButton" class="first-places-button">Shop our first places</button>
     </div>
 
-    <!-- Modal Structure -->
     <div id="waitlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
             <span class="close-button" aria-label="Close Modal">&times;</span>
@@ -1337,7 +1324,6 @@
         </div>
     </div>
 
-    <!-- Footer with Social Media Links -->
     <div class="footer">
         <div class="social-media-links">
             <a href="https://www.instagram.com/shopmemorably" target="_blank" class="social-button">
@@ -1352,12 +1338,9 @@
         </div>
     </div>
     
-    <!-- JavaScript -->
-    <!-- Load confetti library before the inline script -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // Taglines and Colors
         const taglines = [
             "Discover the best in hospitality",
             "Shop your neighborhood favorites or wherever your journey takes you",
@@ -1372,7 +1355,6 @@
             "#F4F5E0"
         ];
 
-        // Image Sets
         const imagesSets = [
             document.getElementById('images1'),
             document.getElementById('images2'),
@@ -1384,7 +1366,6 @@
 
         const dynamicTextElement = document.querySelector('.dynamic-text');
 
-        // Typing Effect for Taglines
         function typeTagline() {
             const tagline = taglines[currentIndex];
             let i = 0;
@@ -1399,7 +1380,6 @@
             }, 55);
         }
 
-        // Randomize Image Positions
         function randomizeImagePositions(set) {
             imagesSets.forEach(imageSet => {
                 if (imageSet !== set) {
@@ -1423,7 +1403,6 @@
                 images[3].style.left = centralPosition.left;
                 images[3].style.zIndex = 4;
 
-                // Shuffle surrounding positions
                 for (let i = surroundingPositions.length - 1; i >= 0; i--) {
                     const randomIndex = Math.floor(Math.random() * (i + 1));
                     [surroundingPositions[i], surroundingPositions[randomIndex]] = [surroundingPositions[randomIndex], surroundingPositions[i]];
@@ -1451,7 +1430,6 @@
             }
         }
 
-        // Fade Images Transition
         function fadeImages() {
             const previousSet = imagesSets[currentIndex];
             currentIndex = (currentIndex + 1) % imagesSets.length;
@@ -1476,37 +1454,31 @@
             }, 800);
         }
 
-        // Change Background Color
         function changeBackgroundColor() {
             const nextColor = colors[currentIndex];
             document.getElementById('background').style.backgroundColor = nextColor;
         }
 
-        // Start Transitions
         function startTransitions() {
             typeTagline();
             changeBackgroundColor();
             fadeImages();
         }
 
-        // Initialize Current Image Set
         imagesSets[currentIndex].style.display = 'block';
         randomizeImagePositions(imagesSets[currentIndex]);
         imagesSets[currentIndex].querySelectorAll('img').forEach((img) => {
             img.style.opacity = '1';
         });
 
-        // Handle Window Resize
         window.addEventListener('resize', function() {
             const currentSet = imagesSets[currentIndex];
             randomizeImagePositions(currentSet);
         });
 
-        // Start Initial Transitions and Set Interval
         startTransitions();
         setInterval(startTransitions, 8000);
 
-        // Modal Handling
         const modal = document.getElementById("waitlistModal");
         const joinWaitlistButton = document.getElementById("joinWaitlistButton");
         const closeButton = document.querySelector(".close-button");
@@ -1580,7 +1552,6 @@
                 colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
             });
 
-            // Adjust the confetti canvas z-index
             const confettiCanvas = document.querySelector('canvas');
             if (confettiCanvas) {
                 confettiCanvas.style.zIndex = '2001'; // Ensure it's above the modal and notification bubble
@@ -1592,7 +1563,6 @@
             const exitButton = document.getElementById("exitButton");
             exitButton.onclick = closeModal;
 
-            // Scroll back to top after submitting suggestion
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1721,21 +1691,10 @@
             }
         }
 
-        // Initial call to set the correct header text on page load
         updateHeaderText();
 
-        // Add event listener to handle window resizing
         window.addEventListener('resize', updateHeaderText);
 
-        /* Removed the scrollIntoView on focus to prevent excessive scrolling on mobile iOS
-        suggestionInput.addEventListener('focus', function () {
-            setTimeout(() => {
-                suggestionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-        });
-        */
-
-        /* Adjust modal on keyboard */
         function adjustModalOnKeyboard() {
             const modalContent = document.querySelector('.modal-content');
 
@@ -1749,9 +1708,8 @@
             });
         }
 
-        adjustModalOnKeyboard(); // Initialize the function
+        adjustModalOnKeyboard();
 
-        // Optional: Trap focus within modal for accessibility
         modal.addEventListener('keydown', function(event) {
             const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
             const firstElement = focusableElements[0];

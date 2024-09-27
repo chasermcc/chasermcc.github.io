@@ -377,6 +377,7 @@
             max-height: 100vh;
             -webkit-overflow-scrolling: touch;
             z-index: 1001;
+            height: 100%;
         }
 
         .close-button {
@@ -1783,18 +1784,37 @@ function adjustModalOnKeyboard() {
     const inputs = modalContent.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
+            // On focus, adjust modal content to keep input in view
             setTimeout(() => {
-                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                modalContent.scrollTop = input.offsetTop - 20; // Adjust as needed
             }, 300);
         });
 
         input.addEventListener('blur', () => {
-            modalContent.style.maxHeight = '';
+            // On blur, force the viewport to reset
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                modalContent.style.transform = 'translateY(0)';
+            }, 100);
         });
     });
 }
 
 adjustModalOnKeyboard();
+
+// Listen for orientation change or resize events to adjust the viewport
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 500);
+});
+
+window.addEventListener('resize', () => {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 500);
+});
+
 
 modal.addEventListener('keydown', function (event) {
     const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');

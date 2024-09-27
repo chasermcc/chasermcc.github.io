@@ -829,14 +829,14 @@
         .suggestion-form {
             display: flex;
             max-width: 435px;
+            width: 100%;
             margin: 10px auto;
             box-sizing: border-box;
             height: 42px;
         }
         
         #suggestionInput {
-            flex: 1;
-            min-width: 285px;
+            flex: 1 1 70%;
             padding: 10px 12px;
             font-size: 16px;
             font-weight: 400;
@@ -848,6 +848,7 @@
             transition: border-color 0.1s ease;
             box-sizing: border-box;
             height: calc(100% - 2px);
+            min-width: 150px;
         }
         
         #suggestionInput::placeholder {
@@ -860,7 +861,7 @@
         }
         
         .suggestion-form #suggestionSubmitButton {
-            flex: 0 0 150px;
+            flex: 0 0 30%;
             padding: 10px 12px;
             font-size: 0.88em;
             font-weight: 400;
@@ -875,6 +876,7 @@
             box-sizing: border-box;
             margin-top: 0;
             z-index: 15;
+            min-width: 100px;
         }
         
         #suggestionSubmitButton:hover {
@@ -963,6 +965,18 @@
                 font-weight: 300;
             }
 
+            .suggestion-form {
+                max-width: 100%;
+            }
+
+            #suggestionInput {
+                flex: 1 1 65%;
+            }
+        
+            #suggestionSubmitButton {
+                flex: 0 0 35%;
+            }
+            
             .separator.no-text {
                 width: 93%;
             }
@@ -1236,6 +1250,19 @@
                 height: 125px;
             }
         }
+            .suggestion-form {
+                flex-direction: column; /* Stacks input and button vertically */
+                height: auto;
+            }
+
+            #suggestionInput, #suggestionSubmitButton {
+                width: 100%;
+                flex: none; /* Removes flex properties to allow full width */
+            }
+        
+            #suggestionSubmitButton {
+                margin-top: 10px; /* Adds spacing between input and button */
+            }
 
         canvas {
             z-index: 2001;

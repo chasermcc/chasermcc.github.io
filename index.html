@@ -1707,6 +1707,10 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.add("show");
         // Ensure modal is visible
         modal.style.display = "flex";
+        // Adjust modal height based on current viewport
+        adjustModalHeight();
+        // Focus on the email input for accessibility
+        document.getElementById("email").focus();
     }
 
     function closeModal() {
@@ -1801,6 +1805,12 @@ document.addEventListener('DOMContentLoaded', function() {
     updateHeaderText();
 
     window.addEventListener('resize', updateHeaderText);
+
+    function adjustModalHeight() {
+        const modalContent = document.querySelector('.modal-content');
+        const vh = window.innerHeight * 0.90; // Adjusted to 90% for better fit
+        modalContent.style.maxHeight = `${vh}px`;
+    }
 
     function adjustModalOnKeyboard() {
         const modalContent = document.querySelector('.modal-content');

@@ -37,8 +37,8 @@
 
         .background {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100vh;
+            height: 100vh;
             top: 0;
             left: 0;
             z-index: -1;
@@ -930,13 +930,14 @@
 
         @media (max-width: 768px) {
             body {
-                overflow-y: hidden;
+                overflow: hidden;
                 padding-left: 15px;
             }
            
             body.modal-open {
-                position: fixed;
-                width: 100%;
+                position: static;
+                width: 100vh;
+                height: 100vh;
                 overflow-y: hidden;
             }
 

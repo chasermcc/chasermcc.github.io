@@ -359,7 +359,6 @@
             position: fixed;
             overflow: hidden;
             width: 100%;
-            height: 100%;
         }
 
         .modal-content {
@@ -1547,27 +1546,66 @@ window.addEventListener('resize', function () {
 startTransitions();
 setInterval(startTransitions, 8000);
 
+// Variables to save scroll position
+let scrollPosition = 0;
+
 const modal = document.getElementById("waitlistModal");
 const joinWaitlistButton = document.getElementById("joinWaitlistButton");
 const closeButton = document.querySelector(".close-button");
 
 joinWaitlistButton.onclick = function () {
-    modal.style.display = "flex";
-    modal.classList.add("show");
-    document.body.classList.add("modal-open");
-
-    setTimeout(() => {
-        modal.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
+    openModal();
 };
 
 closeButton.onclick = function () {
     closeModal();
 };
 
+function openModal() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add("modal-open");
+    modal.style.display = "flex";
+    modal.classList.add("show");
+
+    // Prevent touch events on background
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    modal.classList.remove("show");
+
+    document.body.classList.remove("modal-open");
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+
+    // Remove touchmove listener
+    document.removeEventListener('touchmove', preventScroll);
+
+    const originalContent = document.getElementById("originalContent");
+    const thankYouContent = document.getElementById("thankYouContent");
+    originalContent.style.display = "block";
+    thankYouContent.style.display = "none";
+
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.style.maxHeight = '';
+}
+
+function preventScroll(e) {
+    e.preventDefault();
+}
+
 const modalContent = document.querySelector(".modal-content");
 modalContent.onclick = function (event) {
     event.stopPropagation();
+};
+
+window.onclick = function (event) {
+    if (event.target === modal) {
+        closeModal();
+    }
 };
 
 const waitlistForm = document.getElementById("waitlistForm");
@@ -1673,22 +1711,6 @@ function copyToClipboard(text) {
     document.body.removeChild(textarea);
 }
 
-function closeModal() {
-    modal.style.display = "none";
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-    document.body.style.position = ''; // Reset position
-    document.body.style.overflow = ''; // Reset overflow
-
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-    originalContent.style.display = "block";
-    thankYouContent.style.display = "none";
-
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.style.maxHeight = '';
-}
-
 document.getElementById("email").addEventListener("input", function () {
     const emailInput = document.getElementById("email");
     const emailLabel = document.getElementById("emailLabel");
@@ -1758,23 +1780,16 @@ window.addEventListener('resize', updateHeaderText);
 function adjustModalOnKeyboard() {
     const modalContent = document.querySelector('.modal-content');
 
-    window.addEventListener('resize', function () {
-        if (document.body.classList.contains('modal-open')) {
-            const vh = window.innerHeight * 0.90;
-            modalContent.style.maxHeight = `${vh}px`;
-        }
-    });
-
     const inputs = modalContent.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
-            const viewportHeight = window.innerHeight * 0.90;
-            modalContent.style.maxHeight = `${viewportHeight}px`;
-            modalContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
         });
 
         input.addEventListener('blur', () => {
-            modalContent.style.maxHeight = '100%';
+            modalContent.style.maxHeight = '';
         });
     });
 }
@@ -1804,6 +1819,7 @@ modal.addEventListener('keydown', function (event) {
         closeModal();
     }
 });
+
     </script>
     
 </body>

@@ -16,7 +16,7 @@
         }
 
         html, body {
-            overflow-x: hidden;
+            overflow: hidden;
             width: 100%;
             height: 100%;
             margin: 0;
@@ -373,17 +373,17 @@
             padding: 18px;
             text-align: center;
             color: #333;
-            position: relative;
+            position: fixed;
             overflow: hidden;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
-            max-height: 90vh; /* Adjusted for better fit on mobile */
+            max-height: 100vh;
             -webkit-overflow-scrolling: touch;
             z-index: 1001;
-            border-radius: 8px; /* Optional: Adds slight rounding for aesthetics */
+            border-radius: 0px;
         }
 
         .close-button {
@@ -957,7 +957,11 @@
            
             body.modal-open {
                 overflow: hidden;
-                /* Additional styles handled via JS */
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
             }
 
             .modal {
@@ -1435,9 +1439,9 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
-   <script>
-document.addEventListener('DOMContentLoaded', function() {
+
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
     // Variables to store scroll position
     let scrollPosition = 0;
 
@@ -1507,11 +1511,6 @@ document.addEventListener('DOMContentLoaded', function() {
             images[3].style.top = centralPosition.top;
             images[3].style.left = centralPosition.left;
             images[3].style.zIndex = 4;
-
-            for (let i = surroundingPositions.length - 1; i >= 0; i--) {
-                const randomIndex = Math.floor(Math.random() * (i + 1));
-                [surroundingPositions[i], surroundingPositions[randomIndex]] = [surroundingPositions[randomIndex], surroundingPositions[i]];
-            }
 
             let surroundingImageIndex = 0;
             images.forEach((img, index) => {
@@ -1589,12 +1588,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeButton = document.querySelector(".close-button");
 
     joinWaitlistButton.onclick = function() {
-        console.log("Join Waitlist Button Clicked"); // Debugging
         openModal();
     };
 
     closeButton.onclick = function() {
-        console.log("Close Button Clicked"); // Debugging
         closeModal();
     };
 
@@ -1627,8 +1624,6 @@ document.addEventListener('DOMContentLoaded', function() {
             emailInput.classList.remove("error");
             emailLabel.classList.remove("error");
             errorMessage.style.display = "none";
-
-            console.log("Valid email submitted:", emailInput.value);
 
             let waitlistPosition = localStorage.getItem('waitlistPosition');
             if (!waitlistPosition) {
@@ -1713,41 +1708,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function openModal() {
-        console.log("openModal function called"); // Debugging
-        // Store the current scroll position
         scrollPosition = window.scrollY || window.pageYOffset;
-        // Add modal-open class to body to lock scroll
         document.body.classList.add("modal-open");
-        // Apply fixed position to body to prevent background scroll
         document.body.style.top = `-${scrollPosition}px`;
-        // Show the modal
         modal.classList.add("show");
-        // Ensure modal is visible
         modal.style.display = "flex";
-        // Adjust modal height based on current viewport
         adjustModalHeight();
-        // Focus on the email input for accessibility
         document.getElementById("email").focus();
     }
 
     function closeModal() {
-        console.log("closeModal function called"); // Debugging
-        // Hide the modal
         modal.classList.remove("show");
         modal.style.display = "none";
-        // Remove modal-open class from body
         document.body.classList.remove("modal-open");
-        // Remove fixed position and restore scroll
         document.body.style.position = '';
         document.body.style.top = '';
         window.scrollTo(0, scrollPosition);
-        // Reset content visibility
+
         const originalContent = document.getElementById("originalContent");
         const thankYouContent = document.getElementById("thankYouContent");
         originalContent.style.display = "block";
         thankYouContent.style.display = "none";
-        // Reset modal content max-height
-        const modalContent = document.querySelector('.modal-content');
+
         modalContent.style.maxHeight = '';
     }
 
@@ -1775,7 +1757,6 @@ document.addEventListener('DOMContentLoaded', function() {
     suggestionSubmitButton.addEventListener('click', function() {
         const suggestionText = suggestionInput.value.trim();
         if (suggestionText !== "") {
-            console.log("Suggestion submitted:", suggestionText);
             suggestionInput.value = "";
             showNotificationBubble();
         } else {
@@ -1785,7 +1766,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showNotificationBubble() {
         const existingBubble = document.querySelector('.notification-bubble');
-        if (existingBubble) return; // Prevent multiple bubbles
+        if (existingBubble) return;
 
         const bubble = document.createElement('div');
         bubble.className = 'notification-bubble';
@@ -1797,10 +1778,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             bubble.classList.remove('show');
             bubble.classList.add('hide');
-            // Remove the bubble after animation
             setTimeout(() => {
                 bubble.remove();
-            }, 500); // Match the duration of the animation
+            }, 500);
         }, 4000);
     }
 
@@ -1820,29 +1800,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateHeaderText();
-
     window.addEventListener('resize', updateHeaderText);
 
+    // Adjust modal height based on viewport size
     function adjustModalHeight() {
         const modalContent = document.querySelector('.modal-content');
-        const vh = window.innerHeight * 0.90; // Adjusted to 90% for better fit
+        const vh = window.innerHeight * 0.90; // Adjusted to 90% of the viewport height
         modalContent.style.maxHeight = `${vh}px`;
     }
 
-    function adjustModalOnKeyboard() {
-        const modalContent = document.querySelector('.modal-content');
-
-        window.addEventListener('resize', function () {
-            if (document.body.classList.contains('modal-open')) {
-                // Get the current viewport height
-                const vh = window.innerHeight * 0.90; // Adjusted to 90% for better fit
-                // Set the modal content's max-height
-                modalContent.style.maxHeight = `${vh}px`;
-            }
-        });
-    }
-
-    adjustModalOnKeyboard();
+    // Adjust modal height when the keyboard opens or viewport changes
+    window.addEventListener('resize', adjustModalHeight);
 
     modal.addEventListener('keydown', function(event) {
         const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
@@ -1850,12 +1818,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const lastElement = focusableElements[focusableElements.length - 1];
 
         if (event.key === 'Tab') {
-            if (event.shiftKey) { // Shift + Tab
+            if (event.shiftKey) {
                 if (document.activeElement === firstElement) {
                     event.preventDefault();
                     lastElement.focus();
                 }
-            } else { // Tab
+            } else {
                 if (document.activeElement === lastElement) {
                     event.preventDefault();
                     firstElement.focus();
@@ -1873,9 +1841,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     }, { passive: false });
 });
-</script>
-
-
+    </script>
     
 </body>
 </html>

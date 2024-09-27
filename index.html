@@ -1439,16 +1439,10 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <script>
-   document.addEventListener('DOMContentLoaded', function() {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
     // Variables to store scroll position
     let scrollPosition = 0;
-
-    // Function to calculate scrollbar width
-    function getScrollbarWidth() {
-        return window.innerWidth - document.documentElement.clientWidth;
-    }
 
     const taglines = [
         "Discover the best in hospitality",
@@ -1578,6 +1572,8 @@
     window.addEventListener('resize', function() {
         const currentSet = imagesSets[currentIndex];
         randomizeImagePositions(currentSet);
+        updateHeaderText();
+        adjustModalHeight();
     });
 
     startTransitions();
@@ -1654,7 +1650,7 @@
 
         const confettiCanvas = document.querySelector('canvas');
         if (confettiCanvas) {
-            confettiCanvas.style.zIndex = '2001'; // Ensure it's above the modal and notification bubble
+            confettiCanvas.style.zIndex = '2001';
         }
 
         const shareButton = document.getElementById("shareButton");
@@ -1664,6 +1660,8 @@
         exitButton.onclick = closeModal;
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        adjustModalHeight();
     }
 
     function shareWebsite() {
@@ -1691,7 +1689,7 @@
         textarea.style.position = 'fixed';
         textarea.style.top = '0';
         textarea.style.left = '0';
-        textarea.style.opacity = '0'; // Make it invisible
+        textarea.style.opacity = '0';
 
         document.body.appendChild(textarea);
         textarea.focus();
@@ -1800,12 +1798,11 @@
     }
 
     updateHeaderText();
-    window.addEventListener('resize', updateHeaderText);
 
     // Adjust modal height based on viewport size
     function adjustModalHeight() {
         const modalContent = document.querySelector('.modal-content');
-        const vh = window.innerHeight * 0.90; // Adjusted to 90% of the viewport height
+        const vh = window.innerHeight;
         modalContent.style.maxHeight = `${vh}px`;
     }
 
@@ -1841,7 +1838,7 @@
         event.stopPropagation();
     }, { passive: false });
 });
-    </script>
+</script>
     
 </body>
 </html>

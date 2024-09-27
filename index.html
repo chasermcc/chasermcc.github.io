@@ -790,7 +790,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin: 15px 0;
+            margin: 15px auto;
             width: 435px;
         }
 
@@ -828,7 +828,7 @@
         
         .suggestion-form {
             display: flex;
-            max-width: 100%;
+            max-width: 435px;
             margin: 10px auto;
             box-sizing: border-box;
             height: 42px;
@@ -860,7 +860,7 @@
         }
         
         .suggestion-form #suggestionSubmitButton {
-            min-width: 150px;
+            flex: 0 0 150px;
             padding: 10px 12px;
             font-size: 0.88em;
             font-weight: 400;
@@ -961,6 +961,10 @@
                 color: #222;
                 font-size: 38px;
                 font-weight: 300;
+            }
+
+            .separator.no-text {
+                width: 93%;
             }
 
             .header-text {

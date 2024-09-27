@@ -361,7 +361,6 @@
 
         body.modal-open {
             overflow: hidden;
-            overflow-y: auto;
         }
 
         .modal-content {
@@ -1397,7 +1396,8 @@
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
-    <script>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
     // Function to calculate scrollbar width
     function getScrollbarWidth() {
         return window.innerWidth - document.documentElement.clientWidth;
@@ -1546,10 +1546,12 @@
     const closeButton = document.querySelector(".close-button");
 
     joinWaitlistButton.onclick = function() {
+        console.log("Join Waitlist Button Clicked"); // Debugging
         openModal();
     };
 
     closeButton.onclick = function() {
+        console.log("Close Button Clicked"); // Debugging
         closeModal();
     };
 
@@ -1666,7 +1668,17 @@
         document.body.removeChild(textarea);
     }
 
+    function openModal() {
+        console.log("openModal function called"); // Debugging
+        const scrollbarWidth = getScrollbarWidth();
+        document.body.style.paddingRight = `${scrollbarWidth}px`; // Prevent layout shift
+        modal.style.display = "flex";
+        modal.classList.add("show");
+        document.body.classList.add("modal-open");
+    }
+
     function closeModal() {
+        console.log("closeModal function called"); // Debugging
         document.body.style.paddingRight = ''; // Remove added padding
         modal.style.display = "none";
         modal.classList.remove("show");
@@ -1795,6 +1807,7 @@
             closeModal();
         }
     });
+});
 </script>
 
     

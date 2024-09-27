@@ -931,11 +931,13 @@
         @media (max-width: 768px) {
             body {
                 overflow-y: hidden;
+                padding-left: 15px;
             }
            
             body.modal-open {
-                position: static;
+                position: fixed;
                 width: 100%;
+                overflow-y: hidden;
             }
 
             #joinWaitlistButton {

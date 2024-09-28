@@ -1409,7 +1409,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        const taglines = [
+const taglines = [
     "Discover the best in hospitality",
     "Shop your neighborhood favorites or wherever your journey takes you",
     "Merch from iconic places designed by professionals and guests alike",
@@ -1431,30 +1431,22 @@ const imagesSets = [
 ];
 
 let currentIndex = 0;
-
 const dynamicTextElement = document.querySelector('.dynamic-text');
 
 function typeTagline() {
     const tagline = taglines[currentIndex];
     let i = 0;
 
-    // Clear previous content before typing the new tagline
-    dynamicTextElement.textContent = "";
-
-    // Clear any previous intervals to prevent overlap
-    if (window.typingInterval) {
-        clearInterval(window.typingInterval);
-    }
-
-    // Set a new interval for typing
-    window.typingInterval = setInterval(() => {
+    function typeNextCharacter() {
         if (i < tagline.length) {
             dynamicTextElement.textContent = tagline.slice(0, i + 1);
             i++;
-        } else {
-            clearInterval(window.typingInterval);
+            requestAnimationFrame(typeNextCharacter);
         }
-    }, 55);
+    }
+
+    dynamicTextElement.textContent = ""; // Reset content
+    requestAnimationFrame(typeNextCharacter);
 }
 
 function randomizeImagePositions(set) {
@@ -1553,6 +1545,20 @@ window.addEventListener('resize', function () {
     randomizeImagePositions(currentSet);
 });
 
+// Page Visibility API to pause and resume typing
+document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+        // Pause any ongoing animations when tab is inactive
+        if (window.typingInterval) {
+            cancelAnimationFrame(window.typingInterval);
+        }
+    } else {
+        // Restart the typewriter effect when the tab is active again
+        typeTagline();
+    }
+});
+
+// Start the transitions initially and repeat every 8 seconds
 startTransitions();
 setInterval(startTransitions, 8000);
 

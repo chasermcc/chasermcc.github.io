@@ -1462,18 +1462,19 @@ const dynamicTextElement = document.querySelector('.dynamic-text');
 function typeTagline() {
     const tagline = taglines[currentIndex];
     let i = 0;
-    let lastTime = 0;
+    let lastTime = 0; // To keep track of the timing of typing
 
     function typeNextCharacter(timestamp) {
         if (!lastTime) lastTime = timestamp;
 
-        const delay = 45;
+        // Control the speed here (higher value means slower typing)
+        const delay = 45; // Adjust this value to get your desired speed (in milliseconds)
 
         if (timestamp - lastTime >= delay) {
             if (i < tagline.length) {
                 dynamicTextElement.textContent = tagline.slice(0, i + 1);
                 i++;
-                lastTime = timestamp;
+                lastTime = timestamp; // Update lastTime to the current timestamp
             }
         }
 
@@ -1590,13 +1591,16 @@ document.addEventListener("visibilitychange", function() {
             cancelAnimationFrame(window.typingInterval);
         }
     } else {
+        // Restart the typewriter effect when the tab is active again
         typeTagline();
     }
 });
 
+// Start the transitions initially and repeat every 8 seconds
 startTransitions();
 setInterval(startTransitions, 8000);
 
+// Variables to save scroll position
 let scrollPosition = 0;
 
 const modal = document.getElementById("waitlistModal");
@@ -1618,6 +1622,7 @@ function openModal() {
     modal.style.display = "flex";
     modal.classList.add("show");
 
+    // Prevent touch events on background
     document.addEventListener('touchmove', preventScroll, { passive: false });
 }
 
@@ -1630,6 +1635,7 @@ function closeModal() {
     document.body.style.top = '';
     window.scrollTo(0, scrollPosition);
 
+    // Remove touchmove listener
     document.removeEventListener('touchmove', preventScroll);
 
     const originalContent = document.getElementById("originalContent");
@@ -1705,6 +1711,7 @@ function showThankYouContent(position) {
     confettiCanvas.classList.add('confetti-canvas');
     document.body.appendChild(confettiCanvas);
 
+    // Create a confetti instance targeting this canvas
     const myConfetti = confetti.create(confettiCanvas, {
         resize: true,
         useWorker: true
@@ -1718,9 +1725,10 @@ function showThankYouContent(position) {
         colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
     });
 
+    // Remove the canvas after the confetti animation is complete
     setTimeout(() => {
         confettiCanvas.remove();
-    }, 5000);
+    }, 5000); // Adjust the timing as needed
 
     const shareButton = document.getElementById("shareButton");
     shareButton.onclick = shareWebsite;
@@ -1814,8 +1822,9 @@ function showNotificationBubble() {
 
         setTimeout(() => {
             bubble.remove();
-        }, 500);
-    }, 3300);
+        }, 500); // Match this duration with the CSS animation duration
+    }, 3300); // Duration the bubble stays visible
+}
 
 function getOrdinalSuffix(n) {
     const s = ["th", "st", "nd", "rd"],
@@ -1842,12 +1851,14 @@ function adjustModalOnKeyboard() {
     const inputs = modalContent.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
+            // On focus, adjust modal content to keep input in view
             setTimeout(() => {
-                modalContent.scrollTop = input.offsetTop - 20;
+                modalContent.scrollTop = input.offsetTop - 20; // Adjust as needed
             }, 300);
         });
 
         input.addEventListener('blur', () => {
+            // On blur, force the viewport to reset
             setTimeout(() => {
                 window.scrollTo(0, 0);
                 modalContent.style.transform = 'translateY(0)';
@@ -1857,7 +1868,8 @@ function adjustModalOnKeyboard() {
 }
 
 adjustModalOnKeyboard();
-    
+
+// Listen for orientation change or resize events to adjust the viewport
 window.addEventListener('orientationchange', () => {
     setTimeout(() => {
         window.scrollTo(0, 0);

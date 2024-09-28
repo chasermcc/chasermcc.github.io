@@ -914,17 +914,6 @@
             }
         }
 
-        @keyframes fadeDown {
-            0% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-            }
-        }
-
         .notification-bubble.show {
             display: block;
             animation: riseFadeIn 0.5s forwards;
@@ -932,7 +921,6 @@
         
         .notification-bubble.hide {
             display: none;
-            animation: fadeDown 0.5s forwards;
         }
         
         @media (min-width: 769px) {
@@ -1811,7 +1799,7 @@ function showNotificationBubble() {
         setTimeout(() => {
             bubble.remove();
         }, 500);
-    }, 3500);
+    }, 3300);
 }
 
 function getOrdinalSuffix(n) {

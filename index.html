@@ -1438,12 +1438,21 @@ function typeTagline() {
     const tagline = taglines[currentIndex];
     let i = 0;
 
-    const typingInterval = setInterval(() => {
+    // Clear previous content before typing the new tagline
+    dynamicTextElement.textContent = "";
+
+    // Clear any previous intervals to prevent overlap
+    if (window.typingInterval) {
+        clearInterval(window.typingInterval);
+    }
+
+    // Set a new interval for typing
+    window.typingInterval = setInterval(() => {
         if (i < tagline.length) {
             dynamicTextElement.textContent = tagline.slice(0, i + 1);
             i++;
         } else {
-            clearInterval(typingInterval);
+            clearInterval(window.typingInterval);
         }
     }, 55);
 }
@@ -1837,6 +1846,15 @@ modal.addEventListener('keydown', function (event) {
 
     if (event.key === 'Escape') {
         closeModal();
+    }
+});
+        document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+        // Pause any animations or timeouts when tab is inactive
+        clearInterval(typingInterval);
+    } else {
+        // Restart typewriter effect
+        typeTagline();
     }
 });
 

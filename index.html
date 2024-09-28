@@ -1436,19 +1436,31 @@ const dynamicTextElement = document.querySelector('.dynamic-text');
 function typeTagline() {
     const tagline = taglines[currentIndex];
     let i = 0;
+    let lastTime = 0; // To keep track of the timing of typing
 
-    function typeNextCharacter() {
+    function typeNextCharacter(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+
+        // Control the speed here (higher value means slower typing)
+        const delay = 55; // Adjust this value to get your desired speed (in milliseconds)
+
+        if (timestamp - lastTime >= delay) {
+            if (i < tagline.length) {
+                dynamicTextElement.textContent = tagline.slice(0, i + 1);
+                i++;
+                lastTime = timestamp; // Update lastTime to the current timestamp
+            }
+        }
+
         if (i < tagline.length) {
-            dynamicTextElement.textContent = tagline.slice(0, i + 1);
-            i++;
-            requestAnimationFrame(typeNextCharacter);
+            window.typingInterval = requestAnimationFrame(typeNextCharacter);
         }
     }
 
     dynamicTextElement.textContent = ""; // Reset content
-    requestAnimationFrame(typeNextCharacter);
+    window.typingInterval = requestAnimationFrame(typeNextCharacter);
 }
-
+        
 function randomizeImagePositions(set) {
     imagesSets.forEach(imageSet => {
         if (imageSet !== set) {

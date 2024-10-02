@@ -228,7 +228,7 @@
             height: auto;
             border-radius: 32px;
             animation: float 15s linear infinite;
-            transition: opacity 1s ease-in-out, width 0.9s ease, height 0.9s ease;
+            transition: opacity 2s ease-in-out, width 0.9s ease, height 0.9s ease;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
         }
 
@@ -1436,7 +1436,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
-   <script>
+  <script>
     const taglines = [
         "Discover the best in hospitality",
         "Shop your neighborhood favorites or wherever your journey takes you",
@@ -1547,12 +1547,14 @@
         currentIndex = (currentIndex + 1) % imagesSets.length;
         const nextSet = imagesSets[currentIndex];
     
+        // Fade out previous images over 3 seconds
         previousSet.querySelectorAll('img').forEach((img, i) => {
             setTimeout(() => {
                 img.style.opacity = '0';
-            }, i * 100);
+            }, i * 500); // 500ms stagger per image for a total of 3 seconds
         });
     
+        // After fade-out completes (3 seconds) + 1 second pause
         setTimeout(() => {
             previousSet.style.display = 'none';
     
@@ -1561,15 +1563,14 @@
             nextSet.querySelectorAll('img').forEach((img, i) => {
                 setTimeout(() => {
                     img.style.opacity = '1';
-                }, i * 100);
+                }, i * 500); // 500ms stagger per image for a total of 3 seconds
             });
     
-            // Calculate total time for all images to fade in
-            const totalFadeInTime = nextSet.querySelectorAll('img').length * 100 + 500; // Adjust the extra time as needed
+            // Total fade-in time: 3 seconds
             setTimeout(() => {
                 isFading = false;
-            }, totalFadeInTime);
-        }, 800);
+            }, 3000);
+        }, 3500); // 3 seconds fade-out + 0.5 second overlap for smoother transition
     }
     
     function changeBackgroundColor() {
@@ -1588,7 +1589,7 @@
     
     // Start the transitions and save the interval ID
     startTransitions();
-    startTransitionsInterval = setInterval(startTransitions, 8000);
+    startTransitionsInterval = setInterval(startTransitions, 8000); // 8 seconds total cycle
     
     // Page Visibility API to pause and resume animations
     document.addEventListener("visibilitychange", function() {
@@ -1599,8 +1600,6 @@
     
             // Pause the interval
             clearInterval(startTransitionsInterval);
-    
-            // Optionally, allow fadeImages to finish naturally or reset
         } else {
             // Resume typing animation
             typeTagline();
@@ -1634,9 +1633,15 @@
         img.style.opacity = '1';
     });
     
+    // Debounce the resize event to improve performance
+    let resizeTimeout;
     window.addEventListener('resize', function () {
-        const currentSet = imagesSets[currentIndex];
-        randomizeImagePositions(currentSet);
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+            const currentSet = imagesSets[currentIndex];
+            randomizeImagePositions(currentSet);
+            updateHeaderText();
+        }, 200); // Adjust the delay as needed
     });
     
     // Variables to save scroll position
@@ -1945,6 +1950,5 @@
         }
     });
 </script>
-    
 </body>
 </html>

@@ -1436,7 +1436,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
-    <script>
+   <script>
     const taglines = [
         "Discover the best in hospitality",
         "Shop your neighborhood favorites or wherever your journey takes you",
@@ -1463,6 +1463,7 @@
     let typingAnimationTimeout; // Global variable to track the typing animation timeout
     let typingIndex = 0; // Global variable for the character index in the tagline
     let startTransitionsInterval; // Global variable for the interval
+    let isFading = false; // Flag to track if fadeImages is running
     
     function typeTagline() {
         const tagline = taglines[currentIndex];
@@ -1539,6 +1540,9 @@
     }
     
     function fadeImages() {
+        if (isFading) return; // Prevent overlapping fades
+        isFading = true;
+    
         const previousSet = imagesSets[currentIndex];
         currentIndex = (currentIndex + 1) % imagesSets.length;
         const nextSet = imagesSets[currentIndex];
@@ -1559,6 +1563,12 @@
                     img.style.opacity = '1';
                 }, i * 100);
             });
+    
+            // Calculate total time for all images to fade in
+            const totalFadeInTime = nextSet.querySelectorAll('img').length * 100 + 500; // Adjust the extra time as needed
+            setTimeout(() => {
+                isFading = false;
+            }, totalFadeInTime);
         }, 800);
     }
     
@@ -1569,7 +1579,7 @@
     
     function startTransitions() {
         // Avoid starting a new animation if one is already running
-        if (typingAnimationTimeout) return;
+        if (typingAnimationTimeout || isFading) return;
     
         typeTagline();
         changeBackgroundColor();
@@ -1589,12 +1599,32 @@
     
             // Pause the interval
             clearInterval(startTransitionsInterval);
+    
+            // Optionally, allow fadeImages to finish naturally or reset
         } else {
             // Resume typing animation
             typeTagline();
     
             // Resume the interval
             startTransitionsInterval = setInterval(startTransitions, 8000);
+    
+            // Reset images to ensure no jumping
+            imagesSets.forEach((imageSet, index) => {
+                if (index === currentIndex) {
+                    imageSet.style.display = 'block';
+                    imageSet.querySelectorAll('img').forEach(img => {
+                        img.style.opacity = '1';
+                    });
+                } else {
+                    imageSet.style.display = 'none';
+                    imageSet.querySelectorAll('img').forEach(img => {
+                        img.style.opacity = '0';
+                    });
+                }
+            });
+    
+            // Reset the fading flag
+            isFading = false;
         }
     });
     
@@ -1914,7 +1944,7 @@
             closeModal();
         }
     });
-    </script>
+</script>
     
 </body>
 </html>

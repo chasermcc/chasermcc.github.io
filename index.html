@@ -144,7 +144,7 @@
         }
 
         @keyframes blink-cursor {
-            0%  { opacity: 1.0; } 
+            0%  { opacity: 0.95;} 
             10% { opacity: 0.9; }  
             20% { opacity: 0.8; }  
             30% { opacity: 0.7; } 
@@ -1437,477 +1437,483 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-const taglines = [
-    "Discover the best in hospitality",
-    "Shop your neighborhood favorites or wherever your journey takes you",
-    "Merch from iconic places designed by professionals and guests alike",
-    "Savor the moments one remarkable gift at a time"
-];
-
-const colors = [
-    "#FAF8F6",
-    "#F6EAE3",
-    "#E4E6E4",
-    "#F4F5E0"
-];
-
-const imagesSets = [
-    document.getElementById('images1'),
-    document.getElementById('images2'),
-    document.getElementById('images3'),
-    document.getElementById('images4')
-];
-
-let currentIndex = 0;
-const dynamicTextElement = document.querySelector('.dynamic-text');
-
-function typeTagline() {
-    const tagline = taglines[currentIndex];
-    let i = 0;
-    let lastTime = 0; // To keep track of the timing of typing
-
-    function typeNextCharacter(timestamp) {
-        if (!lastTime) lastTime = timestamp;
-
-        // Control the speed here (higher value means slower typing)
-        const delay = 45; // Adjust this value to get your desired speed (in milliseconds)
-
-        if (timestamp - lastTime >= delay) {
-            if (i < tagline.length) {
-                dynamicTextElement.textContent = tagline.slice(0, i + 1);
-                i++;
-                lastTime = timestamp; // Update lastTime to the current timestamp
+    const taglines = [
+        "Discover the best in hospitality",
+        "Shop your neighborhood favorites or wherever your journey takes you",
+        "Merch from iconic places designed by professionals and guests alike",
+        "Savor the moments one remarkable gift at a time"
+    ];
+    
+    const colors = [
+        "#FAF8F6",
+        "#F6EAE3",
+        "#E4E6E4",
+        "#F4F5E0"
+    ];
+    
+    const imagesSets = [
+        document.getElementById('images1'),
+        document.getElementById('images2'),
+        document.getElementById('images3'),
+        document.getElementById('images4')
+    ];
+    
+    let currentIndex = 0;
+    const dynamicTextElement = document.querySelector('.dynamic-text');
+    let typingAnimationTimeout; // Global variable to track the typing animation timeout
+    let typingIndex = 0; // Global variable for the character index in the tagline
+    let startTransitionsInterval; // Global variable for the interval
+    
+    function typeTagline() {
+        const tagline = taglines[currentIndex];
+        typingIndex = 0; // Reset the character index
+        dynamicTextElement.textContent = ""; // Reset the text content
+    
+        // Clear any existing timeout
+        if (typingAnimationTimeout) {
+            clearTimeout(typingAnimationTimeout);
+        }
+    
+        function typeNextCharacter() {
+            if (typingIndex < tagline.length) {
+                dynamicTextElement.textContent += tagline.charAt(typingIndex);
+                typingIndex++;
+                typingAnimationTimeout = setTimeout(typeNextCharacter, 45);
+            } else {
+                clearTimeout(typingAnimationTimeout);
+                typingAnimationTimeout = null;
             }
         }
-
-        if (i < tagline.length) {
-            window.typingInterval = requestAnimationFrame(typeNextCharacter);
-        }
+    
+        typeNextCharacter();
     }
-
-    dynamicTextElement.textContent = ""; // Reset content
-    window.typingInterval = requestAnimationFrame(typeNextCharacter);
-}
-
-function randomizeImagePositions(set) {
-    imagesSets.forEach(imageSet => {
-        if (imageSet !== set) {
-            imageSet.style.display = 'none';
-        }
-    });
-    const images = set.querySelectorAll('img');
-
-    if (window.innerWidth > 768) {
-        const centralPosition = { top: '15%', left: '40%' };
-        const surroundingPositions = [
-            { top: '4%', left: '8%' },
-            { top: '7%', left: '65%' },
-            { top: '28%', left: '19%' },
-            { top: '44%', left: '78%' },
-            { top: '54%', left: '14%' }
-        ];
-
-        images[3].style.position = 'absolute';
-        images[3].style.top = centralPosition.top;
-        images[3].style.left = centralPosition.left;
-        images[3].style.zIndex = 4;
-
-        for (let i = surroundingPositions.length - 1; i >= 0; i--) {
-            const randomIndex = Math.floor(Math.random() * (i + 1));
-            [surroundingPositions[i], surroundingPositions[randomIndex]] = [surroundingPositions[randomIndex], surroundingPositions[i]];
-        }
-
-        let surroundingImageIndex = 0;
-        images.forEach((img, index) => {
-            if (index !== 3) {
-                img.style.position = 'absolute';
-                img.style.top = surroundingPositions[surroundingImageIndex].top;
-                img.style.left = surroundingPositions[surroundingImageIndex].left;
-                surroundingImageIndex++;
+    
+    function randomizeImagePositions(set) {
+        imagesSets.forEach(imageSet => {
+            if (imageSet !== set) {
+                imageSet.style.display = 'none';
             }
         });
-    } else {
-        images.forEach((img) => {
-            img.style.position = '';
-            img.style.top = '';
-            img.style.left = '';
-            img.style.zIndex = '';
-            img.style.width = '';
-            img.style.height = '';
-            img.style.marginBottom = '';
-        });
+        const images = set.querySelectorAll('img');
+    
+        if (window.innerWidth > 768) {
+            const centralPosition = { top: '15%', left: '40%' };
+            const surroundingPositions = [
+                { top: '4%', left: '8%' },
+                { top: '7%', left: '65%' },
+                { top: '28%', left: '19%' },
+                { top: '44%', left: '78%' },
+                { top: '54%', left: '14%' }
+            ];
+    
+            images[3].style.position = 'absolute';
+            images[3].style.top = centralPosition.top;
+            images[3].style.left = centralPosition.left;
+            images[3].style.zIndex = 4;
+    
+            for (let i = surroundingPositions.length - 1; i >= 0; i--) {
+                const randomIndex = Math.floor(Math.random() * (i + 1));
+                [surroundingPositions[i], surroundingPositions[randomIndex]] = [surroundingPositions[randomIndex], surroundingPositions[i]];
+            }
+    
+            let surroundingImageIndex = 0;
+            images.forEach((img, index) => {
+                if (index !== 3) {
+                    img.style.position = 'absolute';
+                    img.style.top = surroundingPositions[surroundingImageIndex].top;
+                    img.style.left = surroundingPositions[surroundingImageIndex].left;
+                    surroundingImageIndex++;
+                }
+            });
+        } else {
+            images.forEach((img) => {
+                img.style.position = '';
+                img.style.top = '';
+                img.style.left = '';
+                img.style.zIndex = '';
+                img.style.width = '';
+                img.style.height = '';
+                img.style.marginBottom = '';
+            });
+        }
     }
-}
-
-function fadeImages() {
-    const previousSet = imagesSets[currentIndex];
-    currentIndex = (currentIndex + 1) % imagesSets.length;
-    const nextSet = imagesSets[currentIndex];
-
-    previousSet.querySelectorAll('img').forEach((img, i) => {
-        setTimeout(() => {
-            img.style.opacity = '0';
-        }, i * 100);
-    });
-
-    setTimeout(() => {
-        previousSet.style.display = 'none';
-
-        nextSet.style.display = 'block';
-        randomizeImagePositions(nextSet);
-        nextSet.querySelectorAll('img').forEach((img, i) => {
+    
+    function fadeImages() {
+        const previousSet = imagesSets[currentIndex];
+        currentIndex = (currentIndex + 1) % imagesSets.length;
+        const nextSet = imagesSets[currentIndex];
+    
+        previousSet.querySelectorAll('img').forEach((img, i) => {
             setTimeout(() => {
-                img.style.opacity = '1';
+                img.style.opacity = '0';
             }, i * 100);
         });
-    }, 800);
-}
-
-function changeBackgroundColor() {
-    const nextColor = colors[currentIndex];
-    document.getElementById('background').style.backgroundColor = nextColor;
-}
-
-function startTransitions() {
-    typeTagline();
-    changeBackgroundColor();
-    fadeImages();
-}
-
-imagesSets[currentIndex].style.display = 'block';
-randomizeImagePositions(imagesSets[currentIndex]);
-imagesSets[currentIndex].querySelectorAll('img').forEach((img) => {
-    img.style.opacity = '1';
-});
-
-window.addEventListener('resize', function () {
-    const currentSet = imagesSets[currentIndex];
-    randomizeImagePositions(currentSet);
-});
-
-// Page Visibility API to pause and resume typing
-document.addEventListener("visibilitychange", function() {
-    if (document.hidden) {
-        // Pause any ongoing animations when tab is inactive
-        if (window.typingInterval) {
-            cancelAnimationFrame(window.typingInterval);
-        }
-    } else {
-        // Restart the typewriter effect when the tab is active again
-        typeTagline();
-    }
-});
-
-// Start the transitions initially and repeat every 8 seconds
-startTransitions();
-setInterval(startTransitions, 8000);
-
-// Variables to save scroll position
-let scrollPosition = 0;
-
-const modal = document.getElementById("waitlistModal");
-const joinWaitlistButton = document.getElementById("joinWaitlistButton");
-const closeButton = document.querySelector(".close-button");
-
-joinWaitlistButton.onclick = function () {
-    openModal();
-};
-
-closeButton.onclick = function () {
-    closeModal();
-};
-
-function openModal() {
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    document.body.style.top = `-${scrollPosition}px`;
-    document.body.classList.add("modal-open");
-    modal.style.display = "flex";
-    modal.classList.add("show");
-
-    // Prevent touch events on background
-    document.addEventListener('touchmove', preventScroll, { passive: false });
-}
-
-function closeModal() {
-    modal.style.display = "none";
-    modal.classList.remove("show");
-
-    document.body.classList.remove("modal-open");
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo(0, scrollPosition);
-
-    // Remove touchmove listener
-    document.removeEventListener('touchmove', preventScroll);
-
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-    originalContent.style.display = "block";
-    thankYouContent.style.display = "none";
-}
-
-function preventScroll(e) {
-    e.preventDefault();
-}
-
-const modalContent = document.querySelector(".modal-content");
-modalContent.onclick = function (event) {
-    event.stopPropagation();
-};
-
-window.onclick = function (event) {
-    if (event.target === modal) {
-        closeModal();
-    }
-};
-
-const waitlistForm = document.getElementById("waitlistForm");
-
-waitlistForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailInput.value.trim() === "") {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter your email address";
-        errorMessage.style.display = "block";
-    } else if (!emailPattern.test(emailInput.value)) {
-        emailInput.classList.add("error");
-        emailLabel.classList.add("error");
-        errorMessage.textContent = "Please enter a valid email address";
-        errorMessage.style.display = "block";
-    } else {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-
-        console.log("Valid email submitted:", emailInput.value);
-
-        let waitlistPosition = localStorage.getItem('waitlistPosition');
-        if (!waitlistPosition) {
-            waitlistPosition = Math.floor(Math.random() * 1000) + 1;
-            localStorage.setItem('waitlistPosition', waitlistPosition);
-        }
-
-        showThankYouContent(waitlistPosition);
-    }
-});
-
-function showThankYouContent(position) {
-    const originalContent = document.getElementById("originalContent");
-    const thankYouContent = document.getElementById("thankYouContent");
-
-    originalContent.style.display = "none";
-    thankYouContent.style.display = "block";
-
-    const ordinalSuffix = getOrdinalSuffix(position);
-    document.getElementById("waitlistPosition").textContent = `${position}${ordinalSuffix}`;
-
-    // Create a canvas and append it to the body
-    const confettiCanvas = document.createElement('canvas');
-    confettiCanvas.classList.add('confetti-canvas');
-    document.body.appendChild(confettiCanvas);
-
-    // Create a confetti instance targeting this canvas
-    const myConfetti = confetti.create(confettiCanvas, {
-        resize: true,
-        useWorker: true
-    });
-
-    // Trigger confetti
-    myConfetti({
-        particleCount: 75,
-        spread: 36,
-        origin: { y: 0.7 },
-        colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
-    });
-
-    // Remove the canvas after the confetti animation is complete
-    setTimeout(() => {
-        confettiCanvas.remove();
-    }, 5000); // Adjust the timing as needed
-
-    const shareButton = document.getElementById("shareButton");
-    shareButton.onclick = shareWebsite;
-
-    const exitButton = document.getElementById("exitButton");
-    exitButton.onclick = closeModal;
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function shareWebsite() {
-    const shareData = {
-        title: 'Memorably',
-        text: 'Check out Memorably!',
-        url: window.location.href
-    };
-
-    if (navigator.share) {
-        navigator.share(shareData).then(() => {
-            console.log('Thanks for sharing!');
-        })
-            .catch(console.error);
-    } else {
-        copyToClipboard(window.location.href);
-        alert('Link copied to clipboard!');
-    }
-}
-
-function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-
-    textarea.style.position = 'fixed';
-    textarea.style.top = '0';
-    textarea.style.left = '0';
-
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
-
-    try {
-        document.execCommand('copy');
-        console.log('Copying to clipboard was successful!');
-    } catch (err) {
-        console.error('Could not copy text:', err);
-    }
-
-    document.body.removeChild(textarea);
-}
-
-document.getElementById("email").addEventListener("input", function () {
-    const emailInput = document.getElementById("email");
-    const emailLabel = document.getElementById("emailLabel");
-    const errorMessage = document.getElementById("errorMessage");
-
-    if (emailInput.classList.contains("error")) {
-        emailInput.classList.remove("error");
-        emailLabel.classList.remove("error");
-        errorMessage.style.display = "none";
-    }
-});
-
-const suggestionInput = document.getElementById('suggestionInput');
-const suggestionSubmitButton = document.getElementById('suggestionSubmitButton');
-
-suggestionSubmitButton.addEventListener('click', function () {
-    const suggestionText = suggestionInput.value.trim();
-    if (suggestionText !== "") {
-        console.log("Suggestion submitted:", suggestionText);
-        suggestionInput.value = "";
-        showNotificationBubble();
-    } else {
-        alert("Please enter a suggestion");
-    }
-});
-
-function showNotificationBubble() {
-    const existingBubble = document.querySelector('.notification-bubble');
-    if (existingBubble) return;
-
-    const bubble = document.createElement('div');
-    bubble.className = 'notification-bubble';
-    bubble.textContent = 'Suggestion received, thanks!';
-    document.body.appendChild(bubble);
-
-    bubble.classList.add('show');
-
-    setTimeout(function () {
-        bubble.classList.remove('show');
-        bubble.classList.add('hide');
-
+    
         setTimeout(() => {
-            bubble.remove();
-        }, 500); // Match this duration with the CSS animation duration
-    }, 3300); // Duration the bubble stays visible
-}
-
-function getOrdinalSuffix(n) {
-    const s = ["th", "st", "nd", "rd"],
-        v = n % 100;
-    return s[(v - 20) % 10] || s[v] || s[0];
-}
-
-function updateHeaderText() {
-    const headerTextElement = document.getElementById('header-text');
-    if (window.innerWidth <= 768) {
-        headerTextElement.textContent = 'Shop unforgettable places';
-    } else {
-        headerTextElement.textContent = 'Shop unforgettable restaurants, hotels, and experiences';
+            previousSet.style.display = 'none';
+    
+            nextSet.style.display = 'block';
+            randomizeImagePositions(nextSet);
+            nextSet.querySelectorAll('img').forEach((img, i) => {
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, i * 100);
+            });
+        }, 800);
     }
-}
-
-updateHeaderText();
-
-window.addEventListener('resize', updateHeaderText);
-
-function adjustModalOnKeyboard() {
-    const modalContent = document.querySelector('.modal-content');
-
-    const inputs = modalContent.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            // On focus, adjust modal content to keep input in view
-            setTimeout(() => {
-                modalContent.scrollTop = input.offsetTop - 20; // Adjust as needed
-            }, 300);
-        });
-
-        input.addEventListener('blur', () => {
-            // On blur, force the viewport to reset
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-                modalContent.style.transform = 'translateY(0)';
-            }, 100);
-        });
-    });
-}
-
-adjustModalOnKeyboard();
-
-// Listen for orientation change or resize events to adjust the viewport
-window.addEventListener('orientationchange', () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 500);
-});
-
-window.addEventListener('resize', () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 500);
-});
-
-modal.addEventListener('keydown', function (event) {
-    const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    if (event.key === 'Tab') {
-        if (event.shiftKey) {
-            if (document.activeElement === firstElement) {
-                event.preventDefault();
-                lastElement.focus();
-            }
+    
+    function changeBackgroundColor() {
+        const nextColor = colors[currentIndex];
+        document.getElementById('background').style.backgroundColor = nextColor;
+    }
+    
+    function startTransitions() {
+        // Avoid starting a new animation if one is already running
+        if (typingAnimationTimeout) return;
+    
+        typeTagline();
+        changeBackgroundColor();
+        fadeImages();
+    }
+    
+    // Start the transitions and save the interval ID
+    startTransitions();
+    startTransitionsInterval = setInterval(startTransitions, 8000);
+    
+    // Page Visibility API to pause and resume animations
+    document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+            // Pause typing animation
+            clearTimeout(typingAnimationTimeout);
+            typingAnimationTimeout = null;
+    
+            // Pause the interval
+            clearInterval(startTransitionsInterval);
         } else {
-            if (document.activeElement === lastElement) {
-                event.preventDefault();
-                firstElement.focus();
+            // Resume typing animation
+            typeTagline();
+    
+            // Resume the interval
+            startTransitionsInterval = setInterval(startTransitions, 8000);
+        }
+    });
+    
+    imagesSets[currentIndex].style.display = 'block';
+    randomizeImagePositions(imagesSets[currentIndex]);
+    imagesSets[currentIndex].querySelectorAll('img').forEach((img) => {
+        img.style.opacity = '1';
+    });
+    
+    window.addEventListener('resize', function () {
+        const currentSet = imagesSets[currentIndex];
+        randomizeImagePositions(currentSet);
+    });
+    
+    // Variables to save scroll position
+    let scrollPosition = 0;
+    
+    const modal = document.getElementById("waitlistModal");
+    const joinWaitlistButton = document.getElementById("joinWaitlistButton");
+    const closeButton = document.querySelector(".close-button");
+    
+    joinWaitlistButton.onclick = function () {
+        openModal();
+    };
+    
+    closeButton.onclick = function () {
+        closeModal();
+    };
+    
+    function openModal() {
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.classList.add("modal-open");
+        modal.style.display = "flex";
+        modal.classList.add("show");
+    
+        // Prevent touch events on background
+        document.addEventListener('touchmove', preventScroll, { passive: false });
+    }
+    
+    function closeModal() {
+        modal.style.display = "none";
+        modal.classList.remove("show");
+    
+        document.body.classList.remove("modal-open");
+        document.body.style.position = '';
+        document.body.style.top = '';
+        window.scrollTo(0, scrollPosition);
+    
+        // Remove touchmove listener
+        document.removeEventListener('touchmove', preventScroll);
+    
+        const originalContent = document.getElementById("originalContent");
+        const thankYouContent = document.getElementById("thankYouContent");
+        originalContent.style.display = "block";
+        thankYouContent.style.display = "none";
+    }
+    
+    function preventScroll(e) {
+        e.preventDefault();
+    }
+    
+    const modalContent = document.querySelector(".modal-content");
+    modalContent.onclick = function (event) {
+        event.stopPropagation();
+    };
+    
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+    
+    const waitlistForm = document.getElementById("waitlistForm");
+    
+    waitlistForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("emailLabel");
+        const errorMessage = document.getElementById("errorMessage");
+    
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        if (emailInput.value.trim() === "") {
+            emailInput.classList.add("error");
+            emailLabel.classList.add("error");
+            errorMessage.textContent = "Please enter your email address";
+            errorMessage.style.display = "block";
+        } else if (!emailPattern.test(emailInput.value)) {
+            emailInput.classList.add("error");
+            emailLabel.classList.add("error");
+            errorMessage.textContent = "Please enter a valid email address";
+            errorMessage.style.display = "block";
+        } else {
+            emailInput.classList.remove("error");
+            emailLabel.classList.remove("error");
+            errorMessage.style.display = "none";
+    
+            console.log("Valid email submitted:", emailInput.value);
+    
+            let waitlistPosition = localStorage.getItem('waitlistPosition');
+            if (!waitlistPosition) {
+                waitlistPosition = Math.floor(Math.random() * 1000) + 1;
+                localStorage.setItem('waitlistPosition', waitlistPosition);
             }
+    
+            showThankYouContent(waitlistPosition);
+        }
+    });
+    
+    function showThankYouContent(position) {
+        const originalContent = document.getElementById("originalContent");
+        const thankYouContent = document.getElementById("thankYouContent");
+    
+        originalContent.style.display = "none";
+        thankYouContent.style.display = "block";
+    
+        const ordinalSuffix = getOrdinalSuffix(position);
+        document.getElementById("waitlistPosition").textContent = `${position}${ordinalSuffix}`;
+    
+        // Create a canvas and append it to the body
+        const confettiCanvas = document.createElement('canvas');
+        confettiCanvas.classList.add('confetti-canvas');
+        document.body.appendChild(confettiCanvas);
+    
+        // Create a confetti instance targeting this canvas
+        const myConfetti = confetti.create(confettiCanvas, {
+            resize: true,
+            useWorker: true
+        });
+    
+        // Trigger confetti
+        myConfetti({
+            particleCount: 75,
+            spread: 36,
+            origin: { y: 0.7 },
+            colors: ['#F6EAE3', '#ECEDEC', '#F4F5E0', '#FAF8F6']
+        });
+    
+        // Remove the canvas after the confetti animation is complete
+        setTimeout(() => {
+            confettiCanvas.remove();
+        }, 5000); // Adjust the timing as needed
+    
+        const shareButton = document.getElementById("shareButton");
+        shareButton.onclick = shareWebsite;
+    
+        const exitButton = document.getElementById("exitButton");
+        exitButton.onclick = closeModal;
+    
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function shareWebsite() {
+        const shareData = {
+            title: 'Memorably',
+            text: 'Check out Memorably!',
+            url: window.location.href
+        };
+    
+        if (navigator.share) {
+            navigator.share(shareData).then(() => {
+                console.log('Thanks for sharing!');
+            })
+                .catch(console.error);
+        } else {
+            copyToClipboard(window.location.href);
+            alert('Link copied to clipboard!');
         }
     }
-
-    if (event.key === 'Escape') {
-        closeModal();
+    
+    function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+    
+        textarea.style.position = 'fixed';
+        textarea.style.top = '0';
+        textarea.style.left = '0';
+    
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+    
+        try {
+            document.execCommand('copy');
+            console.log('Copying to clipboard was successful!');
+        } catch (err) {
+            console.error('Could not copy text:', err);
+        }
+    
+        document.body.removeChild(textarea);
     }
-});
-
+    
+    document.getElementById("email").addEventListener("input", function () {
+        const emailInput = document.getElementById("email");
+        const emailLabel = document.getElementById("emailLabel");
+        const errorMessage = document.getElementById("errorMessage");
+    
+        if (emailInput.classList.contains("error")) {
+            emailInput.classList.remove("error");
+            emailLabel.classList.remove("error");
+            errorMessage.style.display = "none";
+        }
+    });
+    
+    const suggestionInput = document.getElementById('suggestionInput');
+    const suggestionSubmitButton = document.getElementById('suggestionSubmitButton');
+    
+    suggestionSubmitButton.addEventListener('click', function () {
+        const suggestionText = suggestionInput.value.trim();
+        if (suggestionText !== "") {
+            console.log("Suggestion submitted:", suggestionText);
+            suggestionInput.value = "";
+            showNotificationBubble();
+        } else {
+            alert("Please enter a suggestion");
+        }
+    });
+    
+    function showNotificationBubble() {
+        const existingBubble = document.querySelector('.notification-bubble');
+        if (existingBubble) return;
+    
+        const bubble = document.createElement('div');
+        bubble.className = 'notification-bubble';
+        bubble.textContent = 'Suggestion received, thanks!';
+        document.body.appendChild(bubble);
+    
+        bubble.classList.add('show');
+    
+        setTimeout(function () {
+            bubble.classList.remove('show');
+            bubble.classList.add('hide');
+    
+            setTimeout(() => {
+                bubble.remove();
+            }, 500); // Match this duration with the CSS animation duration
+        }, 3300); // Duration the bubble stays visible
+    }
+    
+    function getOrdinalSuffix(n) {
+        const s = ["th", "st", "nd", "rd"],
+            v = n % 100;
+        return s[(v - 20) % 10] || s[v] || s[0];
+    }
+    
+    function updateHeaderText() {
+        const headerTextElement = document.getElementById('header-text');
+        if (window.innerWidth <= 768) {
+            headerTextElement.textContent = 'Shop unforgettable places';
+        } else {
+            headerTextElement.textContent = 'Shop unforgettable restaurants, hotels, and experiences';
+        }
+    }
+    
+    updateHeaderText();
+    
+    window.addEventListener('resize', updateHeaderText);
+    
+    function adjustModalOnKeyboard() {
+        const modalContent = document.querySelector('.modal-content');
+    
+        const inputs = modalContent.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                // On focus, adjust modal content to keep input in view
+                setTimeout(() => {
+                    modalContent.scrollTop = input.offsetTop - 20; // Adjust as needed
+                }, 300);
+            });
+    
+            input.addEventListener('blur', () => {
+                // On blur, force the viewport to reset
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                    modalContent.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    }
+    
+    adjustModalOnKeyboard();
+    
+    // Listen for orientation change or resize events to adjust the viewport
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 500);
+    });
+    
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 500);
+    });
+    
+    modal.addEventListener('keydown', function (event) {
+        const focusableElements = modal.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+    
+        if (event.key === 'Tab') {
+            if (event.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        }
+    
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
     </script>
     
 </body>
